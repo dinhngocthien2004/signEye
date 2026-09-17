@@ -11,3 +11,6 @@ ios/.symlinks/
 android/.gradle/
 android/local.properties
 pubspec.lock
+
+.vercel
+.env*

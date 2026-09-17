@@ -36,6 +36,7 @@ class _SignEyeAppState extends State<SignEyeApp> {
           return MaterialApp(
             title: 'SignEye',
             debugShowCheckedModeBanner: false,
+            themeAnimationDuration: Duration.zero,
             theme: buildAppTheme(dark: state.darkMode),
             home: !state.ready
                 ? const _SplashScreen()
