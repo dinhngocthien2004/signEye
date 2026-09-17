@@ -1,0 +1,15 @@
+name: signeye_backend
+description: Backend API for SignEye using PostgreSQL.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  postgres: ^2.6.1
+  shelf: ^1.4.0
+  shelf_router: ^1.1.0
+
+# Uncomment if you want environment file support later:
+# dotenv: ^4.0.0

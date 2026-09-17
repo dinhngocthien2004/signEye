@@ -1,0 +1,2715 @@
+[
+  {
+    "stt": 1,
+    "maBien": "P.101",
+    "tenBien": "Đường cấm",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm tất cả các loại xe cơ giới và thô sơ đi vào (trừ xe ưu tiên), theo cả 2 hướng.",
+    "mucPhatXeMay": "800.000 - 1.000.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "uong cam p 101",
+    "image": "/assets/trafficSigns/prohibition/P101.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "đường cấm",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 2,
+    "maBien": "P.102",
+    "tenBien": "Cấm đi ngược chiều",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các loại xe đi vào theo chiều đặt biển (trừ xe ưu tiên).",
+    "mucPhatXeMay": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "18.000.000 - 20.000.000đ, trừ 4 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 16 (ô tô) & Điều 7 Khoản 7 (xe máy) — lỗi \"đi ngược chiều của đường một chiều\"",
+    "keywords": "cam i nguoc chieu p 102",
+    "image": "/assets/trafficSigns/prohibition/P102.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "red",
+      "border": "red",
+      "symbol": "white horizontal bar",
+      "orientation": "horizontal"
+    },
+    "similarSigns": [
+      "P.101",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104",
+      "P.105"
+    ]
+  },
+  {
+    "stt": 3,
+    "maBien": "P.103a",
+    "tenBien": "Cấm xe ô tô",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các loại xe cơ giới 4 bánh trở lên (trừ xe máy 3 bánh) đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe o to p 103a",
+    "image": "/assets/trafficSigns/prohibition/P103a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "black car silhouette",
+      "orientation": "front"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.105",
+      "P.106a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 4,
+    "maBien": "P.103b",
+    "tenBien": "Cấm xe ô tô rẽ phải",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các loại xe cơ giới rẽ phải, trừ xe máy 2 bánh, xe gắn máy và xe ưu tiên.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe o to re phai p 103b",
+    "image": "/assets/trafficSigns/prohibition/P103b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ô tô rẽ phải",
+      "orientation": "right"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103c",
+      "P.104",
+      "P.105"
+    ]
+  },
+  {
+    "stt": 5,
+    "maBien": "P.103c",
+    "tenBien": "Cấm xe ô tô rẽ trái",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các loại xe cơ giới rẽ trái, trừ xe máy 2 bánh, xe gắn máy và xe ưu tiên.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe o to re trai p 103c",
+    "image": "/assets/trafficSigns/prohibition/P103c.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ô tô rẽ trái",
+      "orientation": "left"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.104",
+      "P.105"
+    ]
+  },
+  {
+    "stt": 6,
+    "maBien": "P.104",
+    "tenBien": "Cấm xe máy",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe mô tô, xe gắn máy 2-3 bánh đi vào (trừ xe ưu tiên). Không cấm xe đạp.",
+    "mucPhatXeMay": "800.000 - 1.000.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "Không áp dụng (biển này không cấm ô tô)",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe may p 104",
+    "image": "/assets/trafficSigns/prohibition/P104.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe máy",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.105"
+    ]
+  },
+  {
+    "stt": 7,
+    "maBien": "P.105",
+    "tenBien": "Cấm xe ô tô và xe máy",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm cả xe ô tô và xe máy đi vào.",
+    "mucPhatXeMay": "800.000 - 1.000.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe o to va xe may p 105",
+    "image": "/assets/trafficSigns/prohibition/P105.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ô tô và xe máy",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 8,
+    "maBien": "P.106a",
+    "tenBien": "Cấm xe ô tô tải",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe tải (bao gồm máy kéo và xe máy chuyên dùng) đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe o to tai p 106a",
+    "image": "/assets/trafficSigns/prohibition/P106a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ô tô tải",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 9,
+    "maBien": "P.106b",
+    "tenBien": "Cấm xe tải trên ... tấn",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe tải có khối lượng hàng chuyên chở vượt quá trị số ghi trên biển.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe tai tren tan p 106b",
+    "image": "/assets/trafficSigns/prohibition/P106b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe tải trên ... tấn",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 10,
+    "maBien": "P.106c",
+    "tenBien": "Cấm xe chở hàng nguy hiểm",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các xe chở hàng nguy hiểm đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe cho hang nguy hiem p 106c",
+    "image": "/assets/trafficSigns/prohibition/P106c.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe chở hàng nguy hiểm",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 11,
+    "maBien": "P.107",
+    "tenBien": "Cấm xe ô tô khách và xe ô tô tải",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe khách và xe tải (bao gồm máy kéo và xe máy chuyên dùng) đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe o to khach va xe o to tai p 107",
+    "image": "/assets/trafficSigns/prohibition/P107.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ô tô khách và xe ô tô tải",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 12,
+    "maBien": "P.107a",
+    "tenBien": "Cấm xe ô tô khách",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe ô tô khách (trừ xe buýt) đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe o to khach p 107a",
+    "image": "/assets/trafficSigns/prohibition/P107a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ô tô khách",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 13,
+    "maBien": "P.107b",
+    "tenBien": "Cấm xe ô tô taxi",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe ô tô taxi đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe o to taxi p 107b",
+    "image": "/assets/trafficSigns/prohibition/P107b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ô tô taxi",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 14,
+    "maBien": "P.108",
+    "tenBien": "Cấm xe kéo rơ-moóc",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe ô tô kéo theo rơ-moóc (trừ xe kéo sơ-mi rơ-moóc) đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe keo ro mooc p 108",
+    "image": "/assets/trafficSigns/prohibition/P108.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe kéo rơ-moóc",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 15,
+    "maBien": "P.108a",
+    "tenBien": "Cấm xe sơ-mi rơ-moóc",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe sơ-mi rơ-moóc đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe so mi ro mooc p 108a",
+    "image": "/assets/trafficSigns/prohibition/P108a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe sơ-mi rơ-moóc",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 16,
+    "maBien": "P.109",
+    "tenBien": "Cấm máy kéo",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm máy kéo đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam may keo p 109",
+    "image": "/assets/trafficSigns/prohibition/P109.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm máy kéo",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 17,
+    "maBien": "P.110a",
+    "tenBien": "Cấm xe đạp",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe đạp (kể cả dắt xe) đi vào.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam xe ap p 110a",
+    "image": "/assets/trafficSigns/prohibition/P110a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe đạp",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 18,
+    "maBien": "P.110b",
+    "tenBien": "Cấm xe đạp thồ",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe đạp thồ đi vào.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam xe ap tho p 110b",
+    "image": "/assets/trafficSigns/prohibition/P110b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe đạp thồ",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 19,
+    "maBien": "P.111a",
+    "tenBien": "Cấm xe gắn máy",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe gắn máy đi vào.",
+    "mucPhatXeMay": "800.000 - 1.000.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "Không áp dụng (biển này không cấm ô tô)",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe gan may p 111a",
+    "image": "/assets/trafficSigns/prohibition/P111a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe gắn máy",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 20,
+    "maBien": "P.111b",
+    "tenBien": "Cấm xe ba bánh (xe lam)",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe ba bánh loại có động cơ (xe lam) đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe ba banh xe lam p 111b",
+    "image": "/assets/trafficSigns/prohibition/P111b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ba bánh (xe lam)",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 21,
+    "maBien": "P.111c",
+    "tenBien": "Cấm xe ba bánh (xích lô máy)",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe ba bánh loại có động cơ (xích lô máy) đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe ba banh xich lo may p 111c",
+    "image": "/assets/trafficSigns/prohibition/P111c.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ba bánh (xích lô máy)",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 22,
+    "maBien": "P.111d",
+    "tenBien": "Cấm xe ba bánh không động cơ",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe ba bánh loại không có động cơ đi vào.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam xe ba banh khong ong co p 111d",
+    "image": "/assets/trafficSigns/prohibition/P111d.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe ba bánh không động cơ",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 23,
+    "maBien": "P.112",
+    "tenBien": "Cấm người đi bộ",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm người đi bộ đi vào.",
+    "mucPhatXeMay": "Không áp dụng",
+    "mucPhatOto": "60.000 - 100.000đ (người đi bộ)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 9",
+    "keywords": "cam nguoi i bo p 112",
+    "image": "/assets/trafficSigns/prohibition/P112.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm người đi bộ",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 24,
+    "maBien": "P.113",
+    "tenBien": "Cấm xe người kéo, đẩy",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe người kéo, đẩy đi vào.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam xe nguoi keo ay p 113",
+    "image": "/assets/trafficSigns/prohibition/P113.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe người kéo, đẩy",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 25,
+    "maBien": "P.114",
+    "tenBien": "Cấm xe vật nuôi kéo",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe vật nuôi kéo đi vào.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam xe vat nuoi keo p 114",
+    "image": "/assets/trafficSigns/prohibition/P114.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe vật nuôi kéo",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 26,
+    "maBien": "P.115",
+    "tenBien": "Hạn chế trọng tải toàn bộ xe",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe có khối lượng toàn bộ (kể cả hàng hóa) vượt quá trị số ghi trên biển.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "han che trong tai toan bo xe p 115",
+    "image": "/assets/trafficSigns/prohibition/P115.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "hạn chế trọng tải toàn bộ xe",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.116",
+      "P.117",
+      "P.118",
+      "P.119",
+      "P.120"
+    ]
+  },
+  {
+    "stt": 27,
+    "maBien": "P.116",
+    "tenBien": "Hạn chế tải trọng trên trục xe",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe có tải trọng trên trục xe vượt quá trị số ghi trên biển.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "han che tai trong tren truc xe p 116",
+    "image": "/assets/trafficSigns/prohibition/P116.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "hạn chế tải trọng trên trục xe",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.115",
+      "P.117",
+      "P.118",
+      "P.119",
+      "P.120"
+    ]
+  },
+  {
+    "stt": 28,
+    "maBien": "P.117",
+    "tenBien": "Hạn chế chiều cao",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe có chiều cao (kể cả hàng hóa) vượt quá trị số ghi trên biển.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "han che chieu cao p 117",
+    "image": "/assets/trafficSigns/prohibition/P117.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "hạn chế chiều cao",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.115",
+      "P.116",
+      "P.118",
+      "P.119",
+      "P.120"
+    ]
+  },
+  {
+    "stt": 29,
+    "maBien": "P.118",
+    "tenBien": "Hạn chế chiều ngang",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe có chiều ngang (kể cả hàng hóa) vượt quá trị số ghi trên biển.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "han che chieu ngang p 118",
+    "image": "/assets/trafficSigns/prohibition/P118.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "hạn chế chiều ngang",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.115",
+      "P.116",
+      "P.117",
+      "P.119",
+      "P.120"
+    ]
+  },
+  {
+    "stt": 30,
+    "maBien": "P.119",
+    "tenBien": "Hạn chế chiều dài xe",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe có chiều dài vượt quá trị số ghi trên biển.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "han che chieu dai xe p 119",
+    "image": "/assets/trafficSigns/prohibition/P119.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "hạn chế chiều dài xe",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.115",
+      "P.116",
+      "P.117",
+      "P.118",
+      "P.120"
+    ]
+  },
+  {
+    "stt": 31,
+    "maBien": "P.120",
+    "tenBien": "Hạn chế chiều dài xe kéo rơ-moóc",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Hạn chế chiều dài của xe cơ giới kéo theo rơ-moóc hoặc sơ-mi rơ-moóc.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "han che chieu dai xe keo ro mooc p 120",
+    "image": "/assets/trafficSigns/prohibition/P120.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "hạn chế chiều dài xe kéo rơ-moóc",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.115",
+      "P.116",
+      "P.117",
+      "P.118",
+      "P.119"
+    ]
+  },
+  {
+    "stt": 32,
+    "maBien": "P.121",
+    "tenBien": "Cự ly tối thiểu giữa hai xe",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Quy định cự ly tối thiểu giữa hai xe.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cu ly toi thieu giua hai xe p 121",
+    "image": "/assets/trafficSigns/prohibition/P121.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cự ly tối thiểu giữa hai xe",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 33,
+    "maBien": "P.123a",
+    "tenBien": "Cấm rẽ trái",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các loại xe rẽ trái (không cấm quay đầu xe).",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam re trai p 123a",
+    "image": "/assets/trafficSigns/prohibition/P123a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm rẽ trái",
+      "orientation": "left"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 34,
+    "maBien": "P.123b",
+    "tenBien": "Cấm rẽ phải",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các loại xe rẽ phải.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam re phai p 123b",
+    "image": "/assets/trafficSigns/prohibition/P123b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm rẽ phải",
+      "orientation": "right"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 35,
+    "maBien": "P.124a1",
+    "tenBien": "Cấm quay đầu xe (được rẽ trái)",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm quay đầu xe nhưng được rẽ trái.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam quay au xe uoc re trai p 124a1",
+    "image": "/assets/trafficSigns/prohibition/P124a1.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm quay đầu xe (được rẽ trái)",
+      "orientation": "u-turn"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 36,
+    "maBien": "P.124a2",
+    "tenBien": "Cấm quay đầu xe (được rẽ phải)",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm quay đầu xe nhưng được rẽ phải.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam quay au xe uoc re phai p 124a2",
+    "image": "/assets/trafficSigns/prohibition/P124a2.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm quay đầu xe (được rẽ phải)",
+      "orientation": "u-turn"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 37,
+    "maBien": "P.124b1",
+    "tenBien": "Cấm ô tô quay đầu (được rẽ trái)",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm ô tô quay đầu xe nhưng được rẽ trái.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam o to quay au uoc re trai p 124b1",
+    "image": "/assets/trafficSigns/prohibition/P124b1.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm ô tô quay đầu (được rẽ trái)",
+      "orientation": "u-turn"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 38,
+    "maBien": "P.124b2",
+    "tenBien": "Cấm ô tô quay đầu (được rẽ phải)",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm ô tô quay đầu xe nhưng được rẽ phải.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam o to quay au uoc re phai p 124b2",
+    "image": "/assets/trafficSigns/prohibition/P124b2.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm ô tô quay đầu (được rẽ phải)",
+      "orientation": "u-turn"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 39,
+    "maBien": "P.124c",
+    "tenBien": "Cấm rẽ trái và quay đầu xe",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm cả rẽ trái và quay đầu xe.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam re trai va quay au xe p 124c",
+    "image": "/assets/trafficSigns/prohibition/P124c.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm rẽ trái và quay đầu xe",
+      "orientation": "u-turn"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 40,
+    "maBien": "P.124d",
+    "tenBien": "Cấm rẽ phải và quay đầu xe",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm rẽ phải và quay đầu xe.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam re phai va quay au xe p 124d",
+    "image": "/assets/trafficSigns/prohibition/P124d.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm rẽ phải và quay đầu xe",
+      "orientation": "u-turn"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 41,
+    "maBien": "P.125",
+    "tenBien": "Cấm vượt",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các loại xe cơ giới vượt nhau (trừ xe máy 2 bánh, xe gắn máy).",
+    "mucPhatXeMay": "800.000 - 1.000.000đ",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5 (ô tô) & Điều 7 Khoản 5 (xe máy) — lỗi \"vượt xe tại đoạn đường có biển cấm vượt\"",
+    "keywords": "cam vuot p 125",
+    "image": "/assets/trafficSigns/prohibition/P125.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm vượt",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 42,
+    "maBien": "P.126",
+    "tenBien": "Cấm ô tô tải vượt",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm ô tô tải vượt.",
+    "mucPhatXeMay": "800.000 - 1.000.000đ",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5 (ô tô) & Điều 7 Khoản 5 (xe máy) — lỗi \"vượt xe tại đoạn đường có biển cấm vượt\"",
+    "keywords": "cam o to tai vuot p 126",
+    "image": "/assets/trafficSigns/prohibition/P126.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm ô tô tải vượt",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 43,
+    "maBien": "P.127",
+    "tenBien": "Tốc độ tối đa cho phép",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Báo tốc độ tối đa (km/h) các xe cơ giới không được vượt quá.",
+    "mucPhatXeMay": "400.000 - 600.000đ (vượt 5-10km/h); 800.000 - 1.000.000đ (vượt 10-20km/h); 6.000.000 - 8.000.000đ, trừ 4 điểm (vượt trên 20km/h)",
+    "mucPhatOto": "800.000 - 1.000.000đ (vượt 5-10km/h); 4.000.000 - 6.000.000đ, trừ 2 điểm (vượt 10-20km/h); 6.000.000 - 8.000.000đ, tước GPLX 2-4 tháng (vượt 20-35km/h)",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 & Điều 7 — mức phạt phân theo từng bậc km/h vượt quá tốc độ quy định",
+    "keywords": "toc o toi a cho phep p 127",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "tốc độ tối đa cho phép",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.127b",
+      "P.127c"
+    ]
+  },
+  {
+    "stt": 44,
+    "maBien": "P.127b",
+    "tenBien": "Giới hạn tốc độ theo làn đường",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Giới hạn tốc độ tối đa cho phép theo từng làn đường.",
+    "mucPhatXeMay": "400.000 - 600.000đ (vượt 5-10km/h); 800.000 - 1.000.000đ (vượt 10-20km/h); 6.000.000 - 8.000.000đ, trừ 4 điểm (vượt trên 20km/h)",
+    "mucPhatOto": "800.000 - 1.000.000đ (vượt 5-10km/h); 4.000.000 - 6.000.000đ, trừ 2 điểm (vượt 10-20km/h); 6.000.000 - 8.000.000đ, tước GPLX 2-4 tháng (vượt 20-35km/h)",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 & Điều 7 — mức phạt phân theo từng bậc km/h vượt quá tốc độ quy định",
+    "keywords": "gioi han toc o theo lan uong p 127b",
+    "image": "/assets/trafficSigns/prohibition/P127b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "giới hạn tốc độ theo làn đường",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.127",
+      "P.127c"
+    ]
+  },
+  {
+    "stt": 45,
+    "maBien": "P.127c",
+    "tenBien": "Giới hạn tốc độ theo phương tiện",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Giới hạn tốc độ tối đa cho phép theo từng loại phương tiện.",
+    "mucPhatXeMay": "400.000 - 600.000đ (vượt 5-10km/h); 800.000 - 1.000.000đ (vượt 10-20km/h); 6.000.000 - 8.000.000đ, trừ 4 điểm (vượt trên 20km/h)",
+    "mucPhatOto": "800.000 - 1.000.000đ (vượt 5-10km/h); 4.000.000 - 6.000.000đ, trừ 2 điểm (vượt 10-20km/h); 6.000.000 - 8.000.000đ, tước GPLX 2-4 tháng (vượt 20-35km/h)",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 & Điều 7 — mức phạt phân theo từng bậc km/h vượt quá tốc độ quy định",
+    "keywords": "gioi han toc o theo phuong tien p 127c",
+    "image": "/assets/trafficSigns/prohibition/P127c.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "giới hạn tốc độ theo phương tiện",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.127",
+      "P.127b"
+    ]
+  },
+  {
+    "stt": 46,
+    "maBien": "P.128",
+    "tenBien": "Cấm sử dụng còi",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm các loại xe sử dụng còi trong đoạn đường đặt biển.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam su dung coi p 128",
+    "image": "/assets/trafficSigns/prohibition/P128.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm sử dụng còi",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 47,
+    "maBien": "P.130",
+    "tenBien": "Cấm dừng xe và đỗ xe",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm dừng và đỗ xe trên đoạn đường có đặt biển.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam dung xe va o xe p 130",
+    "image": "/assets/trafficSigns/prohibition/P130.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm dừng xe và đỗ xe",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 48,
+    "maBien": "P.131a",
+    "tenBien": "Cấm đỗ xe",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm đỗ xe; vẫn được phép dừng xe tạm thời.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam o xe p 131a",
+    "image": "/assets/trafficSigns/prohibition/P131a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm đỗ xe",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 49,
+    "maBien": "P.131b",
+    "tenBien": "Cấm đỗ xe ngày lẻ",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm đỗ xe vào các ngày lẻ trong tháng.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam o xe ngay le p 131b",
+    "image": "/assets/trafficSigns/prohibition/P131b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm đỗ xe ngày lẻ",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 50,
+    "maBien": "P.131c",
+    "tenBien": "Cấm đỗ xe ngày chẵn",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm đỗ xe vào các ngày chẵn trong tháng.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "cam o xe ngay chan p 131c",
+    "image": "/assets/trafficSigns/prohibition/P131c.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm đỗ xe ngày chẵn",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 51,
+    "maBien": "P.137",
+    "tenBien": "Cấm rẽ trái và rẽ phải",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe rẽ trái và rẽ phải; chỉ được đi thẳng.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "cam re trai va re phai p 137",
+    "image": "/assets/trafficSigns/prohibition/P137.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm rẽ trái và rẽ phải",
+      "orientation": "right"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 52,
+    "maBien": "P.141",
+    "tenBien": "Cấm xe công nông",
+    "nhomBien": "Biển báo cấm",
+    "yNghia": "Cấm xe công nông và các loại xe tương tự đi vào.",
+    "mucPhatXeMay": "Không áp dụng (biển này không cấm xe máy)",
+    "mucPhatOto": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 5/9 (ô tô) & Điều 7 Khoản 6/9 (xe máy) — lỗi \"đi vào đường cấm/khu vực cấm\"",
+    "keywords": "cam xe cong nong p 141",
+    "image": "/assets/trafficSigns/prohibition/P141.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "cấm xe công nông",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "P.102",
+      "P.103a",
+      "P.103b",
+      "P.103c",
+      "P.104"
+    ]
+  },
+  {
+    "stt": 53,
+    "maBien": "W.201a",
+    "tenBien": "Chỗ ngoặt nguy hiểm bên trái",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo trước chỗ ngoặt nguy hiểm bên trái.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "cho ngoat nguy hiem ben trai w 201a",
+    "image": "/assets/trafficSigns/warning/W201a.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "single curved arrow",
+      "orientation": "left"
+    },
+    "similarSigns": [
+      "W.201b"
+    ]
+  },
+  {
+    "stt": 54,
+    "maBien": "W.201b",
+    "tenBien": "Chỗ ngoặt nguy hiểm bên phải",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo trước chỗ ngoặt nguy hiểm bên phải.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "cho ngoat nguy hiem ben phai w 201b",
+    "image": "/assets/trafficSigns/warning/W201b.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "single curved arrow",
+      "orientation": "right"
+    },
+    "similarSigns": [
+      "W.201a"
+    ]
+  },
+  {
+    "stt": 55,
+    "maBien": "W.202a",
+    "tenBien": "Nhiều chỗ ngoặt nguy hiểm liên tiếp",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo trước nhiều chỗ ngoặt nguy hiểm liên tiếp.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "nhieu cho ngoat nguy hiem lien tiep w 202a",
+    "image": "/assets/trafficSigns/warning/W202a.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "nhiều chỗ ngoặt nguy hiểm liên tiếp",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 56,
+    "maBien": "W.203b",
+    "tenBien": "Đường bị thu hẹp ở giữa",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo đường bị thu hẹp cả hai bên.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "uong bi thu hep o giua w 203b",
+    "image": "/assets/trafficSigns/warning/W203b.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "đường bị thu hẹp ở giữa",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.203c",
+      "W.221a",
+      "W.224",
+      "W.228a",
+      "W.204"
+    ]
+  },
+  {
+    "stt": 57,
+    "maBien": "W.203c",
+    "tenBien": "Đường bị thu hẹp bên trái",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo đường bị thu hẹp về phía bên trái.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "uong bi thu hep ben trai w 203c",
+    "image": "/assets/trafficSigns/warning/W203c.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "đường bị thu hẹp bên trái",
+      "orientation": "left"
+    },
+    "similarSigns": [
+      "W.203b",
+      "W.221a",
+      "W.224",
+      "W.228a",
+      "W.204"
+    ]
+  },
+  {
+    "stt": 58,
+    "maBien": "W.205a",
+    "tenBien": "Giao nhau với đường nhánh (bên phải)",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo trước giao nhau với đường nhánh bên phải.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "giao nhau voi uong nhanh ben phai w 205a",
+    "image": "/assets/trafficSigns/warning/W205a.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "giao nhau với đường nhánh (bên phải)",
+      "orientation": "right"
+    },
+    "similarSigns": [
+      "W.207a",
+      "W.207b",
+      "W.208",
+      "W.209",
+      "W.210"
+    ]
+  },
+  {
+    "stt": 59,
+    "maBien": "W.207a",
+    "tenBien": "Giao nhau với đường không ưu tiên",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo giao với đường không ưu tiên (cả 2 bên).",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "giao nhau voi uong khong uu tien w 207a",
+    "image": "/assets/trafficSigns/warning/W207a.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "giao nhau với đường không ưu tiên",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.205a",
+      "W.207b",
+      "W.208",
+      "W.209",
+      "W.210"
+    ]
+  },
+  {
+    "stt": 60,
+    "maBien": "W.207b",
+    "tenBien": "Giao nhau với đường không ưu tiên (bên phải)",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo đường nhánh không ưu tiên giao vào từ bên phải.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "giao nhau voi uong khong uu tien ben phai w 207b",
+    "image": "/assets/trafficSigns/warning/W207b.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "giao nhau với đường không ưu tiên (bên phải)",
+      "orientation": "right"
+    },
+    "similarSigns": [
+      "W.205a",
+      "W.207a",
+      "W.208",
+      "W.209",
+      "W.210"
+    ]
+  },
+  {
+    "stt": 61,
+    "maBien": "W.208",
+    "tenBien": "Giao nhau với đường ưu tiên",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo sắp giao với đường ưu tiên; phải nhường đường.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "giao nhau voi uong uu tien w 208",
+    "image": "/assets/trafficSigns/warning/W208.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "giao nhau với đường ưu tiên",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.205a",
+      "W.207a",
+      "W.207b",
+      "W.209",
+      "W.210"
+    ]
+  },
+  {
+    "stt": 62,
+    "maBien": "W.209",
+    "tenBien": "Giao nhau có tín hiệu đèn",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo nút giao được điều khiển bằng đèn tín hiệu.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "giao nhau co tin hieu en w 209",
+    "image": "/assets/trafficSigns/warning/W209.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "giao nhau có tín hiệu đèn",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.205a",
+      "W.207a",
+      "W.207b",
+      "W.208",
+      "W.210"
+    ]
+  },
+  {
+    "stt": 63,
+    "maBien": "W.210",
+    "tenBien": "Giao nhau với đường sắt có rào chắn",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo đường sắt cắt ngang, có rào chắn.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "giao nhau voi uong sat co rao chan w 210",
+    "image": "/assets/trafficSigns/warning/W210.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "giao nhau với đường sắt có rào chắn",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.205a",
+      "W.207a",
+      "W.207b",
+      "W.208",
+      "W.209"
+    ]
+  },
+  {
+    "stt": 64,
+    "maBien": "W.219",
+    "tenBien": "Dốc xuống nguy hiểm",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo đoạn dốc xuống nguy hiểm.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "doc xuong nguy hiem w 219",
+    "image": "/assets/trafficSigns/warning/W219.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "dốc xuống nguy hiểm",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.220"
+    ]
+  },
+  {
+    "stt": 65,
+    "maBien": "W.220",
+    "tenBien": "Dốc lên nguy hiểm",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo đoạn dốc lên nguy hiểm.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "doc len nguy hiem w 220",
+    "image": "/assets/trafficSigns/warning/W220.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "dốc lên nguy hiểm",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.219"
+    ]
+  },
+  {
+    "stt": 66,
+    "maBien": "W.221a",
+    "tenBien": "Đường có ổ gà, lồi lõm",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo mặt đường không bằng phẳng.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "uong co o ga loi lom w 221a",
+    "image": "/assets/trafficSigns/warning/W221a.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "đường có ổ gà, lồi lõm",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.203b",
+      "W.203c",
+      "W.224",
+      "W.228a",
+      "W.204"
+    ]
+  },
+  {
+    "stt": 67,
+    "maBien": "W.224",
+    "tenBien": "Đường người đi bộ cắt ngang",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo đoạn đường dành cho người đi bộ cắt ngang.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "uong nguoi i bo cat ngang w 224",
+    "image": "/assets/trafficSigns/warning/W224.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "đường người đi bộ cắt ngang",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.203b",
+      "W.203c",
+      "W.221a",
+      "W.224b",
+      "W.228a"
+    ]
+  },
+  {
+    "stt": 68,
+    "maBien": "W.224b",
+    "tenBien": "Súc vật",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo súc vật có thể băng qua đường.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "suc vat w 224b",
+    "image": "/assets/trafficSigns/warning/W224b.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "súc vật",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.224"
+    ]
+  },
+  {
+    "stt": 69,
+    "maBien": "W.225",
+    "tenBien": "Trẻ em",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo khu vực thường có trẻ em qua lại.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "tre em w 225",
+    "image": "/assets/trafficSigns/warning/W225.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "trẻ em",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 70,
+    "maBien": "W.227",
+    "tenBien": "Công trường",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo phía trước đang thi công.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "cong truong w 227",
+    "image": "/assets/trafficSigns/warning/W227.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "công trường",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 71,
+    "maBien": "W.228a",
+    "tenBien": "Đường trơn",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo mặt đường trơn trượt.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "uong tron w 228a",
+    "image": "/assets/trafficSigns/warning/W228a.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "đường trơn",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.203b",
+      "W.203c",
+      "W.221a",
+      "W.224",
+      "W.204"
+    ]
+  },
+  {
+    "stt": 72,
+    "maBien": "W.231",
+    "tenBien": "Đá lở",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Cảnh báo nguy cơ đá lở.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "a lo w 231",
+    "image": "/assets/trafficSigns/warning/W231.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "đá lở",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 73,
+    "maBien": "W.233",
+    "tenBien": "Nguy hiểm khác",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo các nguy hiểm khác chưa quy định.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "nguy hiem khac w 233",
+    "image": "/assets/trafficSigns/warning/W233.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "nguy hiểm khác",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 74,
+    "maBien": "W.239",
+    "tenBien": "Chiều cao an toàn",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo chiều cao an toàn.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "chieu cao an toan w 239",
+    "image": "/assets/trafficSigns/warning/W239.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "chiều cao an toàn",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 75,
+    "maBien": "W.245a",
+    "tenBien": "Đi chậm",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo phía trước có chỗ nguy hiểm, cần đi chậm.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "i cham w 245a",
+    "image": "/assets/trafficSigns/warning/W245a.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "đi chậm",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 76,
+    "maBien": "R.301a",
+    "tenBien": "Hướng đi phải theo (rẽ phải)",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Bắt buộc các xe phải rẽ phải.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "huong i phai theo re phai r 301a",
+    "image": "/assets/trafficSigns/mandatory/R301a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "hướng đi phải theo (rẽ phải)",
+      "orientation": "right"
+    },
+    "similarSigns": [
+      "R.301d"
+    ]
+  },
+  {
+    "stt": 77,
+    "maBien": "R.301d",
+    "tenBien": "Hướng đi phải theo (rẽ trái)",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Bắt buộc các xe phải rẽ trái.",
+    "mucPhatXeMay": "600.000 - 800.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "2.000.000 - 3.000.000đ, trừ 2 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 4 (ô tô) & Điều 7 Khoản 3 (xe máy) — lỗi \"rẽ trái/rẽ phải/quay đầu tại nơi có biển cấm\"",
+    "keywords": "huong i phai theo re trai r 301d",
+    "image": "/assets/trafficSigns/mandatory/R301d.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "hướng đi phải theo (rẽ trái)",
+      "orientation": "left"
+    },
+    "similarSigns": [
+      "R.301a"
+    ]
+  },
+  {
+    "stt": 78,
+    "maBien": "R.302a",
+    "tenBien": "Đi vòng chướng ngại vật (bên phải)",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Bắt buộc đi vòng sang bên phải chướng ngại vật.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "i vong chuong ngai vat ben phai r 302a",
+    "image": "/assets/trafficSigns/mandatory/R302a.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "đi vòng chướng ngại vật (bên phải)",
+      "orientation": "right"
+    },
+    "similarSigns": [
+      "R.302b"
+    ]
+  },
+  {
+    "stt": 79,
+    "maBien": "R.302b",
+    "tenBien": "Đi vòng chướng ngại vật (bên trái)",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Bắt buộc đi vòng sang bên trái chướng ngại vật.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "i vong chuong ngai vat ben trai r 302b",
+    "image": "/assets/trafficSigns/mandatory/R302b.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "đi vòng chướng ngại vật (bên trái)",
+      "orientation": "left"
+    },
+    "similarSigns": [
+      "R.302a"
+    ]
+  },
+  {
+    "stt": 80,
+    "maBien": "R.303",
+    "tenBien": "Nơi giao nhau chạy theo vòng xuyến",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Bắt buộc chạy vòng theo đảo an toàn.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "noi giao nhau chay theo vong xuyen r 303",
+    "image": "/assets/trafficSigns/mandatory/R303.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "nơi giao nhau chạy theo vòng xuyến",
+      "orientation": "circular"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 81,
+    "maBien": "R.304",
+    "tenBien": "Đường dành cho xe máy",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Báo đường dành riêng cho xe máy, xe đạp.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "uong danh cho xe may r 304",
+    "image": "/assets/trafficSigns/mandatory/R304.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "đường dành cho xe máy",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "R.305",
+      "R.403a",
+      "R.407a"
+    ]
+  },
+  {
+    "stt": 82,
+    "maBien": "R.305",
+    "tenBien": "Đường dành cho người đi bộ",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Báo đường dành riêng cho người đi bộ.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "uong danh cho nguoi i bo r 305",
+    "image": "/assets/trafficSigns/mandatory/R305.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "đường dành cho người đi bộ",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "R.304",
+      "R.403a",
+      "R.407a"
+    ]
+  },
+  {
+    "stt": 83,
+    "maBien": "R.306",
+    "tenBien": "Tốc độ tối thiểu cho phép",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Báo tốc độ tối thiểu (km/h) các xe phải đạt được.",
+    "mucPhatXeMay": "400.000 - 600.000đ (vượt 5-10km/h); 800.000 - 1.000.000đ (vượt 10-20km/h); 6.000.000 - 8.000.000đ, trừ 4 điểm (vượt trên 20km/h)",
+    "mucPhatOto": "800.000 - 1.000.000đ (vượt 5-10km/h); 4.000.000 - 6.000.000đ, trừ 2 điểm (vượt 10-20km/h); 6.000.000 - 8.000.000đ, tước GPLX 2-4 tháng (vượt 20-35km/h)",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 & Điều 7 — mức phạt phân theo từng bậc km/h vượt quá tốc độ quy định",
+    "keywords": "toc o toi thieu cho phep r 306",
+    "image": "/assets/trafficSigns/mandatory/R306.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "tốc độ tối thiểu cho phép",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 84,
+    "maBien": "R.403a",
+    "tenBien": "Đường dành cho xe ô tô",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Báo đường dành riêng cho xe ô tô.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "uong danh cho xe o to r 403a",
+    "image": "/assets/trafficSigns/mandatory/R403a.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "đường dành cho xe ô tô",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "R.304",
+      "R.305",
+      "R.407a"
+    ]
+  },
+  {
+    "stt": 85,
+    "maBien": "R.407a",
+    "tenBien": "Đường cao tốc",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Báo bắt đầu đường cao tốc.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "uong cao toc r 407a",
+    "image": "/assets/trafficSigns/mandatory/R407a.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "đường cao tốc",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "R.304",
+      "R.305",
+      "R.403a"
+    ]
+  },
+  {
+    "stt": 86,
+    "maBien": "R.409",
+    "tenBien": "Chỗ quay xe",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Báo vị trí được phép quay đầu xe.",
+    "mucPhatXeMay": "Không phạt (biển cho phép)",
+    "mucPhatOto": "Không phạt (biển cho phép)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển hiệu lệnh",
+    "keywords": "cho quay xe r 409",
+    "image": "/assets/trafficSigns/mandatory/R409.jpg",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "chỗ quay xe",
+      "orientation": "u-turn"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 87,
+    "maBien": "R.412a",
+    "tenBien": "Làn đường cho ô tô con",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Chỉ dẫn làn đường dành riêng cho ô tô con.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "lan uong cho o to con r 412a",
+    "image": "/assets/trafficSigns/mandatory/R412a.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "làn đường cho ô tô con",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 88,
+    "maBien": "R.420",
+    "tenBien": "Bắt đầu khu đông dân cư",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Báo bắt đầu đoạn đường qua khu đông dân cư.",
+    "mucPhatXeMay": "400.000 - 600.000đ (vượt 5-10km/h); 800.000 - 1.000.000đ (vượt 10-20km/h); 6.000.000 - 8.000.000đ, trừ 4 điểm (vượt trên 20km/h)",
+    "mucPhatOto": "800.000 - 1.000.000đ (vượt 5-10km/h); 4.000.000 - 6.000.000đ, trừ 2 điểm (vượt 10-20km/h); 6.000.000 - 8.000.000đ, tước GPLX 2-4 tháng (vượt 20-35km/h)",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 & Điều 7 — mức phạt phân theo từng bậc km/h vượt quá tốc độ quy định",
+    "keywords": "bat au khu ong dan cu r 420",
+    "image": "/assets/trafficSigns/mandatory/R420.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "bắt đầu khu đông dân cư",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 89,
+    "maBien": "R.421",
+    "tenBien": "Hết khu đông dân cư",
+    "nhomBien": "Biển hiệu lệnh",
+    "yNghia": "Báo kết thúc đoạn đường qua khu đông dân cư.",
+    "mucPhatXeMay": "Không phạt (biển thông báo)",
+    "mucPhatOto": "Không phạt (biển thông báo)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển hiệu lệnh",
+    "keywords": "het khu ong dan cu r 421",
+    "image": "/assets/trafficSigns/mandatory/R421.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "none",
+      "symbol": "hết khu đông dân cư",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 90,
+    "maBien": "I.402",
+    "tenBien": "Đường cụt",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Báo phía trước là đường cụt.",
+    "mucPhatXeMay": "Không phạt (biển chỉ dẫn)",
+    "mucPhatOto": "Không phạt (biển chỉ dẫn)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển chỉ dẫn",
+    "keywords": "uong cut i 402",
+    "image": "/assets/trafficSigns/guide/I402.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "đường cụt",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "I.443",
+      "I.445"
+    ]
+  },
+  {
+    "stt": 91,
+    "maBien": "I.408",
+    "tenBien": "Nơi đỗ xe",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Chỉ dẫn vị trí được phép đỗ xe.",
+    "mucPhatXeMay": "Không phạt (biển cho phép)",
+    "mucPhatOto": "Không phạt (biển cho phép)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển chỉ dẫn",
+    "keywords": "noi o xe i 408",
+    "image": "/assets/trafficSigns/guide/I408.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "nơi đỗ xe",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 92,
+    "maBien": "I.409",
+    "tenBien": "Chỗ quay xe",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Chỉ dẫn vị trí cho phép quay đầu xe.",
+    "mucPhatXeMay": "Không phạt (biển cho phép)",
+    "mucPhatOto": "Không phạt (biển cho phép)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển chỉ dẫn",
+    "keywords": "cho quay xe i 409",
+    "image": "/assets/trafficSigns/guide/I409.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "chỗ quay xe",
+      "orientation": "u-turn"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 93,
+    "maBien": "I.412a",
+    "tenBien": "Làn đường cho ô tô khách",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Chỉ dẫn làn đường dành riêng cho ô tô khách.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "lan uong cho o to khach i 412a",
+    "image": "/assets/trafficSigns/guide/I412a.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "làn đường cho ô tô khách",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 94,
+    "maBien": "I.421",
+    "tenBien": "Bắt đầu khu đông dân cư (chỉ dẫn)",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Chỉ dẫn bắt đầu khu đông dân cư.",
+    "mucPhatXeMay": "400.000 - 600.000đ (vượt 5-10km/h); 800.000 - 1.000.000đ (vượt 10-20km/h); 6.000.000 - 8.000.000đ, trừ 4 điểm (vượt trên 20km/h)",
+    "mucPhatOto": "800.000 - 1.000.000đ (vượt 5-10km/h); 4.000.000 - 6.000.000đ, trừ 2 điểm (vượt 10-20km/h); 6.000.000 - 8.000.000đ, tước GPLX 2-4 tháng (vượt 20-35km/h)",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 & Điều 7 — mức phạt phân theo từng bậc km/h vượt quá tốc độ quy định",
+    "keywords": "bat au khu ong dan cu chi dan i 421",
+    "image": "/assets/trafficSigns/guide/I421.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "bắt đầu khu đông dân cư (chỉ dẫn)",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 95,
+    "maBien": "I.423a",
+    "tenBien": "Vị trí người đi bộ sang ngang",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Chỉ dẫn nơi dành cho người đi bộ sang ngang.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "vi tri nguoi i bo sang ngang i 423a",
+    "image": "/assets/trafficSigns/guide/I423a.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "vị trí người đi bộ sang ngang",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 96,
+    "maBien": "I.427b",
+    "tenBien": "Trạm kiểm tra tải trọng xe",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Chỉ dẫn trạm kiểm tra tải trọng xe.",
+    "mucPhatXeMay": "Không phạt (biển chỉ dẫn)",
+    "mucPhatOto": "Không phạt (biển chỉ dẫn)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển chỉ dẫn",
+    "keywords": "tram kiem tra tai trong xe i 427b",
+    "image": "/assets/trafficSigns/guide/I427b.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "trạm kiểm tra tải trọng xe",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 97,
+    "maBien": "I.434",
+    "tenBien": "Bến xe buýt",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Chỉ dẫn điểm dừng đón trả khách của xe buýt.",
+    "mucPhatXeMay": "400.000 - 600.000đ (dừng/đỗ sai)",
+    "mucPhatOto": "Không phạt (biển chỉ dẫn)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển chỉ dẫn",
+    "keywords": "ben xe buyt i 434",
+    "image": "/assets/trafficSigns/guide/I434.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "bến xe buýt",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 98,
+    "maBien": "I.443",
+    "tenBien": "Đường một chiều",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Chỉ dẫn đoạn đường chỉ đi một chiều.",
+    "mucPhatXeMay": "4.000.000 - 6.000.000đ, trừ 2 điểm GPLX",
+    "mucPhatOto": "18.000.000 - 20.000.000đ, trừ 4 điểm GPLX",
+    "truDiemGPLX": "Có",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 16 (ô tô) & Điều 7 Khoản 7 (xe máy) — lỗi \"đi ngược chiều của đường một chiều\"",
+    "keywords": "uong mot chieu i 443",
+    "image": "/assets/trafficSigns/guide/I443.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "đường một chiều",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "I.402",
+      "I.445"
+    ]
+  },
+  {
+    "stt": 99,
+    "maBien": "I.445",
+    "tenBien": "Đường cao tốc / Trạm thu phí",
+    "nhomBien": "Biển chỉ dẫn",
+    "yNghia": "Báo hiệu bắt đầu đường cao tốc hoặc trạm thu phí.",
+    "mucPhatXeMay": "Không phạt (biển chỉ dẫn)",
+    "mucPhatOto": "Không phạt (biển chỉ dẫn)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển chỉ dẫn",
+    "keywords": "uong cao toc tram thu phi i 445",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "đường cao tốc / trạm thu phí",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "I.402",
+      "I.443"
+    ]
+  },
+  {
+    "stt": 100,
+    "maBien": "S.501",
+    "tenBien": "Phạm vi tác dụng của biển",
+    "nhomBien": "Biển phụ",
+    "yNghia": "Quy định phạm vi hiệu lực của biển chính.",
+    "mucPhatXeMay": "Theo biển chính",
+    "mucPhatOto": "Theo biển chính",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP",
+    "keywords": "pham vi tac dung cua bien s 501",
+    "image": "/assets/trafficSigns/supplementary/S501.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "phạm vi tác dụng của biển",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 101,
+    "maBien": "S.502",
+    "tenBien": "Khoảng cách đến đối tượng",
+    "nhomBien": "Biển phụ",
+    "yNghia": "Ghi khoảng cách đến đối tượng báo hiệu.",
+    "mucPhatXeMay": "Theo biển chính",
+    "mucPhatOto": "Theo biển chính",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP",
+    "keywords": "khoang cach en oi tuong s 502",
+    "image": "/assets/trafficSigns/supplementary/S502.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "khoảng cách đến đối tượng",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  },
+  {
+    "stt": 102,
+    "maBien": "S.509a",
+    "tenBien": "Cấm đỗ xe (biển phụ)",
+    "nhomBien": "Biển phụ",
+    "yNghia": "Thuyết minh biển cấm đỗ xe.",
+    "mucPhatXeMay": "Theo biển chính",
+    "mucPhatOto": "Theo biển chính",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP",
+    "keywords": "cam o xe bien phu s 509a",
+    "image": "/assets/trafficSigns/supplementary/S509a.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "cấm đỗ xe (biển phụ)",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "S.509b"
+    ]
+  },
+  {
+    "stt": 103,
+    "maBien": "S.509b",
+    "tenBien": "Cấm đỗ xe (biển phụ)",
+    "nhomBien": "Biển phụ",
+    "yNghia": "Thuyết minh biển cấm đỗ xe.",
+    "mucPhatXeMay": "Theo biển chính",
+    "mucPhatOto": "Theo biển chính",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP",
+    "keywords": "cam o xe bien phu s 509b",
+    "image": "/assets/trafficSigns/supplementary/S509b.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "cấm đỗ xe (biển phụ)",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "S.509a"
+    ]
+  },
+  {
+    "stt": 104,
+    "maBien": "S.510a",
+    "tenBien": "Chú ý đường trơn",
+    "nhomBien": "Biển phụ",
+    "yNghia": "Cảnh báo đường trơn.",
+    "mucPhatXeMay": "Theo biển chính",
+    "mucPhatOto": "Theo biển chính",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP",
+    "keywords": "chu y uong tron s 510a",
+    "image": "/assets/trafficSigns/supplementary/S510a.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "chú ý đường trơn",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "S.510b"
+    ]
+  },
+  {
+    "stt": 105,
+    "maBien": "S.510b",
+    "tenBien": "Chú ý đường sắt",
+    "nhomBien": "Biển phụ",
+    "yNghia": "Cảnh báo đường sắt.",
+    "mucPhatXeMay": "Theo biển chính",
+    "mucPhatOto": "Theo biển chính",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP",
+    "keywords": "chu y uong sat s 510b",
+    "image": "/assets/trafficSigns/supplementary/S510b.jpg",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "chú ý đường sắt",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "S.510a"
+    ]
+  },
+  {
+    "stt": 106,
+    "maBien": "W.204",
+    "tenBien": "Đường hai chiều",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo trước sắp đến đoạn đường do sửa chữa hoặc có trở ngại ở một bên mà phải tổ chức đi lại cho phương tiện cả hai chiều trên phần đường còn lại. Ký hiệu 2 mũi tên đặt theo phương dọc, ngược chiều nhau.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "uong hai chieu w 204",
+    "image": "/assets/trafficSigns/warning/W204.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "two opposite arrows",
+      "orientation": "vertical"
+    },
+    "similarSigns": [
+      "W.234",
+      "W.201a",
+      "W.201b"
+    ]
+  },
+  {
+    "stt": 107,
+    "maBien": "W.234",
+    "tenBien": "Giao nhau với đường hai chiều",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo trước sắp đến nơi giao nhau với đường hai chiều, đặt trên đường một chiều. Ký hiệu 2 mũi tên đặt theo phương ngang, ngược chiều nhau.",
+    "mucPhatXeMay": "200.000 - 400.000đ",
+    "mucPhatOto": "400.000 - 600.000đ",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Nghị định 168/2024/NĐ-CP, Điều 6 Khoản 1 (ô tô) & Điều 7 Khoản 1 (xe máy) — lỗi \"không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường\" (mức mặc định khi không có hành vi vi phạm cụ thể nào khác)",
+    "keywords": "giao nhau voi uong hai chieu w 234",
+    "image": "/assets/trafficSigns/warning/W234.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "two opposite arrows at intersection",
+      "orientation": "horizontal"
+    },
+    "similarSigns": [
+      "W.204",
+      "W.205a",
+      "W.207a"
+    ]
+  },
+  {
+    "stt": 108,
+    "maBien": "W.235",
+    "tenBien": "Đường đôi",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo trước sắp đến đoạn đường mà chiều đi và chiều về được phân chia bằng dải phân cách cứng (bắt đầu đường đôi). Ký hiệu dải phân cách nhỏ đặt lệch thấp, hai mũi tên vòng tránh ra hai bên.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "uong oi w 235",
+    "image": "/assets/trafficSigns/warning/W235.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "đường đôi",
+      "orientation": "unspecified"
+    },
+    "similarSigns": [
+      "W.203b",
+      "W.203c",
+      "W.221a",
+      "W.224",
+      "W.228a"
+    ]
+  },
+  {
+    "stt": 109,
+    "maBien": "W.236",
+    "tenBien": "Kết thúc đường đôi",
+    "nhomBien": "Biển báo nguy hiểm",
+    "yNghia": "Báo trước sắp đến đoạn đường mà chiều đi và chiều về từ dải phân cách cứng nhập trở lại thành đường hai chiều không có dải phân cách (kết thúc đường đôi). Ký hiệu dải phân cách to hơn đặt cao ở giữa, hai mũi tên nhập vào từ hai bên.",
+    "mucPhatXeMay": "Cảnh báo (không phạt trực tiếp)",
+    "mucPhatOto": "Cảnh báo (không phạt trực tiếp)",
+    "truDiemGPLX": "Không/tuỳ hành vi",
+    "canCuPhapLy": "Biển cảnh báo",
+    "keywords": "ket thuc uong oi w 236",
+    "image": "/assets/trafficSigns/warning/W236.jpg",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "kết thúc đường đôi",
+      "orientation": "unspecified"
+    },
+    "similarSigns": []
+  }
+]

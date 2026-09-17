@@ -1,0 +1,102 @@
+{
+  "defaultPosts": [
+    {
+      "id": 1,
+      "title": "Đội mũ bảo hiểm đúng cách – Bảo vệ tính mạng",
+      "content": "Mũ bảo hiểm phải vừa vặn với đầu, không quá chật hoặc quá rộng. Quai mũ phải được cài chặt, không để quai bị vặn hoặc lệch. Mũ phải đạt tiêu chuẩn QCVN 2:2008/BKHCN. Luôn đội mũ khi tham gia giao thông bằng xe máy, kể cả đi quãng đường ngắn.",
+      "author": "Admin",
+      "date": "2026-06-01T08:00:00.000Z",
+      "likes": 15,
+      "category": "an-toan",
+      "tags": [
+        "mũ bảo hiểm",
+        "an toàn"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Cách xử lý khi gặp tai nạn giao thông",
+      "content": "1. Giữ bình tĩnh, không hoảng loạn.\n2. Sơ cứu người bị thương: gọi cấp cứu 115.\n3. Gọi công an 113 để báo vụ việc.\n4. Không di chuyển hiện trường, giữ nguyên vị trí các phương tiện.\n5. Ghi lại thông tin người liên quan, biển số xe.\n6. Chụp ảnh hiện trường để làm bằng chứng.\n7. Chờ lực lượng chức năng đến xử lý.",
+      "author": "Admin",
+      "date": "2026-06-02T09:30:00.000Z",
+      "likes": 12,
+      "category": "xu-ly",
+      "tags": [
+        "tai nạn",
+        "cấp cứu"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Quy tắc vàng khi lái xe trên đường cao tốc",
+      "content": "✅ Giữ khoảng cách an toàn với xe trước (ít nhất 2 giây).\n✅ Không dừng đỗ trên đường cao tốc.\n✅ Không quay đầu hay đi lùi.\n✅ Chỉ vượt xe bên trái.\n✅ Bật đèn báo hiệu khi chuyển làn.\n✅ Không đi vào làn dừng khẩn cấp.\n✅ Tốc độ tối thiểu 60km/h, tối đa theo biển báo.",
+      "author": "Admin",
+      "date": "2026-06-03T10:00:00.000Z",
+      "likes": 20,
+      "category": "duong-cao-toc",
+      "tags": [
+        "cao tốc",
+        "an toàn"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "🚨 Cảnh báo: Đường trơn trượt mùa mưa",
+      "content": "Mùa mưa, đường trơn trượt rất nguy hiểm. Lưu ý:\n🔹 Giảm tốc độ, không phanh gấp.\n🔹 Tăng khoảng cách an toàn với xe trước.\n🔹 Tránh đi qua vũng nước sâu.\n🔹 Bật đèn xe ngay cả khi trời sáng.\n🔹 Cẩn thận khi vào cua, tránh đánh lái gấp.\n🔹 Kiểm tra lốp xe thường xuyên, đảm bảo đủ độ bám.",
+      "author": "User",
+      "date": "2026-06-04T07:15:00.000Z",
+      "likes": 8,
+      "category": "canh-bao",
+      "tags": [
+        "mưa",
+        "trơn trượt"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Mẹo tiết kiệm nhiên liệu khi lái xe",
+      "content": "⛽ Duy trì tốc độ ổn định, tránh tăng giảm đột ngột.\n⛽ Kiểm tra áp suất lốp thường xuyên.\n⛽ Không chở quá tải trọng cho phép.\n⛽ Tắt động cơ khi dừng đỗ lâu trên 30 giây.\n⛽ Bảo dưỡng xe định kỳ.\n⛽ Sử dụng điều hòa hợp lý, không để quá lạnh.",
+      "author": "Admin",
+      "date": "2026-06-05T06:30:00.000Z",
+      "likes": 6,
+      "category": "meo-vat",
+      "tags": [
+        "nhiên liệu",
+        "tiết kiệm"
+      ]
+    }
+  ],
+  "defaultComments": {
+    "1": [
+      {
+        "author": "Nguyễn Văn A",
+        "content": "Bài viết rất hữu ích! Tôi đã đội mũ đúng cách từ hôm nay.",
+        "date": "2026-06-01T10:00:00.000Z"
+      },
+      {
+        "author": "Trần Thị B",
+        "content": "Cảm ơn Admin, tôi sẽ chia sẻ cho bạn bè.",
+        "date": "2026-06-02T08:30:00.000Z"
+      }
+    ],
+    "3": [
+      {
+        "author": "Lê Văn C",
+        "content": "Rất bổ ích, tôi mới bắt đầu đi cao tốc.",
+        "date": "2026-06-03T14:00:00.000Z"
+      },
+      {
+        "author": "Phạm Thị D",
+        "content": "Nhớ luôn bật đèn báo khi chuyển làn nhé mọi người.",
+        "date": "2026-06-04T09:00:00.000Z"
+      }
+    ],
+    "4": [
+      {
+        "author": "Nguyễn Văn E",
+        "content": "Hôm qua tôi suýt té vì đường trơn, cảm ơn bài viết.",
+        "date": "2026-06-05T11:00:00.000Z"
+      }
+    ]
+  }
+}

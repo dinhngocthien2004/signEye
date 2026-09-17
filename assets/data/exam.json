@@ -1,0 +1,869 @@
+{
+  "topics": [
+    {
+      "id": 1,
+      "name": "Biển báo giao thông"
+    },
+    {
+      "id": 2,
+      "name": "Quy tắc giao thông"
+    },
+    {
+      "id": 3,
+      "name": "Kỹ năng lái xe an toàn"
+    },
+    {
+      "id": 4,
+      "name": "Mức phạt & trừ điểm GPLX"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "topicId": 1,
+      "question": "Biển báo P.101 có ý nghĩa gì?",
+      "options": [
+        "Cấm xe máy",
+        "Đường cấm tất cả các loại xe",
+        "Cấm ô tô",
+        "Cấm rẽ trái"
+      ],
+      "answer": 1,
+      "explanation": "P.101 là biển \"Đường cấm\", cấm tất cả các loại xe cơ giới và thô sơ đi vào (trừ xe ưu tiên)."
+    },
+    {
+      "id": 2,
+      "topicId": 1,
+      "question": "Biển P.102 cấm điều gì?",
+      "options": [
+        "Cấm quay đầu",
+        "Cấm rẽ phải",
+        "Cấm đi ngược chiều",
+        "Cấm vượt"
+      ],
+      "answer": 2,
+      "explanation": "P.102 là biển \"Cấm đi ngược chiều\", cấm các loại xe đi vào theo chiều đặt biển."
+    },
+    {
+      "id": 3,
+      "topicId": 1,
+      "question": "Biển báo hình tròn, nền đỏ, vạch ngang trắng là biển gì?",
+      "options": [
+        "Cấm dừng đỗ",
+        "Cấm đi ngược chiều",
+        "Cấm rẽ trái",
+        "Cấm xe tải"
+      ],
+      "answer": 1,
+      "explanation": "Biển P.102: hình tròn nền đỏ, vạch ngang trắng, cấm đi ngược chiều."
+    },
+    {
+      "id": 4,
+      "topicId": 1,
+      "question": "Biển P.104 có hiệu lực cấm xe gì?",
+      "options": [
+        "Cấm xe máy",
+        "Cấm ô tô",
+        "Cấm xe đạp",
+        "Cấm xe tải"
+      ],
+      "answer": 0,
+      "explanation": "P.104 là biển \"Cấm xe máy\", cấm mô tô, xe gắn máy 2-3 bánh đi vào."
+    },
+    {
+      "id": 5,
+      "topicId": 1,
+      "question": "Biển W.201a cảnh báo điều gì?",
+      "options": [
+        "Chỗ ngoặt nguy hiểm bên trái",
+        "Chỗ ngoặt nguy hiểm bên phải",
+        "Đường trơn",
+        "Đá lở"
+      ],
+      "answer": 0,
+      "explanation": "W.201a cảnh báo phía trước có chỗ ngoặt nguy hiểm vòng bên trái."
+    },
+    {
+      "id": 6,
+      "topicId": 1,
+      "question": "Biển báo tam giác vàng, viền đỏ có ý nghĩa gì?",
+      "options": [
+        "Biển cấm",
+        "Biển cảnh báo nguy hiểm",
+        "Biển hiệu lệnh",
+        "Biển chỉ dẫn"
+      ],
+      "answer": 1,
+      "explanation": "Biển tam giác vàng, viền đỏ là nhóm biển cảnh báo nguy hiểm (W)."
+    },
+    {
+      "id": 7,
+      "topicId": 1,
+      "question": "Biển R.301a có hiệu lệnh gì?",
+      "options": [
+        "Bắt buộc rẽ phải",
+        "Bắt buộc rẽ trái",
+        "Bắt buộc đi thẳng",
+        "Bắt buộc quay đầu"
+      ],
+      "answer": 0,
+      "explanation": "R.301a là biển \"Hướng đi phải theo\", bắt buộc các xe rẽ phải."
+    },
+    {
+      "id": 8,
+      "topicId": 1,
+      "question": "Biển P.130 cấm gì?",
+      "options": [
+        "Cấm dừng xe",
+        "Cấm đỗ xe",
+        "Cấm dừng và đỗ xe",
+        "Cấm quay đầu"
+      ],
+      "answer": 2,
+      "explanation": "P.130 là biển \"Cấm dừng xe và đỗ xe\" trên đoạn đường đặt biển."
+    },
+    {
+      "id": 9,
+      "topicId": 1,
+      "question": "Biển I.423a chỉ dẫn điều gì?",
+      "options": [
+        "Bến xe buýt",
+        "Vị trí người đi bộ sang ngang",
+        "Đường cụt",
+        "Nơi đỗ xe"
+      ],
+      "answer": 1,
+      "explanation": "I.423a là biển \"Vị trí người đi bộ sang ngang\", chỉ dẫn nơi dành cho người đi bộ qua đường."
+    },
+    {
+      "id": 10,
+      "topicId": 1,
+      "question": "Biển P.127 thể hiện nội dung gì?",
+      "options": [
+        "Tốc độ tối thiểu",
+        "Tốc độ tối đa cho phép",
+        "Cấm vượt",
+        "Cấm còi"
+      ],
+      "answer": 1,
+      "explanation": "P.127 là biển \"Tốc độ tối đa cho phép\", các xe không được vượt quá tốc độ ghi trên biển."
+    },
+    {
+      "id": 11,
+      "topicId": 1,
+      "question": "Biển báo hình tròn, nền xanh, biểu tượng trắng là nhóm biển gì?",
+      "options": [
+        "Biển cấm",
+        "Biển nguy hiểm",
+        "Biển hiệu lệnh",
+        "Biển chỉ dẫn"
+      ],
+      "answer": 2,
+      "explanation": "Biển hình tròn nền xanh, biểu tượng trắng là nhóm biển hiệu lệnh (R)."
+    },
+    {
+      "id": 12,
+      "topicId": 1,
+      "question": "Biển P.112 có ý nghĩa gì?",
+      "options": [
+        "Cấm người đi bộ",
+        "Cấm xe đạp",
+        "Cấm xe máy",
+        "Cấm ô tô"
+      ],
+      "answer": 0,
+      "explanation": "P.112 là biển \"Cấm người đi bộ\", cấm người đi bộ đi vào đoạn đường đặt biển."
+    },
+    {
+      "id": 13,
+      "topicId": 1,
+      "question": "Biển R.303 yêu cầu người lái làm gì?",
+      "options": [
+        "Rẽ trái",
+        "Chạy theo vòng xuyến",
+        "Rẽ phải",
+        "Đi thẳng"
+      ],
+      "answer": 1,
+      "explanation": "R.303 là biển \"Nơi giao nhau chạy theo vòng xuyến\", yêu cầu đi vòng theo đảo an toàn."
+    },
+    {
+      "id": 14,
+      "topicId": 1,
+      "question": "Biển P.131a cấm gì?",
+      "options": [
+        "Cấm dừng xe",
+        "Cấm đỗ xe",
+        "Cấm quay đầu",
+        "Cấm vượt"
+      ],
+      "answer": 1,
+      "explanation": "P.131a là biển \"Cấm đỗ xe\", cho phép dừng xe tạm thời để đón trả khách."
+    },
+    {
+      "id": 15,
+      "topicId": 1,
+      "question": "Biển W.224 cảnh báo điều gì?",
+      "options": [
+        "Đường người đi bộ cắt ngang",
+        "Trẻ em",
+        "Công trường",
+        "Súc vật"
+      ],
+      "answer": 0,
+      "explanation": "W.224 là biển \"Đường người đi bộ cắt ngang\", cảnh báo đoạn đường dành cho người đi bộ cắt ngang qua đường."
+    },
+    {
+      "id": 16,
+      "topicId": 2,
+      "question": "Tại nơi giao nhau, xe nào được ưu tiên?",
+      "options": [
+        "Xe từ bên phải",
+        "Xe từ bên trái",
+        "Xe ưu tiên theo quy định",
+        "Xe đi thẳng"
+      ],
+      "answer": 2,
+      "explanation": "Xe ưu tiên theo quy định (cứu hỏa, cứu thương, quân sự, công an) được ưu tiên cao nhất."
+    },
+    {
+      "id": 17,
+      "topicId": 2,
+      "question": "Khi đèn tín hiệu chuyển từ xanh sang vàng, người lái phải làm gì?",
+      "options": [
+        "Tăng tốc vượt qua",
+        "Dừng trước vạch dừng nếu an toàn",
+        "Bấm còi",
+        "Quay đầu"
+      ],
+      "answer": 1,
+      "explanation": "Đèn vàng báo hiệu sắp chuyển đỏ, người lái phải dừng trước vạch dừng nếu đã đủ an toàn, trừ khi đã qua vạch dừng."
+    },
+    {
+      "id": 18,
+      "topicId": 2,
+      "question": "Trên đường cao tốc, tốc độ tối thiểu là bao nhiêu?",
+      "options": [
+        "30 km/h",
+        "40 km/h",
+        "60 km/h",
+        "Tùy theo biển báo"
+      ],
+      "answer": 3,
+      "explanation": "Tốc độ tối thiểu trên đường cao tốc được quy định bằng biển báo, thường là 60 km/h ở làn bên phải và 80 km/h ở làn bên trái."
+    },
+    {
+      "id": 19,
+      "topicId": 2,
+      "question": "Khi đi vào đường một chiều, người lái cần lưu ý gì?",
+      "options": [
+        "Được phép quay đầu",
+        "Không được quay đầu",
+        "Được rẽ trái",
+        "Không được vượt"
+      ],
+      "answer": 1,
+      "explanation": "Trên đường một chiều, không được quay đầu xe vì sẽ đi ngược chiều."
+    },
+    {
+      "id": 20,
+      "topicId": 2,
+      "question": "Khoảng cách an toàn tối thiểu giữa hai xe trên đường cao tốc là bao nhiêu?",
+      "options": [
+        "20m",
+        "30m",
+        "50m",
+        "Tùy tốc độ"
+      ],
+      "answer": 3,
+      "explanation": "Khoảng cách an toàn phụ thuộc vào tốc độ, thường tối thiểu 2 giây với xe trước, hoặc 30-50m tùy điều kiện."
+    },
+    {
+      "id": 21,
+      "topicId": 2,
+      "question": "Người điều khiển xe máy có được phép chở 3 người trên xe?",
+      "options": [
+        "Có",
+        "Không",
+        "Chỉ khi ngắn",
+        "Chỉ khi có trẻ em"
+      ],
+      "answer": 1,
+      "explanation": "Xe máy chỉ được phép chở 2 người (người lái + 1 người), trừ trường hợp chở trẻ em dưới 6 tuổi được phép chở 3."
+    },
+    {
+      "id": 22,
+      "topicId": 2,
+      "question": "Khi gặp người đi bộ đang qua đường, người lái xe phải làm gì?",
+      "options": [
+        "Bấm còi cảnh báo",
+        "Giảm tốc độ, nhường đường",
+        "Tăng tốc vượt qua",
+        "Đi chậm mà không dừng"
+      ],
+      "answer": 1,
+      "explanation": "Phải giảm tốc độ và nhường đường cho người đi bộ đang qua đường, đặc biệt tại vạch sang đường."
+    },
+    {
+      "id": 23,
+      "topicId": 2,
+      "question": "Tác dụng của vạch mắt võng (màu vàng) là gì?",
+      "options": [
+        "Cấm dừng đỗ",
+        "Cho phép đỗ xe",
+        "Cấm rẽ",
+        "Cấm vượt"
+      ],
+      "answer": 0,
+      "explanation": "Vạch mắt võng màu vàng cấm các xe dừng đỗ trong phạm vi vạch để tránh ùn tắc tại nút giao."
+    },
+    {
+      "id": 24,
+      "topicId": 2,
+      "question": "Đèn đỏ có hiệu lệnh gì?",
+      "options": [
+        "Được đi thẳng",
+        "Cấm đi (trừ trường hợp được rẽ phải)",
+        "Cấm rẽ phải",
+        "Được rẽ trái"
+      ],
+      "answer": 1,
+      "explanation": "Đèn đỏ: cấm đi, người và xe phải dừng trước vạch dừng, trừ khi có biển phụ cho phép rẽ phải."
+    },
+    {
+      "id": 25,
+      "topicId": 2,
+      "question": "Trong khu đông dân cư, tốc độ tối đa cho xe máy là bao nhiêu?",
+      "options": [
+        "30 km/h",
+        "40 km/h",
+        "50 km/h",
+        "60 km/h"
+      ],
+      "answer": 2,
+      "explanation": "Trong khu đông dân cư, tốc độ tối đa cho xe máy là 50 km/h, trừ khi có biển báo khác."
+    },
+    {
+      "id": 26,
+      "topicId": 2,
+      "question": "Khi vượt xe khác, phải đảm bảo điều kiện gì?",
+      "options": [
+        "Vượt bên trái",
+        "Vượt bên phải",
+        "Vượt cả 2 bên",
+        "Vượt bất kỳ bên nào"
+      ],
+      "answer": 0,
+      "explanation": "Phải vượt bên trái (trừ một số trường hợp đặc biệt) và phải đảm bảo an toàn, không gây cản trở."
+    },
+    {
+      "id": 27,
+      "topicId": 2,
+      "question": "Xe máy kéo rơ-moóc được phép chở tối đa bao nhiêu người?",
+      "options": [
+        "1 người",
+        "2 người",
+        "3 người",
+        "Không được chở người"
+      ],
+      "answer": 3,
+      "explanation": "Xe máy không được phép kéo rơ-moóc để chở người theo quy định."
+    },
+    {
+      "id": 28,
+      "topicId": 2,
+      "question": "Khi đến gần vòng xuyến, xe nào có quyền ưu tiên?",
+      "options": [
+        "Xe từ bên phải",
+        "Xe trong vòng xuyến",
+        "Xe từ bên trái",
+        "Xe đi thẳng"
+      ],
+      "answer": 1,
+      "explanation": "Xe đang lưu thông trong vòng xuyến được ưu tiên, xe vào vòng xuyến phải nhường đường."
+    },
+    {
+      "id": 29,
+      "topicId": 2,
+      "question": "Đường ưu tiên là đường gì?",
+      "options": [
+        "Đường rộng",
+        "Đường có biển báo ưu tiên",
+        "Đường cao tốc",
+        "Đường khu dân cư"
+      ],
+      "answer": 1,
+      "explanation": "Đường ưu tiên là đường được đặt biển báo ưu tiên, xe trên đường đó được đi trước tại các nút giao."
+    },
+    {
+      "id": 30,
+      "topicId": 2,
+      "question": "Khi đỗ xe bên đường, cần đảm bảo điều gì?",
+      "options": [
+        "Đỗ sát vỉa hè",
+        "Đỗ cách xa vỉa hè",
+        "Đỗ ngược chiều",
+        "Không bật đèn cảnh báo"
+      ],
+      "answer": 0,
+      "explanation": "Khi đỗ xe bên đường, phải đỗ sát vỉa hè, đúng chiều và không gây cản trở giao thông."
+    },
+    {
+      "id": 31,
+      "topicId": 3,
+      "question": "Khi phanh gấp trên đường trơn trượt, cần làm gì?",
+      "options": [
+        "Phanh dứt khoát",
+        "Phanh nhồi nhiều lần",
+        "Đánh tay lái",
+        "Ngắt ly hợp"
+      ],
+      "answer": 1,
+      "explanation": "Nên phanh nhồi nhiều lần để tránh bánh xe bị bó cứng và xe bị trượt dài."
+    },
+    {
+      "id": 32,
+      "topicId": 3,
+      "question": "Khi qua đường ngập nước, cần lưu ý điều gì?",
+      "options": [
+        "Tăng tốc",
+        "Đi chậm",
+        "Bấm còi",
+        "Dừng lại nếu nước quá cao"
+      ],
+      "answer": 3,
+      "explanation": "Nếu nước quá cao (ngập hơn nửa bánh xe), không nên đi qua vì có thể gây chết máy hoặc cuốn trôi xe."
+    },
+    {
+      "id": 33,
+      "topicId": 3,
+      "question": "Khi đi xuống dốc dài, cách nào an toàn nhất?",
+      "options": [
+        "Để số cao",
+        "Để số thấp, kết hợp phanh",
+        "Cắt số và phanh",
+        "Về số N"
+      ],
+      "answer": 1,
+      "explanation": "Khi xuống dốc dài, nên đi số thấp và phanh nhấp nhả để tận dụng phanh động cơ, tránh mất phanh."
+    },
+    {
+      "id": 34,
+      "topicId": 3,
+      "question": "Xe bị thủng lốp khi đang chạy, phải làm gì?",
+      "options": [
+        "Đánh lái gấp",
+        "Phanh gấp",
+        "Giữ tay lái, giảm tốc từ từ",
+        "Bấm còi báo hiệu"
+      ],
+      "answer": 2,
+      "explanation": "Giữ tay lái vững, giảm tốc độ từ từ và đỗ vào lề đường an toàn để xử lý."
+    },
+    {
+      "id": 35,
+      "topicId": 3,
+      "question": "Khi đi đường đèo dốc quanh co, cần lưu ý gì?",
+      "options": [
+        "Tăng tốc ở cua",
+        "Phanh trước cua",
+        "Bấm còi liên tục",
+        "Đi đúng làn"
+      ],
+      "answer": 3,
+      "explanation": "Đi đúng làn, giảm tốc trước cua, không vượt ẩu và chú ý xe ngược chiều."
+    },
+    {
+      "id": 36,
+      "topicId": 3,
+      "question": "Khi trời tối, cần bật đèn gì?",
+      "options": [
+        "Đèn pha",
+        "Đèn cos",
+        "Đèn sương mù",
+        "Tất cả đều đúng"
+      ],
+      "answer": 3,
+      "explanation": "Bật đèn pha/cos tùy tình huống, đèn sương mù khi có sương mù để đảm bảo quan sát và báo hiệu cho xe khác."
+    },
+    {
+      "id": 37,
+      "topicId": 3,
+      "question": "Khi gặp xe ưu tiên đang đi làm nhiệm vụ, phải làm gì?",
+      "options": [
+        "Vượt lên trước",
+        "Nhường đường",
+        "Đi song song",
+        "Bật đèn cảnh báo"
+      ],
+      "answer": 1,
+      "explanation": "Phải nhường đường cho xe ưu tiên (cứu hỏa, cứu thương, công an, quân sự) đang đi làm nhiệm vụ."
+    },
+    {
+      "id": 38,
+      "topicId": 3,
+      "question": "Khi đi trên đường có nhiều xe tải, cần duy trì khoảng cách an toàn bao nhiêu?",
+      "options": [
+        "10m",
+        "20m",
+        "30m",
+        "Ít nhất 2 giây"
+      ],
+      "answer": 3,
+      "explanation": "Cần duy trì khoảng cách an toàn ít nhất 2 giây so với xe trước, đặc biệt với xe tải vì cần quãng đường phanh dài."
+    },
+    {
+      "id": 39,
+      "topicId": 3,
+      "question": "Khi đi qua đường sắt, cần chú ý gì?",
+      "options": [
+        "Tăng tốc nhanh",
+        "Dừng quan sát",
+        "Bấm còi",
+        "Đi chậm"
+      ],
+      "answer": 1,
+      "explanation": "Phải dừng lại quan sát, nếu an toàn mới đi qua, đặc biệt với đường sắt không có rào chắn."
+    },
+    {
+      "id": 40,
+      "topicId": 3,
+      "question": "Khi xe bị lửa động cơ bốc cháy, cần làm gì?",
+      "options": [
+        "Dùng nước dập",
+        "Tắt máy, xuống xe, gọi cứu hỏa",
+        "Chạy tiếp",
+        "Mở nắp capo"
+      ],
+      "answer": 1,
+      "explanation": "Tắt máy, nhanh chóng xuống xe và gọi cứu hỏa, tuyệt đối không dùng nước dập vì có thể gây cháy nổ."
+    },
+    {
+      "id": 41,
+      "topicId": 4,
+      "question": "Vi phạm đi ngược chiều trên đường một chiều bị phạt bao nhiêu với ô tô?",
+      "options": [
+        "2-3 triệu",
+        "4-6 triệu",
+        "10-12 triệu",
+        "18-20 triệu"
+      ],
+      "answer": 3,
+      "explanation": "Ô tô đi ngược chiều bị phạt 18-20 triệu đồng, trừ 4 điểm GPLX (NĐ 168/2024)."
+    },
+    {
+      "id": 42,
+      "topicId": 4,
+      "question": "Xe máy chạy quá tốc độ 5-10 km/h bị phạt bao nhiêu?",
+      "options": [
+        "200-300k",
+        "400-600k",
+        "800k-1tr",
+        "1-2tr"
+      ],
+      "answer": 0,
+      "explanation": "Xe máy vượt quá tốc độ từ 5-10 km/h bị phạt 200.000 - 300.000 đồng (NĐ 168/2024)."
+    },
+    {
+      "id": 43,
+      "topicId": 4,
+      "question": "Ô tô đi sai làn đường dành cho xe buýt bị phạt bao nhiêu?",
+      "options": [
+        "400-600k",
+        "800k-1tr",
+        "2-3tr",
+        "4-6tr"
+      ],
+      "answer": 3,
+      "explanation": "Ô tô đi sai làn đường dành cho xe buýt bị phạt 4-6 triệu đồng, trừ 2 điểm GPLX."
+    },
+    {
+      "id": 44,
+      "topicId": 4,
+      "question": "Không nhường đường cho người đi bộ trên vạch sang đường bị phạt bao nhiêu với xe máy?",
+      "options": [
+        "400-600k",
+        "1-2tr",
+        "2-3tr",
+        "4-6tr"
+      ],
+      "answer": 2,
+      "explanation": "Xe máy không nhường đường cho người đi bộ tại vạch sang đường bị phạt 2-3 triệu đồng, trừ 2 điểm GPLX."
+    },
+    {
+      "id": 45,
+      "topicId": 4,
+      "question": "Vi phạm nồng độ cồn ở mức 0.4-0.8 mg/lít với xe máy bị phạt bao nhiêu?",
+      "options": [
+        "2-3tr",
+        "4-5tr",
+        "6-8tr",
+        "8-10tr"
+      ],
+      "answer": 2,
+      "explanation": "Xe máy có nồng độ cồn 0.4-0.8 mg/lít bị phạt 6-8 triệu đồng, trừ 4 điểm GPLX."
+    },
+    {
+      "id": 46,
+      "topicId": 4,
+      "question": "Chạy quá tốc độ trên đường cao tốc từ 10-20 km/h với ô tô bị phạt bao nhiêu?",
+      "options": [
+        "2-3tr",
+        "4-6tr",
+        "8-10tr",
+        "10-12tr"
+      ],
+      "answer": 1,
+      "explanation": "Ô tô chạy quá tốc độ 10-20 km/h bị phạt 4-6 triệu đồng, trừ 3 điểm GPLX."
+    },
+    {
+      "id": 47,
+      "topicId": 4,
+      "question": "Điều khiển xe máy mà không có giấy phép lái xe bị phạt bao nhiêu?",
+      "options": [
+        "400-600k",
+        "1-2tr",
+        "3-4tr",
+        "6-8tr"
+      ],
+      "answer": 1,
+      "explanation": "Xe máy không có GPLX bị phạt 1-2 triệu đồng, nếu xe 50cc trở xuống phạt 400-600k."
+    },
+    {
+      "id": 48,
+      "topicId": 4,
+      "question": "Dừng đỗ xe sai quy định gây cản trở giao thông bị phạt bao nhiêu với ô tô?",
+      "options": [
+        "400-600k",
+        "800k-1tr",
+        "1-2tr",
+        "2-3tr"
+      ],
+      "answer": 1,
+      "explanation": "Ô tô dừng đỗ sai quy định gây cản trở giao thông bị phạt 800.000 - 1.000.000 đồng."
+    },
+    {
+      "id": 49,
+      "topicId": 4,
+      "question": "Xe máy vượt đèn đỏ bị phạt bao nhiêu và trừ bao nhiêu điểm?",
+      "options": [
+        "2-3tr, trừ 2 điểm",
+        "4-6tr, trừ 4 điểm",
+        "6-8tr, trừ 6 điểm",
+        "8-10tr, trừ 8 điểm"
+      ],
+      "answer": 1,
+      "explanation": "Xe máy vượt đèn đỏ bị phạt 4-6 triệu đồng, trừ 4 điểm GPLX (NĐ 168/2024)."
+    },
+    {
+      "id": 50,
+      "topicId": 4,
+      "question": "Chở quá số người quy định trên xe máy (từ người thứ 3) bị phạt bao nhiêu?",
+      "options": [
+        "200-300k",
+        "400-600k",
+        "800k-1tr",
+        "1-2tr"
+      ],
+      "answer": 1,
+      "explanation": "Chở quá số người quy định trên xe máy (từ người thứ 3) bị phạt 400.000 - 600.000 đồng."
+    },
+    {
+      "id": 51,
+      "topicId": 4,
+      "question": "Điều khiển xe ô tô không thắt dây an toàn bị phạt bao nhiêu?",
+      "options": [
+        "200-300k",
+        "400-600k",
+        "800k-1tr",
+        "1-2tr"
+      ],
+      "answer": 2,
+      "explanation": "Ô tô không thắt dây an toàn khi tham gia giao thông bị phạt 800.000 - 1.000.000 đồng."
+    },
+    {
+      "id": 52,
+      "topicId": 4,
+      "question": "Sử dụng điện thoại khi lái xe máy bị phạt bao nhiêu?",
+      "options": [
+        "400-600k",
+        "800k-1tr",
+        "1-2tr",
+        "2-3tr"
+      ],
+      "answer": 2,
+      "explanation": "Sử dụng điện thoại khi lái xe máy bị phạt 1-2 triệu đồng, trừ 2 điểm GPLX."
+    },
+    {
+      "id": 53,
+      "topicId": 4,
+      "question": "Không bật đèn chiếu sáng khi trời tối với ô tô bị phạt bao nhiêu?",
+      "options": [
+        "100-200k",
+        "300-400k",
+        "800k-1tr",
+        "1-2tr"
+      ],
+      "answer": 2,
+      "explanation": "Ô tô không bật đèn chiếu sáng khi trời tối bị phạt 800.000 - 1.000.000 đồng."
+    },
+    {
+      "id": 54,
+      "topicId": 4,
+      "question": "Xe máy chạy tốc độ 30 km/h trong khu đông dân cư (giới hạn 40 km/h) có bị phạt không?",
+      "options": [
+        "Không",
+        "Có, phạt 200-300k",
+        "Có, phạt 400-600k",
+        "Có, phạt 800k-1tr"
+      ],
+      "answer": 0,
+      "explanation": "Chạy dưới giới hạn tốc độ cho phép (40 km/h) là hợp lệ, không bị phạt."
+    },
+    {
+      "id": 55,
+      "topicId": 4,
+      "question": "Không chấp hành hiệu lệnh của người điều khiển giao thông bị phạt bao nhiêu với ô tô?",
+      "options": [
+        "2-3tr",
+        "4-6tr",
+        "8-10tr",
+        "18-20tr"
+      ],
+      "answer": 2,
+      "explanation": "Ô tô không chấp hành hiệu lệnh của người điều khiển giao thông bị phạt 8-10 triệu đồng, trừ 4 điểm GPLX."
+    }
+  ],
+  "exams": [
+    {
+      "id": 1,
+      "title": "Đề số 1 - Biển báo cơ bản",
+      "questionIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Đề số 2 - Biển báo nâng cao",
+      "questionIds": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Đề số 3 - Quy tắc giao thông",
+      "questionIds": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Đề số 4 - Kỹ năng lái xe",
+      "questionIds": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Đề số 5 - Mức phạt & điểm",
+      "questionIds": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    }
+  ]
+}

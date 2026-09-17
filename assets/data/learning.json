@@ -1,0 +1,143 @@
+{
+  "licenses": [
+    {
+      "id": "A1",
+      "name": "Hạng A1",
+      "vehicle": "Mô tô hai bánh đến 125 cm³ hoặc công suất điện đến 11 kW"
+    },
+    {
+      "id": "A",
+      "name": "Hạng A",
+      "vehicle": "Mô tô hai bánh trên 125 cm³ hoặc công suất điện trên 11 kW"
+    },
+    {
+      "id": "B",
+      "name": "Hạng B",
+      "vehicle": "Ô tô chở người đến 8 chỗ và ô tô tải theo phạm vi giấy phép"
+    },
+    {
+      "id": "C1",
+      "name": "Hạng C1",
+      "vehicle": "Ô tô tải theo phạm vi hạng C1"
+    },
+    {
+      "id": "C",
+      "name": "Hạng C",
+      "vehicle": "Ô tô tải hạng nặng theo phạm vi hạng C"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "law",
+      "order": 1,
+      "title": "Luật giao thông",
+      "icon": "⚖️",
+      "image": "/assets/trafficSigns/prohibition/P101.jpg",
+      "summary": "Nguyên tắc đi đường, quyền ưu tiên, làn đường, tốc độ và xử lý tình huống.",
+      "content": "Người tham gia giao thông phải đi đúng phần đường, làn đường; chấp hành đèn tín hiệu, biển báo, vạch kẻ đường và hiệu lệnh của người điều khiển giao thông. Khi nhiều tín hiệu cùng tồn tại, phải ưu tiên hiệu lệnh trực tiếp của người điều khiển giao thông, sau đó đến đèn tín hiệu, biển báo và vạch kẻ đường.",
+      "example": "Tại nút giao có đèn xanh nhưng cảnh sát giao thông ra hiệu dừng, người lái phải dừng theo hiệu lệnh của cảnh sát giao thông.",
+      "memoryTip": "Nhớ thứ tự: Người điều khiển → Đèn → Biển → Vạch.",
+      "practice": {
+        "question": "Khi đèn xanh nhưng người điều khiển giao thông ra hiệu dừng, bạn phải làm gì?",
+        "options": [
+          "Tiếp tục đi",
+          "Dừng lại",
+          "Bấm còi xin đường"
+        ],
+        "answer": 1,
+        "explanation": "Hiệu lệnh của người điều khiển giao thông có thứ tự ưu tiên cao nhất."
+      }
+    },
+    {
+      "id": "signs",
+      "order": 2,
+      "title": "Biển báo",
+      "icon": "🚦",
+      "image": "/assets/trafficSigns/prohibition/P102.jpg",
+      "summary": "Nhận biết nhóm biển cấm, nguy hiểm, hiệu lệnh, chỉ dẫn và biển phụ.",
+      "content": "Biển cấm thường hình tròn viền đỏ; biển nguy hiểm thường hình tam giác viền đỏ nền vàng; biển hiệu lệnh thường hình tròn nền xanh; biển chỉ dẫn thường hình vuông hoặc chữ nhật nền xanh; biển phụ đặt dưới biển chính để giới hạn thời gian, loại xe, khoảng cách, phạm vi hoặc ngoại lệ.",
+      "example": "Biển P.102 cấm đi ngược chiều. Nếu bên dưới có biển phụ ghi “Trừ xe buýt”, xe buýt thuộc ngoại lệ được phép đi vào theo nội dung biển phụ.",
+      "memoryTip": "Đỏ là cấm/cảnh báo; xanh tròn là phải làm; xanh vuông là chỉ đường.",
+      "practice": {
+        "question": "Biển phụ đặt dưới biển chính dùng để làm gì?",
+        "options": [
+          "Thay thế hoàn toàn biển chính",
+          "Bổ sung phạm vi và điều kiện áp dụng",
+          "Chỉ để trang trí"
+        ],
+        "answer": 1,
+        "explanation": "Biển phụ bổ sung thời gian, đối tượng, khoảng cách, hướng hoặc ngoại lệ cho biển chính."
+      }
+    },
+    {
+      "id": "diagram",
+      "order": 3,
+      "title": "Sa hình",
+      "icon": "🛣️",
+      "image": "/assets/trafficSigns/warning/W205a.jpg",
+      "summary": "Thứ tự xe qua nút giao, đường ưu tiên, vòng xuyến và hướng rẽ.",
+      "content": "Khi giải sa hình, xác định lần lượt: xe ưu tiên theo luật; xe trên đường ưu tiên; xe đã vào giao lộ; xe bên phải không vướng; hướng đi thẳng, rẽ phải, rẽ trái theo tình huống cụ thể. Không suy luận từ kích thước xe mà phải dựa vào vị trí, tín hiệu và quyền ưu tiên.",
+      "example": "Tại giao lộ không có biển ưu tiên, hai xe đến cùng lúc thì xe có phương tiện ở bên phải phải nhường đường.",
+      "memoryTip": "Ưu tiên pháp lý trước, vị trí sau: Xe ưu tiên → Đường ưu tiên → Trong giao lộ → Bên phải.",
+      "practice": {
+        "question": "Tại giao lộ đồng cấp, bạn phải nhường xe nào?",
+        "options": [
+          "Xe bên trái",
+          "Xe bên phải",
+          "Xe nhỏ hơn"
+        ],
+        "answer": 1,
+        "explanation": "Tại giao lộ đồng cấp, nguyên tắc cơ bản là nhường đường cho xe đến từ bên phải."
+      }
+    },
+    {
+      "id": "driving",
+      "order": 4,
+      "title": "Kỹ thuật lái xe",
+      "icon": "🛞",
+      "image": "/assets/trafficSigns/warning/W220.jpg",
+      "summary": "Quan sát, phanh, chuyển hướng, khoảng cách và điều khiển xe an toàn.",
+      "content": "Kỹ thuật an toàn bắt đầu từ quan sát xa, duy trì khoảng trống, kiểm soát tốc độ và thao tác êm. Trước khi chuyển làn hoặc chuyển hướng cần quan sát gương, bật tín hiệu, kiểm tra điểm mù và chỉ thực hiện khi đủ khoảng cách an toàn.",
+      "example": "Trước khi đổi làn: quan sát gương, bật xi-nhan, kiểm tra điểm mù bằng cách liếc nhanh qua vai, sau đó chuyển làn dứt khoát nhưng êm.",
+      "memoryTip": "Gương → Tín hiệu → Điểm mù → Di chuyển.",
+      "practice": {
+        "question": "Bước nào phải làm ngay trước khi chuyển làn?",
+        "options": [
+          "Tăng tốc đột ngột",
+          "Kiểm tra điểm mù và khoảng trống",
+          "Tắt xi-nhan"
+        ],
+        "answer": 1,
+        "explanation": "Điểm mù không thể quan sát đầy đủ qua gương nên phải kiểm tra trước khi chuyển làn."
+      }
+    },
+    {
+      "id": "ethics",
+      "order": 5,
+      "title": "Đạo đức giao thông",
+      "icon": "🤝",
+      "image": "/assets/trafficSigns/guide/I423a.jpg",
+      "summary": "Văn hóa nhường nhịn, trách nhiệm, hỗ trợ người yếu thế và xử lý sau va chạm.",
+      "content": "Người lái xe phải đặt an toàn con người lên trước lợi ích về thời gian. Cần giảm tốc độ, nhường người đi bộ, trẻ em, người cao tuổi và người khuyết tật; không tranh giành đường; không rời hiện trường khi xảy ra tai nạn nếu chưa thực hiện nghĩa vụ cần thiết.",
+      "example": "Khi thấy người đi bộ đang qua đường tại vạch, người lái giảm tốc và dừng nhường thay vì lách qua phía trước.",
+      "memoryTip": "Đến nơi chậm một phút tốt hơn tạo rủi ro trong một giây.",
+      "practice": {
+        "question": "Khi người đi bộ đang qua đường tại vạch, người lái nên làm gì?",
+        "options": [
+          "Tăng tốc đi trước",
+          "Giảm tốc và nhường đường",
+          "Bấm còi liên tục"
+        ],
+        "answer": 1,
+        "explanation": "Nhường người đi bộ tại vị trí sang đường là hành vi an toàn và đúng quy tắc."
+      }
+    }
+  ],
+  "licenseNotes": {
+    "A1": "Tập trung xe mô tô công suất nhỏ: giữ thăng bằng, khoảng cách, đội mũ đúng quy cách và tránh điểm mù ô tô.",
+    "A": "Tập trung mô tô công suất lớn: kiểm soát ga, phanh kết hợp, quỹ đạo cua và trang bị bảo hộ.",
+    "B": "Tập trung ô tô con: quan sát gương, điểm mù, lùi/đỗ xe, tốc độ và khoảng cách.",
+    "C1": "Tập trung xe tải: tải trọng, chiều dài phanh, điểm mù lớn và phân bố hàng hóa.",
+    "C": "Tập trung xe tải hạng nặng: quán tính, tải trọng, đường đèo dốc, kiểm tra kỹ thuật và trách nhiệm nghề nghiệp."
+  }
+}
