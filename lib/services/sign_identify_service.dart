@@ -9,7 +9,8 @@ class IdentifyResult {
   final String rawCode;
   final String? error;
 
-  IdentifyResult({this.sign, required this.confidence, required this.rawCode, this.error});
+  IdentifyResult(
+      {this.sign, required this.confidence, required this.rawCode, this.error});
 }
 
 /// Re-implements the "controlled hybrid" approach described in the original
@@ -30,12 +31,22 @@ class SignIdentifyService {
     required String apiKey,
     required List<TrafficSign> catalog,
   }) async {
-    if (apiKey.trim().isEmpty) {
+    final trimmedKey = apiKey.trim();
+    if (trimmedKey.isEmpty) {
       return IdentifyResult(
         confidence: 'thấp',
         rawCode: '',
         error:
             'Chưa có Gemini API Key. Vào Tài khoản → Cài đặt AI để nhập khóa, hoặc dùng Tra cứu để tìm biển thủ công.',
+      );
+    }
+
+    if (!_looksLikeGeminiKey(trimmedKey)) {
+      return IdentifyResult(
+        confidence: 'thấp',
+        rawCode: '',
+        error:
+            'Gemini API Key không đúng định dạng. Hãy nhập key bắt đầu bằng AIza... hoặc tạo lại key mới trong Google AI Studio.',
       );
     }
 
@@ -76,11 +87,22 @@ Nếu không chắc chắn biển nào trong ảnh, hãy chọn mã gần đúng
     try {
       final res = await http
           .post(
-            Uri.parse('$_endpoint?key=$apiKey'),
+            Uri.parse('$_endpoint?key=${Uri.encodeQueryComponent(trimmedKey)}'),
             headers: {'Content-Type': 'application/json'},
             body: body,
           )
           .timeout(const Duration(seconds: 30));
+
+      if (res.statusCode == 400 ||
+          res.statusCode == 401 ||
+          res.statusCode == 403) {
+        return IdentifyResult(
+          confidence: 'thấp',
+          rawCode: '',
+          error:
+              'Gemini từ chối API Key. Vui lòng kiểm tra lại key hoặc tạo key mới trong Google AI Studio. Mã lỗi: ${res.statusCode}.',
+        );
+      }
 
       if (res.statusCode != 200) {
         return IdentifyResult(
@@ -93,19 +115,28 @@ Nếu không chắc chắn biển nào trong ảnh, hãy chọn mã gần đúng
       final decoded = jsonDecode(res.body) as Map<String, dynamic>;
       final candidates = decoded['candidates'] as List<dynamic>?;
       if (candidates == null || candidates.isEmpty) {
-        return IdentifyResult(confidence: 'thấp', rawCode: '', error: 'Không nhận được phản hồi từ AI.');
+        return IdentifyResult(
+            confidence: 'thấp',
+            rawCode: '',
+            error: 'Không nhận được phản hồi từ AI.');
       }
-      final parts = (candidates.first['content']?['parts'] as List<dynamic>?) ?? [];
+      final parts =
+          (candidates.first['content']?['parts'] as List<dynamic>?) ?? [];
       final text = parts.map((p) => p['text']?.toString() ?? '').join();
-      final cleaned = text.replaceAll('```json', '').replaceAll('```', '').trim();
+      final cleaned =
+          text.replaceAll('```json', '').replaceAll('```', '').trim();
 
       final match = RegExp(r'\{[\s\S]*\}').firstMatch(cleaned);
       if (match == null) {
-        return IdentifyResult(confidence: 'thấp', rawCode: '', error: 'Không đọc được kết quả AI.');
+        return IdentifyResult(
+            confidence: 'thấp',
+            rawCode: '',
+            error: 'Không đọc được kết quả AI.');
       }
       final parsed = jsonDecode(match.group(0)!) as Map<String, dynamic>;
       final code = normalizeCode(parsed['maBien']?.toString() ?? '');
-      final confidencePercent = num.tryParse('${parsed['confidencePercent'] ?? 70}') ?? 70;
+      final confidencePercent =
+          num.tryParse('${parsed['confidencePercent'] ?? 70}') ?? 70;
       final confidence = confidencePercent >= 88
           ? 'cao'
           : confidencePercent >= 65
@@ -130,8 +161,19 @@ Nếu không chắc chắn biển nào trong ảnh, hãy chọn mã gần đúng
     }
   }
 
+  static bool _looksLikeGeminiKey(String key) {
+    final normalized = key.trim();
+    if (normalized.isEmpty) return false;
+    return RegExp(r'^(AIza|AIzaSy)[A-Za-z0-9_-]+$').hasMatch(normalized) ||
+        RegExp(r'^AQ\.[A-Za-z0-9_-]+$').hasMatch(normalized);
+  }
+
   static String normalizeCode(String value) {
-    final raw = value.trim().toUpperCase().replaceAll(RegExp(r'[_\s]+'), '.').replaceAll(RegExp(r'\.+'), '.');
+    final raw = value
+        .trim()
+        .toUpperCase()
+        .replaceAll(RegExp(r'[_\s]+'), '.')
+        .replaceAll(RegExp(r'\.+'), '.');
     final compact = raw.replaceAll('.', '');
     final match = RegExp(r'^([PWRIS])(\d{3})([A-Z]\d?)?$').firstMatch(compact);
     if (match == null) return raw;

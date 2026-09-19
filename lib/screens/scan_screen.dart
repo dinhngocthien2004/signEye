@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +7,7 @@ import '../models/traffic_sign.dart';
 import '../services/app_state.dart';
 import '../services/data_service.dart';
 import '../services/sign_identify_service.dart';
+import '../services/tts_service.dart';
 import '../theme.dart';
 import '../widgets/sign_detail_sheet.dart';
 
@@ -18,7 +19,7 @@ class ScanScreen extends StatefulWidget {
 }
 
 class _ScanScreenState extends State<ScanScreen> {
-  File? _picked;
+  Uint8List? _pickedBytes;
   bool _loading = false;
   IdentifyResult? _result;
   List<TrafficSign> _allSigns = [];
@@ -36,14 +37,15 @@ class _ScanScreenState extends State<ScanScreen> {
       return;
     }
     final picker = ImagePicker();
-    final file = await picker.pickImage(source: source, maxWidth: 1280, imageQuality: 85);
+    final file = await picker.pickImage(
+        source: source, maxWidth: 1280, imageQuality: 85);
     if (file == null) return;
+    final bytes = await file.readAsBytes();
     setState(() {
-      _picked = File(file.path);
+      _pickedBytes = bytes;
       _result = null;
       _loading = true;
     });
-    final bytes = await file.readAsBytes();
     final result = await SignIdentifyService.identify(
       imageBytes: bytes,
       apiKey: state.geminiApiKey,
@@ -55,6 +57,7 @@ class _ScanScreenState extends State<ScanScreen> {
       _loading = false;
     });
     if (result.sign != null) {
+      await TtsService.instance.speak(result.sign!.speechText);
       state.addHistory(result.sign!.maBien, source: 'scan');
     }
   }
@@ -67,12 +70,62 @@ class _ScanScreenState extends State<ScanScreen> {
         content: const Text(
             'Gói Free cho phép quét tối đa 5 lần/ngày. Nâng cấp Pro để quét không giới hạn.'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Để sau')),
+          TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Để sau')),
           FilledButton(
             onPressed: () => Navigator.pop(context),
             child: const Text('Nâng cấp Pro'),
           ),
         ],
+      ),
+    );
+  }
+
+  void _openApiKeySheet(BuildContext context, AppState state) {
+    final controller = TextEditingController(text: state.geminiApiKey);
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (ctx) => Padding(
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom: MediaQuery.of(ctx).viewInsets.bottom + 20,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Gemini API Key',
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Dùng khóa này để gửi ảnh biển báo lên Gemini và nhận diện mã biển. Khóa chỉ lưu trên thiết bị của bạn.',
+              style: TextStyle(
+                  fontSize: 12.5, color: AppColors.text2, height: 1.5),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: controller,
+              decoration: const InputDecoration(hintText: 'AIza...'),
+            ),
+            const SizedBox(height: 14),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  state.setGeminiApiKey(controller.text.trim());
+                  Navigator.pop(ctx);
+                },
+                child: const Text('Lưu khóa'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -95,19 +148,53 @@ class _ScanScreenState extends State<ScanScreen> {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.bolt_rounded, color: AppColors.primary, size: 18),
+                  const Icon(Icons.bolt_rounded,
+                      color: AppColors.primary, size: 18),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       state.isPro
                           ? 'Gói Pro · Quét không giới hạn'
                           : 'Gói Free · Còn ${state.scansRemainingToday}/${AppState.freeDailyScanLimit} lượt quét hôm nay',
-                      style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: AppColors.primary),
+                      style: const TextStyle(
+                          fontSize: 12.5,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.primary),
                     ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 12),
+            if (state.geminiApiKey.isEmpty)
+              GestureDetector(
+                onTap: () => _openApiKeySheet(context, state),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: AppColors.warningSoft,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(Icons.info_outline_rounded,
+                          color: AppColors.warning, size: 18),
+                      SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Chưa có Gemini API Key. Nhấn vào đây để nhập khóa và quét biển báo tự động.',
+                          style: TextStyle(
+                              fontSize: 12.5,
+                              color: AppColors.warning,
+                              height: 1.5),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             const SizedBox(height: 18),
             AspectRatio(
               aspectRatio: 1,
@@ -117,22 +204,26 @@ class _ScanScreenState extends State<ScanScreen> {
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: AppColors.line),
                 ),
-                child: _picked == null
+                child: _pickedBytes == null
                     ? const Center(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(Icons.camera_alt_outlined, size: 46, color: AppColors.muted),
+                            Icon(Icons.camera_alt_outlined,
+                                size: 46, color: AppColors.muted),
                             SizedBox(height: 10),
-                            Text('Chụp hoặc chọn ảnh biển báo\nđể nhận diện bằng AI',
+                            Text(
+                                'Chụp hoặc chọn ảnh biển báo\nđể nhận diện bằng AI',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(color: AppColors.muted, fontSize: 12.5)),
+                                style: TextStyle(
+                                    color: AppColors.muted, fontSize: 12.5)),
                           ],
                         ),
                       )
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.file(_picked!, fit: BoxFit.cover, width: double.infinity),
+                        child: Image.memory(_pickedBytes!,
+                            fit: BoxFit.cover, width: double.infinity),
                       ),
               ),
             ),
@@ -171,25 +262,43 @@ class _ScanScreenState extends State<ScanScreen> {
 
   Widget _buildResult(IdentifyResult result) {
     if (result.error != null) {
-      return Container(
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(color: AppColors.warningSoft, borderRadius: BorderRadius.circular(14)),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.info_outline_rounded, color: AppColors.warning),
-            const SizedBox(width: 10),
-            Expanded(
-                child: Text(result.error!,
-                    style: const TextStyle(color: AppColors.warning, fontSize: 13, height: 1.4))),
-          ],
-        ),
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+                color: AppColors.warningSoft,
+                borderRadius: BorderRadius.circular(14)),
+            child: const Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.info_outline_rounded, color: AppColors.warning),
+                SizedBox(width: 10),
+                Expanded(
+                    child: Text(
+                  'Lỗi máy chủ Gemini. Vui lòng thử lại hoặc nhập khóa mới.',
+                  style: TextStyle(
+                      color: AppColors.warning, fontSize: 13, height: 1.4),
+                )),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          ElevatedButton.icon(
+            onPressed: () =>
+                _openApiKeySheet(context, context.read<AppState>()),
+            icon: const Icon(Icons.key_rounded),
+            label: const Text('Nhập Gemini API Key'),
+          ),
+        ],
       );
     }
     if (result.sign == null) {
       return Container(
         padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(color: AppColors.surface2, borderRadius: BorderRadius.circular(14)),
+        decoration: BoxDecoration(
+            color: AppColors.surface2, borderRadius: BorderRadius.circular(14)),
         child: Text(
           'Không khớp được với biển nào trong cơ sở dữ liệu (mã AI trả về: '
           '${result.rawCode.isEmpty ? "không rõ" : result.rawCode}). Hãy thử ảnh rõ nét hơn hoặc tra cứu thủ công.',
@@ -211,17 +320,24 @@ class _ScanScreenState extends State<ScanScreen> {
           Row(
             children: [
               Text('Độ tin cậy: ${result.confidence}',
-                  style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12, color: AppColors.text2)),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 12,
+                      color: AppColors.text2)),
             ],
           ),
           const SizedBox(height: 10),
           Text('${sign.maBien} · ${sign.tenBien}',
-              style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+              style:
+                  const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
           const SizedBox(height: 6),
-          Text(sign.yNghia, style: const TextStyle(color: AppColors.text2, fontSize: 13, height: 1.4)),
+          Text(sign.yNghia,
+              style: const TextStyle(
+                  color: AppColors.text2, fontSize: 13, height: 1.4)),
           const SizedBox(height: 12),
           ElevatedButton(
-            onPressed: () => showSignDetailSheet(context, sign, allSigns: _allSigns, source: 'scan'),
+            onPressed: () => showSignDetailSheet(context, sign,
+                allSigns: _allSigns, source: 'scan'),
             child: const Text('Xem chi tiết mức phạt'),
           ),
         ],

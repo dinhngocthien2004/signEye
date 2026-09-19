@@ -21,8 +21,16 @@ flutter create . --project-name signeye_flutter --org com.signeye
 # 3. Cài dependency
 flutter pub get
 
-# 4. Chạy thử (máy ảo hoặc thiết bị thật)
-flutter run
+# 4. Chạy thử với Gemini API Key từ file môi trường cục bộ
+flutter run --dart-define-from-file=.env.json
+```
+
+Tạo file `.env.json` ở thư mục gốc với nội dung sau (file này đã được Git bỏ qua):
+
+```json
+{
+  "GEMINI_API_KEY": "your_api_key"
+}
 ```
 
 > Yêu cầu Flutter SDK ≥ 3.22 (Dart ≥ 3.3). Kiểm tra bằng `flutter --version`.
@@ -32,12 +40,14 @@ flutter run
 Tính năng "Quét biển báo" dùng `image_picker` để chụp ảnh, cần khai báo quyền:
 
 **Android** — thêm vào `android/app/src/main/AndroidManifest.xml` (trong thẻ `<manifest>`, trước `<application>`):
+
 ```xml
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
 **iOS** — thêm vào `ios/Runner/Info.plist`:
+
 ```xml
 <key>NSCameraUsageDescription</key>
 <string>Ứng dụng cần quyền camera để chụp ảnh biển báo và nhận diện.</string>
@@ -71,19 +81,19 @@ assets/
 
 ## Ánh xạ tính năng so với bản web
 
-| Bản web (`public/*.js`)                | Bản Flutter                                              |
-|-----------------------------------------|-----------------------------------------------------------|
-| `index.html` 5-tab bottom nav            | `screens/root_shell.dart`                                  |
-| `data.js` (109 biển, mức phạt)           | `assets/data/signs.json` + `models/traffic_sign.dart`      |
-| Tìm kiếm / tra cứu trong `app.js`        | `screens/search_screen.dart` + `DataService.search`        |
-| Nút 🔊 đọc biển báo (SpeechSynthesis)    | `services/tts_service.dart` (flutter_tts)                  |
-| `api/identify.js` (Gemini Vision)        | `services/sign_identify_service.dart` (gọi thẳng từ máy)   |
-| Lịch sử & giới hạn Free (localStorage)   | `services/app_state.dart` (SharedPreferences)               |
-| `exam-data.js` + `screen-exam*`          | `screens/exam_home_screen.dart`, `exam_take_screen.dart`, `exam_result_screen.dart` |
-| `learning-data.js` + `screen-learning`   | `screens/learning_screen.dart`                              |
-| `handbook-data.js` + `screen-handbook*`  | `screens/handbook_screen.dart`, `handbook_post_screen.dart` |
-| `screen-compare`                         | `screens/compare_screen.dart`                               |
-| Modal thanh toán Pro (demo)              | Bottom sheet trong `screens/account_screen.dart`             |
+| Bản web (`public/*.js`)                 | Bản Flutter                                                                         |
+| --------------------------------------- | ----------------------------------------------------------------------------------- |
+| `index.html` 5-tab bottom nav           | `screens/root_shell.dart`                                                           |
+| `data.js` (109 biển, mức phạt)          | `assets/data/signs.json` + `models/traffic_sign.dart`                               |
+| Tìm kiếm / tra cứu trong `app.js`       | `screens/search_screen.dart` + `DataService.search`                                 |
+| Nút 🔊 đọc biển báo (SpeechSynthesis)   | `services/tts_service.dart` (flutter_tts)                                           |
+| `api/identify.js` (Gemini Vision)       | `services/sign_identify_service.dart` (gọi thẳng từ máy)                            |
+| Lịch sử & giới hạn Free (localStorage)  | `services/app_state.dart` (SharedPreferences)                                       |
+| `exam-data.js` + `screen-exam*`         | `screens/exam_home_screen.dart`, `exam_take_screen.dart`, `exam_result_screen.dart` |
+| `learning-data.js` + `screen-learning`  | `screens/learning_screen.dart`                                                      |
+| `handbook-data.js` + `screen-handbook*` | `screens/handbook_screen.dart`, `handbook_post_screen.dart`                         |
+| `screen-compare`                        | `screens/compare_screen.dart`                                                       |
+| Modal thanh toán Pro (demo)             | Bottom sheet trong `screens/account_screen.dart`                                    |
 
 ## Giới hạn kỹ thuật cần biết (giống bản web)
 

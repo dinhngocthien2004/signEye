@@ -13,4 +13,4 @@ android/local.properties
 pubspec.lock
 
 .vercel
-.env*
+.env.json

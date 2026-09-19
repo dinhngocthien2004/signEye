@@ -53,6 +53,9 @@ class AppState extends ChangeNotifier {
   static const _kGeminiKey = 'se_gemini_api_key';
   static const _kThemeDark = 'se_theme_dark';
 
+  static const String defaultGeminiApiKey =
+      String.fromEnvironment('GEMINI_API_KEY');
+
   static const int freeDailyScanLimit = 5;
   static const int freeHistoryLimit = 10;
 
@@ -92,7 +95,14 @@ class AppState extends ChangeNotifier {
       isPro = false;
       proExpiry = null;
     }
-    geminiApiKey = _prefs.getString(_kGeminiKey) ?? '';
+
+    final savedGeminiKey = _prefs.getString(_kGeminiKey);
+    geminiApiKey = savedGeminiKey?.trim().isNotEmpty == true
+        ? savedGeminiKey!
+        : defaultGeminiApiKey;
+    if (savedGeminiKey == null || savedGeminiKey.trim().isEmpty) {
+      await _prefs.setString(_kGeminiKey, geminiApiKey);
+    }
 
     final historyRaw = _prefs.getString(_kHistory);
     if (historyRaw != null) {
