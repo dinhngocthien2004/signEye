@@ -1,4 +1,4 @@
-package com.example.signeye_flutter
+package com.mycompany.myapp
 
 import io.flutter.embedding.android.FlutterActivity
 

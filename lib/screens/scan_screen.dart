@@ -36,6 +36,11 @@ class _ScanScreenState extends State<ScanScreen> {
       _showUpsell();
       return;
     }
+    if (_allSigns.isEmpty) {
+      final signs = await DataService.instance.loadSigns();
+      if (!mounted) return;
+      setState(() => _allSigns = signs);
+    }
     final picker = ImagePicker();
     final file = await picker.pickImage(
         source: source, maxWidth: 1280, imageQuality: 85);
@@ -48,9 +53,11 @@ class _ScanScreenState extends State<ScanScreen> {
     });
     final result = await SignIdentifyService.identify(
       imageBytes: bytes,
+      mimeType: file.mimeType ?? 'image/jpeg',
       apiKey: state.geminiApiKey,
       catalog: _allSigns,
     );
+    if (!mounted) return;
     await state.recordScan();
     setState(() {
       _result = result;
@@ -270,15 +277,16 @@ class _ScanScreenState extends State<ScanScreen> {
             decoration: BoxDecoration(
                 color: AppColors.warningSoft,
                 borderRadius: BorderRadius.circular(14)),
-            child: const Row(
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.info_outline_rounded, color: AppColors.warning),
-                SizedBox(width: 10),
+                const Icon(Icons.info_outline_rounded,
+                    color: AppColors.warning),
+                const SizedBox(width: 10),
                 Expanded(
                     child: Text(
-                  'Lỗi máy chủ Gemini. Vui lòng thử lại hoặc nhập khóa mới.',
-                  style: TextStyle(
+                  result.error!,
+                  style: const TextStyle(
                       color: AppColors.warning, fontSize: 13, height: 1.4),
                 )),
               ],

@@ -14,3 +14,5 @@ pubspec.lock
 
 .vercel
 .env.json
+/android/key.properties
+/android/app/upload-keystore.jks

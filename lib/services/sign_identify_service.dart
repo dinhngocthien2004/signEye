@@ -24,10 +24,11 @@ class IdentifyResult {
 /// bundled backend/server in this Flutter port).
 class SignIdentifyService {
   static const _endpoint =
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent';
 
   static Future<IdentifyResult> identify({
     required List<int> imageBytes,
+    required String mimeType,
     required String apiKey,
     required List<TrafficSign> catalog,
   }) async {
@@ -74,7 +75,7 @@ Nếu không chắc chắn biển nào trong ảnh, hãy chọn mã gần đúng
             {'text': prompt},
             {
               'inline_data': {
-                'mime_type': 'image/jpeg',
+                'mime_type': _supportedMimeType(mimeType),
                 'data': base64Encode(imageBytes),
               }
             }
@@ -96,19 +97,20 @@ Nếu không chắc chắn biển nào trong ảnh, hãy chọn mã gần đúng
       if (res.statusCode == 400 ||
           res.statusCode == 401 ||
           res.statusCode == 403) {
+        final apiMessage = _apiErrorMessage(res.body);
         return IdentifyResult(
           confidence: 'thấp',
           rawCode: '',
-          error:
-              'Gemini từ chối API Key. Vui lòng kiểm tra lại key hoặc tạo key mới trong Google AI Studio. Mã lỗi: ${res.statusCode}.',
+          error: 'Gemini từ chối yêu cầu (${res.statusCode}). $apiMessage',
         );
       }
 
       if (res.statusCode != 200) {
+        final apiMessage = _apiErrorMessage(res.body);
         return IdentifyResult(
           confidence: 'thấp',
           rawCode: '',
-          error: 'Lỗi máy chủ Gemini (${res.statusCode}). Vui lòng thử lại.',
+          error: 'Gemini trả về lỗi ${res.statusCode}. $apiMessage',
         );
       }
 
@@ -166,6 +168,24 @@ Nếu không chắc chắn biển nào trong ảnh, hãy chọn mã gần đúng
     if (normalized.isEmpty) return false;
     return RegExp(r'^(AIza|AIzaSy)[A-Za-z0-9_-]+$').hasMatch(normalized) ||
         RegExp(r'^AQ\.[A-Za-z0-9_-]+$').hasMatch(normalized);
+  }
+
+  static String _supportedMimeType(String mimeType) {
+    const supported = {'image/jpeg', 'image/png', 'image/webp', 'image/heic'};
+    return supported.contains(mimeType.toLowerCase())
+        ? mimeType.toLowerCase()
+        : 'image/jpeg';
+  }
+
+  static String _apiErrorMessage(String body) {
+    try {
+      final decoded = jsonDecode(body) as Map<String, dynamic>;
+      final message = decoded['error']?['message']?.toString();
+      if (message != null && message.isNotEmpty) return message;
+    } catch (_) {
+      // Keep a safe generic message when Gemini returns a non-JSON response.
+    }
+    return 'Kiểm tra API key, model Gemini và quyền truy cập rồi thử lại.';
   }
 
   static String normalizeCode(String value) {
