@@ -5,7 +5,9 @@ class ExamTopic {
   ExamTopic({required this.id, required this.name});
 
   factory ExamTopic.fromJson(Map<String, dynamic> json) => ExamTopic(
-        id: json['id'] is int ? json['id'] as int : int.tryParse('${json['id']}') ?? 0,
+        id: json['id'] is int
+            ? json['id'] as int
+            : int.tryParse('${json['id']}') ?? 0,
         name: json['name']?.toString() ?? '',
       );
 }
@@ -28,16 +30,28 @@ class ExamQuestion {
   });
 
   factory ExamQuestion.fromJson(Map<String, dynamic> json) => ExamQuestion(
-        id: json['id'] is int ? json['id'] as int : int.tryParse('${json['id']}') ?? 0,
-        topicId:
-            json['topicId'] is int ? json['topicId'] as int : int.tryParse('${json['topicId']}') ?? 0,
+        id: json['id'] is int
+            ? json['id'] as int
+            : int.tryParse('${json['id']}') ?? 0,
+        topicId: json['topicId'] is int
+            ? json['topicId'] as int
+            : int.tryParse('${json['topicId']}') ?? 0,
         question: json['question']?.toString() ?? '',
         options: (json['options'] as List<dynamic>? ?? const [])
             .map((e) => e.toString())
             .toList(),
-        answer: json['answer'] is int ? json['answer'] as int : int.tryParse('${json['answer']}') ?? 0,
+        answer: json['answer'] is int
+            ? json['answer'] as int
+            : int.tryParse('${json['answer']}') ?? 0,
         explanation: json['explanation']?.toString() ?? '',
       );
+
+  /// Returns the traffic-sign code mentioned in the question or explanation.
+  String? get signCode {
+    final match = RegExp(r'\b([A-Z]\.[0-9]+[a-z]?)\b')
+        .firstMatch('$question $explanation');
+    return match?.group(1);
+  }
 }
 
 class ExamBank {
@@ -72,7 +86,8 @@ class ExamAttempt {
   });
 
   double get scorePercent => total == 0 ? 0 : (correct / total) * 100;
-  bool get passed => scorePercent >= 90; // mirrors the real GPLX theory pass mark
+  bool get passed =>
+      scorePercent >= 90; // mirrors the real GPLX theory pass mark
 
   Map<String, dynamic> toJson() => {
         'date': date.toIso8601String(),
@@ -82,10 +97,14 @@ class ExamAttempt {
       };
 
   factory ExamAttempt.fromJson(Map<String, dynamic> json) => ExamAttempt(
-        date: DateTime.tryParse(json['date']?.toString() ?? '') ?? DateTime.now(),
-        total: json['total'] is int ? json['total'] as int : int.tryParse('${json['total']}') ?? 0,
-        correct:
-            json['correct'] is int ? json['correct'] as int : int.tryParse('${json['correct']}') ?? 0,
+        date:
+            DateTime.tryParse(json['date']?.toString() ?? '') ?? DateTime.now(),
+        total: json['total'] is int
+            ? json['total'] as int
+            : int.tryParse('${json['total']}') ?? 0,
+        correct: json['correct'] is int
+            ? json['correct'] as int
+            : int.tryParse('${json['correct']}') ?? 0,
         topicLabel: json['topicLabel']?.toString() ?? '',
       );
 }

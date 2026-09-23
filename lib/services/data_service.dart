@@ -24,7 +24,9 @@ class DataService {
     if (_signs != null) return _signs!;
     final raw = await rootBundle.loadString('assets/data/signs.json');
     final list = jsonDecode(raw) as List<dynamic>;
-    _signs = list.map((e) => TrafficSign.fromJson(e as Map<String, dynamic>)).toList();
+    _signs = list
+        .map((e) => TrafficSign.fromJson(e as Map<String, dynamic>))
+        .toList();
     return _signs!;
   }
 
@@ -32,8 +34,101 @@ class DataService {
     if (_examBank != null) return _examBank!;
     final raw = await rootBundle.loadString('assets/data/exam.json');
     final map = jsonDecode(raw) as Map<String, dynamic>;
-    _examBank = ExamBank.fromJson(map);
+    final baseBank = ExamBank.fromJson(map);
+    final signs = await loadSigns();
+    final generated = _generateSignQuestions(signs, baseBank.questions.length);
+    _examBank = ExamBank(
+      topics: baseBank.topics,
+      questions: [...baseBank.questions, ...generated],
+    );
     return _examBank!;
+  }
+
+  List<ExamQuestion> _generateSignQuestions(
+      List<TrafficSign> signs, int existingCount) {
+    final questions = <ExamQuestion>[];
+    var id = existingCount + 1;
+    final meanings = signs.map((s) => s.yNghia).toList();
+    final names = signs.map((s) => s.tenBien).toList();
+    final groups = signs.map((s) => s.nhomBien).toSet().toList();
+    final shapes = signs.map((s) => s.visualFeatures.shape).toSet().toList();
+    final backgrounds =
+        signs.map((s) => s.visualFeatures.background).toSet().toList();
+    final symbols = signs.map((s) => s.visualFeatures.symbol).toList();
+
+    for (final sign in signs) {
+      questions.add(_question(
+        id++,
+        'Biển ${sign.maBien} có ý nghĩa gì?',
+        sign.yNghia,
+        meanings,
+        'Theo dữ liệu biển báo, ${sign.maBien} là "${sign.tenBien}". ${sign.yNghia}',
+      ));
+      questions.add(_question(
+        id++,
+        'Biển ${sign.maBien} thuộc nhóm biển nào?',
+        sign.nhomBien,
+        groups,
+        '${sign.maBien} thuộc nhóm ${sign.nhomBien}.',
+      ));
+      questions.add(_question(
+        id++,
+        'Biển ${sign.maBien} có hình dạng và nền màu nào?',
+        '${sign.visualFeatures.shape} - ${sign.visualFeatures.background}',
+        shapes
+            .map((shape) => '$shape - ${sign.visualFeatures.background}')
+            .followedBy(backgrounds
+                .where((background) =>
+                    background != sign.visualFeatures.background)
+                .map((background) =>
+                    '${sign.visualFeatures.shape} - $background'))
+            .toList(),
+        'Biển ${sign.maBien} có dạng ${sign.visualFeatures.shape}, nền ${sign.visualFeatures.background}.',
+      ));
+      questions.add(_question(
+        id++,
+        'Ký hiệu chính trên biển ${sign.maBien} là gì?',
+        sign.visualFeatures.symbol,
+        symbols,
+        'Ký hiệu được mô tả là "${sign.visualFeatures.symbol}".',
+      ));
+      questions.add(_question(
+        id++,
+        'Tên đúng của biển ${sign.maBien} là gì?',
+        sign.tenBien,
+        names,
+        '${sign.maBien} có tên là "${sign.tenBien}".',
+      ));
+    }
+    return questions;
+  }
+
+  ExamQuestion _question(
+    int id,
+    String question,
+    String correct,
+    Iterable<String> pool,
+    String explanation,
+  ) {
+    final options = <String>[correct];
+    for (final value in pool) {
+      if (value != correct && value.isNotEmpty && !options.contains(value)) {
+        options.add(value);
+      }
+      if (options.length == 4) break;
+    }
+    while (options.length < 4) {
+      options.add('Thông tin khác');
+    }
+    options.shuffle();
+    return ExamQuestion(
+      id: id,
+      topicId: 1,
+      question: question,
+      options: options,
+      answer: options.indexOf(correct),
+      explanation: explanation,
+    );
   }
 
   Future<LearningData> loadLearningData() async {
@@ -62,7 +157,8 @@ class DataService {
     _defaultPosts = (map['defaultPosts'] as List<dynamic>? ?? const [])
         .map((e) => HandbookPost.fromJson(e as Map<String, dynamic>))
         .toList();
-    final commentsMap = map['defaultComments'] as Map<String, dynamic>? ?? const {};
+    final commentsMap =
+        map['defaultComments'] as Map<String, dynamic>? ?? const {};
     _defaultComments = commentsMap.map((key, value) => MapEntry(
           int.tryParse(key) ?? 0,
           (value as List<dynamic>)
@@ -77,15 +173,18 @@ class DataService {
     final q = _normalize(query);
     if (q.isEmpty) return all;
     return all.where((s) {
-      final haystack = _normalize('${s.maBien} ${s.tenBien} ${s.keywords} ${s.yNghia}');
+      final haystack =
+          _normalize('${s.maBien} ${s.tenBien} ${s.keywords} ${s.yNghia}');
       return haystack.contains(q);
     }).toList();
   }
 
   static String _normalize(String input) {
     var s = input.toLowerCase();
-    const from = 'àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ';
-    const to =   'aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyd';
+    const from =
+        'àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ';
+    const to =
+        'aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyd';
     for (var i = 0; i < from.length; i++) {
       s = s.replaceAll(from[i], to[i]);
     }
