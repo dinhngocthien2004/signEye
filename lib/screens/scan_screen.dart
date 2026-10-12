@@ -89,54 +89,6 @@ class _ScanScreenState extends State<ScanScreen> {
     );
   }
 
-  void _openApiKeySheet(BuildContext context, AppState state) {
-    final controller = TextEditingController(text: state.geminiApiKey);
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (ctx) => Padding(
-        padding: EdgeInsets.only(
-          left: 20,
-          right: 20,
-          top: 20,
-          bottom: MediaQuery.of(ctx).viewInsets.bottom + 20,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Gemini API Key',
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Dùng khóa này để gửi ảnh biển báo lên Gemini và nhận diện mã biển. Khóa chỉ lưu trên thiết bị của bạn.',
-              style: TextStyle(
-                  fontSize: 12.5, color: AppColors.text2, height: 1.5),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: controller,
-              decoration: const InputDecoration(hintText: 'AIza...'),
-            ),
-            const SizedBox(height: 14),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  state.setGeminiApiKey(controller.text.trim());
-                  Navigator.pop(ctx);
-                },
-                child: const Text('Lưu khóa'),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
@@ -172,37 +124,7 @@ class _ScanScreenState extends State<ScanScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 12),
-            if (state.geminiApiKey.isEmpty)
-              GestureDetector(
-                onTap: () => _openApiKeySheet(context, state),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: AppColors.warningSoft,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(Icons.info_outline_rounded,
-                          color: AppColors.warning, size: 18),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          'Chưa có Gemini API Key. Nhấn vào đây để nhập khóa và quét biển báo tự động.',
-                          style: TextStyle(
-                              fontSize: 12.5,
-                              color: AppColors.warning,
-                              height: 1.5),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            const SizedBox(height: 18),
+            const SizedBox(height: 16),
             AspectRatio(
               aspectRatio: 1,
               child: Container(
@@ -269,37 +191,25 @@ class _ScanScreenState extends State<ScanScreen> {
 
   Widget _buildResult(IdentifyResult result) {
     if (result.error != null) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(14),
-            decoration: BoxDecoration(
-                color: AppColors.warningSoft,
-                borderRadius: BorderRadius.circular(14)),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(Icons.info_outline_rounded,
-                    color: AppColors.warning),
-                const SizedBox(width: 10),
-                Expanded(
-                    child: Text(
-                  result.error!,
-                  style: const TextStyle(
-                      color: AppColors.warning, fontSize: 13, height: 1.4),
-                )),
-              ],
-            ),
-          ),
-          const SizedBox(height: 12),
-          ElevatedButton.icon(
-            onPressed: () =>
-                _openApiKeySheet(context, context.read<AppState>()),
-            icon: const Icon(Icons.key_rounded),
-            label: const Text('Nhập Gemini API Key'),
-          ),
-        ],
+      return Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+            color: AppColors.warningSoft,
+            borderRadius: BorderRadius.circular(14)),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Icons.info_outline_rounded,
+                color: AppColors.warning),
+            const SizedBox(width: 10),
+            Expanded(
+                child: Text(
+              result.error!,
+              style: const TextStyle(
+                  color: AppColors.warning, fontSize: 13, height: 1.4),
+            )),
+          ],
+        ),
       );
     }
     if (result.sign == null) {

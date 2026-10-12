@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/exam_models.dart';
 import '../models/handbook_models.dart';
 import 'remote_sync_service.dart';
+import 'sign_identify_service.dart';
 
 /// One entry in the "Lịch sử" (history) tab: a sign the user looked up,
 /// either via search or via the AI scan screen.
@@ -53,8 +54,7 @@ class AppState extends ChangeNotifier {
   static const _kGeminiKey = 'se_gemini_api_key';
   static const _kThemeDark = 'se_theme_dark';
 
-  static const String defaultGeminiApiKey =
-      String.fromEnvironment('GEMINI_API_KEY');
+  static String get defaultGeminiApiKey => SignIdentifyService.defaultApiKey;
 
   static const int freeDailyScanLimit = 5;
   static const int freeHistoryLimit = 10;
@@ -97,11 +97,14 @@ class AppState extends ChangeNotifier {
     }
 
     final savedGeminiKey = _prefs.getString(_kGeminiKey);
-    geminiApiKey = savedGeminiKey?.trim().isNotEmpty == true
-        ? savedGeminiKey!
-        : defaultGeminiApiKey;
-    if (savedGeminiKey == null || savedGeminiKey.trim().isEmpty) {
+    if (savedGeminiKey == null ||
+        savedGeminiKey.trim().isEmpty ||
+        (!savedGeminiKey.startsWith('AQ.') &&
+            !savedGeminiKey.startsWith('AIza'))) {
+      geminiApiKey = defaultGeminiApiKey;
       await _prefs.setString(_kGeminiKey, geminiApiKey);
+    } else {
+      geminiApiKey = savedGeminiKey.trim();
     }
 
     final historyRaw = _prefs.getString(_kHistory);
