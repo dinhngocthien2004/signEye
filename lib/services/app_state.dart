@@ -53,6 +53,8 @@ class AppState extends ChangeNotifier {
   static const _kPostLikes = 'se_post_likes';
   static const _kGeminiKey = 'se_gemini_api_key';
   static const _kThemeDark = 'se_theme_dark';
+  static const _kCoins = 'se_user_coins';
+  static const _kRewardBalance = 'se_user_reward_balance';
 
   static String get defaultGeminiApiKey => SignIdentifyService.defaultApiKey;
 
@@ -69,6 +71,12 @@ class AppState extends ChangeNotifier {
   bool isPro = false;
   DateTime? proExpiry;
   bool darkMode = false;
+
+  /// Game coin balance (xu nhận được khi chơi mini game)
+  int coins = 0;
+
+  /// Số dư tiền VNĐ đổi từ xu (1.000 xu = 1.000 VNĐ) để tích hợp mua gói Pro
+  int rewardBalance = 0;
 
   List<HistoryEntry> history = [];
   int scanCountToday = 0;
@@ -89,6 +97,8 @@ class AppState extends ChangeNotifier {
     userEmail = _prefs.getString(_kUserEmail) ?? '';
     isPro = _prefs.getBool(_kIsPro) ?? false;
     darkMode = _prefs.getBool(_kThemeDark) ?? false;
+    coins = _prefs.getInt(_kCoins) ?? 0;
+    rewardBalance = _prefs.getInt(_kRewardBalance) ?? 0;
     final expiryRaw = _prefs.getString(_kProExpiry);
     proExpiry = expiryRaw != null ? DateTime.tryParse(expiryRaw) : null;
     if (proExpiry != null && proExpiry!.isBefore(DateTime.now())) {
@@ -153,6 +163,12 @@ class AppState extends ChangeNotifier {
           .map((e) => int.tryParse(e) ?? -1)
           .where((e) => e >= 0)
           .toSet();
+    }
+
+    for (int i = 0; i < userPosts.length; i++) {
+      if (userPosts[i].likes > 0 && likedPostIds.contains(userPosts[i].id)) {
+        userPosts[i] = userPosts[i].copyWith(likes: 0);
+      }
     }
 
     _ready = true;
@@ -222,6 +238,62 @@ class AppState extends ChangeNotifier {
     await _prefs.setBool(_kIsPro, false);
     await _prefs.remove(_kProExpiry);
     notifyListeners();
+  }
+
+  // ───────────────────────── Game Coins & Pro Redemption ─────────────────────────
+
+  /// Cộng xu khi trả lời đúng trong minigame (mặc định +5 xu)
+  Future<void> addCoins(int amount) async {
+    if (amount <= 0) return;
+    coins += amount;
+    await _prefs.setInt(_kCoins, coins);
+    notifyListeners();
+  }
+
+  /// Đổi xu sang tiền VNĐ (1.000 xu = 1.000 VNĐ) để tích hợp mua gói Pro
+  Future<bool> exchangeCoinsToCash({int coinsToExchange = 1000}) async {
+    if (coins < coinsToExchange || coinsToExchange < 1000) return false;
+    final validAmount = (coinsToExchange ~/ 1000) * 1000;
+    if (validAmount <= 0 || coins < validAmount) return false;
+
+    coins -= validAmount;
+    rewardBalance += validAmount;
+    await _prefs.setInt(_kCoins, coins);
+    await _prefs.setInt(_kRewardBalance, rewardBalance);
+    notifyListeners();
+    return true;
+  }
+
+  /// Dùng số dư VNĐ thưởng để mua gói Pro
+  Future<bool> buyProWithRewardBalance({required int days, required int costVnd}) async {
+    if (rewardBalance < costVnd) return false;
+    rewardBalance -= costVnd;
+    isPro = true;
+    final base = (proExpiry != null && proExpiry!.isAfter(DateTime.now()))
+        ? proExpiry!
+        : DateTime.now();
+    proExpiry = base.add(Duration(days: days));
+    await _prefs.setInt(_kRewardBalance, rewardBalance);
+    await _prefs.setBool(_kIsPro, true);
+    await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
+    notifyListeners();
+    return true;
+  }
+
+  /// Dùng xu trực tiếp để đổi gói Pro
+  Future<bool> buyProWithCoins({required int days, required int costCoins}) async {
+    if (coins < costCoins) return false;
+    coins -= costCoins;
+    isPro = true;
+    final base = (proExpiry != null && proExpiry!.isAfter(DateTime.now()))
+        ? proExpiry!
+        : DateTime.now();
+    proExpiry = base.add(Duration(days: days));
+    await _prefs.setInt(_kCoins, coins);
+    await _prefs.setBool(_kIsPro, true);
+    await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
+    notifyListeners();
+    return true;
   }
 
   // ───────────────────────── Scan quota ─────────────────────────
@@ -308,19 +380,17 @@ class AppState extends ChangeNotifier {
     await _prefs.setString(_kUserComments, jsonEncode(map));
   }
 
+  bool isPostLiked(int postId) => likedPostIds.contains(postId);
+
+  int getPostLikes(HandbookPost post) {
+    return post.likes + (likedPostIds.contains(post.id) ? 1 : 0);
+  }
+
   Future<void> toggleLike(int postId) async {
     if (likedPostIds.contains(postId)) {
       likedPostIds.remove(postId);
     } else {
       likedPostIds.add(postId);
-    }
-    final idx = userPosts.indexWhere((p) => p.id == postId);
-    if (idx != -1) {
-      final liked = likedPostIds.contains(postId);
-      userPosts[idx] = userPosts[idx].copyWith(
-        likes: userPosts[idx].likes + (liked ? 1 : -1),
-      );
-      await _persistUserPosts();
     }
     await _prefs.setStringList(
         _kPostLikes, likedPostIds.map((e) => e.toString()).toList());

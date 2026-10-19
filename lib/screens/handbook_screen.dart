@@ -29,7 +29,9 @@ class _HandbookScreenState extends State<HandbookScreen> {
   @override
   void initState() {
     super.initState();
-    DataService.instance.loadDefaultHandbookPosts().then((p) => setState(() => _defaultPosts = p));
+    DataService.instance.loadDefaultHandbookPosts().then((p) {
+      if (mounted) setState(() => _defaultPosts = p);
+    });
   }
 
   List<HandbookPost> _allPosts(AppState state) {
@@ -126,10 +128,10 @@ class _HandbookScreenState extends State<HandbookScreen> {
       body: Column(
         children: [
           SizedBox(
-            height: 84,
+            height: 96,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               children: [
                 _categoryCard('📚', 'Tất cả', null),
                 ..._categories.entries.map((e) => _categoryCard(e.value.$1, e.value.$2, e.key)),
@@ -145,7 +147,8 @@ class _HandbookScreenState extends State<HandbookScreen> {
                     separatorBuilder: (_, __) => const SizedBox(height: 10),
                     itemBuilder: (context, i) {
                       final p = posts[i];
-                      final liked = state.likedPostIds.contains(p.id);
+                      final liked = state.isPostLiked(p.id);
+                      final likesCount = state.getPostLikes(p);
                       return InkWell(
                         borderRadius: BorderRadius.circular(14),
                         onTap: () => Navigator.of(context)
@@ -175,15 +178,22 @@ class _HandbookScreenState extends State<HandbookScreen> {
                                       style: const TextStyle(fontSize: 11, color: AppColors.muted)),
                                   const Spacer(),
                                   GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
                                     onTap: () => state.toggleLike(p.id),
-                                    child: Row(
-                                      children: [
-                                        Icon(liked ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                                            size: 16, color: liked ? AppColors.danger : AppColors.muted),
-                                        const SizedBox(width: 3),
-                                        Text('${p.likes}',
-                                            style: const TextStyle(fontSize: 11.5, color: AppColors.muted)),
-                                      ],
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                                      child: Row(
+                                        children: [
+                                          Icon(liked ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+                                              size: 16, color: liked ? AppColors.danger : AppColors.muted),
+                                          const SizedBox(width: 4),
+                                          Text('$likesCount',
+                                              style: TextStyle(
+                                                  fontSize: 11.5,
+                                                  fontWeight: liked ? FontWeight.w700 : FontWeight.normal,
+                                                  color: liked ? AppColors.danger : AppColors.muted)),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -207,8 +217,8 @@ class _HandbookScreenState extends State<HandbookScreen> {
       child: GestureDetector(
         onTap: () => setState(() => _category = key),
         child: Container(
-          width: 84,
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          width: 92,
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
           decoration: BoxDecoration(
             color: active ? AppColors.primaryPale : AppColors.surface,
             border: Border.all(color: active ? AppColors.primary : AppColors.line),
@@ -216,11 +226,14 @@ class _HandbookScreenState extends State<HandbookScreen> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Text(emoji, style: const TextStyle(fontSize: 20)),
-              const SizedBox(height: 4),
+              Text(emoji, style: const TextStyle(fontSize: 19)),
+              const SizedBox(height: 3),
               Text(label,
                   textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       fontSize: 10.5,
                       fontWeight: FontWeight.w700,

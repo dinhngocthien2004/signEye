@@ -6,6 +6,7 @@ import 'search_screen.dart';
 import 'scan_screen.dart';
 import 'history_screen.dart';
 import 'account_screen.dart';
+import 'chatbot_screen.dart';
 
 /// Hosts the 5 main screens behind the bottom nav bar, exactly like the
 /// `#bottomNav` in the original `index.html` (Trang chủ / Tra cứu / [Scan] /
@@ -31,11 +32,24 @@ class _RootShellState extends State<RootShell> {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ScanScreen()));
   }
 
+  void _openChatbot() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AiChatbotScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     // _index maps: 0 home, 1 search, 2 history, 3 account (scan opens a page)
     return Scaffold(
       body: IndexedStack(index: _index, children: _screens),
+      floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'chatbot_fab',
+        onPressed: _openChatbot,
+        backgroundColor: const Color(0xFF4F46E5),
+        foregroundColor: Colors.white,
+        elevation: 4,
+        icon: const Text('🤖', style: TextStyle(fontSize: 18)),
+        label: const Text('Chatbot AI', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13)),
+      ),
       bottomNavigationBar: SafeArea(
         child: Container(
           height: 72,

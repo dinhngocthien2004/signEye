@@ -69,33 +69,87 @@
   "defaultComments": {
     "1": [
       {
-        "author": "Nguyễn Văn A",
-        "content": "Bài viết rất hữu ích! Tôi đã đội mũ đúng cách từ hôm nay.",
-        "date": "2026-06-01T10:00:00.000Z"
+        "author": "Hoàng Long (Tài xế)",
+        "content": "Anh em chạy xe ôm công nghệ nên đầu tư nón 3/4 có kính chắn gió xịn. Đi đường xa hay trời mưa đỡ rát mặt, quai nón nhớ siết vừa khít 2 ngón tay chứ lỏng quá ngã là văng nón ngay.",
+        "date": "2026-06-01T10:15:00.000Z"
       },
       {
-        "author": "Trần Thị B",
-        "content": "Cảm ơn Admin, tôi sẽ chia sẻ cho bạn bè.",
-        "date": "2026-06-02T08:30:00.000Z"
+        "author": "Tuấn Anh (Kỹ thuật xe)",
+        "content": "Nhiều người hay mua mũ thời trang 50k vỉa hè đối phó CSGT, nhựa mỏng dính ấn nhẹ là móp. Lỡ va chạm không bảo vệ được gì đâu. Mọi người nên chọn loại có tem CR chuẩn và lớp xốp EPS dày dặn nhé.",
+        "date": "2026-06-01T14:30:00.000Z"
+      },
+      {
+        "author": "Minh Trang",
+        "content": "Hôm trước em bị va quẹt ở ngã tư Nguyễn Trãi, may mà có cái mũ fullface che hết cằm chứ không chắc trầy mặt rồi. Khuyên thật lòng các bạn đừng tiếc tiền mua nón chất lượng.",
+        "date": "2026-06-02T08:20:00.000Z"
+      }
+    ],
+    "2": [
+      {
+        "author": "Bác Ba Tài (Xe liên tỉnh)",
+        "content": "Lưu ý sống còn cho anh em: Khi xảy ra va chạm trên quốc lộ hay cao tốc, sau khi dừng xe phải đặt ngay tam giác phản quang cách xe tối thiểu 50-100m để cảnh báo từ xa, tránh bị xe sau tông dồn liên hoàn!",
+        "date": "2026-06-02T11:05:00.000Z"
+      },
+      {
+        "author": "Luật sư Quang Minh",
+        "content": "Rất chuẩn! Tuyệt đối không tự ý thỏa thuận dân sự nếu có người thương tích nặng. Dùng điện thoại quay video 360 độ hiện trường, chụp cận cảnh vệt phanh, vị trí va chạm trước khi có người can thiệp.",
+        "date": "2026-06-02T15:40:00.000Z"
+      },
+      {
+        "author": "Hữu Thắng",
+        "content": "Kinh nghiệm xương máu là luôn lắp camera hành trình trước sau. Lúc xảy ra tranh chấp ai đúng ai sai mở clip ra là rõ ràng nhất, đỡ mất công đôi co cãi vã.",
+        "date": "2026-06-03T07:50:00.000Z"
       }
     ],
     "3": [
       {
-        "author": "Lê Văn C",
-        "content": "Rất bổ ích, tôi mới bắt đầu đi cao tốc.",
-        "date": "2026-06-03T14:00:00.000Z"
+        "author": "Đức Thịnh (Lái xe dịch vụ)",
+        "content": "Cao tốc Dầu Giây - Phan Thiết mình hay chạy, sợ nhất mấy bác ôm làn trái chạy 60-70km/h làm cả đoàn xe phải vượt phải. Xin các bác nếu đi chậm thì chủ động nhường làn trái cho xe khác vượt theo luật!",
+        "date": "2026-06-03T11:20:00.000Z"
       },
       {
-        "author": "Phạm Thị D",
-        "content": "Nhớ luôn bật đèn báo khi chuyển làn nhé mọi người.",
-        "date": "2026-06-04T09:00:00.000Z"
+        "author": "Thành Nam",
+        "content": "Quy tắc 2 giây khi trời nắng, còn trời mưa hoặc sương mù thì phải tăng lên ít nhất 4-5 giây các bác nhé. Xe tải nặng phanh quán tính lớn lắm, giữ khoảng cách xa ra để kịp xử lý.",
+        "date": "2026-06-03T16:10:00.000Z"
+      },
+      {
+        "author": "Chị Ngọc Lan (Tài mới B2)",
+        "content": "Bài viết rất chuẩn. Lúc mới lấy bằng em sợ nhất lúc nhập làn cao tốc, may được thầy nhắc phải tăng tốc bắt kịp luồng xe rồi mới bật xi nhan nhập làn dứt khoát, chứ rà phanh dừng lại ở đường dẫn là cực kỳ nguy hiểm.",
+        "date": "2026-06-04T08:15:00.000Z"
       }
     ],
     "4": [
       {
-        "author": "Nguyễn Văn E",
-        "content": "Hôm qua tôi suýt té vì đường trơn, cảm ơn bài viết.",
-        "date": "2026-06-05T11:00:00.000Z"
+        "author": "Văn Hùng",
+        "content": "Mùa mưa này anh em kiểm tra rãnh gai lốp xe ngay nhé, mòn dưới vạch chỉ thị TWI thì thay gấp. Hôm trước xe mình bị hiện tượng trượt nước (aquaplaning) mất lái nhẹ ở tốc độ 70km/h, hú vía!",
+        "date": "2026-06-04T09:45:00.000Z"
+      },
+      {
+        "author": "Đình Trọng",
+        "content": "Đi trời mưa to nhớ bật đèn sương mù hoặc cốt, TUYỆT ĐỐI không bật đèn khẩn cấp (hazard) khi đang chạy bình thường vì làm xe sau không biết lúc nào mình rẽ hay phanh đâu.",
+        "date": "2026-06-04T13:30:00.000Z"
+      },
+      {
+        "author": "Thảo Vy",
+        "content": "Đường ngập ở Sài Gòn kinh nghiệm của em là về số thấp (số 1, 2 với xe số hoặc L với xe ga), giữ đều ga không nhả đột ngột để tránh nước hút vào ống pô.",
+        "date": "2026-06-05T08:10:00.000Z"
+      }
+    ],
+    "5": [
+      {
+        "author": "Quốc Cường (Tài Innova)",
+        "content": "Chạy đường trường cứ giữ đều ga tầm 60-80km/h ở cấp số cao nhất là xe ăn ít xăng nhất. Hạn chế phanh gấp rồi thốc ga lại, tập thói quen quan sát từ xa để thả trôi (coasting) đến đèn đỏ.",
+        "date": "2026-06-05T09:00:00.000Z"
+      },
+      {
+        "author": "Bác Hưng (Xe khách Bắc Nam)",
+        "content": "Lốp non hơi tăng lực cản lăn cực kỳ tốn xăng, cứ mỗi tuần kiểm tra áp suất lốp 1 lần lúc lốp nguội. Tiết kiệm được cả triệu tiền dầu mỗi tháng đấy anh em.",
+        "date": "2026-06-05T12:20:00.000Z"
+      },
+      {
+        "author": "Thanh Bình",
+        "content": "Bỏ bớt đồ đạc không cần thiết ở cốp xe sau đi nữa các bác, xe cứ cõng thêm 40-50kg đồ thừa là tốn thêm 2-3% nhiên liệu vô ích.",
+        "date": "2026-06-05T17:40:00.000Z"
       }
     ]
   }

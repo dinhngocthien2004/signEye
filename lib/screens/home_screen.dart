@@ -14,6 +14,9 @@ import 'compare_screen.dart';
 import 'handbook_screen.dart';
 import 'account_screen.dart';
 import 'history_screen.dart';
+import 'game_screen.dart';
+import 'puzzle_game_screen.dart';
+import 'chatbot_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -55,6 +58,37 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         actions: [
+          GestureDetector(
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const TrafficSignGameScreen())),
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFFEF3C7), Color(0xFFFDE68A)],
+                ),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: const Color(0xFFF59E0B)),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text('🪙', style: TextStyle(fontSize: 13)),
+                  const SizedBox(width: 4),
+                  Text(
+                    '${state.coins} xu',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFF92400E),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(width: 4),
           IconButton(
             icon: const Icon(Icons.person_outline_rounded),
             onPressed: () => Navigator.of(context)
@@ -132,6 +166,228 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ],
+            ),
+          ),
+          const SizedBox(height: 14),
+
+          // Chatbot AI Promotional Banner Card
+          InkWell(
+            borderRadius: BorderRadius.circular(18),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const AiChatbotScreen())),
+            child: Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFF0FDF4), Color(0xFFDCFCE7)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: const Color(0xFF86EFAC)),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF10B981), Color(0xFF059669)],
+                      ),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Center(
+                      child: Text('🤖', style: TextStyle(fontSize: 22)),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Text(
+                              'Trợ Lý AI Tra Cứu Biển Báo',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 13.5,
+                                color: Color(0xFF064E3B),
+                              ),
+                            ),
+                            SizedBox(width: 6),
+                            Text('⚡ Hỏi & gửi ảnh',
+                                style: TextStyle(
+                                    fontSize: 10.5,
+                                    fontWeight: FontWeight.w800,
+                                    color: Color(0xFF047857))),
+                          ],
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          'Hỗ trợ gửi hình ảnh tra cứu biển báo nhanh, chính xác & giải đáp luật giao thông 24/7.',
+                          style: TextStyle(
+                            fontSize: 11.5,
+                            color: const Color(0xFF065F46).withValues(alpha: 0.9),
+                            height: 1.3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(Icons.arrow_forward_ios_rounded,
+                      size: 14, color: Color(0xFF059669)),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+
+          // Puzzle Game card (> 20 mảnh ghép)
+          InkWell(
+            borderRadius: BorderRadius.circular(18),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const PuzzleGameScreen())),
+            child: Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFEEF2FF), Color(0xFFE0E7FF)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: const Color(0xFFC7D2FE)),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF6366F1), Color(0xFF4F46E5)],
+                      ),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Center(
+                      child: Text('🧩', style: TextStyle(fontSize: 22)),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Text(
+                              'Ghép Hình Biển Báo (25 mảnh)',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 13.5,
+                                color: Color(0xFF312E81),
+                              ),
+                            ),
+                            SizedBox(width: 6),
+                            Text('✨ +10 xu/hình',
+                                style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w800,
+                                    color: Color(0xFF4338CA))),
+                          ],
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          'Ghép đúng >20 mảnh ghép nhận ngay 10 xu & mở lời giải thích chi tiết. Đổi tiền mua Pro 1-2 tháng!',
+                          style: TextStyle(
+                            fontSize: 11.5,
+                            color: const Color(0xFF4338CA).withValues(alpha: 0.9),
+                            height: 1.3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(Icons.arrow_forward_ios_rounded,
+                      size: 14, color: Color(0xFF4F46E5)),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+
+          // Minigame promotional banner card
+          InkWell(
+            borderRadius: BorderRadius.circular(18),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const TrafficSignGameScreen())),
+            child: Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFFFFBEB), Color(0xFFFEF3C7)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: const Color(0xFFFDE68A)),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFFF59E0B), Color(0xFFD97706)],
+                      ),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Center(
+                      child: Text('🎮', style: TextStyle(fontSize: 22)),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Text(
+                              'Đố Vui Biển Báo',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 13.5,
+                                color: Color(0xFF78350F),
+                              ),
+                            ),
+                            SizedBox(width: 6),
+                            Text('🔥 +5 xu/câu',
+                                style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.deepOrange)),
+                          ],
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          'Chơi đoán biển báo tích lũy xu. Đạt 1.000 xu đổi sang 1.000đ mua Pro!',
+                          style: TextStyle(
+                            fontSize: 11.5,
+                            color: const Color(0xFF92400E).withValues(alpha: 0.9),
+                            height: 1.3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(Icons.arrow_forward_ios_rounded,
+                      size: 14, color: Color(0xFFD97706)),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 22),
@@ -259,11 +515,35 @@ class _HomeScreenState extends State<HomeScreen> {
             childAspectRatio: 0.92,
             children: [
               _moduleButton(
+                  '🤖',
+                  'Chatbot AI',
+                  'Hỏi & gửi ảnh',
+                  () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const AiChatbotScreen()))),
+              _moduleButton(
                   '📖',
                   'Học GPLX',
                   'Lưu tiến độ',
                   () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => const LearningScreen()))),
+              _moduleButton(
+                  '🧩',
+                  'Ghép hình',
+                  '+10 xu/hình',
+                  () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const PuzzleGameScreen()))),
+              _moduleButton(
+                  '🎮',
+                  'Đố vui',
+                  '+5 xu/câu',
+                  () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const TrafficSignGameScreen()))),
+              _moduleButton(
+                  '🚗',
+                  'Thi GPLX',
+                  'Có hình ảnh',
+                  () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const ExamHomeScreen()))),
               _moduleButton(
                   '⚖️',
                   'So sánh',
@@ -276,6 +556,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Mẹo lái xe',
                   () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => const HandbookScreen()))),
+              _moduleButton(
+                  '💎',
+                  'Đổi Pro',
+                  '1 - 2 tháng',
+                  () => showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (_) => const RedeemProSheet(),
+                      )),
               _moduleButton(
                   '🕘',
                   'Lịch sử',

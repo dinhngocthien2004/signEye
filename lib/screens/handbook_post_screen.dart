@@ -23,30 +23,38 @@ class _HandbookPostScreenState extends State<HandbookPostScreen> {
   void initState() {
     super.initState();
     DataService.instance.loadDefaultHandbookComments().then((map) {
-      setState(() => _defaultComments = map[widget.post.id] ?? []);
+      if (mounted) setState(() => _defaultComments = map[widget.post.id] ?? []);
     });
   }
 
   void _submitComment(AppState state) {
-    if (_commentCtrl.text.trim().isEmpty) return;
+    final text = _commentCtrl.text.trim();
+    if (text.isEmpty) return;
     state.addComment(
       widget.post.id,
       HandbookComment(
-        author: state.userName.isEmpty ? 'Bạn' : state.userName,
-        content: _commentCtrl.text.trim(),
+        author: state.userName.trim().isEmpty ? 'Bạn' : state.userName.trim(),
+        content: text,
         date: DateTime.now(),
       ),
     );
     _commentCtrl.clear();
     FocusScope.of(context).unfocus();
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Đã gửi bình luận'),
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
     final post = widget.post;
-    final liked = state.likedPostIds.contains(post.id);
+    final liked = state.isPostLiked(post.id);
     final currentPost = [...state.userPosts].firstWhere((p) => p.id == post.id, orElse: () => post);
+    final likesCount = state.getPostLikes(currentPost);
     final comments = [..._defaultComments, ...(state.userComments[post.id] ?? [])];
     final df = DateFormat('dd/MM/yyyy HH:mm');
 
@@ -92,15 +100,24 @@ class _HandbookPostScreenState extends State<HandbookPostScreen> {
                   ),
                 const SizedBox(height: 12),
                 InkWell(
+                  borderRadius: BorderRadius.circular(8),
                   onTap: () => state.toggleLike(currentPost.id),
-                  child: Row(
-                    children: [
-                      Icon(liked ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                          color: liked ? AppColors.danger : AppColors.muted, size: 20),
-                      const SizedBox(width: 6),
-                      Text('${currentPost.likes} lượt thích',
-                          style: const TextStyle(fontSize: 13, color: AppColors.text2)),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(liked ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+                            color: liked ? AppColors.danger : AppColors.muted, size: 20),
+                        const SizedBox(width: 6),
+                        Text('$likesCount lượt thích',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: liked ? FontWeight.w700 : FontWeight.w500,
+                              color: liked ? AppColors.danger : AppColors.text2,
+                            )),
+                      ],
+                    ),
                   ),
                 ),
                 const Divider(height: 32),
@@ -131,7 +148,14 @@ class _HandbookPostScreenState extends State<HandbookPostScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(c.author, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                                  Row(
+                                    children: [
+                                      Text(c.author, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                                      const SizedBox(width: 6),
+                                      Text('· ${df.format(c.date)}',
+                                          style: const TextStyle(color: AppColors.muted, fontSize: 11)),
+                                    ],
+                                  ),
                                   const SizedBox(height: 3),
                                   Text(c.content, style: const TextStyle(fontSize: 12.5, height: 1.4)),
                                 ],

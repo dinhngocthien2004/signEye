@@ -5,6 +5,7 @@ import '../services/data_service.dart';
 import '../theme.dart';
 import '../widgets/sign_card.dart';
 import '../widgets/sign_detail_sheet.dart';
+import 'chatbot_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   final String? initialGroup;
@@ -51,7 +52,18 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tra cứu biển báo')),
+      appBar: AppBar(
+        title: const Text('Tra cứu biển báo'),
+        actions: [
+          IconButton(
+            tooltip: 'Hỏi & gửi ảnh cho Chatbot AI',
+            icon: const Text('🤖', style: TextStyle(fontSize: 22)),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const AiChatbotScreen()),
+            ),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Padding(
@@ -94,12 +106,68 @@ class _SearchScreenState extends State<SearchScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 6),
+
+          // Chatbot AI Helper Banner
+          InkWell(
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const AiChatbotScreen()),
+            ),
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+              decoration: BoxDecoration(
+                color: const Color(0xFFEEF2FF),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: const Color(0xFFC7D2FE)),
+              ),
+              child: const Row(
+                children: [
+                  Text('🤖', style: TextStyle(fontSize: 16)),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Không rõ mã biển? Gửi ảnh vào Chatbot AI để nhận diện ngay!',
+                      style: TextStyle(
+                        fontSize: 11.5,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF4338CA),
+                      ),
+                    ),
+                  ),
+                  Icon(Icons.arrow_forward_ios_rounded, size: 11, color: Color(0xFF4338CA)),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
+
           Expanded(
             child: _filtered.isEmpty
-                ? const Center(
-                    child: Text('Không tìm thấy biển báo phù hợp',
-                        style: TextStyle(color: AppColors.muted)))
+                ? Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.search_off_rounded, size: 48, color: AppColors.muted),
+                          const SizedBox(height: 10),
+                          const Text(
+                            'Không tìm thấy biển báo phù hợp',
+                            style: TextStyle(color: AppColors.muted, fontWeight: FontWeight.w700),
+                          ),
+                          const SizedBox(height: 14),
+                          ElevatedButton.icon(
+                            onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(builder: (_) => const AiChatbotScreen()),
+                            ),
+                            icon: const Text('🤖', style: TextStyle(fontSize: 16)),
+                            label: const Text('Gửi ảnh hoặc hỏi Chatbot AI'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 : ListView.separated(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
                     itemCount: _filtered.length,

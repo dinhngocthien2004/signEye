@@ -10,6 +10,7 @@ import '../services/sign_identify_service.dart';
 import '../services/tts_service.dart';
 import '../theme.dart';
 import '../widgets/sign_detail_sheet.dart';
+import 'chatbot_screen.dart';
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});
@@ -93,7 +94,18 @@ class _ScanScreenState extends State<ScanScreen> {
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
     return Scaffold(
-      appBar: AppBar(title: const Text('Quét biển báo')),
+      appBar: AppBar(
+        title: const Text('Quét biển báo'),
+        actions: [
+          IconButton(
+            tooltip: 'Hỏi & gửi ảnh cho Chatbot AI',
+            icon: const Text('🤖', style: TextStyle(fontSize: 22)),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const AiChatbotScreen()),
+            ),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -253,10 +265,29 @@ class _ScanScreenState extends State<ScanScreen> {
               style: const TextStyle(
                   color: AppColors.text2, fontSize: 13, height: 1.4)),
           const SizedBox(height: 12),
-          ElevatedButton(
-            onPressed: () => showSignDetailSheet(context, sign,
-                allSigns: _allSigns, source: 'scan'),
-            child: const Text('Xem chi tiết mức phạt'),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () => showSignDetailSheet(context, sign,
+                      allSigns: _allSigns, source: 'scan'),
+                  child: const Text('Xem chi tiết mức phạt'),
+                ),
+              ),
+              const SizedBox(width: 8),
+              OutlinedButton.icon(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => AiChatbotScreen(
+                      initialPrompt:
+                          'Hãy giải thích chi tiết quy định và mức phạt của biển ${sign.maBien}: ${sign.tenBien}',
+                    ),
+                  ),
+                ),
+                icon: const Text('🤖', style: TextStyle(fontSize: 16)),
+                label: const Text('Hỏi AI'),
+              ),
+            ],
           ),
         ],
       ),
