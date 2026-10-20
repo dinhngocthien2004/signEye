@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/exam_models.dart';
 import '../models/handbook_models.dart';
 import 'remote_sync_service.dart';
+import 'payment_api.dart';
 import 'sign_identify_service.dart';
 
 /// One entry in the "Lịch sử" (history) tab: a sign the user looked up,
@@ -92,10 +93,10 @@ class AppState extends ChangeNotifier {
 
   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
-    isLoggedIn = _prefs.getBool(_kLoggedIn) ?? false;
+    isLoggedIn = false; // No persisted authenticated session: login required after restart.
     userName = _prefs.getString(_kUserName) ?? '';
     userEmail = _prefs.getString(_kUserEmail) ?? '';
-    isPro = _prefs.getBool(_kIsPro) ?? false;
+    isPro = false; // Server is authoritative.
     darkMode = _prefs.getBool(_kThemeDark) ?? false;
     coins = _prefs.getInt(_kCoins) ?? 0;
     rewardBalance = _prefs.getInt(_kRewardBalance) ?? 0;
@@ -206,7 +207,10 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> logout() async {
+    try { await PaymentApi.logout(); } catch (_) {}
     isLoggedIn = false;
+    isPro = false;
+    proExpiry = null;
     await _prefs.setBool(_kLoggedIn, false);
     notifyListeners();
   }
@@ -223,13 +227,22 @@ class AppState extends ChangeNotifier {
   // and must be backed by a real payment gateway + server-side subscription
   // check before being used commercially.
 
-  Future<void> upgradeToPro({required bool yearly}) async {
-    isPro = true;
-    proExpiry = DateTime.now()
-        .add(yearly ? const Duration(days: 365) : const Duration(days: 30));
-    await _prefs.setBool(_kIsPro, true);
-    await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
+  Future<void> syncSubscription() async {
+    final data=await PaymentApi.me();
+    final raw=data['pro_expiry'] as String?;
+    proExpiry=raw==null?null:DateTime.tryParse(raw);
+    isPro=proExpiry!=null && proExpiry!.isAfter(DateTime.now());
     notifyListeners();
+  }
+
+  Future<void> upgradeToPro({required bool yearly}) async {
+    // Direct client-side Pro upgrades are prohibited.
+    await syncSubscription();
+  }
+
+  /// Apply only the expiry returned by the server for an approved order.
+  Future<void> applyApprovedPro(DateTime expiry) async {
+    await syncSubscription();
   }
 
   Future<void> cancelPro() async {
@@ -265,36 +278,8 @@ class AppState extends ChangeNotifier {
   }
 
   /// Dùng số dư VNĐ thưởng để mua gói Pro
-  Future<bool> buyProWithRewardBalance({required int days, required int costVnd}) async {
-    if (rewardBalance < costVnd) return false;
-    rewardBalance -= costVnd;
-    isPro = true;
-    final base = (proExpiry != null && proExpiry!.isAfter(DateTime.now()))
-        ? proExpiry!
-        : DateTime.now();
-    proExpiry = base.add(Duration(days: days));
-    await _prefs.setInt(_kRewardBalance, rewardBalance);
-    await _prefs.setBool(_kIsPro, true);
-    await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
-    notifyListeners();
-    return true;
-  }
-
-  /// Dùng xu trực tiếp để đổi gói Pro
-  Future<bool> buyProWithCoins({required int days, required int costCoins}) async {
-    if (coins < costCoins) return false;
-    coins -= costCoins;
-    isPro = true;
-    final base = (proExpiry != null && proExpiry!.isAfter(DateTime.now()))
-        ? proExpiry!
-        : DateTime.now();
-    proExpiry = base.add(Duration(days: days));
-    await _prefs.setInt(_kCoins, coins);
-    await _prefs.setBool(_kIsPro, true);
-    await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
-    notifyListeners();
-    return true;
-  }
+  Future<bool> buyProWithRewardBalance({required int days, required int costVnd}) async => false;
+  Future<bool> buyProWithCoins({required int days, required int costCoins}) async => false;
 
   // ───────────────────────── Scan quota ─────────────────────────
 
