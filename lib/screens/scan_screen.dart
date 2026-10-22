@@ -1,4 +1,3 @@
-import '../services/payment_api.dart';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -34,6 +33,10 @@ class _ScanScreenState extends State<ScanScreen> {
 
   Future<void> _pick(ImageSource source) async {
     final state = context.read<AppState>();
+    if (!state.canScan) {
+      _showUpsell();
+      return;
+    }
     if (_allSigns.isEmpty) {
       final signs = await DataService.instance.loadSigns();
       if (!mounted) return;
@@ -43,16 +46,6 @@ class _ScanScreenState extends State<ScanScreen> {
     final file = await picker.pickImage(
         source: source, maxWidth: 1280, imageQuality: 85);
     if (file == null) return;
-    // A local isPro flag is never sufficient to authorize a paid operation.
-    // Fail closed if the backend cannot authenticate or authorize this scan.
-    try {
-      await PaymentApi.consumeScan();
-      await state.syncSubscription();
-    } catch (_) {
-      if (!mounted) return;
-      _showUpsell();
-      return;
-    }
     final bytes = await file.readAsBytes();
     setState(() {
       _pickedBytes = bytes;
@@ -66,7 +59,7 @@ class _ScanScreenState extends State<ScanScreen> {
       catalog: _allSigns,
     );
     if (!mounted) return;
-    // The scan allowance has already been consumed atomically by the API.
+    await state.recordScan();
     setState(() {
       _result = result;
       _loading = false;
