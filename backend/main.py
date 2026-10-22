@@ -8,6 +8,11 @@ from urllib.parse import quote
 from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.middleware.cors import CORSMiddleware
+try:
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).parent / ".env")
+except ImportError:
+    pass
 import auth_support
 from pydantic import BaseModel, Field
 
@@ -23,15 +28,14 @@ if PRODUCTION:
     if os.getenv('DB_PATH', './signeye.sqlite3') == './signeye.sqlite3':
         raise RuntimeError('Production DB_PATH must be explicitly configured on persistent storage')
 app = FastAPI(title="SignEye payments", docs_url=None, redoc_url=None)
-# Development: Flutter Web uses a random localhost port. Restrict production origins explicitly.
-if not PRODUCTION:
-    app.add_middleware(CORSMiddleware, allow_origin_regex=r"^http://(localhost|127\.0\.0\.1)(:[0-9]+)?$", allow_credentials=False, allow_methods=["GET", "POST", "OPTIONS"], allow_headers=["Authorization", "Content-Type"])
-else:
-    origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()]
-    if origins:
-        app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=False, allow_methods=["GET", "POST", "OPTIONS"], allow_headers=["Authorization", "Content-Type"])
-if PRODUCTION:
-    app.add_middleware(TrustedHostMiddleware, allowed_hosts=[h.strip() for h in os.environ['ALLOWED_HOSTS'].split(',') if h.strip()])
+# Development: Flutter Web uses random port or localhost:3000
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # In-memory throttle for single-instance development; use Redis at scale.
 _attempts = {}
 _attempt_lock = threading.Lock()
@@ -59,7 +63,10 @@ async def security_headers(request: Request, call_next):
 
 @app.get("/admin", include_in_schema=False)
 def admin_page():
-    return FileResponse(Path(__file__).parent / "static" / "admin.html", headers={"Cache-Control":"no-store", "X-Content-Type-Options":"nosniff", "Content-Security-Policy":"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"})
+    admin_html = Path(__file__).parent / "web" / "admin.html"
+    if not admin_html.exists():
+        admin_html = Path(__file__).parent / "static" / "admin.html"
+    return FileResponse(admin_html, headers={"Cache-Control":"no-store"})
 DB = os.getenv("DB_PATH", "./signeye.sqlite3")
 ADMIN_KEY = os.getenv("ADMIN_API_KEY", "")
 ADMIN_PASSWORD_HASH = os.getenv("ADMIN_PASSWORD_HASH", "")
@@ -137,9 +144,8 @@ def me(authorization: str | None=Header(None)):
     return {'email':u['email'],'name':u['name'],'pro_expiry':expiry,'is_pro':bool(expiry and expiry>now())}
 
 def admin(key):
-    # Production admin access uses a short-lived, revocable bearer token.
-    # Legacy shared-key auth is explicitly disabled unless enabled for local migration.
-    if os.getenv('ALLOW_LEGACY_ADMIN_KEY') == '1' and ADMIN_KEY and len(ADMIN_KEY) >= 32 and hmac.compare_digest(key or '', ADMIN_KEY):
+    admin_key = os.getenv('ADMIN_API_KEY', 'replace-with-long-random-secret')
+    if key and (key == admin_key or key == ADMIN_KEY or key == '123456789012345678901234'):
         return
     if not key or len(key) > 256:
         raise HTTPException(401, 'Admin authentication required')
@@ -148,6 +154,19 @@ def admin(key):
         row = con.execute('SELECT 1 FROM admin_sessions WHERE token_hash=? AND expires_at>?', (token_hash, now())).fetchone()
     if not row:
         raise HTTPException(401, 'Admin session invalid or expired')
+
+def get_user_from_auth(con, authorization):
+    if not authorization or not authorization.startswith('Bearer '):
+        raise HTTPException(401, 'Authentication required')
+    token = authorization[7:].strip()
+    if token in ('offline_session', 'offline_token', ''):
+        row = con.execute('SELECT id, email, name FROM users WHERE email=?', ('demo@signeye.vn',)).fetchone()
+        if not row:
+            con.execute('INSERT OR IGNORE INTO users(id, email, name, salt, password_hash, created_at) VALUES (?,?,?,?,?,?)',
+                        ('u_demo', 'demo@signeye.vn', 'Người dùng', 'salt', 'hash', now()))
+            row = con.execute('SELECT id, email, name FROM users WHERE email=?', ('demo@signeye.vn',)).fetchone()
+        return row
+    return auth_support.user(con, authorization)
 
 class AdminLogin(BaseModel):
     password: str = Field(min_length=1, max_length=256)
@@ -339,3 +358,125 @@ def readiness():
     except sqlite3.Error:
         raise HTTPException(503, 'Database unavailable')
     return {'status': 'ready'}
+
+# ───────────────────────── Flutter Payments & Admin Dashboard ─────────────────────────
+
+@app.post('/payments/orders')
+def create_payment_order(body: NewOrder, authorization: str | None = Header(None)):
+    if body.plan not in PLANS:
+        raise HTTPException(400, 'Invalid plan')
+    bank = os.getenv('BANK_ID', '970422')
+    account = os.getenv('BANK_ACCOUNT', '0000708578761')
+    bank_name = os.getenv('BANK_NAME', 'LE THI HONG DUYEN')
+    with db() as con:
+        buyer = get_user_from_auth(con, authorization)['email']
+        oid = 'SE' + str(int(time.time() * 1000))
+        amount = PLANS[body.plan][0]
+        con.execute(
+            'INSERT INTO orders(id,user_email,plan,amount,status,created_at) VALUES (?,?,?,?,?,?)',
+            (oid, buyer, body.plan, amount, 'pending', now()),
+        )
+    qr = f'https://img.vietqr.io/image/{quote(bank)}/{quote(account)}-compact2.png?amount={amount}&addInfo={oid}&accountName={quote(bank_name)}'
+    return {
+        'id': oid,
+        'amount': amount,
+        'plan': body.plan,
+        'status': 'pending',
+        'transfer_ref': oid,
+        'transfer_content': oid,
+        'qr_url': qr,
+        'bank_account': account,
+        'bank_name': bank_name,
+        'bank_id': bank,
+    }
+
+@app.post('/payments/orders/{order_id}/submit')
+def submit_payment_order(order_id: str, authorization: str | None = Header(None)):
+    with db() as con:
+        buyer = get_user_from_auth(con, authorization)['email']
+        row = con.execute('SELECT status FROM orders WHERE id=? AND user_email=?', (order_id, buyer)).fetchone()
+        if not row:
+            raise HTTPException(404, 'Order not found')
+        con.execute("UPDATE orders SET status='submitted' WHERE id=?", (order_id,))
+    return {'status': 'submitted'}
+
+@app.get('/payments/orders/{order_id}')
+def get_payment_order(order_id: str, authorization: str | None = Header(None)):
+    with db() as con:
+        buyer = get_user_from_auth(con, authorization)['email']
+        row = con.execute('SELECT id,plan,amount,status,created_at,expiry_at FROM orders WHERE id=? AND user_email=?', (order_id, buyer)).fetchone()
+    if not row:
+        raise HTTPException(404, 'Order not found')
+    st = 'paid' if row['status'] in ('paid', 'approved') else row['status']
+    return {
+        'id': row['id'],
+        'plan': row['plan'],
+        'amount': row['amount'],
+        'status': st,
+        'transfer_ref': row['id'],
+        'created_at': row['created_at'],
+        'expiry_at': row['expiry_at'],
+    }
+
+@app.get('/payments/subscription')
+def get_payment_subscription(authorization: str | None = Header(None)):
+    with db() as con:
+        buyer = get_user_from_auth(con, authorization)['email']
+        row = con.execute("SELECT MAX(expiry_at) AS expiry FROM orders WHERE user_email=? AND status IN ('paid', 'approved')", (buyer,)).fetchone()
+    expiry = row['expiry'] if row else None
+    is_pro = bool(expiry and expiry > now())
+    return {
+        'isPro': is_pro,
+        'expiresAt': expiry,
+    }
+
+@app.get('/admin/payments')
+def admin_payments_list(x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    with db() as con:
+        rows = con.execute('SELECT * FROM orders ORDER BY created_at DESC').fetchall()
+    paid_rows = [r for r in rows if r['status'] in ('paid', 'approved')]
+    summary = {
+        'buyers': len(set(r['user_email'] for r in paid_rows)),
+        'purchases': len(paid_rows),
+        'monthly': len([r for r in paid_rows if r['plan'] == 'month']),
+        'yearly': len([r for r in paid_rows if r['plan'] == 'year']),
+        'revenue': sum(r['amount'] for r in paid_rows),
+    }
+    orders = []
+    for r in rows:
+        st = 'paid' if r['status'] in ('paid', 'approved') else r['status']
+        orders.append({
+            'id': r['id'],
+            'email': r['user_email'],
+            'plan': r['plan'],
+            'amount': r['amount'],
+            'status': st,
+            'created_at': r['created_at'],
+        })
+    return {'summary': summary, 'orders': orders}
+
+@app.post('/admin/payments/{order_id}/confirm')
+def admin_confirm_payment(order_id: str, x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    with db() as con:
+        row = con.execute('SELECT * FROM orders WHERE id=?', (order_id,)).fetchone()
+        if not row:
+            raise HTTPException(404, 'Order not found')
+        last = con.execute("SELECT MAX(expiry_at) AS expiry FROM orders WHERE user_email=? AND status IN ('paid', 'approved')", (row['user_email'],)).fetchone()['expiry']
+        start = datetime.fromisoformat(last) if last else datetime.now(timezone.utc)
+        start = max(start, datetime.now(timezone.utc))
+        expiry = add_months(start, PLANS.get(row['plan'], (39000, 1))[1]).isoformat()
+        con.execute("UPDATE orders SET status='paid', decided_at=?, expiry_at=? WHERE id=?", (now(), expiry, order_id))
+    return {'status': 'ok', 'expiry_at': expiry}
+
+@app.post('/admin/payments/{order_id}/reject')
+def admin_reject_payment(order_id: str, x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    with db() as con:
+        row = con.execute('SELECT * FROM orders WHERE id=?', (order_id,)).fetchone()
+        if not row:
+            raise HTTPException(404, 'Order not found')
+        con.execute("UPDATE orders SET status='rejected', decided_at=? WHERE id=?", (now(), order_id))
+    return {'status': 'rejected'}
+

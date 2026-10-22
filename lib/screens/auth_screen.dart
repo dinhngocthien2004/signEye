@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../services/app_state.dart';
-import '../services/payment_api.dart';
 import '../theme.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -27,19 +26,11 @@ class _AuthScreenState extends State<AuthScreen> {
     super.dispose();
   }
 
-  bool busy = false;
-  String? error;
   Future<void> _submit() async {
-    if (!_formKey.currentState!.validate() || busy) return;
-    setState(() { busy=true; error=null; });
-    try {
-      final data=await PaymentApi.authenticate(_emailCtrl.text.trim(),_passCtrl.text,name:isLoginTab?null:_nameCtrl.text.trim());
-      PaymentApi.token=data['token'] as String;
-      if(!mounted)return;
-      await context.read<AppState>().login(name:data['name'] as String,email:data['email'] as String);
-      await context.read<AppState>().syncSubscription();
-    } catch (e) { if(mounted)setState(()=>error='Không thể đăng nhập/đăng ký: $e'); }
-    finally { if(mounted)setState(()=>busy=false); }
+    if (!_formKey.currentState!.validate()) return;
+    final state = context.read<AppState>();
+    final name = isLoginTab ? _emailCtrl.text.split('@').first : _nameCtrl.text;
+    try { await state.login(name: name, email: _emailCtrl.text, password: _passCtrl.text, register: !isLoginTab); } catch (e) { if(mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text(e.toString()))); }
   }
 
   @override
@@ -151,16 +142,15 @@ class _AuthScreenState extends State<AuthScreen> {
                         controller: _passCtrl,
                         obscureText: true,
                         decoration: const InputDecoration(hintText: '••••••••'),
-                        validator: (v) => (v == null || v.length < 10)
-                            ? 'Mật khẩu tối thiểu 10 ký tự'
+                        validator: (v) => (v == null || v.length < 4)
+                            ? 'Mật khẩu tối thiểu 4 ký tự'
                             : null,
                       ),
-                      if(error!=null) Text(error!,style:const TextStyle(color:Colors.red)),
                       const SizedBox(height: 22),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: busy ? null : _submit,
+                          onPressed: _submit,
                           child:
                               Text(isLoginTab ? 'Đăng nhập' : 'Tạo tài khoản'),
                         ),
@@ -168,7 +158,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       const SizedBox(height: 10),
                       Center(
                         child: Text(
-                          'Tài khoản được xác thực qua máy chủ SignEye',
+                          'Dữ liệu tài khoản được lưu trên thiết bị (bản demo)',
                           style:
                               TextStyle(color: AppColors.muted, fontSize: 12),
                         ),

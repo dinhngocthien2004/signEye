@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   postgres: ^2.6.1
+  crypto: ^3.0.6
   shelf: ^1.4.0
   shelf_router: ^1.1.0
 

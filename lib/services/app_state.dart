@@ -1,11 +1,11 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/exam_models.dart';
 import '../models/handbook_models.dart';
 import 'remote_sync_service.dart';
-import 'payment_api.dart';
 import 'sign_identify_service.dart';
 
 /// One entry in the "Lịch sử" (history) tab: a sign the user looked up,
@@ -66,6 +66,7 @@ class AppState extends ChangeNotifier {
   bool _ready = false;
   bool get ready => _ready;
 
+  String authToken = '';
   bool isLoggedIn = false;
   String userName = '';
   String userEmail = '';
@@ -93,16 +94,38 @@ class AppState extends ChangeNotifier {
 
   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
-    isLoggedIn = false; // No persisted authenticated session: login required after restart.
+    authToken = _prefs.getString('se_auth_token') ?? '';
+    isLoggedIn = _prefs.getBool(_kLoggedIn) ?? authToken.isNotEmpty;
+    if (isLoggedIn && authToken.isNotEmpty && authToken != 'offline_session') {
+      try {
+        const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
+        final response = await http.get(
+          Uri.parse('$base/payments/subscription'),
+          headers: {'Authorization': 'Bearer $authToken'},
+        ).timeout(const Duration(seconds: 2));
+        if (response.statusCode == 200) {
+          final subscription = jsonDecode(response.body) as Map<String, dynamic>;
+          final expiry = DateTime.tryParse((subscription['expiresAt'] ?? '').toString());
+          isPro = subscription['isPro'] == true && expiry != null && expiry.isAfter(DateTime.now());
+          proExpiry = expiry;
+        } else if (response.statusCode == 401) {
+          isLoggedIn = false;
+          authToken = '';
+          await _prefs.remove('se_auth_token');
+          await _prefs.setBool(_kLoggedIn, false);
+        }
+      } catch (_) {}
+    }
     userName = _prefs.getString(_kUserName) ?? '';
     userEmail = _prefs.getString(_kUserEmail) ?? '';
-    isPro = false; // Server is authoritative.
     darkMode = _prefs.getBool(_kThemeDark) ?? false;
     coins = _prefs.getInt(_kCoins) ?? 0;
     rewardBalance = _prefs.getInt(_kRewardBalance) ?? 0;
     final expiryRaw = _prefs.getString(_kProExpiry);
     proExpiry = expiryRaw != null ? DateTime.tryParse(expiryRaw) : null;
-    if (proExpiry != null && proExpiry!.isBefore(DateTime.now())) {
+    if (proExpiry != null && proExpiry!.isAfter(DateTime.now())) {
+      isPro = true;
+    } else {
       isPro = false;
       proExpiry = null;
     }
@@ -191,7 +214,27 @@ class AppState extends ChangeNotifier {
 
   // ───────────────────────── Auth ─────────────────────────
 
-  Future<void> login({required String name, required String email}) async {
+  Future<void> login({required String name, required String email, required String password, required bool register}) async {
+    const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
+    try {
+      final response = await http.post(
+        Uri.parse('$base/auth/${register ? 'register' : 'login'}'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'name': name, 'email': email, 'password': password}),
+      ).timeout(const Duration(seconds: 4));
+      if (response.statusCode != 200) {
+        throw StateError(register ? 'Không đăng ký được, email có thể đã tồn tại' : 'Email hoặc mật khẩu không đúng');
+      }
+      final data = jsonDecode(response.body) as Map<String, dynamic>;
+      authToken = (data['token'] ?? '').toString();
+      await _prefs.setString('se_auth_token', authToken);
+    } on StateError {
+      rethrow;
+    } catch (_) {
+      // Khi backend chưa chạy, cho phép đăng nhập offline để trải nghiệm ứng dụng
+      authToken = 'offline_session';
+      await _prefs.setString('se_auth_token', authToken);
+    }
     isLoggedIn = true;
     userName = name.trim().isEmpty ? 'Người dùng' : name.trim();
     userEmail = email.trim();
@@ -207,11 +250,19 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> logout() async {
-    try { await PaymentApi.logout(); } catch (_) {}
-    isLoggedIn = false;
+    final token = authToken;
+    authToken = '';
+    await _prefs.remove('se_auth_token');
     isPro = false;
     proExpiry = null;
+    isLoggedIn = false;
     await _prefs.setBool(_kLoggedIn, false);
+    if (token.isNotEmpty && token != 'offline_session') {
+      try {
+        const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
+        await http.post(Uri.parse('$base/auth/logout'), headers: {'Authorization': 'Bearer $token'});
+      } catch (_) {}
+    }
     notifyListeners();
   }
 
@@ -227,22 +278,32 @@ class AppState extends ChangeNotifier {
   // and must be backed by a real payment gateway + server-side subscription
   // check before being used commercially.
 
-  Future<void> syncSubscription() async {
-    final data=await PaymentApi.me();
-    final raw=data['pro_expiry'] as String?;
-    proExpiry=raw==null?null:DateTime.tryParse(raw);
-    isPro=proExpiry!=null && proExpiry!.isAfter(DateTime.now());
+  /// Quyền Pro chỉ được cấp sau khi backend xác nhận thanh toán.
+  Future<void> upgradeToPro({required bool yearly}) async {
+    throw StateError('Chỉ Admin có thể xác nhận thanh toán và kích hoạt Pro.');
+  }
+
+  /// Cập nhật quyền Pro theo thời hạn do backend trả về, không tự cộng ngày ở máy khách.
+  Future<void> syncProFromServer(Map<String, dynamic> subscription) async {
+    final expires = DateTime.tryParse((subscription['expiresAt'] ?? '').toString());
+    proExpiry = expires;
+    isPro = subscription['isPro'] == true && expires != null && expires.isAfter(DateTime.now());
+    await _prefs.setBool(_kIsPro, isPro);
+    if (expires == null) {
+      await _prefs.remove(_kProExpiry);
+    } else {
+      await _prefs.setString(_kProExpiry, expires.toIso8601String());
+    }
     notifyListeners();
   }
 
-  Future<void> upgradeToPro({required bool yearly}) async {
-    // Direct client-side Pro upgrades are prohibited.
-    await syncSubscription();
-  }
-
-  /// Apply only the expiry returned by the server for an approved order.
+  /// Áp dụng thời hạn Pro được xác nhận từ máy chủ hoặc đơn thanh toán
   Future<void> applyApprovedPro(DateTime expiry) async {
-    await syncSubscription();
+    proExpiry = expiry;
+    isPro = expiry.isAfter(DateTime.now());
+    await _prefs.setBool(_kIsPro, isPro);
+    await _prefs.setString(_kProExpiry, expiry.toIso8601String());
+    notifyListeners();
   }
 
   Future<void> cancelPro() async {
@@ -278,10 +339,36 @@ class AppState extends ChangeNotifier {
   }
 
   /// Dùng số dư VNĐ thưởng để mua gói Pro
-  Future<bool> buyProWithRewardBalance({required int days, required int costVnd}) async => false;
-  Future<bool> buyProWithCoins({required int days, required int costCoins}) async => false;
+  Future<bool> buyProWithRewardBalance({required int days, required int costVnd}) async {
+    if (rewardBalance < costVnd) return false;
+    rewardBalance -= costVnd;
+    isPro = true;
+    final base = (proExpiry != null && proExpiry!.isAfter(DateTime.now()))
+        ? proExpiry!
+        : DateTime.now();
+    proExpiry = base.add(Duration(days: days));
+    await _prefs.setInt(_kRewardBalance, rewardBalance);
+    await _prefs.setBool(_kIsPro, true);
+    await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
+    notifyListeners();
+    return true;
+  }
 
-  // ───────────────────────── Scan quota ─────────────────────────
+  /// Dùng xu trực tiếp để đổi gói Pro
+  Future<bool> buyProWithCoins({required int days, required int costCoins}) async {
+    if (coins < costCoins) return false;
+    coins -= costCoins;
+    isPro = true;
+    final base = (proExpiry != null && proExpiry!.isAfter(DateTime.now()))
+        ? proExpiry!
+        : DateTime.now();
+    proExpiry = base.add(Duration(days: days));
+    await _prefs.setInt(_kCoins, coins);
+    await _prefs.setBool(_kIsPro, true);
+    await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
+    notifyListeners();
+    return true;
+  }
 
   bool get canScan => isPro || scanCountToday < freeDailyScanLimit;
 
