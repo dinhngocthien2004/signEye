@@ -152,6 +152,19 @@ Future<void> main() async {
           ? Response.ok(jsonEncode({'status': 'rejected'}), headers: {'Content-Type': 'application/json'})
           : Response(409, body: 'Đơn không ở trạng thái chờ duyệt');
     })
+    ..post('/admin/grant-pro', (Request request) async {
+      if (!await _isAdmin(request, db)) return Response.forbidden('Unauthorized');
+      final payload = await _readJson(request);
+      if (payload == null) return Response(400, body: 'Invalid JSON payload');
+      final username = (payload['username'] ?? payload['email'] ?? '').toString().trim();
+      final plan = (payload['plan'] ?? 'month').toString();
+      if (username.isEmpty) return Response(400, body: 'Username hoặc email không được để trống');
+      final ok = await db.grantProToUser(username, plan: plan);
+      return Response.ok(
+        jsonEncode({'status': 'ok', 'message': 'Đã cấp Pro thành công cho $username'}),
+        headers: {'Content-Type': 'application/json'},
+      );
+    })
     ..get('/history', (Request request) async {
       if (!await _isAdmin(request, db)) return Response.forbidden('Unauthorized');
       final rows = await db.getHistory();

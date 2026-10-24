@@ -391,6 +391,35 @@ class SignEyeDatabase {
     );
   }
 
+  Future<bool> grantProToUser(String usernameOrEmail, {String plan = 'month'}) async {
+    final clean = usernameOrEmail.trim().toLowerCase();
+    final rows = await _connection.query(
+      """UPDATE users SET pro_expires_at =
+         GREATEST(COALESCE(pro_expires_at, NOW()), NOW()) +
+         CASE WHEN @plan='year' THEN INTERVAL '1 year' ELSE INTERVAL '1 month' END
+         WHERE LOWER(email)=@clean OR LOWER(name)=@clean OR LOWER(email)=@clean || '@signeye.vn'
+         RETURNING email""",
+      substitutionValues: {'clean': clean, 'plan': plan},
+    );
+    if (rows.isNotEmpty) {
+      final email = rows.first[0] as String;
+      await _connection.query(
+        "UPDATE pro_orders SET status='paid', paid_at=NOW() WHERE LOWER(email)=@email AND status IN ('pending','submitted')",
+        substitutionValues: {'email': email},
+      );
+      return true;
+    }
+    final finalEmail = clean.contains('@') ? clean : '$clean@signeye.vn';
+    await _connection.query(
+      """INSERT INTO users(name, email, password_hash, pro_expires_at)
+         VALUES (@name, @email, '', NOW() + CASE WHEN @plan='year' THEN INTERVAL '1 year' ELSE INTERVAL '1 month' END)
+         ON CONFLICT (email) DO UPDATE SET pro_expires_at =
+         GREATEST(COALESCE(users.pro_expires_at, NOW()), NOW()) + CASE WHEN @plan='year' THEN INTERVAL '1 year' ELSE INTERVAL '1 month' END""",
+      substitutionValues: {'name': clean, 'email': finalEmail, 'plan': plan},
+    );
+    return true;
+  }
+
   Future<List<Map<String, dynamic>>> getHistory() async {
     final result = await _connection.query(
       'SELECT * FROM history ORDER BY created_at DESC LIMIT 50',

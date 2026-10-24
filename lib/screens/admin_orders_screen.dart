@@ -132,6 +132,144 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
     }
   }
 
+  Future<void> _grantProToUser(String usernameOrEmail, String plan) async {
+    try {
+      const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
+      final token = context.read<AppState>().authToken;
+      final response = await http.post(
+        Uri.parse('$base/admin/grant-pro'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+          'X-Admin-Key': 'Admin@123456',
+        },
+        body: jsonEncode({
+          'username': usernameOrEmail.trim(),
+          'plan': plan,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: const Color(0xFF0D8F5C),
+              content: Text('🎉 Đã cấp quyền Pro (${plan == 'year' ? '1 năm' : '1 tháng'}) thành công cho $usernameOrEmail!'),
+            ),
+          );
+        }
+        await _loadOrders();
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Lỗi: ${response.body}')),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Lỗi kết nối máy chủ: $e')),
+        );
+      }
+    }
+  }
+
+  void _showGrantProDialog() {
+    final userController = TextEditingController();
+    String selectedPlan = 'month';
+
+    showDialog(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDlgState) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          title: const Row(
+            children: [
+              Icon(Icons.flash_on_rounded, color: Color(0xFF0D8F5C)),
+              SizedBox(width: 8),
+              Text('Cấp Pro cho Username', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17)),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Nhập tên tài khoản (Username) hoặc Email cần kích hoạt Pro:',
+                style: TextStyle(fontSize: 13, color: Colors.black87),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                controller: userController,
+                autofocus: true,
+                decoration: InputDecoration(
+                  hintText: 'VD: thien, ngocthien hoặc user@...',
+                  prefixIcon: const Icon(Icons.person_outline),
+                  filled: true,
+                  fillColor: const Color(0xFFF1F5F9),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Text('Chọn gói thời hạn:', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(
+                    child: ChoiceChip(
+                      label: const Text('1 Tháng (39k)'),
+                      selected: selectedPlan == 'month',
+                      onSelected: (val) {
+                        if (val) setDlgState(() => selectedPlan = 'month');
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: ChoiceChip(
+                      label: const Text('1 Năm (399k)'),
+                      selected: selectedPlan == 'year',
+                      onSelected: (val) {
+                        if (val) setDlgState(() => selectedPlan = 'year');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('Hủy'),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF0D8F5C),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              onPressed: () {
+                final u = userController.text.trim();
+                if (u.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Vui lòng nhập Username hoặc Email')),
+                  );
+                  return;
+                }
+                Navigator.pop(ctx);
+                _grantProToUser(u, selectedPlan);
+              },
+              child: const Text('Kích hoạt Pro ngay'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   String _formatMoney(dynamic amount) {
     final numVal = int.tryParse(amount?.toString() ?? '0') ?? 0;
     return NumberFormat.currency(locale: 'vi_VN', symbol: 'đ').format(numVal);
@@ -163,6 +301,18 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
       appBar: AppBar(
         title: const Text('Quản trị duyệt SignEye Pro', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18)),
         actions: [
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF0D8F5C),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+            ),
+            icon: const Icon(Icons.flash_on_rounded, size: 16),
+            label: const Text('Cấp Pro'),
+            onPressed: _showGrantProDialog,
+          ),
           IconButton(
             icon: const Icon(Icons.refresh_rounded),
             tooltip: 'Làm mới',
