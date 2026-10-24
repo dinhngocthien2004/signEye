@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../services/app_state.dart';
+import '../services/orders_storage.dart';
 import '../theme.dart';
 import 'admin_orders_screen.dart';
 import 'game_screen.dart';
@@ -750,155 +751,143 @@ class AccountScreen extends StatelessWidget {
                                         email = 'user_${DateTime.now().millisecondsSinceEpoch % 10000}@signeye.vn';
                                       }
                                     }
-                                    setSheetState(() => loading = true);
-                                    try {
-                                      const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
-                                      final amount = yearly ? 399000 : 39000;
-                                      final ref = 'SE${DateTime.now().millisecondsSinceEpoch.toString().substring(5)}';
+                                     setSheetState(() => loading = true);
+                                     try {
+                                       final base = await OrdersStorage.getApiBaseUrl();
+                                       final amount = yearly ? 399000 : 39000;
+                                       final ref = 'SE${DateTime.now().millisecondsSinceEpoch.toString().substring(5)}';
 
-                                      if (order == null) {
-                                      try {
-                                        final response = await http.post(
-                                          Uri.parse('$base/payments/orders'),
-                                          headers: {
-                                            'Content-Type': 'application/json',
-                                            'Authorization': 'Bearer ${appState.authToken}',
-                                            'X-User-Email': email,
-                                          },
-                                          body: jsonEncode({'plan': yearly ? 'year' : 'month'}),
-                                        ).timeout(const Duration(seconds: 4));
+                                       if (order == null) {
+                                         if (base.isNotEmpty) {
+                                           try {
+                                             final response = await http.post(
+                                               Uri.parse('$base/payments/orders'),
+                                               headers: {
+                                                 'Content-Type': 'application/json',
+                                                 'Authorization': 'Bearer ${appState.authToken}',
+                                                 'X-User-Email': email,
+                                               },
+                                               body: jsonEncode({'plan': yearly ? 'year' : 'month'}),
+                                             ).timeout(const Duration(seconds: 4));
 
-                                        if (response.statusCode == 200) {
-                                          final created = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-                                          setSheetState(() => order = created);
-                                        } else {
-                                          throw Exception('HTTP ${response.statusCode}');
-                                        }
-                                      } catch (e) {
-                                        // Dự phòng ngoại tuyến: Đảm bảo 100% luôn tạo được mã VietQR MB Bank
-                                        final fallbackOrder = {
-                                          'id': 'off_${DateTime.now().millisecondsSinceEpoch}',
-                                          'plan': yearly ? 'year' : 'month',
-                                          'amount': amount,
-                                          'transfer_ref': ref,
-                                          'status': 'submitted',
-                                          'qr_data': '2|99|0000708578761|LE THI HONG DUYEN|970422|0|0|$amount|$ref|transfer_myqr',
-                                        };
-                                        setSheetState(() => order = fallbackOrder);
+                                             if (response.statusCode == 200) {
+                                               final created = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+                                               setSheetState(() => order = created);
+                                             } else {
+                                               throw Exception('HTTP ${response.statusCode}');
+                                             }
+                                           } catch (_) {
+                                             final fallbackOrder = {
+                                               'id': 'off_${DateTime.now().millisecondsSinceEpoch}',
+                                               'plan': yearly ? 'year' : 'month',
+                                               'amount': amount,
+                                               'transfer_ref': ref,
+                                               'status': 'submitted',
+                                               'qr_data': '2|99|0000708578761|LE THI HONG DUYEN|970422|0|0|$amount|$ref|transfer_myqr',
+                                             };
+                                             setSheetState(() => order = fallbackOrder);
+                                           }
+                                         } else {
+                                           final fallbackOrder = {
+                                             'id': 'off_${DateTime.now().millisecondsSinceEpoch}',
+                                             'plan': yearly ? 'year' : 'month',
+                                             'amount': amount,
+                                             'transfer_ref': ref,
+                                             'status': 'submitted',
+                                             'qr_data': '2|99|0000708578761|LE THI HONG DUYEN|970422|0|0|$amount|$ref|transfer_myqr',
+                                           };
+                                           setSheetState(() => order = fallbackOrder);
+                                         }
+
+                                         // Đồng bộ vào OrdersStorage để Admin duyệt được ngay trên Vercel
+                                         await OrdersStorage.addOrder({
+                                           'id': order!['id'] ?? 'SE${DateTime.now().millisecondsSinceEpoch}',
+                                           'email': email,
+                                           'name': appState.userName.isNotEmpty ? appState.userName : email.split('@').first,
+                                           'plan': yearly ? 'year' : 'month',
+                                           'amount': amount,
+                                           'status': 'submitted',
+                                           'transfer_ref': order!['transfer_ref'] ?? ref,
+                                           'created_at': DateTime.now().toIso8601String(),
+                                           'paid_at': null,
+                                         });
+                                       } else {
+                                         // Kiểm tra trạng thái đơn: ưu tiên kiểm tra OrdersStorage trước
+                                         final proCheck = await OrdersStorage.checkUserPro(email);
+                                         if (proCheck != null && proCheck['isPro'] == true) {
+                                           final exp = DateTime.tryParse(proCheck['expiresAt']?.toString() ?? '');
+                                           if (exp != null) {
+                                             await appState.applyApprovedPro(exp);
+                                             if (ctx.mounted) Navigator.pop(ctx);
+                                             if (context.mounted) {
+                                               ScaffoldMessenger.of(context).showSnackBar(
+                                                 const SnackBar(
+                                                   backgroundColor: Color(0xFF0D8F5C),
+                                                   content: Text('🎉 Thanh toán đã được Admin duyệt! Đã kích hoạt SignEye Pro!'),
+                                                 ),
+                                               );
+                                             }
+                                             return;
+                                           }
+                                         }
+
+                                         // Nếu chưa có local thì kiểm tra server nếu có kết nối
+                                         try {
+                                           if (base.isNotEmpty) {
+                                             final isOfflineOrder = order!['id'].toString().startsWith('off_');
+                                             if (!isOfflineOrder) {
+                                               final response = await http.get(
+                                                 Uri.parse('$base/payments/orders/${order!['id']}'),
+                                                 headers: {
+                                                   'Authorization': 'Bearer ${appState.authToken}',
+                                                   'X-User-Email': email,
+                                                 },
+                                               ).timeout(const Duration(seconds: 4));
+                                               if (response.statusCode == 200) {
+                                                 final updated = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+                                                 final st = (updated['status'] ?? '').toString();
+                                                 if (st == 'paid') {
+                                                   final subRes = await http.get(
+                                                     Uri.parse('$base/payments/subscription'),
+                                                     headers: {
+                                                       'Authorization': 'Bearer ${appState.authToken}',
+                                                       'X-User-Email': email,
+                                                     },
+                                                   );
+                                                   if (subRes.statusCode == 200) {
+                                                     final subData = jsonDecode(utf8.decode(subRes.bodyBytes)) as Map<String, dynamic>;
+                                                     await appState.syncProFromServer(subData);
+                                                   }
+                                                   if (ctx.mounted) Navigator.pop(ctx);
+                                                   if (context.mounted) {
+                                                     ScaffoldMessenger.of(context).showSnackBar(
+                                                       const SnackBar(
+                                                         backgroundColor: Color(0xFF0D8F5C),
+                                                         content: Text('🎉 Thanh toán đã được Admin duyệt! Đã kích hoạt SignEye Pro!'),
+                                                       ),
+                                                     );
+                                                   }
+                                                   return;
+                                                 }
+                                               }
+                                             }
+                                           }
+                                         } catch (_) {}
+
+                                         if (context.mounted) {
+                                           ScaffoldMessenger.of(context).showSnackBar(
+                                             const SnackBar(content: Text('Đơn hàng đang chờ Admin đối chiếu sao kê và duyệt Pro.')),
+                                           );
+                                         }
+                                       }
+                                     } catch (e) {
+                                       if (context.mounted) {
+                                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Đang chờ Admin duyệt Pro...')));
+                                       }
+                                      } finally {
+                                        if (ctx.mounted) setSheetState(() => loading = false);
                                       }
-                                    } else {
-                                      // Kiểm tra trạng thái đơn
-                                      try {
-                                        final isOfflineOrder = order!['id'].toString().startsWith('off_');
-                                        if (isOfflineOrder) {
-                                          final subRes = await http.get(
-                                            Uri.parse('$base/payments/subscription'),
-                                            headers: {
-                                              'Authorization': 'Bearer ${appState.authToken}',
-                                              'X-User-Email': email,
-                                            },
-                                          ).timeout(const Duration(seconds: 3));
-                                          if (subRes.statusCode == 200) {
-                                            final subData = jsonDecode(utf8.decode(subRes.bodyBytes)) as Map<String, dynamic>;
-                                            if (subData['isPro'] == true) {
-                                              await appState.syncProFromServer(subData);
-                                              if (ctx.mounted) Navigator.pop(ctx);
-                                              if (context.mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  const SnackBar(
-                                                    backgroundColor: Color(0xFF0D8F5C),
-                                                    content: Text('🎉 Tài khoản đã được kích hoạt Pro thành công!'),
-                                                  ),
-                                                );
-                                              }
-                                              return;
-                                            }
-                                          }
-                                          if (context.mounted) {
-                                            ScaffoldMessenger.of(context).showSnackBar(
-                                              const SnackBar(content: Text('Đơn hàng đang chờ Admin đối chiếu sao kê và duyệt Pro.')),
-                                            );
-                                          }
-                                        } else {
-                                          final response = await http.get(
-                                            Uri.parse('$base/payments/orders/${order!['id']}'),
-                                            headers: {
-                                              'Authorization': 'Bearer ${appState.authToken}',
-                                              'X-User-Email': email,
-                                            },
-                                          ).timeout(const Duration(seconds: 4));
-                                          if (response.statusCode != 200) {
-                                            throw Exception('Không kiểm tra được đơn hàng');
-                                          }
-                                          final updated = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-                                          final st = (updated['status'] ?? '').toString();
-
-                                          if (st == 'paid') {
-                                            final subRes = await http.get(
-                                              Uri.parse('$base/payments/subscription'),
-                                              headers: {
-                                                'Authorization': 'Bearer ${appState.authToken}',
-                                                'X-User-Email': email,
-                                              },
-                                            );
-                                            if (subRes.statusCode == 200) {
-                                              final subData = jsonDecode(utf8.decode(subRes.bodyBytes)) as Map<String, dynamic>;
-                                              await appState.syncProFromServer(subData);
-                                            }
-                                            if (ctx.mounted) Navigator.pop(ctx);
-                                            if (context.mounted) {
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                const SnackBar(
-                                                  backgroundColor: Color(0xFF0D8F5C),
-                                                  content: Text('🎉 Thanh toán đã được Admin duyệt! Đã kích hoạt SignEye Pro!'),
-                                                ),
-                                              );
-                                            }
-                                          } else if (st == 'pending') {
-                                            final submitRes = await http.post(
-                                              Uri.parse('$base/payments/orders/${order!['id']}/submit'),
-                                              headers: {
-                                                'Content-Type': 'application/json',
-                                                'Authorization': 'Bearer ${appState.authToken}',
-                                                'X-User-Email': email,
-                                              },
-                                              body: jsonEncode({}),
-                                            );
-                                            if (submitRes.statusCode == 200) {
-                                              setSheetState(() => order!['status'] = 'submitted');
-                                              if (context.mounted) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  const SnackBar(
-                                                    content: Text('Đã gửi thông báo đơn hàng! Admin sẽ đối chiếu sao kê và duyệt Pro cho bạn.'),
-                                                  ),
-                                                );
-                                              }
-                                            }
-                                          } else if (st == 'submitted') {
-                                            if (context.mounted) {
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                const SnackBar(content: Text('Đơn hàng đang chờ Admin duyệt. Vui lòng thử lại sau khi chuyển khoản!')),
-                                              );
-                                            }
-                                          } else if (st == 'rejected') {
-                                            setSheetState(() => order!['status'] = 'rejected');
-                                            if (context.mounted) {
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                const SnackBar(content: Text('Đơn hàng đã bị từ chối')),
-                                              );
-                                            }
-                                          }
-                                        }
-                                      } catch (e) {
-                                        if (context.mounted) {
-                                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Đang chờ Admin duyệt Pro...')));
-                                        }
-                                      }
-                                    }
-                                  } finally {
-                                    if (ctx.mounted) setSheetState(() => loading = false);
-                                  }
-                                },
+                                    },
                             child: loading
                                 ? const SizedBox(
                                     height: 20,

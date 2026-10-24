@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/exam_models.dart';
 import '../models/handbook_models.dart';
+import 'orders_storage.dart';
 import 'remote_sync_service.dart';
 import 'sign_identify_service.dart';
 
@@ -130,6 +131,19 @@ class AppState extends ChangeNotifier {
     } else {
       isPro = false;
       proExpiry = null;
+    }
+
+    if (!isPro && userEmail.isNotEmpty) {
+      final proCheck = await OrdersStorage.checkUserPro(userEmail);
+      if (proCheck != null && proCheck['isPro'] == true) {
+        final exp = DateTime.tryParse(proCheck['expiresAt']?.toString() ?? '');
+        if (exp != null && exp.isAfter(DateTime.now())) {
+          isPro = true;
+          proExpiry = exp;
+          await _prefs.setBool(_kIsPro, true);
+          await _prefs.setString(_kProExpiry, exp.toIso8601String());
+        }
+      }
     }
 
     final savedGeminiKey = _prefs.getString(_kGeminiKey);
@@ -273,7 +287,36 @@ class AppState extends ChangeNotifier {
     } catch (_) {
       // Fallback gracefully when the PostgreSQL backend is not running yet.
     }
+
+    if (!isPro && userEmail.isNotEmpty) {
+      final proCheck = await OrdersStorage.checkUserPro(userEmail);
+      if (proCheck != null && proCheck['isPro'] == true) {
+        final exp = DateTime.tryParse(proCheck['expiresAt']?.toString() ?? '');
+        if (exp != null && exp.isAfter(DateTime.now())) {
+          isPro = true;
+          proExpiry = exp;
+          await _prefs.setBool(_kIsPro, true);
+          await _prefs.setString(_kProExpiry, exp.toIso8601String());
+        }
+      }
+    }
+
     notifyListeners();
+  }
+
+  Future<void> checkLocalProStatus() async {
+    if (userEmail.isEmpty) return;
+    final proCheck = await OrdersStorage.checkUserPro(userEmail);
+    if (proCheck != null && proCheck['isPro'] == true) {
+      final exp = DateTime.tryParse(proCheck['expiresAt']?.toString() ?? '');
+      if (exp != null && exp.isAfter(DateTime.now())) {
+        isPro = true;
+        proExpiry = exp;
+        await _prefs.setBool(_kIsPro, true);
+        await _prefs.setString(_kProExpiry, exp.toIso8601String());
+        notifyListeners();
+      }
+    }
   }
 
   Future<void> logout() async {
