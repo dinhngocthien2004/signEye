@@ -73,6 +73,7 @@ class AppState extends ChangeNotifier {
   bool isPro = false;
   DateTime? proExpiry;
   bool darkMode = false;
+  bool isAdmin = false;
 
   /// Game coin balance (xu nhận được khi chơi mini game)
   int coins = 0;
@@ -118,6 +119,7 @@ class AppState extends ChangeNotifier {
     }
     userName = _prefs.getString(_kUserName) ?? '';
     userEmail = _prefs.getString(_kUserEmail) ?? '';
+    isAdmin = _prefs.getBool('se_is_admin') ?? (userEmail.trim().toLowerCase() == 'admin@signeye.vn');
     darkMode = _prefs.getBool(_kThemeDark) ?? false;
     coins = _prefs.getInt(_kCoins) ?? 0;
     rewardBalance = _prefs.getInt(_kRewardBalance) ?? 0;
@@ -228,12 +230,19 @@ class AppState extends ChangeNotifier {
       final data = jsonDecode(response.body) as Map<String, dynamic>;
       authToken = (data['token'] ?? '').toString();
       await _prefs.setString('se_auth_token', authToken);
+      if (data['name'] != null && (data['name'] as String).isNotEmpty) {
+        name = data['name'] as String;
+      }
+      isAdmin = data['isAdmin'] == true || email.trim().toLowerCase() == 'admin@signeye.vn';
+      await _prefs.setBool('se_is_admin', isAdmin);
     } on StateError {
       rethrow;
     } catch (_) {
       // Khi backend chưa chạy, cho phép đăng nhập offline để trải nghiệm ứng dụng
       authToken = 'offline_session';
       await _prefs.setString('se_auth_token', authToken);
+      isAdmin = email.trim().toLowerCase() == 'admin@signeye.vn';
+      await _prefs.setBool('se_is_admin', isAdmin);
     }
     isLoggedIn = true;
     userName = name.trim().isEmpty ? 'Người dùng' : name.trim();
@@ -241,6 +250,24 @@ class AppState extends ChangeNotifier {
     await _prefs.setBool(_kLoggedIn, true);
     await _prefs.setString(_kUserName, userName);
     await _prefs.setString(_kUserEmail, userEmail);
+
+    // Đồng bộ kiểm tra Pro từ server
+    if (authToken.isNotEmpty && authToken != 'offline_session') {
+      try {
+        final subRes = await http.get(
+          Uri.parse('$base/payments/subscription'),
+          headers: {'Authorization': 'Bearer $authToken'},
+        ).timeout(const Duration(seconds: 2));
+        if (subRes.statusCode == 200) {
+          final subscription = jsonDecode(subRes.body) as Map<String, dynamic>;
+          final expiry = DateTime.tryParse((subscription['expiresAt'] ?? '').toString());
+          isPro = subscription['isPro'] == true && expiry != null && expiry.isAfter(DateTime.now());
+          proExpiry = expiry;
+          await _prefs.setBool(_kIsPro, isPro);
+        }
+      } catch (_) {}
+    }
+
     try {
       await _remoteSync.saveUser(userName, userEmail);
     } catch (_) {
@@ -255,7 +282,9 @@ class AppState extends ChangeNotifier {
     await _prefs.remove('se_auth_token');
     isPro = false;
     proExpiry = null;
+    isAdmin = false;
     isLoggedIn = false;
+    await _prefs.setBool('se_is_admin', false);
     await _prefs.setBool(_kLoggedIn, false);
     if (token.isNotEmpty && token != 'offline_session') {
       try {

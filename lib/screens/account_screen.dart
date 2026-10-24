@@ -1,11 +1,14 @@
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../services/app_state.dart';
 import '../theme.dart';
+import 'admin_orders_screen.dart';
 import 'game_screen.dart';
 import 'puzzle_game_screen.dart';
 
@@ -127,6 +130,67 @@ class AccountScreen extends StatelessWidget {
               ],
             ),
           ),
+          if (state.isAdmin || state.userEmail == 'admin@signeye.vn') ...[
+            const SizedBox(height: 16),
+            InkWell(
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const AdminOrdersScreen()),
+              ),
+              borderRadius: BorderRadius.circular(16),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF064E3B), Color(0xFF0D8F5C)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF0D8F5C).withOpacity(0.3),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.18),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.admin_panel_settings_rounded, color: Colors.white, size: 28),
+                    ),
+                    const SizedBox(width: 14),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Quản trị viên (Admin)',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 2),
+                          Text(
+                            'Duyệt đơn đăng ký Pro cho các người dùng',
+                            style: TextStyle(color: Colors.white70, fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Icon(Icons.arrow_forward_ios_rounded, color: Colors.white70, size: 16),
+                  ],
+                ),
+              ),
+            ),
+          ],
           const SizedBox(height: 16),
           // Game coin wallet & redeem card
           Container(
@@ -276,6 +340,14 @@ class AccountScreen extends StatelessWidget {
             title: 'Trợ giúp & phản hồi',
             onTap: () {},
           ),
+          _settingsTile(
+            icon: Icons.admin_panel_settings_rounded,
+            title: 'Duyệt đơn Pro (Admin)',
+            subtitle: state.isAdmin ? 'Quyền Quản trị viên' : 'Đăng nhập admin để duyệt',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const AdminOrdersScreen()),
+            ),
+          ),
           const SizedBox(height: 20),
           SizedBox(
             width: double.infinity,
@@ -383,18 +455,17 @@ class AccountScreen extends StatelessWidget {
         builder: (ctx, setSheetState) => LayoutBuilder(
           builder: (context, constraints) {
             final maxHeight = constraints.maxHeight > 0
-                ? constraints.maxHeight * 0.9
-                : MediaQuery.of(ctx).size.height * 0.9;
+                ? constraints.maxHeight * 0.92
+                : MediaQuery.of(ctx).size.height * 0.92;
 
             return ConstrainedBox(
               constraints: BoxConstraints(maxHeight: maxHeight),
               child: SingleChildScrollView(
                 child: Container(
-                  margin: const EdgeInsets.only(top: 48),
+                  margin: const EdgeInsets.only(top: 24),
                   decoration: const BoxDecoration(
-                    color: Color(0xFFF4E9EC),
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(28)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 20, 20, 30),
@@ -402,10 +473,24 @@ class AccountScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Container(
+                          width: 44,
+                          height: 5,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
                         const Text(
                           'Đăng ký SignEye Pro',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w800, fontSize: 24),
+                          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 22, color: AppColors.text),
+                        ),
+                        const SizedBox(height: 6),
+                        const Text(
+                          'Mở khóa không giới hạn nhận diện biển báo & tính năng cao cấp',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 12.5, color: AppColors.text2),
                         ),
                         const SizedBox(height: 18),
                         Row(
@@ -415,8 +500,9 @@ class AccountScreen extends StatelessWidget {
                                 label: '1 tháng',
                                 price: '39.000đ',
                                 selected: !yearly,
-                                onTap: () =>
-                                    setSheetState(() { yearly = false; order = null; }),
+                                onTap: order == null
+                                    ? () => setSheetState(() { yearly = false; order = null; })
+                                    : () {},
                               ),
                             ),
                             const SizedBox(width: 10),
@@ -425,182 +511,295 @@ class AccountScreen extends StatelessWidget {
                                 label: '1 năm',
                                 price: '399.000đ',
                                 selected: yearly,
-                                onTap: () => setSheetState(() { yearly = true; order = null; }),
+                                onTap: order == null
+                                    ? () => setSheetState(() { yearly = true; order = null; })
+                                    : () {},
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 16),
-                        Container(
-                          width: 320,
-                          padding: const EdgeInsets.only(top: 18, bottom: 12),
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFF4E1E7),
-                          ),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                width: 180,
-                                child: Text(
-                                  'mo\nmo',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 42,
-                                    fontWeight: FontWeight.w900,
-                                    color: Color(0xFFB1006A),
-                                    height: 0.7,
+                        const SizedBox(height: 18),
+
+                        if (order == null) ...[
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(22),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF8FAFC),
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: const Color(0xFFE2E8F0)),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 70,
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFDEF7EC),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
+                                  child: const Icon(Icons.qr_code_2_rounded, size: 40, color: Color(0xFF0D8F5C)),
                                 ),
-                              ),
-                              const SizedBox(height: 12),
-                              Container(
-                                width: 300,
-                                padding: const EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(28),
-                                  border: Border.all(
-                                      color: const Color(0xFFE8B7CC),
-                                      width: 2),
+                                const SizedBox(height: 14),
+                                const Text(
+                                  'Quét mã VietQR chuyển khoản',
+                                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                                 ),
-                                child: Column(
+                                const SizedBox(height: 6),
+                                Text(
+                                  'Nhấn nút bên dưới để tạo mã QR thanh toán nhanh bằng MB Bank (VietQR). Admin sẽ đối chiếu và duyệt Pro ngay.',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 12.5, color: Colors.grey.shade600, height: 1.4),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ] else ...[
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF8FAFC),
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: const Color(0xFFE2E8F0)),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    if (order == null)
-                                      const Text('Tạo đơn hàng để hiển thị mã QR thanh toán')
-                                    else if (const String.fromEnvironment('VIETQR_BANK_ID', defaultValue: '970422').isEmpty || const String.fromEnvironment('VIETQR_ACCOUNT_NO', defaultValue: '0000708578761').isEmpty)
-                                      const Text('Chưa cấu hình ngân hàng nhận thanh toán')
-                                    else
-                                      Image.network(
-                                        'https://img.vietqr.io/image/${const String.fromEnvironment('VIETQR_BANK_ID', defaultValue: '970422')}-${const String.fromEnvironment('VIETQR_ACCOUNT_NO', defaultValue: '0000708578761')}-compact2.png?amount=${order!['amount']}&addInfo=${order!['transfer_ref']}&accountName=${Uri.encodeComponent(const String.fromEnvironment('VIETQR_ACCOUNT_NAME', defaultValue: 'LE THI HONG DUYEN'))}',
-                                        width: 220, height: 220,
-                                        errorBuilder: (_, __, ___) => const Text('Không tải được mã QR'),
-                                      ),
-                                    const SizedBox(height: 12),
-                                    const Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'VIETQR',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w900,
-                                            fontSize: 22,
-                                            color: Color(0xFFE31B23),
-                                          ),
-                                        ),
-                                        SizedBox(width: 12),
-                                        Text(
-                                          'napas 247',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w900,
-                                            fontSize: 22,
-                                            color: Color(0xFF0D8F5C),
-                                          ),
-                                        ),
-                                      ],
+                                    const Text(
+                                      'VIETQR',
+                                      style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20, color: Color(0xFFE31B23)),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Container(width: 2, height: 16, color: Colors.grey.shade300),
+                                    const SizedBox(width: 10),
+                                    const Text(
+                                      'MB BANK',
+                                      style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18, color: Color(0xFF003BDE)),
                                     ),
                                   ],
                                 ),
-                              ),
-                              const SizedBox(height: 22),
-                              const Text(
-                                'STK: ${const String.fromEnvironment('VIETQR_ACCOUNT_NO', defaultValue: '0000708578761')}',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w800,
-                                  color: AppColors.text,
+                                const SizedBox(height: 12),
+                                Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(16),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.06),
+                                        blurRadius: 10,
+                                        offset: const Offset(0, 3),
+                                      ),
+                                    ],
+                                  ),
+                                  child: QrImageView(
+                                    data: (order!['qr_data'] ??
+                                            '2|99|0000708578761|LE THI HONG DUYEN|970422|0|0|${order!['amount']}|${order!['transfer_ref']}|transfer_myqr')
+                                        .toString(),
+                                    version: QrVersions.auto,
+                                    size: 200,
+                                    backgroundColor: Colors.white,
+                                    padding: const EdgeInsets.all(4),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 6),
-                              const Text(
-                                'Ngân hàng: MB Bank',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.text,
+                                const SizedBox(height: 14),
+                                _copyableRow(
+                                  context: context,
+                                  label: 'Số tài khoản',
+                                  value: '0000708578761',
+                                  isBold: true,
                                 ),
-                              ),
-                              const SizedBox(height: 6),
-                              const Text(
-                                'Tên: ${const String.fromEnvironment('VIETQR_ACCOUNT_NAME', defaultValue: 'LE THI HONG DUYEN')}',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.text,
+                                const SizedBox(height: 6),
+                                _infoRow(label: 'Ngân hàng', value: 'MB Bank (Quân đội)'),
+                                const SizedBox(height: 6),
+                                _infoRow(label: 'Chủ tài khoản', value: 'LE THI HONG DUYEN'),
+                                const SizedBox(height: 6),
+                                _infoRow(
+                                  label: 'Số tiền',
+                                  value: '${NumberFormat.currency(locale: 'vi_VN', symbol: 'đ').format(order!['amount'])}',
+                                  color: AppColors.primary,
+                                  isBold: true,
                                 ),
-                              ),
-                            ],
+                                const SizedBox(height: 6),
+                                _copyableRow(
+                                  context: context,
+                                  label: 'Nội dung CK',
+                                  value: '${order!['transfer_ref']}',
+                                  isBold: true,
+                                  highlight: true,
+                                ),
+                                const SizedBox(height: 10),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: order!['status'] == 'paid'
+                                        ? const Color(0xFFDEF7EC)
+                                        : const Color(0xFFFEF3C7),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Text(
+                                    order!['status'] == 'paid'
+                                        ? '✓ Đã kích hoạt Pro'
+                                        : (order!['status'] == 'submitted'
+                                            ? '⏳ Đã gửi thông báo, đang chờ Admin duyệt'
+                                            : '⏳ Đang chờ thanh toán & Admin duyệt'),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 12,
+                                      color: order!['status'] == 'paid' ? const Color(0xFF03543F) : const Color(0xFF92400E),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        if(order != null) Text('Nội dung chuyển khoản: ${order!['transfer_ref']}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                        const SizedBox(height: 18),
-                        const Text(
-                          'Chuyển khoản đúng số tiền và nội dung đơn hàng. Pro chỉ kích hoạt sau khi Admin xác nhận đã nhận tiền.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 12.5,
-                            color: AppColors.text2,
-                            height: 1.4,
-                          ),
-                        ),
+                        ],
+
                         const SizedBox(height: 18),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: loading ? null : () async {
-                              final email=context.read<AppState>().userEmail;
-                              if(email.isEmpty) {
-                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:Text('Vui lòng đăng nhập trước khi mua Pro')));
-                                return;
-                              }
-                              if(const String.fromEnvironment('VIETQR_BANK_ID', defaultValue: '970422').isEmpty || const String.fromEnvironment('VIETQR_ACCOUNT_NO', defaultValue: '0000708578761').isEmpty) {
-                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:Text('Chưa cấu hình tài khoản nhận thanh toán')));
-                                return;
-                              }
-                              setSheetState(()=>loading=true);
-                              try {
-                                final base=const String.fromEnvironment('SIGN_EYE_API_URL',defaultValue:'http://127.0.0.1:8000');
-                                if(order==null) {
-                                  final response=await http.post(Uri.parse('$base/payments/orders'),headers:{'Content-Type':'application/json','Authorization':'Bearer ${context.read<AppState>().authToken}'},body:jsonEncode({'plan':yearly?'year':'month'}));
-                                  if(response.statusCode!=200) throw Exception('Không tạo được đơn hàng');
-                                  setSheetState(()=>order=jsonDecode(response.body) as Map<String,dynamic>);
-                                } else {
-                                  final response=await http.get(Uri.parse('$base/payments/orders/${order!['id']}'),headers:{'Authorization':'Bearer ${context.read<AppState>().authToken}' });
-                                  if(response.statusCode!=200) throw Exception('Không kiểm tra được đơn hàng');
-                                  final status=(jsonDecode(response.body) as Map<String,dynamic>)['status'];
-                                  if(status=='paid') {
-                                    final sub=await http.get(Uri.parse('$base/payments/subscription'),headers:{'Authorization':'Bearer ${context.read<AppState>().authToken}' });
-                                    if(sub.statusCode!=200) throw Exception('Không đồng bộ được quyền Pro');
-                                    final subscription=jsonDecode(sub.body) as Map<String,dynamic>;
-                                    await context.read<AppState>().syncProFromServer(subscription);
-                                    if(ctx.mounted) Navigator.pop(ctx);
-                                    if(context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:Text('Thanh toán đã được xác nhận. Đã kích hoạt Pro!')));
-                                  } else if(status=='pending') {
-                                    final submitted=await http.post(Uri.parse('$base/payments/orders/${order!['id']}/submit'),headers:{'Content-Type':'application/json','Authorization':'Bearer ${context.read<AppState>().authToken}'},body:jsonEncode({}));
-                                    if(submitted.statusCode!=200) throw Exception('Không gửi được yêu cầu xác nhận');
-                                    if(context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:Text('Đã gửi yêu cầu. Admin sẽ kiểm tra giao dịch.')));
-                                  } else {
-                                    if(context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text(status=='rejected'?'Đơn hàng đã bị từ chối':'Đơn hàng đang chờ Admin duyệt')));
-                                  }
-                                }
-                              } catch(e) {
-                                if(context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text('Lỗi: $e')));
-                              } finally { if(ctx.mounted) setSheetState(()=>loading=false); }
-                            },
-                            child: Text(
-                              order == null ? 'Tạo mã QR thanh toán' : 'Gửi yêu cầu / kiểm tra thanh toán',
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primary,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                             ),
+                            onPressed: loading
+                                ? null
+                                : () async {
+                                    final email = context.read<AppState>().userEmail;
+                                    if (email.isEmpty) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(content: Text('Vui lòng đăng nhập trước khi mua Pro')),
+                                      );
+                                      return;
+                                    }
+                                    setSheetState(() => loading = true);
+                                    try {
+                                      const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
+                                      if (order == null) {
+                                        final response = await http.post(
+                                          Uri.parse('$base/payments/orders'),
+                                          headers: {
+                                            'Content-Type': 'application/json',
+                                            'Authorization': 'Bearer ${context.read<AppState>().authToken}',
+                                            'X-User-Email': email,
+                                          },
+                                          body: jsonEncode({'plan': yearly ? 'year' : 'month'}),
+                                        );
+                                        if (response.statusCode != 200) {
+                                          throw Exception('Không tạo được đơn hàng (${response.statusCode}): ${response.body}');
+                                        }
+                                        final created = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+                                        setSheetState(() => order = created);
+                                      } else {
+                                        // Kiểm tra trạng thái đơn
+                                        final response = await http.get(
+                                          Uri.parse('$base/payments/orders/${order!['id']}'),
+                                          headers: {
+                                            'Authorization': 'Bearer ${context.read<AppState>().authToken}',
+                                            'X-User-Email': email,
+                                          },
+                                        );
+                                        if (response.statusCode != 200) {
+                                          throw Exception('Không kiểm tra được đơn hàng');
+                                        }
+                                        final updated = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+                                        final st = (updated['status'] ?? '').toString();
+
+                                        if (st == 'paid') {
+                                          final subRes = await http.get(
+                                            Uri.parse('$base/payments/subscription'),
+                                            headers: {
+                                              'Authorization': 'Bearer ${context.read<AppState>().authToken}',
+                                              'X-User-Email': email,
+                                            },
+                                          );
+                                          if (subRes.statusCode == 200) {
+                                            final subData = jsonDecode(utf8.decode(subRes.bodyBytes)) as Map<String, dynamic>;
+                                            await context.read<AppState>().syncProFromServer(subData);
+                                          }
+                                          if (ctx.mounted) Navigator.pop(ctx);
+                                          if (context.mounted) {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                              const SnackBar(
+                                                backgroundColor: Color(0xFF0D8F5C),
+                                                content: Text('🎉 Thanh toán đã được Admin duyệt! Đã kích hoạt SignEye Pro!'),
+                                              ),
+                                            );
+                                          }
+                                        } else if (st == 'pending') {
+                                          // Gửi yêu cầu xác nhận đơn lên server
+                                          final submitRes = await http.post(
+                                            Uri.parse('$base/payments/orders/${order!['id']}/submit'),
+                                            headers: {
+                                              'Content-Type': 'application/json',
+                                              'Authorization': 'Bearer ${context.read<AppState>().authToken}',
+                                              'X-User-Email': email,
+                                            },
+                                            body: jsonEncode({}),
+                                          );
+                                          if (submitRes.statusCode == 200) {
+                                            setSheetState(() => order!['status'] = 'submitted');
+                                            if (context.mounted) {
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                const SnackBar(
+                                                  content: Text('Đã gửi thông báo đơn hàng! Admin sẽ đối chiếu sao kê và duyệt Pro cho bạn.'),
+                                                ),
+                                              );
+                                            }
+                                          }
+                                        } else if (st == 'submitted') {
+                                          if (context.mounted) {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                              const SnackBar(content: Text('Đơn hàng đang chờ Admin duyệt. Vui lòng thử lại sau khi chuyển khoản!')),
+                                            );
+                                          }
+                                        } else if (st == 'rejected') {
+                                          setSheetState(() => order!['status'] = 'rejected');
+                                          if (context.mounted) {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                              const SnackBar(content: Text('Đơn hàng đã bị từ chối')),
+                                            );
+                                          }
+                                        }
+                                      }
+                                    } catch (e) {
+                                      if (context.mounted) {
+                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Lỗi: $e')));
+                                      }
+                                    } finally {
+                                      if (ctx.mounted) setSheetState(() => loading = false);
+                                    }
+                                  },
+                            child: loading
+                                ? const SizedBox(
+                                    height: 20,
+                                    width: 20,
+                                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                                  )
+                                : Text(
+                                    order == null ? 'Tạo mã QR thanh toán' : 'Kiểm tra trạng thái duyệt Pro',
+                                    style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+                                  ),
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        if (order != null) ...[
+                          const SizedBox(height: 8),
+                          TextButton(
+                            onPressed: () => setSheetState(() => order = null),
+                            child: const Text('Tạo lại mã đơn khác', style: TextStyle(fontSize: 13, color: AppColors.text2)),
+                          ),
+                        ],
+                        const SizedBox(height: 4),
                         SizedBox(
                           width: double.infinity,
                           child: TextButton(
                             onPressed: () => Navigator.pop(ctx),
-                            child: const Text('Hủy'),
+                            child: const Text('Đóng'),
                           ),
                         ),
                       ],
@@ -615,54 +814,75 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  Widget _qrCodePreview() {
-    const size = 21;
-    return Container(
-      width: 220,
-      height: 220,
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.black, width: 1.4),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: size,
-          crossAxisSpacing: 1.5,
-          mainAxisSpacing: 1.5,
+  Widget _infoRow({required String label, required String value, Color? color, bool isBold = false}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(label, style: const TextStyle(fontSize: 13, color: AppColors.text2)),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 13.5,
+            fontWeight: isBold ? FontWeight.w800 : FontWeight.w600,
+            color: color ?? AppColors.text,
+          ),
         ),
-        itemCount: size * size,
-        itemBuilder: (context, index) {
-          final row = index ~/ size;
-          final col = index % size;
+      ],
+    );
+  }
 
-          final finder1 = (row < 7 && col < 7);
-          final finder2 = (row < 7 && col > 13);
-          final finder3 = (row > 13 && col < 7);
-          final center = row > 7 && row < 14 && col > 7 && col < 14;
-
-          bool filled = false;
-          if (finder1 || finder2 || finder3) {
-            filled = (row == 0 || row == 6 || col == 0 || col == 6) ||
-                ((row > 0 && row < 6 && col > 0 && col < 6) &&
-                    ((row + col) % 2 == 0));
-          } else if (center) {
-            filled = ((row + col) % 3 == 0) || ((row * 2 + col) % 5 == 0);
-          } else {
-            filled = ((row * 7 + col * 11) % 5 == 0) ||
-                ((row * 3 + col * 2) % 7 == 0);
-          }
-
-          return Container(
-            decoration: BoxDecoration(
-              color: filled ? Colors.black : Colors.transparent,
-              borderRadius: BorderRadius.circular(1),
+  Widget _copyableRow({
+    required BuildContext context,
+    required String label,
+    required String value,
+    bool isBold = false,
+    bool highlight = false,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(label, style: const TextStyle(fontSize: 13, color: AppColors.text2)),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: isBold ? FontWeight.w900 : FontWeight.w600,
+                color: highlight ? const Color(0xFF0D8F5C) : AppColors.text,
+                fontFamily: highlight ? 'monospace' : null,
+              ),
             ),
-          );
-        },
-      ),
+            const SizedBox(width: 6),
+            InkWell(
+              onTap: () {
+                Clipboard.setData(ClipboardData(text: value));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    duration: const Duration(seconds: 1),
+                    content: Text('Đã sao chép: $value'),
+                  ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: const Row(
+                  children: [
+                    Icon(Icons.copy_rounded, size: 13, color: AppColors.text2),
+                    SizedBox(width: 3),
+                    Text('Chép', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: AppColors.text2)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 

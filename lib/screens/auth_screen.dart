@@ -29,8 +29,21 @@ class _AuthScreenState extends State<AuthScreen> {
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
     final state = context.read<AppState>();
-    final name = isLoginTab ? _emailCtrl.text.split('@').first : _nameCtrl.text;
-    try { await state.login(name: name, email: _emailCtrl.text, password: _passCtrl.text, register: !isLoginTab); } catch (e) { if(mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text(e.toString()))); }
+    String rawEmail = _emailCtrl.text.trim();
+    if (!rawEmail.contains('@')) {
+      rawEmail = '$rawEmail@signeye.vn';
+    }
+    final name = isLoginTab ? rawEmail.split('@').first : _nameCtrl.text.trim();
+    try {
+      await state.login(
+        name: name.isEmpty ? rawEmail.split('@').first : name,
+        email: rawEmail,
+        password: _passCtrl.text,
+        register: !isLoginTab,
+      );
+    } catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+    }
   }
 
   @override
@@ -126,14 +139,14 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         const SizedBox(height: 14),
                       ],
-                      _fieldLabel('Email'),
+                      _fieldLabel('Tài khoản hoặc Email'),
                       TextFormField(
                         controller: _emailCtrl,
                         keyboardType: TextInputType.emailAddress,
                         decoration:
-                            const InputDecoration(hintText: 'ban@email.com'),
-                        validator: (v) => (v == null || !v.contains('@'))
-                            ? 'Email không hợp lệ'
+                            const InputDecoration(hintText: 'admin hoặc ban@email.com'),
+                        validator: (v) => (v == null || v.trim().isEmpty)
+                            ? 'Vui lòng nhập tài khoản hoặc email'
                             : null,
                       ),
                       const SizedBox(height: 14),
