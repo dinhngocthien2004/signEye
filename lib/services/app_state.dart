@@ -133,7 +133,7 @@ class AppState extends ChangeNotifier {
       proExpiry = null;
     }
 
-    if (!isPro && userEmail.isNotEmpty) {
+    if (userEmail.isNotEmpty) {
       final proCheck = await OrdersStorage.checkUserPro(userEmail);
       if (proCheck != null && proCheck['isPro'] == true) {
         final exp = DateTime.tryParse(proCheck['expiresAt']?.toString() ?? '');
@@ -144,6 +144,25 @@ class AppState extends ChangeNotifier {
           await _prefs.setString(_kProExpiry, exp.toIso8601String());
         }
       }
+      try {
+        final base = await OrdersStorage.getApiBaseUrl();
+        if (base.isNotEmpty) {
+          final res = await http.get(
+            Uri.parse('$base/payments/subscription?email=$userEmail'),
+            headers: {'Authorization': 'Bearer $authToken'},
+          ).timeout(const Duration(seconds: 2));
+          if (res.statusCode == 200) {
+            final data = jsonDecode(utf8.decode(res.bodyBytes)) as Map<String, dynamic>;
+            final exp = DateTime.tryParse(data['expiresAt']?.toString() ?? '');
+            if (data['isPro'] == true && exp != null && exp.isAfter(DateTime.now())) {
+              isPro = true;
+              proExpiry = exp;
+              await _prefs.setBool(_kIsPro, true);
+              await _prefs.setString(_kProExpiry, exp.toIso8601String());
+            }
+          }
+        }
+      } catch (_) {}
     }
 
     final savedGeminiKey = _prefs.getString(_kGeminiKey);
@@ -231,74 +250,122 @@ class AppState extends ChangeNotifier {
   // ───────────────────────── Auth ─────────────────────────
 
   Future<void> login({required String name, required String email, required String password, required bool register}) async {
-    const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
-    try {
-      final response = await http.post(
-        Uri.parse('$base/auth/${register ? 'register' : 'login'}'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'name': name, 'email': email, 'password': password}),
-      ).timeout(const Duration(seconds: 4));
-      if (response.statusCode != 200) {
-        throw StateError(register ? 'Không đăng ký được, email có thể đã tồn tại' : 'Email hoặc mật khẩu không đúng');
+    final cleanEmail = email.trim().toLowerCase();
+    final cleanPassword = password.trim();
+    final cleanName = name.trim().isEmpty ? cleanEmail.split('@').first : name.trim();
+    final base = await OrdersStorage.getApiBaseUrl();
+
+    // 1. Thử xác thực với Backend API (PostgreSQL) nếu có cấu hình
+    if (base.isNotEmpty) {
+      try {
+        final response = await http.post(
+          Uri.parse('$base/auth/${register ? 'register' : 'login'}'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({'name': cleanName, 'email': cleanEmail, 'password': cleanPassword}),
+        ).timeout(const Duration(seconds: 4));
+
+        if (response.statusCode == 200) {
+          final data = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+          authToken = (data['token'] ?? '').toString();
+          await _prefs.setString('se_auth_token', authToken);
+          if (data['name'] != null && (data['name'] as String).isNotEmpty) {
+            name = data['name'] as String;
+          }
+          isAdmin = data['isAdmin'] == true || cleanEmail == 'admin@signeye.vn';
+          await _prefs.setBool('se_is_admin', isAdmin);
+
+          // Lấy trực tiếp thông tin Pro từ Database PostgreSQL
+          final backendIsPro = data['isPro'] == true;
+          final backendExpiry = DateTime.tryParse(data['proExpiresAt']?.toString() ?? data['expiresAt']?.toString() ?? '');
+          if (backendIsPro && backendExpiry != null && backendExpiry.isAfter(DateTime.now())) {
+            isPro = true;
+            proExpiry = backendExpiry;
+            await _prefs.setBool(_kIsPro, true);
+            await _prefs.setString(_kProExpiry, backendExpiry.toIso8601String());
+          } else {
+            isPro = false;
+            proExpiry = null;
+            await _prefs.setBool(_kIsPro, false);
+            await _prefs.remove(_kProExpiry);
+          }
+
+          // Đồng bộ vào Database cục bộ
+          await OrdersStorage.syncUserAccount(
+            email: cleanEmail,
+            name: name,
+            password: cleanPassword,
+            isPro: isPro,
+            proExpiry: proExpiry,
+            isAdmin: isAdmin,
+          );
+
+          isLoggedIn = true;
+          userName = name.trim().isEmpty ? 'Người dùng' : name.trim();
+          userEmail = cleanEmail;
+          await _prefs.setBool(_kLoggedIn, true);
+          await _prefs.setString(_kUserName, userName);
+          await _prefs.setString(_kUserEmail, userEmail);
+
+          try {
+            await _remoteSync.saveUser(userName, userEmail);
+          } catch (_) {}
+
+          notifyListeners();
+          return;
+        } else if (response.statusCode == 400 || response.statusCode == 401) {
+          // Máy chủ từ chối vì sai mật khẩu hoặc lỗi đăng ký -> Báo lỗi chính xác
+          try {
+            final errorData = jsonDecode(utf8.decode(response.bodyBytes));
+            final msg = errorData is Map ? (errorData['detail'] ?? errorData['error'] ?? 'Sai email hoặc mật khẩu') : 'Sai email hoặc mật khẩu';
+            throw StateError(msg.toString());
+          } catch (e) {
+            if (e is StateError) rethrow;
+            throw StateError(register ? 'Không đăng ký được, email có thể đã tồn tại' : 'Email hoặc mật khẩu không đúng');
+          }
+        }
+      } on StateError {
+        rethrow;
+      } catch (e) {
+        // Lỗi kết nối mạng (hoặc Mixed Content trên Vercel), chuyển sang kiểm tra Database người dùng nội bộ
       }
-      final data = jsonDecode(response.body) as Map<String, dynamic>;
-      authToken = (data['token'] ?? '').toString();
-      await _prefs.setString('se_auth_token', authToken);
-      if (data['name'] != null && (data['name'] as String).isNotEmpty) {
-        name = data['name'] as String;
-      }
-      isAdmin = data['isAdmin'] == true || email.trim().toLowerCase() == 'admin@signeye.vn';
-      await _prefs.setBool('se_is_admin', isAdmin);
-    } on StateError {
-      rethrow;
-    } catch (_) {
-      // Khi backend chưa chạy, cho phép đăng nhập offline để trải nghiệm ứng dụng
-      authToken = 'offline_session';
-      await _prefs.setString('se_auth_token', authToken);
-      isAdmin = email.trim().toLowerCase() == 'admin@signeye.vn';
-      await _prefs.setBool('se_is_admin', isAdmin);
     }
+
+    // 2. Xác thực qua Database người dùng (bảo đảm kiểm tra mật khẩu chính xác)
+    final authResult = await OrdersStorage.authenticateUser(
+      email: cleanEmail,
+      password: cleanPassword,
+      name: cleanName,
+      register: register,
+    );
+
+    if (authResult['success'] != true) {
+      throw StateError(authResult['error'] ?? (register ? 'Đăng ký không thành công' : 'Sai email hoặc mật khẩu'));
+    }
+
+    authToken = 'session_${DateTime.now().millisecondsSinceEpoch}';
+    await _prefs.setString('se_auth_token', authToken);
+    isAdmin = authResult['isAdmin'] == true;
+    await _prefs.setBool('se_is_admin', isAdmin);
+
     isLoggedIn = true;
-    userName = name.trim().isEmpty ? 'Người dùng' : name.trim();
-    userEmail = email.trim();
+    userName = (authResult['name'] ?? cleanName).toString();
+    userEmail = cleanEmail;
     await _prefs.setBool(_kLoggedIn, true);
     await _prefs.setString(_kUserName, userName);
     await _prefs.setString(_kUserEmail, userEmail);
 
-    // Đồng bộ kiểm tra Pro từ server
-    if (authToken.isNotEmpty && authToken != 'offline_session') {
-      try {
-        final subRes = await http.get(
-          Uri.parse('$base/payments/subscription'),
-          headers: {'Authorization': 'Bearer $authToken'},
-        ).timeout(const Duration(seconds: 2));
-        if (subRes.statusCode == 200) {
-          final subscription = jsonDecode(subRes.body) as Map<String, dynamic>;
-          final expiry = DateTime.tryParse((subscription['expiresAt'] ?? '').toString());
-          isPro = subscription['isPro'] == true && expiry != null && expiry.isAfter(DateTime.now());
-          proExpiry = expiry;
-          await _prefs.setBool(_kIsPro, isPro);
-        }
-      } catch (_) {}
-    }
-
-    try {
-      await _remoteSync.saveUser(userName, userEmail);
-    } catch (_) {
-      // Fallback gracefully when the PostgreSQL backend is not running yet.
-    }
-
-    if (!isPro && userEmail.isNotEmpty) {
-      final proCheck = await OrdersStorage.checkUserPro(userEmail);
-      if (proCheck != null && proCheck['isPro'] == true) {
-        final exp = DateTime.tryParse(proCheck['expiresAt']?.toString() ?? '');
-        if (exp != null && exp.isAfter(DateTime.now())) {
-          isPro = true;
-          proExpiry = exp;
-          await _prefs.setBool(_kIsPro, true);
-          await _prefs.setString(_kProExpiry, exp.toIso8601String());
-        }
-      }
+    final userIsPro = authResult['isPro'] == true;
+    final userExp = DateTime.tryParse(authResult['expiresAt']?.toString() ?? '');
+    if (userIsPro && userExp != null && userExp.isAfter(DateTime.now())) {
+      isPro = true;
+      proExpiry = userExp;
+      await _prefs.setBool(_kIsPro, true);
+      await _prefs.setString(_kProExpiry, userExp.toIso8601String());
+    } else {
+      isPro = false;
+      proExpiry = null;
+      await _prefs.setBool(_kIsPro, false);
+      await _prefs.remove(_kProExpiry);
     }
 
     notifyListeners();
@@ -329,10 +396,14 @@ class AppState extends ChangeNotifier {
     isLoggedIn = false;
     await _prefs.setBool('se_is_admin', false);
     await _prefs.setBool(_kLoggedIn, false);
-    if (token.isNotEmpty && token != 'offline_session') {
+    await _prefs.setBool(_kIsPro, false);
+    await _prefs.remove(_kProExpiry);
+    if (token.isNotEmpty && !token.startsWith('session_') && token != 'offline_session') {
       try {
-        const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
-        await http.post(Uri.parse('$base/auth/logout'), headers: {'Authorization': 'Bearer $token'});
+        final base = await OrdersStorage.getApiBaseUrl();
+        if (base.isNotEmpty) {
+          await http.post(Uri.parse('$base/auth/logout'), headers: {'Authorization': 'Bearer $token'});
+        }
       } catch (_) {}
     }
     notifyListeners();
@@ -366,6 +437,9 @@ class AppState extends ChangeNotifier {
     } else {
       await _prefs.setString(_kProExpiry, expires.toIso8601String());
     }
+    if (isPro && expires != null && userEmail.isNotEmpty) {
+      await OrdersStorage.grantProUser(userEmail, plan: 'month');
+    }
     notifyListeners();
   }
 
@@ -375,6 +449,9 @@ class AppState extends ChangeNotifier {
     isPro = expiry.isAfter(DateTime.now());
     await _prefs.setBool(_kIsPro, isPro);
     await _prefs.setString(_kProExpiry, expiry.toIso8601String());
+    if (userEmail.isNotEmpty) {
+      await OrdersStorage.grantProUser(userEmail, plan: 'month');
+    }
     notifyListeners();
   }
 

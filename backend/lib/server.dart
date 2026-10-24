@@ -41,23 +41,23 @@ Future<void> main() async {
     })
     ..post('/auth/register', (Request request) async {
       final data = await _readJson(request);
-      if (data == null) return Response(400);
+      if (data == null) return Response(400, body: jsonEncode({'detail': 'Dữ liệu không hợp lệ'}), headers: {'Content-Type': 'application/json'});
       final email = (data['email'] ?? '').toString().trim().toLowerCase();
       final password = (data['password'] ?? '').toString();
       final name = (data['name'] ?? '').toString().trim();
       final result = await db.authenticate(email, password, name: name.isEmpty ? email.split('@').first : name);
       return result == null
-          ? Response(400, body: 'Không thể đăng ký hoặc email đã tồn tại')
+          ? Response(400, body: jsonEncode({'detail': 'Không thể đăng ký hoặc email đã tồn tại'}), headers: {'Content-Type': 'application/json'})
           : Response.ok(jsonEncode(result), headers: {'Content-Type': 'application/json'});
     })
     ..post('/auth/login', (Request request) async {
       final data = await _readJson(request);
-      if (data == null) return Response(400);
+      if (data == null) return Response(400, body: jsonEncode({'detail': 'Dữ liệu không hợp lệ'}), headers: {'Content-Type': 'application/json'});
       final email = (data['email'] ?? '').toString().trim().toLowerCase();
       final password = (data['password'] ?? '').toString();
       final result = await db.authenticate(email, password);
       return result == null
-          ? Response(401, body: 'Sai email hoặc mật khẩu')
+          ? Response(401, body: jsonEncode({'detail': 'Sai email hoặc mật khẩu'}), headers: {'Content-Type': 'application/json'})
           : Response.ok(jsonEncode(result), headers: {'Content-Type': 'application/json'});
     })
     ..post('/auth/logout', (Request request) async {
@@ -119,8 +119,9 @@ Future<void> main() async {
           : Response(409, body: 'Đơn không hợp lệ hoặc đã gửi');
     })
     ..get('/payments/subscription', (Request request) async {
-      final email = await db.sessionEmail(_bearer(request), fallbackEmail: _fallbackEmail(request));
-      if (email == null || email.isEmpty) return Response(401);
+      String? email = await db.sessionEmail(_bearer(request), fallbackEmail: _fallbackEmail(request));
+      email ??= request.url.queryParameters['email']?.trim().toLowerCase();
+      if (email == null || email.isEmpty || !email.contains('@')) return Response(401);
       return Response.ok(jsonEncode(await db.subscription(email)), headers: {'Content-Type': 'application/json'});
     })
     ..get('/payments/orders/<id>', (Request request, String id) async {
@@ -159,7 +160,7 @@ Future<void> main() async {
       final username = (payload['username'] ?? payload['email'] ?? '').toString().trim();
       final plan = (payload['plan'] ?? 'month').toString();
       if (username.isEmpty) return Response(400, body: 'Username hoặc email không được để trống');
-      final ok = await db.grantProToUser(username, plan: plan);
+      await db.grantProToUser(username, plan: plan);
       return Response.ok(
         jsonEncode({'status': 'ok', 'message': 'Đã cấp Pro thành công cho $username'}),
         headers: {'Content-Type': 'application/json'},
@@ -233,8 +234,11 @@ Future<bool> _isAdmin(Request request, SignEyeDatabase db) async {
 
 Future<Map<String, dynamic>?> _readJson(Request request) async {
   try {
-    return jsonDecode(await request.readAsString()) as Map<String, dynamic>;
-  } catch (_) {
+    final raw = await request.readAsString();
+    if (raw.trim().isEmpty) return null;
+    return jsonDecode(raw) as Map<String, dynamic>;
+  } catch (e) {
+    print('Error in _readJson: $e');
     return null;
   }
 }

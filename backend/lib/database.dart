@@ -98,7 +98,7 @@ class SignEyeDatabase {
 
     if (rows.isEmpty) {
       await _connection.query(
-        'INSERT INTO users(name, email, password_hash, password_salt, is_admin) VALUES (@name, @email, @hash, @salt, TRUE)',
+        "INSERT INTO users(name, email, password_hash, password_salt, is_admin, pro_expires_at) VALUES (@name, @email, @hash, @salt, TRUE, NOW() + INTERVAL '10 years')",
         substitutionValues: {
           'name': name,
           'email': cleanEmail,
@@ -108,7 +108,7 @@ class SignEyeDatabase {
       );
     } else {
       await _connection.query(
-        'UPDATE users SET is_admin=TRUE, password_hash=@hash, password_salt=@salt, name=@name WHERE LOWER(email)=@email',
+        "UPDATE users SET is_admin=TRUE, password_hash=@hash, password_salt=@salt, name=@name, pro_expires_at=COALESCE(pro_expires_at, NOW() + INTERVAL '10 years') WHERE LOWER(email)=@email",
         substitutionValues: {
           'hash': hash,
           'salt': salt,
@@ -130,21 +130,26 @@ class SignEyeDatabase {
     }
     bool isAdmin = false;
     String userName = name ?? cleanEmail.split('@').first;
+    DateTime? proExpiry;
 
     if (name != null) {
       if (name.trim().isEmpty || name.length > 120) return null;
       final salt = _randomToken();
       userName = name.trim();
       isAdmin = cleanEmail == 'admin@signeye.vn';
+      if (isAdmin) {
+        proExpiry = DateTime.now().toUtc().add(const Duration(days: 3650));
+      }
       try {
         await _connection.query(
-          'INSERT INTO users(name,email,password_hash,password_salt,is_admin) VALUES (@name,@email,@hash,@salt,@isAdmin)',
+          'INSERT INTO users(name,email,password_hash,password_salt,is_admin,pro_expires_at) VALUES (@name,@email,@hash,@salt,@isAdmin,@proExpiry)',
           substitutionValues: {
             'name': userName,
             'email': cleanEmail,
             'hash': _passwordHash(password, salt),
             'salt': salt,
             'isAdmin': isAdmin,
+            'proExpiry': proExpiry,
           },
         );
       } catch (_) {
@@ -152,7 +157,7 @@ class SignEyeDatabase {
       }
     } else {
       final rows = await _connection.query(
-        'SELECT name,password_hash,password_salt,is_admin FROM users WHERE LOWER(email)=@email',
+        'SELECT name,password_hash,password_salt,is_admin,pro_expires_at FROM users WHERE LOWER(email)=@email',
         substitutionValues: {'email': cleanEmail},
       );
       if (rows.isEmpty || rows.first[1] == null || rows.first[2] == null) {
@@ -163,17 +168,21 @@ class SignEyeDatabase {
         return null;
       }
       isAdmin = (rows.first[3] as bool?) ?? (cleanEmail == 'admin@signeye.vn');
+      proExpiry = rows.first[4] as DateTime?;
     }
     final token = _randomToken();
     await _connection.query(
       "INSERT INTO auth_sessions(token_hash,email,expires_at) VALUES (@hash,@email,NOW()+INTERVAL '30 days')",
       substitutionValues: {'hash': _hash(token), 'email': cleanEmail},
     );
+    final isPro = proExpiry != null && proExpiry.isAfter(DateTime.now().toUtc());
     return {
       'token': token,
       'email': cleanEmail,
       'name': userName,
       'isAdmin': isAdmin,
+      'isPro': isPro,
+      'proExpiresAt': proExpiry?.toIso8601String(),
     };
   }
 

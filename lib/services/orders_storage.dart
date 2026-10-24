@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class OrdersStorage {
   static const _kOrdersKey = 'se_all_pro_orders';
   static const _kProUsersKey = 'se_pro_users_map';
+  static const _kUsersDbKey = 'se_users_database';
   static const _kCustomApiUrlKey = 'se_custom_api_url';
 
   /// Lấy URL máy chủ Backend
@@ -143,6 +144,142 @@ class OrdersStorage {
     return found;
   }
 
+  /// Xác thực người dùng qua Database cục bộ (bảo đảm kiểm tra chính xác email và mật khẩu)
+  static Future<Map<String, dynamic>> authenticateUser({
+    required String email,
+    required String password,
+    String? name,
+    required bool register,
+  }) async {
+    final cleanEmail = email.trim().toLowerCase();
+    final cleanPass = password.trim();
+    if (cleanEmail.isEmpty || cleanPass.length < 4) {
+      return {'success': false, 'error': 'Vui lòng nhập email hợp lệ và mật khẩu từ 4 ký tự'};
+    }
+
+    // Tài khoản Admin cố định
+    if (cleanEmail == 'admin@signeye.vn') {
+      if (cleanPass != 'Admin@123456') {
+        return {'success': false, 'error': 'Mật khẩu quản trị viên không chính xác!'};
+      }
+      return {
+        'success': true,
+        'email': cleanEmail,
+        'name': 'Quản trị viên',
+        'isAdmin': true,
+        'isPro': true,
+        'expiresAt': DateTime.now().add(const Duration(days: 3650)).toIso8601String(),
+      };
+    }
+
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_kUsersDbKey);
+    Map<String, dynamic> users = {};
+    if (raw != null && raw.isNotEmpty) {
+      try {
+        users = Map<String, dynamic>.from(jsonDecode(raw));
+      } catch (_) {}
+    }
+
+    if (register) {
+      if (users.containsKey(cleanEmail)) {
+        return {'success': false, 'error': 'Email này đã được đăng ký. Vui lòng chuyển sang tab Đăng nhập'};
+      }
+      final userName = (name != null && name.trim().isNotEmpty) ? name.trim() : cleanEmail.split('@').first;
+      
+      // Kiểm tra xem email này có được Admin cấp Pro trước không
+      final proInfo = await checkUserPro(cleanEmail);
+      final isPro = proInfo != null && proInfo['isPro'] == true;
+      final expiresAt = proInfo?['expiresAt'];
+
+      final newUser = {
+        'email': cleanEmail,
+        'name': userName,
+        'password': cleanPass,
+        'isAdmin': false,
+        'isPro': isPro,
+        'expiresAt': expiresAt,
+        'created_at': DateTime.now().toIso8601String(),
+      };
+      users[cleanEmail] = newUser;
+      await prefs.setString(_kUsersDbKey, jsonEncode(users));
+
+      return {
+        'success': true,
+        'email': cleanEmail,
+        'name': userName,
+        'isAdmin': false,
+        'isPro': isPro,
+        'expiresAt': expiresAt,
+      };
+    } else {
+      // Đăng nhập: kiểm tra tồn tại và mật khẩu
+      if (!users.containsKey(cleanEmail)) {
+        return {'success': false, 'error': 'Tài khoản chưa tồn tại. Vui lòng bấm Đăng ký trước!'};
+      }
+      final user = Map<String, dynamic>.from(users[cleanEmail] as Map);
+      final storedPass = (user['password'] ?? '').toString();
+      if (storedPass != cleanPass) {
+        return {'success': false, 'error': 'Sai mật khẩu, vui lòng kiểm tra lại!'};
+      }
+
+      // Cập nhật trạng thái Pro mới nhất nếu Admin vừa duyệt
+      final proInfo = await checkUserPro(cleanEmail);
+      if (proInfo != null && proInfo['isPro'] == true) {
+        user['isPro'] = true;
+        user['expiresAt'] = proInfo['expiresAt'];
+        users[cleanEmail] = user;
+        await prefs.setString(_kUsersDbKey, jsonEncode(users));
+      }
+
+      final isPro = user['isPro'] == true;
+      final exp = user['expiresAt'] != null ? DateTime.tryParse(user['expiresAt'].toString()) : null;
+      final activePro = isPro && exp != null && exp.isAfter(DateTime.now());
+
+      return {
+        'success': true,
+        'email': cleanEmail,
+        'name': (user['name'] ?? cleanEmail.split('@').first).toString(),
+        'isAdmin': user['isAdmin'] == true,
+        'isPro': activePro,
+        'expiresAt': exp?.toIso8601String(),
+      };
+    }
+  }
+
+  /// Đồng bộ thông tin người dùng vào Database sau khi máy chủ xác thực thành công
+  static Future<void> syncUserAccount({
+    required String email,
+    required String name,
+    required String password,
+    required bool isPro,
+    DateTime? proExpiry,
+    required bool isAdmin,
+  }) async {
+    final cleanEmail = email.trim().toLowerCase();
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_kUsersDbKey);
+    Map<String, dynamic> users = {};
+    if (raw != null && raw.isNotEmpty) {
+      try {
+        users = Map<String, dynamic>.from(jsonDecode(raw));
+      } catch (_) {}
+    }
+    users[cleanEmail] = {
+      'email': cleanEmail,
+      'name': name,
+      'password': password,
+      'isAdmin': isAdmin,
+      'isPro': isPro,
+      'expiresAt': proExpiry?.toIso8601String(),
+      'updated_at': DateTime.now().toIso8601String(),
+    };
+    await prefs.setString(_kUsersDbKey, jsonEncode(users));
+    if (isPro && proExpiry != null) {
+      await grantProUser(cleanEmail, plan: 'month');
+    }
+  }
+
   /// Kích hoạt quyền Pro trực tiếp cho Username hoặc Email
   static Future<void> grantProUser(String usernameOrEmail, {String plan = 'month'}) async {
     final clean = usernameOrEmail.trim().toLowerCase();
@@ -161,6 +298,22 @@ class OrdersStorage {
       proMap['$clean@signeye.vn'] = {'isPro': true, 'expiresAt': expiry, 'plan': plan};
     }
     await prefs.setString(_kProUsersKey, jsonEncode(proMap));
+
+    // Đồng bộ cập nhật thẳng vào Database người dùng
+    final rawUsers = prefs.getString(_kUsersDbKey);
+    if (rawUsers != null && rawUsers.isNotEmpty) {
+      try {
+        final users = Map<String, dynamic>.from(jsonDecode(rawUsers));
+        final targetEmail = clean.contains('@') ? clean : '$clean@signeye.vn';
+        if (users.containsKey(targetEmail)) {
+          final u = Map<String, dynamic>.from(users[targetEmail] as Map);
+          u['isPro'] = true;
+          u['expiresAt'] = expiry;
+          users[targetEmail] = u;
+          await prefs.setString(_kUsersDbKey, jsonEncode(users));
+        }
+      } catch (_) {}
+    }
   }
 
   /// Kiểm tra tài khoản có được cấp Pro hay không
