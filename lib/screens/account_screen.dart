@@ -343,10 +343,81 @@ class AccountScreen extends StatelessWidget {
           _settingsTile(
             icon: Icons.admin_panel_settings_rounded,
             title: 'Duyệt đơn Pro (Admin)',
-            subtitle: state.isAdmin ? 'Quyền Quản trị viên' : 'Đăng nhập admin để duyệt',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const AdminOrdersScreen()),
-            ),
+            subtitle: state.isAdmin ? 'Quyền Quản trị viên (Đang đăng nhập)' : 'Đăng nhập admin để duyệt',
+            onTap: () async {
+              if (!state.isAdmin) {
+                // Đăng xuất và trở về màn hình đăng nhập ban đầu như yêu cầu của người dùng
+                await state.logout();
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Color(0xFF0D8F5C),
+                      content: Text('Vui lòng đăng nhập bằng tài khoản Admin (admin@signeye.vn) để duyệt đơn Pro'),
+                    ),
+                  );
+                }
+              } else {
+                // Nếu đã là admin thì mở giao diện duyệt đơn hoặc cho phép đổi tài khoản
+                final choice = await showModalBottomSheet<String>(
+                  context: context,
+                  backgroundColor: Colors.white,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                  ),
+                  builder: (ctx) => SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 40,
+                            height: 4,
+                            decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2)),
+                          ),
+                          const SizedBox(height: 16),
+                          const Text('Quản trị viên Pro', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17)),
+                          const SizedBox(height: 6),
+                          Text('Đang đăng nhập: ${state.userEmail}', style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
+                          const SizedBox(height: 16),
+                          ListTile(
+                            leading: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(color: const Color(0xFFDEF7EC), borderRadius: BorderRadius.circular(10)),
+                              child: const Icon(Icons.check_circle_outline, color: Color(0xFF0D8F5C)),
+                            ),
+                            title: const Text('Vào màn hình duyệt đơn Pro', style: TextStyle(fontWeight: FontWeight.w700)),
+                            subtitle: const Text('Xem danh sách và duyệt Pro cho người dùng', style: TextStyle(fontSize: 12)),
+                            onTap: () => Navigator.pop(ctx, 'open'),
+                          ),
+                          const Divider(),
+                          ListTile(
+                            leading: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(color: const Color(0xFFFEE2E2), borderRadius: BorderRadius.circular(10)),
+                              child: const Icon(Icons.logout_rounded, color: Colors.red),
+                            ),
+                            title: const Text('Đăng nhập lại tài khoản khác', style: TextStyle(fontWeight: FontWeight.w700, color: Colors.red)),
+                            subtitle: const Text('Về màn hình đăng nhập ban đầu', style: TextStyle(fontSize: 12)),
+                            onTap: () => Navigator.pop(ctx, 'relogin'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+
+                if (choice == 'open') {
+                  if (context.mounted) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const AdminOrdersScreen()),
+                    );
+                  }
+                } else if (choice == 'relogin') {
+                  await state.logout();
+                }
+              }
+            },
           ),
           const SizedBox(height: 20),
           SizedBox(

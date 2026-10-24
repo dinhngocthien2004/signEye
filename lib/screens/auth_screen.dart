@@ -168,7 +168,26 @@ class _AuthScreenState extends State<AuthScreen> {
                               Text(isLoginTab ? 'Đăng nhập' : 'Tạo tài khoản'),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      if (isLoginTab) ...[
+                        const SizedBox(height: 6),
+                        Center(
+                          child: TextButton.icon(
+                            style: TextButton.styleFrom(
+                              foregroundColor: const Color(0xFF0D8F5C),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _emailCtrl.text = 'admin@signeye.vn';
+                                _passCtrl.text = 'Admin@123456';
+                              });
+                            },
+                            icon: const Icon(Icons.admin_panel_settings_outlined, size: 16),
+                            label: const Text('Điền tài khoản Admin (Duyệt Pro)',
+                                style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700)),
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: 8),
                       Center(
                         child: Text(
                           'Dữ liệu tài khoản được lưu trên thiết bị (bản demo)',
