@@ -235,14 +235,17 @@ class SignEyeDatabase {
   /// Khởi tạo dữ liệu khách hàng thực tế và đơn hàng đã thanh toán vào PostgreSQL
   Future<void> ensureSeedData() async {
     final seedCustomers = [
+      {'name': 'Nguyễn Quốc Huy', 'email': 'nguyenquochuy2k71508@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE60471724'},
+      {'name': 'Huỳnh Quang Cường', 'email': 'cuonghuynh2403@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE92771083'},
+      {'name': 'Nguyễn Hà Cao Kỳ', 'email': 'nguyenhacaoky@gmail.com', 'coins': 0, 'days_ago': 2, 'order_id': 'SE56947789'},
       {'name': 'Lê Trà Gia Lộc', 'email': 'leloc2005qn@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE04815737'},
       {'name': 'Trà Thị Mỹ Ngọc', 'email': 'tramyngoc1978@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE05016739'},
       {'name': 'Lê Anh Đức', 'email': 'duclaqe180080@fpt.edu.vn', 'coins': 0, 'days_ago': 2, 'order_id': 'SE15753966'},
-      {'name': 'Nguyễn Hà Cao Kỳ', 'email': 'nguyenhacaoky@gmail.com', 'coins': 0, 'days_ago': 2, 'order_id': 'SE60471724'},
-      {'name': 'Huỳnh Quang Cường', 'email': 'cuonghuynh2403@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE56947789'},
-      {'name': 'Nguyễn Quốc Huy', 'email': 'nguyenquochuy2k71508@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE92771083'},
-      {'name': 'Đinh Ngọc Thiện', 'email': 'dinhngocthien2004@gmail.com', 'coins': 2400, 'days_ago': 4, 'order_id': 'SE1792889201550'},
-      {'name': 'Lê Thị Hồng Duyên', 'email': 'hongduyen.le@signeye.vn', 'coins': 3100, 'days_ago': 5, 'order_id': 'SE1792654318992'},
+      {'name': 'Phan Thị Thanh Ly', 'email': 'lyly1222005@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE15501868'},
+      {'name': 'Lê Trà Gia Hiếu', 'email': 'legiahieu27@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943362849'},
+      {'name': 'Trần Đăng Khôi', 'email': 'khoitdqe170065@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943589777'},
+      {'name': 'Cao Ngọc Ý', 'email': 'ycao123@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943482387'},
+      {'name': 'Đinh Ngọc Thiện', 'email': 'dinhngocthien2004@gmail.com', 'coins': 2400, 'days_ago': 4, 'order_id': 'SE56477462'},
     ];
 
     for (final c in seedCustomers) {

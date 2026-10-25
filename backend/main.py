@@ -131,7 +131,6 @@ with db() as con:
             ('khoitdqe170065@gmail.com', 'Trần Đăng Khôi', 'SE1792943589777', 39000, 'month', 31),
             ('ycao123@gmail.com', 'Cao Ngọc Ý', 'SE1792943482387', 39000, 'month', 31),
             ('dinhngocthien2004@gmail.com', 'Đinh Ngọc Thiện', 'SE56477462', 39000, 'month', 31),
-            ('hongduyen.le@signeye.vn', 'Lê Thị Hồng Duyên', 'SE1792654318992', 39000, 'month', 31),
         ]
         now_iso = datetime.now(timezone.utc).isoformat()
         admin_row = connection.execute("SELECT id FROM users WHERE LOWER(email) = 'admin@signeye.vn'").fetchone()
