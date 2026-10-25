@@ -732,6 +732,34 @@
       ],
       "answer": 2,
       "explanation": "Ô tô không chấp hành hiệu lệnh của người điều khiển giao thông bị phạt 8-10 triệu đồng, trừ 4 điểm GPLX."
+    },
+    {
+      "id": 56,
+      "topicId": "signs",
+      "prompt": "Theo Quy chuẩn kỹ thuật quốc gia QCVN 41:2019/BGTVT, hệ thống biển báo hiệu đường bộ Việt Nam được phân chia thành những nhóm cơ bản nào sau đây?",
+      "options": [
+        "Biển báo cấm; Biển hiệu lệnh; Biển báo nguy hiểm và cảnh báo; Biển chỉ dẫn; Biển phụ và biển viết bằng chữ.",
+        "Biển báo trên cao; Biển báo dưới mặt đất; Biển báo ban đêm.",
+        "Biển báo hiệu bằng còi; Biển báo hiệu bằng đèn tín hiệu giao thông."
+      ],
+      "correctIndex": 0,
+      "explanation": "Điều 15 QCVN 41:2019/BGTVT quy định biển báo đường bộ gồm 5 nhóm chính: Biển báo cấm, Biển hiệu lệnh, Biển báo nguy hiểm và cảnh báo, Biển chỉ dẫn, Biển phụ và biển viết bằng chữ.",
+      "image": null,
+      "signCode": null
+    },
+    {
+      "id": 57,
+      "topicId": "law",
+      "prompt": "Khi điều khiển phương tiện tham gia giao thông trên đường, gặp vạch kẻ đường hình mắt võng (màu vàng) bố trí tại các nút giao, người lái xe phải xử lý như thế nào?",
+      "options": [
+        "Được phép dừng đỗ xe trên vạch khi chờ đèn đỏ hoặc ùn tắc",
+        "Không được dừng phương tiện trong phạm vi phần mặt đường có bố trí vạch mắt võng để tránh ùn tắc",
+        "Tăng tốc độ chạy qua thật nhanh"
+      ],
+      "correctIndex": 1,
+      "explanation": "Vạch kẻ kiểu mắt võng được bố trí nhằm báo hiệu khu vực cấm dừng phương tiện, giúp chống ùn tắc giao thông tại các ngã tư hoặc nơi giao nhau.",
+      "image": null,
+      "signCode": null
     }
   ],
   "exams": [

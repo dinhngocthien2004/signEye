@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: signeye-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_ENV
+        value: development
+      - key: ADMIN_API_KEY
+        value: Admin@123456
+      - key: BANK_ID
+        value: "970422"
+      - key: BANK_ACCOUNT
+        value: "0000708578761"
+      - key: BANK_NAME
+        value: "LE THI HONG DUYEN"
+      - key: MONTHLY_PRICE
+        value: "39000"
+      - key: YEARLY_PRICE
+        value: "399000"
+      - key: ALLOW_LEGACY_ADMIN_KEY
+        value: "1"

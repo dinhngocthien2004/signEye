@@ -72,6 +72,16 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
     }
 
     if (!mounted) return;
+    const demoEmails = {
+      'demo@signeye.vn',
+      'user_demo@signeye.vn',
+      'signeye.test2026@gmail.com',
+      'thien123@gmail.com',
+      'myduyen261104@gmail.com',
+      'student.signeye@gmail.com',
+      'ngocthien@signeye.vn',
+    };
+
     try {
       final token = context.read<AppState>().authToken;
       final headers = {
@@ -91,14 +101,22 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
         if (usersResponse.statusCode == 200) {
           final uData = jsonDecode(utf8.decode(usersResponse.bodyBytes)) as Map<String, dynamic>;
           loadedUsers = uData['users'] as List<dynamic>? ?? [];
+        } else {
+          loadedUsers = await OrdersStorage.loadLocalUsers();
         }
       } catch (_) {
         loadedUsers = await OrdersStorage.loadLocalUsers();
       }
 
+      if (loadedUsers.isEmpty) {
+        loadedUsers = await OrdersStorage.loadLocalUsers();
+      }
+      loadedUsers = loadedUsers.where((u) => !demoEmails.contains((u['email'] ?? '').toString().toLowerCase())).toList();
+
       if (payResponse.statusCode == 200) {
         final data = jsonDecode(utf8.decode(payResponse.bodyBytes)) as Map<String, dynamic>;
-        final ordersList = data['orders'] as List<dynamic>? ?? [];
+        final rawOrders = data['orders'] as List<dynamic>? ?? [];
+        final ordersList = rawOrders.where((o) => !demoEmails.contains((o['email'] ?? '').toString().toLowerCase())).toList();
         final summaryData = data['summary'] as Map<String, dynamic>? ?? {};
 
         // Đồng bộ các đơn hàng từ server về local
@@ -306,7 +324,7 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: const Color(0xFF0D8F5C),
-          content: Text('🎉 Đã cấp quyền Pro (${plan == 'year' ? '1 năm' : '1 tháng'}) thành công cho $clean!'),
+          content: Text('🎉 Đã cấp quyền Pro (${plan == 'year' ? '1 năm' : '1 tháng'}) thành công cho $cleanEmail!'),
         ),
       );
     }
@@ -376,9 +394,71 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
     await _loadOrders();
   }
 
-  void _showGrantProDialog([String? defaultUser]) {
-    final userController = TextEditingController(text: defaultUser ?? '');
-    String selectedPlan = 'month';
+  Future<void> _deleteUser(String email, String name) async {
+    final clean = email.trim().toLowerCase();
+    if (clean == 'admin@signeye.vn' || clean == 'admin') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(backgroundColor: Colors.red, content: Text('Không thể xóa tài khoản Quản trị viên hệ thống!')),
+      );
+      return;
+    }
+
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Row(
+          children: [
+            Icon(Icons.delete_forever_rounded, color: Colors.red),
+            SizedBox(width: 8),
+            Text('Xóa tài khoản người dùng', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+          ],
+        ),
+        content: Text('Bạn có chắc chắn muốn xóa vĩnh viễn tài khoản:\n\n• Người dùng: $name\n• Email: $email\n\nToàn bộ dữ liệu của người dùng này sẽ bị xóa khỏi hệ thống.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Hủy')),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white),
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Xóa người dùng'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm != true) return;
+
+    // 1. Cập nhật local
+    await OrdersStorage.deleteUser(clean);
+
+    // 2. Cập nhật server nếu có
+    if (_currentApiUrl.isNotEmpty && mounted) {
+      try {
+        final token = context.read<AppState>().authToken;
+        await http.delete(
+          Uri.parse('$_currentApiUrl/admin/users/$clean'),
+          headers: {
+            'Authorization': 'Bearer $token',
+            'X-Admin-Key': 'Admin@123456',
+          },
+        ).timeout(const Duration(seconds: 4));
+      } catch (_) {}
+    }
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Đã xóa tài khoản $name ($email)')),
+      );
+    }
+    await _loadOrders();
+  }
+
+  void _showCreateUserDialog() {
+    final nameCtrl = TextEditingController();
+    final emailCtrl = TextEditingController();
+    final passCtrl = TextEditingController(text: '123456');
+    final coinsCtrl = TextEditingController(text: '0');
+    bool isPro = false;
+    String plan = 'month';
 
     showDialog(
       context: context,
@@ -387,86 +467,482 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
           title: const Row(
             children: [
-              Icon(Icons.flash_on_rounded, color: Color(0xFF0D8F5C)),
+              Icon(Icons.person_add_alt_1_rounded, color: Color(0xFF0D8F5C)),
               SizedBox(width: 8),
-              Text('Cấp quyền Pro', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17)),
+              Text('Thêm Người Dùng Mới', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
             ],
           ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Nhập tên tài khoản (Username) hoặc Email cần kích hoạt Pro:',
-                style: TextStyle(fontSize: 13, color: Colors.black87),
-              ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: userController,
-                autofocus: defaultUser == null || defaultUser.isEmpty,
-                decoration: InputDecoration(
-                  hintText: 'VD: myduyen, thien hoặc user@...',
-                  prefixIcon: const Icon(Icons.person_outline),
-                  filled: true,
-                  fillColor: const Color(0xFFF1F5F9),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: nameCtrl,
+                  decoration: const InputDecoration(labelText: 'Họ và tên', hintText: 'VD: Nguyễn Văn A', prefixIcon: Icon(Icons.badge_outlined)),
                 ),
-              ),
-              const SizedBox(height: 16),
-              const Text('Chọn thời hạn gói Pro:', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: ChoiceChip(
-                      label: const Text('1 Tháng (39k)'),
-                      selected: selectedPlan == 'month',
-                      onSelected: (val) {
-                        if (val) setDlgState(() => selectedPlan = 'month');
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: ChoiceChip(
-                      label: const Text('1 Năm (399k)'),
-                      selected: selectedPlan == 'year',
-                      onSelected: (val) {
-                        if (val) setDlgState(() => selectedPlan = 'year');
-                      },
-                    ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: emailCtrl,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(labelText: 'Email đăng nhập', hintText: 'VD: user@signeye.vn', prefixIcon: Icon(Icons.email_outlined)),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: passCtrl,
+                  decoration: const InputDecoration(labelText: 'Mật khẩu', hintText: 'Mặc định: 123456', prefixIcon: Icon(Icons.lock_outline)),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: coinsCtrl,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: 'Số xu ban đầu', hintText: '0', prefixIcon: Icon(Icons.monetization_on_outlined)),
+                ),
+                const SizedBox(height: 14),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text('Kích hoạt Pro ngay', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13.5)),
+                  subtitle: const Text('Cấp ngay đặc quyền Pro VIP', style: TextStyle(fontSize: 12)),
+                  value: isPro,
+                  activeColor: const Color(0xFF0D8F5C),
+                  onChanged: (val) => setDlgState(() => isPro = val),
+                ),
+                if (isPro) ...[
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ChoiceChip(
+                          label: const Center(child: Text('1 Tháng (39k)')),
+                          selected: plan == 'month',
+                          selectedColor: const Color(0xFFDEF7EC),
+                          onSelected: (val) {
+                            if (val) setDlgState(() => plan = 'month');
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: ChoiceChip(
+                          label: const Center(child: Text('1 Năm (399k)')),
+                          selected: plan == 'year',
+                          selectedColor: const Color(0xFFDEF7EC),
+                          onSelected: (val) {
+                            if (val) setDlgState(() => plan = 'year');
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ],
-              ),
-            ],
+              ],
+            ),
           ),
           actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: const Text('Hủy'),
-            ),
+            TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Hủy')),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF0D8F5C),
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              ),
-              onPressed: () {
-                final u = userController.text.trim();
-                if (u.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Vui lòng nhập Username hoặc Email')),
-                  );
+              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF0D8F5C), foregroundColor: Colors.white),
+              onPressed: () async {
+                final email = emailCtrl.text.trim().toLowerCase();
+                final name = nameCtrl.text.trim();
+                final pass = passCtrl.text.trim();
+                final coins = int.tryParse(coinsCtrl.text.trim()) ?? 0;
+
+                if (email.isEmpty || !email.contains('@')) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Vui lòng nhập email hợp lệ!')));
                   return;
                 }
+
                 Navigator.pop(ctx);
-                _grantProToUser(u, selectedPlan);
+
+                // 1. Lưu local
+                await OrdersStorage.createUser(
+                  email: email,
+                  name: name.isNotEmpty ? name : email.split('@').first,
+                  password: pass.isNotEmpty ? pass : '123456',
+                  isPro: isPro,
+                  plan: plan,
+                  coins: coins,
+                );
+
+                // 2. Lưu server nếu có kết nối
+                if (_currentApiUrl.isNotEmpty && mounted) {
+                  try {
+                    final token = context.read<AppState>().authToken;
+                    await http.post(
+                      Uri.parse('$_currentApiUrl/admin/users'),
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer $token',
+                        'X-Admin-Key': 'Admin@123456',
+                      },
+                      body: jsonEncode({
+                        'email': email,
+                        'name': name.isNotEmpty ? name : email.split('@').first,
+                        'password': pass.isNotEmpty ? pass : '123456',
+                        'is_pro': isPro,
+                        'plan': plan,
+                        'coins': coins,
+                      }),
+                    ).timeout(const Duration(seconds: 4));
+                  } catch (_) {}
+                }
+
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(backgroundColor: const Color(0xFF0D8F5C), content: Text('🎉 Đã thêm người dùng $name ($email)!')),
+                  );
+                }
+                await _loadOrders();
               },
-              child: const Text('Kích hoạt Pro ngay'),
+              child: const Text('Tạo tài khoản'),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _showEditUserDialog(Map<String, dynamic> u) {
+    final email = (u['email'] ?? '').toString();
+    final nameCtrl = TextEditingController(text: (u['name'] ?? '').toString());
+    final coinsCtrl = TextEditingController(text: (u['coins'] ?? '0').toString());
+    bool isPro = u['is_pro'] == true;
+    String plan = 'month';
+
+    showDialog(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDlgState) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          title: Row(
+            children: [
+              const Icon(Icons.edit_note_rounded, color: Color(0xFF2563EB)),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text('Sửa Thông Tin: $email', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15), overflow: TextOverflow.ellipsis),
+              ),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: nameCtrl,
+                  decoration: const InputDecoration(labelText: 'Họ và tên', prefixIcon: Icon(Icons.badge_outlined)),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: coinsCtrl,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(labelText: 'Số xu tích lũy', prefixIcon: Icon(Icons.monetization_on_outlined)),
+                ),
+                const SizedBox(height: 14),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text('Trạng thái Pro VIP', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13.5)),
+                  subtitle: Text(isPro ? 'Đang bật Pro VIP' : 'Người dùng thường (Free)', style: const TextStyle(fontSize: 12)),
+                  value: isPro,
+                  activeColor: const Color(0xFF0D8F5C),
+                  onChanged: (val) => setDlgState(() => isPro = val),
+                ),
+                if (isPro) ...[
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ChoiceChip(
+                          label: const Center(child: Text('Gói 1 Tháng')),
+                          selected: plan == 'month',
+                          selectedColor: const Color(0xFFDEF7EC),
+                          onSelected: (val) {
+                            if (val) setDlgState(() => plan = 'month');
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: ChoiceChip(
+                          label: const Center(child: Text('Gói 1 Năm')),
+                          selected: plan == 'year',
+                          selectedColor: const Color(0xFFDEF7EC),
+                          onSelected: (val) {
+                            if (val) setDlgState(() => plan = 'year');
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Hủy')),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF2563EB), foregroundColor: Colors.white),
+              onPressed: () async {
+                final name = nameCtrl.text.trim();
+                final coins = int.tryParse(coinsCtrl.text.trim()) ?? 0;
+
+                Navigator.pop(ctx);
+
+                // 1. Cập nhật local
+                await OrdersStorage.updateUser(
+                  email: email,
+                  name: name,
+                  coins: coins,
+                  isPro: isPro,
+                  plan: plan,
+                );
+
+                // 2. Cập nhật server nếu có
+                if (_currentApiUrl.isNotEmpty && mounted) {
+                  try {
+                    final token = context.read<AppState>().authToken;
+                    await http.put(
+                      Uri.parse('$_currentApiUrl/admin/users/$email'),
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer $token',
+                        'X-Admin-Key': 'Admin@123456',
+                      },
+                      body: jsonEncode({
+                        'name': name,
+                        'coins': coins,
+                        'is_pro': isPro,
+                        'plan': plan,
+                      }),
+                    ).timeout(const Duration(seconds: 4));
+                  } catch (_) {}
+                }
+
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(backgroundColor: const Color(0xFF2563EB), content: Text('Đã cập nhật thông tin người dùng $name ($email)!')),
+                  );
+                }
+                await _loadOrders();
+              },
+              child: const Text('Lưu thay đổi'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showGrantProDialog([String? defaultUser]) {
+    String selectedEmail = defaultUser ?? '';
+    final searchCtrl = TextEditingController(text: defaultUser ?? '');
+    String selectedPlan = 'month';
+
+    showDialog(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDlgState) {
+          final query = searchCtrl.text.trim().toLowerCase();
+          final matchingUsers = _users.where((u) {
+            final email = (u['email'] ?? '').toString().toLowerCase();
+            final name = (u['name'] ?? '').toString().toLowerCase();
+            if (query.isEmpty) return true;
+            return email.contains(query) || name.contains(query);
+          }).toList();
+
+          return AlertDialog(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+            title: const Row(
+              children: [
+                Icon(Icons.workspace_premium_rounded, color: Color(0xFF0D8F5C)),
+                SizedBox(width: 8),
+                Text('Cấp quyền SignEye Pro', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17)),
+              ],
+            ),
+            content: SizedBox(
+              width: 480,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Chọn người dùng đã đăng ký để cấp / gia hạn Pro:',
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Colors.black87),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: searchCtrl,
+                    decoration: InputDecoration(
+                      hintText: 'Tìm theo tên hoặc email đã đăng ký...',
+                      prefixIcon: const Icon(Icons.search, size: 20),
+                      filled: true,
+                      fillColor: const Color(0xFFF1F5F9),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                    ),
+                    onChanged: (val) {
+                      setDlgState(() {});
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Danh sách tài khoản đề xuất (nhấn để chọn):',
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Color(0xFF64748B)),
+                  ),
+                  const SizedBox(height: 6),
+                  Container(
+                    constraints: const BoxConstraints(maxHeight: 180),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF8FAFC),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: const Color(0xFFE2E8F0)),
+                    ),
+                    child: matchingUsers.isEmpty
+                        ? const Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Center(
+                              child: Text(
+                                '⚠️ Không tìm thấy người dùng đã đăng ký phù hợp.\nChỉ có thể cấp Pro cho tài khoản đã có trên hệ thống.',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.redAccent, fontSize: 12, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          )
+                        : ListView.separated(
+                            shrinkWrap: true,
+                            itemCount: matchingUsers.length,
+                            separatorBuilder: (_, __) => const Divider(height: 1, color: Color(0xFFE2E8F0)),
+                            itemBuilder: (ctx, i) {
+                              final u = matchingUsers[i];
+                              final email = (u['email'] ?? '').toString();
+                              final name = (u['name'] ?? email.split('@').first).toString();
+                              final isPro = u['is_pro'] == true;
+                              final isSelected = selectedEmail.toLowerCase() == email.toLowerCase();
+
+                              return ListTile(
+                                dense: true,
+                                selected: isSelected,
+                                selectedTileColor: const Color(0xFFDEF7EC),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                                leading: CircleAvatar(
+                                  radius: 16,
+                                  backgroundColor: isPro ? const Color(0xFFDEF7EC) : const Color(0xFFE2E8F0),
+                                  child: Text(
+                                    name.isNotEmpty ? name[0].toUpperCase() : 'U',
+                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: isPro ? const Color(0xFF0D8F5C) : Colors.black87),
+                                  ),
+                                ),
+                                title: Text(name, style: TextStyle(fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600, fontSize: 13)),
+                                subtitle: Text(email, style: const TextStyle(fontSize: 11.5, color: Colors.black54)),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                      decoration: BoxDecoration(
+                                        color: isPro ? const Color(0xFFDEF7EC) : const Color(0xFFF1F5F9),
+                                        borderRadius: BorderRadius.circular(6),
+                                      ),
+                                      child: Text(
+                                        isPro ? '👑 Pro' : '🌱 Thường',
+                                        style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: isPro ? const Color(0xFF0D8F5C) : Colors.black54),
+                                      ),
+                                    ),
+                                    if (isSelected) ...[
+                                      const SizedBox(width: 6),
+                                      const Icon(Icons.check_circle_rounded, color: Color(0xFF0D8F5C), size: 18),
+                                    ],
+                                  ],
+                                ),
+                                onTap: () {
+                                  setDlgState(() {
+                                    selectedEmail = email;
+                                    searchCtrl.text = email;
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                  ),
+                  const SizedBox(height: 14),
+                  const Text('Chọn thời hạn kích hoạt Pro:', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ChoiceChip(
+                          label: const Center(child: Text('1 Tháng (39k)')),
+                          selected: selectedPlan == 'month',
+                          selectedColor: const Color(0xFFDEF7EC),
+                          labelStyle: TextStyle(fontWeight: FontWeight.w700, color: selectedPlan == 'month' ? const Color(0xFF0D8F5C) : Colors.black87),
+                          onSelected: (val) {
+                            if (val) setDlgState(() => selectedPlan = 'month');
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: ChoiceChip(
+                          label: const Center(child: Text('1 Năm (399k)')),
+                          selected: selectedPlan == 'year',
+                          selectedColor: const Color(0xFFDEF7EC),
+                          labelStyle: TextStyle(fontWeight: FontWeight.w700, color: selectedPlan == 'year' ? const Color(0xFF0D8F5C) : Colors.black87),
+                          onSelected: (val) {
+                            if (val) setDlgState(() => selectedPlan = 'year');
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text('Hủy'),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF0D8F5C),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                ),
+                onPressed: () {
+                  final target = (selectedEmail.isNotEmpty ? selectedEmail : searchCtrl.text).trim();
+                  if (target.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Vui lòng chọn một tài khoản người dùng đã đăng ký')),
+                    );
+                    return;
+                  }
+
+                  // Kiểm tra tài khoản có nằm trong danh sách đã đăng ký không
+                  final clean = target.toLowerCase();
+                  final userExists = _users.any((u) {
+                    final e = (u['email'] ?? '').toString().toLowerCase();
+                    return e == clean || e == '$clean@signeye.vn';
+                  });
+
+                  if (!userExists) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red.shade700,
+                        content: Text('⚠️ Tài khoản "$target" chưa đăng ký! Chỉ có thể cấp Pro cho người dùng đã đăng ký tài khoản (hoặc hãy nhấn "Thêm User" trước).'),
+                      ),
+                    );
+                    return;
+                  }
+
+                  Navigator.pop(ctx);
+                  _grantProToUser(target, selectedPlan);
+                },
+                child: const Text('Kích hoạt Pro ngay'),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -583,6 +1059,19 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
       appBar: AppBar(
         title: const Text('Quản trị SignEye Pro', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18)),
         actions: [
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF2563EB),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+            ),
+            icon: const Icon(Icons.person_add_alt_1_rounded, size: 16),
+            label: const Text('+ Thêm User'),
+            onPressed: _showCreateUserDialog,
+          ),
+          const SizedBox(width: 6),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF0D8F5C),
@@ -768,72 +1257,31 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
     final freeUsers = (_summary?['free_users'] ?? _users.where((u) => u['is_pro'] != true).length.toString()).toString();
 
     final totalCoins = _users.fold<int>(0, (sum, u) => sum + (int.tryParse(u['coins']?.toString() ?? '0') ?? 0));
-    final coinRedeemUsers = _users.where((u) {
-      final note = (u['coin_redeem_note'] ?? '').toString();
-      return u['has_coin_pro'] == true ||
-          (note.isNotEmpty &&
-              note != 'Chưa dùng xu đổi Pro' &&
-              note != 'Đang tích lũy xu (chưa đổi Pro)');
-    }).length;
+    final coinRedeemUsers = _users.where((u) => u['has_coin_pro'] == true).length;
 
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: _summaryBox('Tổng người dùng', totalUsers, const Color(0xFF2563EB), const Color(0xFFEFF6FF), Icons.people_alt_rounded),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: _summaryBox('👑 Người dùng Pro', proUsers, const Color(0xFF0D8F5C), const Color(0xFFDEF7EC), Icons.workspace_premium_rounded),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: _summaryBox('🌱 Người dùng thường', freeUsers, const Color(0xFF475569), const Color(0xFFF1F5F9), Icons.person_outline_rounded),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Row(
-          children: [
-            Expanded(
-              child: _summaryBox('Chờ duyệt Pro', '$pendingCount', const Color(0xFFD97706), const Color(0xFFFEF3C7), Icons.hourglass_top_rounded),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: _summaryBox('Đơn đã duyệt', '$purchases', const Color(0xFF059669), const Color(0xFFECFDF5), Icons.verified_rounded),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: _summaryBox('Tổng doanh thu', revenue, const Color(0xFF4F46E5), const Color(0xFFEEF2FF), Icons.payments_rounded),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Row(
-          children: [
-            Expanded(
-              child: _summaryBox(
-                '🪙 Xu tích lũy toàn hệ thống',
-                '${NumberFormat("#,###", "vi").format(totalCoins)} xu',
-                const Color(0xFFD97706),
-                const Color(0xFFFEF3C7),
-                Icons.monetization_on_rounded,
-              ),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: _summaryBox(
-                '🪙 Đã đổi Pro bằng xu',
-                '$coinRedeemUsers tài khoản',
-                const Color(0xFF0D8F5C),
-                const Color(0xFFDEF7EC),
-                Icons.redeem_rounded,
-              ),
-            ),
-          ],
-        ),
-      ],
+    final items = [
+      _summaryBox('Tổng người dùng', totalUsers, const Color(0xFF2563EB), const Color(0xFFEFF6FF), Icons.people_alt_rounded),
+      _summaryBox('👑 Người dùng Pro', proUsers, const Color(0xFF0D8F5C), const Color(0xFFDEF7EC), Icons.workspace_premium_rounded),
+      _summaryBox('🌱 Người dùng thường', freeUsers, const Color(0xFF475569), const Color(0xFFF1F5F9), Icons.person_outline_rounded),
+      _summaryBox('Chờ duyệt Pro', '$pendingCount', const Color(0xFFD97706), const Color(0xFFFEF3C7), Icons.hourglass_top_rounded),
+      _summaryBox('Đơn đã duyệt', '$purchases', const Color(0xFF059669), const Color(0xFFECFDF5), Icons.verified_rounded),
+      _summaryBox('Tổng doanh thu', revenue, const Color(0xFF4F46E5), const Color(0xFFEEF2FF), Icons.payments_rounded),
+      _summaryBox('🪙 Xu tích lũy toàn hệ thống', '${NumberFormat("#,###", "vi").format(totalCoins)} xu', const Color(0xFFD97706), const Color(0xFFFEF3C7), Icons.monetization_on_rounded),
+      _summaryBox('🪙 Đã đổi Pro bằng xu', '$coinRedeemUsers tài khoản', const Color(0xFF0D8F5C), const Color(0xFFDEF7EC), Icons.redeem_rounded),
+    ];
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final w = constraints.maxWidth;
+        final int crossAxisCount = w < 620 ? 2 : (w < 980 ? 3 : 4);
+        final double itemWidth = (w - (crossAxisCount - 1) * 10) / crossAxisCount;
+
+        return Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: items.map((widget) => SizedBox(width: itemWidth, child: widget)).toList(),
+        );
+      },
     );
   }
 
@@ -1468,8 +1916,7 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
                     Text('Xu tích lũy: ', style: TextStyle(fontSize: 12, color: Colors.grey.shade600)),
                     Expanded(
                       child: Text(
-                        '${NumberFormat("#,###", "vi").format(coins)} xu' +
-                            (rewardBalance > 0 ? ' (Đã đổi ${NumberFormat("#,###", "vi").format(rewardBalance)}đ)' : ''),
+                        '${NumberFormat("#,###", "vi").format(coins)} xu${rewardBalance > 0 ? " (Đã đổi ${NumberFormat("#,###", "vi").format(rewardBalance)}đ)" : ""}',
                         style: const TextStyle(
                           fontSize: 12.5,
                           fontWeight: FontWeight.w800,
@@ -1479,60 +1926,89 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 6),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                  decoration: BoxDecoration(
-                    color: hasCoinPro ? const Color(0xFFFFFBEB) : const Color(0xFFF8FAFC),
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: hasCoinPro ? const Color(0xFFFDE68A) : const Color(0xFFE2E8F0)),
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(hasCoinPro ? '🪙 ' : 'ℹ️ ', style: const TextStyle(fontSize: 13)),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              hasCoinPro ? 'Ghi chú đổi Pro bằng xu:' : 'Tình trạng đổi Pro bằng xu:',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700,
-                                color: hasCoinPro ? const Color(0xFF92400E) : Colors.grey.shade600,
+                if (hasCoinPro && coinNote.isNotEmpty) ...[
+                  const SizedBox(height: 6),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFFBEB),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: const Color(0xFFFDE68A)),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('🪙 ', style: TextStyle(fontSize: 13)),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Ghi chú đổi Pro bằng xu:',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF92400E),
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              hasCoinPro
-                                  ? coinNote
-                                  : 'Chưa dùng xu đổi Pro (Đang tích lũy: ${NumberFormat("#,###", "vi").format(coins)} xu)',
-                              style: TextStyle(
-                                fontSize: 11.5,
-                                fontWeight: hasCoinPro ? FontWeight.w800 : FontWeight.w500,
-                                color: hasCoinPro ? const Color(0xFF78350F) : Colors.grey.shade700,
+                              const SizedBox(height: 2),
+                              Text(
+                                coinNote,
+                                style: const TextStyle(
+                                  fontSize: 11.5,
+                                  fontWeight: FontWeight.w800,
+                                  color: Color(0xFF78350F),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
           const SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            alignment: WrapAlignment.end,
             children: [
-              if (isPro) ...[
+              OutlinedButton.icon(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: const Color(0xFF2563EB),
+                  side: const BorderSide(color: Color(0xFFBFDBFE)),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  minimumSize: Size.zero,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  textStyle: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700),
+                ),
+                icon: const Icon(Icons.edit_outlined, size: 14),
+                label: const Text('Sửa'),
+                onPressed: () => _showEditUserDialog(u),
+              ),
+              if (email.toLowerCase() != 'admin@signeye.vn')
                 OutlinedButton.icon(
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.red,
-                    side: const BorderSide(color: Color(0xFFFCA5A5)),
+                    foregroundColor: Colors.red.shade700,
+                    side: const BorderSide(color: Color(0xFFFECACA)),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    minimumSize: Size.zero,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                    textStyle: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700),
+                  ),
+                  icon: const Icon(Icons.delete_outline, size: 14),
+                  label: const Text('Xóa'),
+                  onPressed: () => _deleteUser(email, name),
+                ),
+              if (isPro)
+                OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.orange.shade800,
+                    side: const BorderSide(color: Color(0xFFFED7AA)),
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     minimumSize: Size.zero,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -1542,8 +2018,6 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
                   label: const Text('Thu hồi Pro'),
                   onPressed: () => _revokePro(email, name),
                 ),
-                const SizedBox(width: 8),
-              ],
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isPro ? const Color(0xFFEFF6FF) : const Color(0xFF0D8F5C),

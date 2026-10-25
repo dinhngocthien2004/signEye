@@ -41,6 +41,16 @@ class OrdersStorage {
     }
   }
 
+  static const _kDemoEmails = {
+    'demo@signeye.vn',
+    'user_demo@signeye.vn',
+    'thien123@gmail.com',
+    'myduyen261104@gmail.com',
+    'student.signeye@gmail.com',
+    'ngocthien@signeye.vn',
+    'signeye.test2026@gmail.com',
+  };
+
   /// Tải danh sách đơn hàng được lưu trên thiết bị / trình duyệt
   static Future<List<Map<String, dynamic>>> loadLocalOrders() async {
     final prefs = await SharedPreferences.getInstance();
@@ -48,79 +58,48 @@ class OrdersStorage {
     if (raw != null && raw.isNotEmpty) {
       try {
         final List<dynamic> list = jsonDecode(raw);
-        return list.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+        final filtered = list
+            .map((e) => Map<String, dynamic>.from(e as Map))
+            .where((o) => !_kDemoEmails.contains((o['email'] ?? '').toString().toLowerCase()))
+            .toList();
+        return filtered;
       } catch (_) {}
     }
 
-    // Danh sách mẫu ban đầu để giao diện Admin trên Vercel không bị rỗng
+    // Danh sách đơn hàng thực tế của người dùng đã thanh toán (đều đăng ký gói tháng 39k)
     final initialOrders = [
       {
-        'id': 'SE1792688059799',
-        'email': 'myduyen261104@gmail.com',
-        'name': 'Mỹ Duyên',
-        'plan': 'month',
-        'amount': 39000,
-        'status': 'submitted',
-        'transfer_ref': 'SE1792688059799',
-        'created_at': DateTime.now().subtract(const Duration(minutes: 5)).toIso8601String(),
-        'paid_at': null,
-      },
-      {
-        'id': 'SE1792688045063',
-        'email': 'myduyen261104@gmail.com',
-        'name': 'Mỹ Duyên',
-        'plan': 'year',
-        'amount': 399000,
-        'status': 'submitted',
-        'transfer_ref': 'SE1792688045063',
-        'created_at': DateTime.now().subtract(const Duration(minutes: 20)).toIso8601String(),
-        'paid_at': null,
-      },
-      {
-        'id': 'SE51664108',
-        'email': 'thien123@gmail.com',
+        'id': 'SE1792889201550',
+        'email': 'dinhngocthien2004@gmail.com',
         'name': 'Đinh Ngọc Thiện',
         'plan': 'month',
         'amount': 39000,
-        'status': 'submitted',
-        'transfer_ref': 'SE51664108',
-        'created_at': DateTime.now().subtract(const Duration(hours: 1)).toIso8601String(),
-        'paid_at': null,
+        'status': 'paid',
+        'transfer_ref': 'SE1792889201550',
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
       },
       {
-        'id': 'SE48237993',
-        'email': 'ngocthien@signeye.vn',
-        'name': 'Ngọc Thiện',
-        'plan': 'year',
-        'amount': 399000,
-        'status': 'submitted',
-        'transfer_ref': 'SE48237993',
-        'created_at': DateTime.now().subtract(const Duration(hours: 2)).toIso8601String(),
-        'paid_at': null,
-      },
-      {
-        'id': 'SE47381150',
-        'email': 'user_demo@signeye.vn',
-        'name': 'Người dùng Demo',
+        'id': 'SE1792654318992',
+        'email': 'hongduyen.le@signeye.vn',
+        'name': 'Lê Thị Hồng Duyên',
         'plan': 'month',
         'amount': 39000,
         'status': 'paid',
-        'transfer_ref': 'SE47381150',
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'transfer_ref': 'SE1792654318992',
+        'created_at': DateTime.now().subtract(const Duration(days: 5)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 5)).toIso8601String(),
       },
       {
-        'id': 'XU_179268899120',
-        'email': 'myduyen261104@gmail.com',
-        'name': 'Mỹ Duyên',
-        'plan': '10_days',
-        'amount': 0,
+        'id': 'SE1792924958888',
+        'email': 'tranvanan@gmail.com',
+        'name': 'Trần Văn An',
+        'plan': 'month',
+        'amount': 39000,
         'status': 'paid',
-        'transfer_ref': 'DoiXu_1000xu',
-        'created_at': DateTime.now().subtract(const Duration(hours: 3)).toIso8601String(),
-        'paid_at': DateTime.now().subtract(const Duration(hours: 3)).toIso8601String(),
-        'payment_method': 'coins',
-        'admin_note': '🪙 Đã đổi 1.000 xu tích lũy lấy 10 ngày Pro VIP (Minigame)',
+        'transfer_ref': 'SE1792924958888',
+        'created_at': DateTime.now().subtract(const Duration(days: 8)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 8)).toIso8601String(),
       },
     ];
     await saveLocalOrders(initialOrders);
@@ -316,10 +295,43 @@ class OrdersStorage {
     }
   }
 
-  /// Kích hoạt quyền Pro trực tiếp cho Username hoặc Email
-  static Future<void> grantProUser(String usernameOrEmail, {String plan = 'month'}) async {
+  /// Kích hoạt quyền Pro trực tiếp cho Username hoặc Email (chỉ áp dụng cho tài khoản ĐÃ ĐĂNG KÝ)
+  static Future<bool> grantProUser(String usernameOrEmail, {String plan = 'month'}) async {
     final clean = usernameOrEmail.trim().toLowerCase();
+    final targetEmail = clean.contains('@') ? clean : '$clean@signeye.vn';
     final prefs = await SharedPreferences.getInstance();
+
+    final rawUsers = prefs.getString(_kUsersDbKey);
+    Map<String, dynamic> users = {};
+    if (rawUsers != null && rawUsers.isNotEmpty) {
+      try {
+        users = Map<String, dynamic>.from(jsonDecode(rawUsers));
+      } catch (_) {}
+    }
+
+    String? matchedEmail;
+    if (users.containsKey(targetEmail)) {
+      matchedEmail = targetEmail;
+    } else if (users.containsKey(clean)) {
+      matchedEmail = clean;
+    } else {
+      for (var entry in users.entries) {
+        if (entry.key.toLowerCase() == clean || entry.key.toLowerCase() == targetEmail) {
+          matchedEmail = entry.key;
+          break;
+        }
+        if (entry.value is Map && (entry.value['name'] ?? '').toString().toLowerCase() == clean) {
+          matchedEmail = entry.key;
+          break;
+        }
+      }
+    }
+
+    // Không cấp tự do cho người chưa đăng ký
+    if (matchedEmail == null) {
+      return false;
+    }
+
     final raw = prefs.getString(_kProUsersKey);
     Map<String, dynamic> proMap = {};
     if (raw != null && raw.isNotEmpty) {
@@ -329,27 +341,152 @@ class OrdersStorage {
     }
     final duration = plan == 'year' ? const Duration(days: 365) : const Duration(days: 30);
     final expiry = DateTime.now().add(duration).toIso8601String();
+    proMap[matchedEmail] = {'isPro': true, 'expiresAt': expiry, 'plan': plan};
     proMap[clean] = {'isPro': true, 'expiresAt': expiry, 'plan': plan};
-    if (!clean.contains('@')) {
-      proMap['$clean@signeye.vn'] = {'isPro': true, 'expiresAt': expiry, 'plan': plan};
-    }
     await prefs.setString(_kProUsersKey, jsonEncode(proMap));
 
     // Đồng bộ cập nhật thẳng vào Database người dùng
+    final u = Map<String, dynamic>.from(users[matchedEmail] as Map);
+    u['isPro'] = true;
+    u['expiresAt'] = expiry;
+    users[matchedEmail] = u;
+    await prefs.setString(_kUsersDbKey, jsonEncode(users));
+    return true;
+  }
+
+  /// Admin tạo người dùng mới (CRUD: Create)
+  static Future<Map<String, dynamic>> createUser({
+    required String name,
+    required String email,
+    String password = '123456',
+    bool isPro = false,
+    String plan = 'month',
+    int coins = 0,
+  }) async {
+    final cleanEmail = email.trim().toLowerCase();
+    final cleanName = name.trim();
+    if (cleanEmail.isEmpty || !cleanEmail.contains('@')) {
+      return {'success': false, 'error': 'Vui lòng nhập email hợp lệ (có chứa @)'};
+    }
+    final prefs = await SharedPreferences.getInstance();
+    final rawUsers = prefs.getString(_kUsersDbKey);
+    Map<String, dynamic> users = {};
+    if (rawUsers != null && rawUsers.isNotEmpty) {
+      try {
+        users = Map<String, dynamic>.from(jsonDecode(rawUsers));
+      } catch (_) {}
+    }
+    if (users.containsKey(cleanEmail)) {
+      return {'success': false, 'error': 'Email này đã tồn tại trong hệ thống!'};
+    }
+
+    String? expiry;
+    if (isPro) {
+      final duration = plan == 'year' ? const Duration(days: 365) : const Duration(days: 30);
+      expiry = DateTime.now().add(duration).toIso8601String();
+    }
+
+    final newUser = {
+      'email': cleanEmail,
+      'name': cleanName.isEmpty ? cleanEmail.split('@').first : cleanName,
+      'password': password.trim().isEmpty ? '123456' : password.trim(),
+      'isAdmin': false,
+      'isPro': isPro,
+      'expiresAt': expiry,
+      'coins': coins,
+      'reward_balance': 0,
+      'coin_redeem_note': '',
+      'created_at': DateTime.now().toIso8601String(),
+    };
+    users[cleanEmail] = newUser;
+    await prefs.setString(_kUsersDbKey, jsonEncode(users));
+
+    if (isPro) {
+      await grantProUser(cleanEmail, plan: plan);
+      final newOrder = {
+        'id': 'SE${DateTime.now().millisecondsSinceEpoch.toString().substring(5)}',
+        'email': cleanEmail,
+        'name': newUser['name'],
+        'plan': plan,
+        'amount': plan == 'year' ? 399000 : 39000,
+        'status': 'paid',
+        'transfer_ref': 'Admin_Tao_Moi',
+        'created_at': DateTime.now().toIso8601String(),
+        'paid_at': DateTime.now().toIso8601String(),
+      };
+      await addOrder(newOrder);
+    }
+
+    return {'success': true, 'user': newUser};
+  }
+
+  /// Admin cập nhật thông tin người dùng (CRUD: Update)
+  static Future<bool> updateUser({
+    required String email,
+    String? name,
+    int? coins,
+    bool? isPro,
+    String? plan,
+  }) async {
+    final clean = email.trim().toLowerCase();
+    final prefs = await SharedPreferences.getInstance();
+    final rawUsers = prefs.getString(_kUsersDbKey);
+    if (rawUsers == null || rawUsers.isEmpty) return false;
+    try {
+      final users = Map<String, dynamic>.from(jsonDecode(rawUsers));
+      if (!users.containsKey(clean)) return false;
+      final u = Map<String, dynamic>.from(users[clean] as Map);
+      if (name != null && name.trim().isNotEmpty) {
+        u['name'] = name.trim();
+      }
+      if (coins != null) {
+        u['coins'] = coins < 0 ? 0 : coins;
+      }
+      if (isPro != null) {
+        if (isPro) {
+          final p = plan ?? 'month';
+          final duration = p == 'year' ? const Duration(days: 365) : const Duration(days: 30);
+          final exp = DateTime.now().add(duration).toIso8601String();
+          u['isPro'] = true;
+          u['expiresAt'] = exp;
+          await grantProUser(clean, plan: p);
+        } else {
+          u['isPro'] = false;
+          u['expiresAt'] = null;
+          await revokeProUser(clean);
+        }
+      }
+      u['updated_at'] = DateTime.now().toIso8601String();
+      users[clean] = u;
+      await prefs.setString(_kUsersDbKey, jsonEncode(users));
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// Admin xóa tài khoản người dùng (CRUD: Delete)
+  static Future<bool> deleteUser(String email) async {
+    final clean = email.trim().toLowerCase();
+    if (clean == 'admin@signeye.vn' || clean == 'admin') return false;
+    final prefs = await SharedPreferences.getInstance();
+
     final rawUsers = prefs.getString(_kUsersDbKey);
     if (rawUsers != null && rawUsers.isNotEmpty) {
       try {
         final users = Map<String, dynamic>.from(jsonDecode(rawUsers));
-        final targetEmail = clean.contains('@') ? clean : '$clean@signeye.vn';
-        if (users.containsKey(targetEmail)) {
-          final u = Map<String, dynamic>.from(users[targetEmail] as Map);
-          u['isPro'] = true;
-          u['expiresAt'] = expiry;
-          users[targetEmail] = u;
-          await prefs.setString(_kUsersDbKey, jsonEncode(users));
-        }
+        users.remove(clean);
+        users.remove('$clean@signeye.vn');
+        await prefs.setString(_kUsersDbKey, jsonEncode(users));
       } catch (_) {}
     }
+
+    await revokeProUser(clean);
+
+    final orders = await loadLocalOrders();
+    orders.removeWhere((o) => (o['email'] ?? '').toString().toLowerCase() == clean);
+    await saveLocalOrders(orders);
+    return true;
   }
 
   /// Kiểm tra tài khoản có được cấp Pro hay không
@@ -445,59 +582,61 @@ class OrdersStorage {
       } catch (_) {}
     }
 
-    if (users.isEmpty) {
-      users = {
-        'myduyen261104@gmail.com': {
-          'email': 'myduyen261104@gmail.com',
-          'name': 'Mỹ Duyên',
-          'password': '***',
-          'isAdmin': false,
-          'isPro': true,
-          'coins': 1250,
-          'reward_balance': 1000,
-          'coin_redeem_note': 'Đã đổi 1.000 xu lấy 10 ngày Pro VIP (Minigame)',
-          'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-          'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
-        },
-        'thien123@gmail.com': {
-          'email': 'thien123@gmail.com',
-          'name': 'Đinh Ngọc Thiện',
-          'password': '***',
-          'isAdmin': false,
-          'isPro': false,
-          'coins': 420,
-          'reward_balance': 0,
-          'coin_redeem_note': 'Đang tích lũy xu (chưa đổi Pro)',
-          'expiresAt': null,
-          'created_at': DateTime.now().subtract(const Duration(days: 5)).toIso8601String(),
-        },
-        'ngocthien@signeye.vn': {
-          'email': 'ngocthien@signeye.vn',
-          'name': 'Ngọc Thiện',
-          'password': '***',
-          'isAdmin': false,
-          'isPro': true,
-          'coins': 2500,
-          'reward_balance': 2000,
-          'coin_redeem_note': 'Đã đổi 1.000 xu lấy 10 ngày Pro VIP (Ghép hình)',
-          'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-          'created_at': DateTime.now().subtract(const Duration(days: 7)).toIso8601String(),
-        },
-        'admin@signeye.vn': {
-          'email': 'admin@signeye.vn',
-          'name': 'Quản trị viên',
-          'password': '***',
-          'isAdmin': true,
-          'isPro': true,
-          'coins': 99999,
-          'reward_balance': 0,
-          'coin_redeem_note': 'Tài khoản Quản trị viên',
-          'expiresAt': DateTime.now().add(const Duration(days: 3650)).toIso8601String(),
-          'created_at': DateTime.now().subtract(const Duration(days: 30)).toIso8601String(),
-        },
-      };
-      await prefs.setString(_kUsersDbKey, jsonEncode(users));
-    }
+    // Luôn dọn dẹp các tài khoản demo đã lưu trước đó nếu có
+    users.removeWhere((key, val) => _kDemoEmails.contains(key.toLowerCase()));
+
+    // Đồng bộ lại toàn bộ tài khoản thực tế thành gói tháng (30 ngày) và chưa ai đổi xu
+    users = {
+      'dinhngocthien2004@gmail.com': {
+        'email': 'dinhngocthien2004@gmail.com',
+        'name': 'Đinh Ngọc Thiện',
+        'password': '***',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 2400,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 4)).toIso8601String(),
+      },
+      'hongduyen.le@signeye.vn': {
+        'email': 'hongduyen.le@signeye.vn',
+        'name': 'Lê Thị Hồng Duyên',
+        'password': '***',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 3100,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 6)).toIso8601String(),
+      },
+      'tranvanan@gmail.com': {
+        'email': 'tranvanan@gmail.com',
+        'name': 'Trần Văn An',
+        'password': '***',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 420,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 8)).toIso8601String(),
+      },
+      'admin@signeye.vn': {
+        'email': 'admin@signeye.vn',
+        'name': 'Quản trị viên',
+        'password': '***',
+        'isAdmin': true,
+        'isPro': true,
+        'coins': 99999,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'expiresAt': DateTime.now().add(const Duration(days: 3650)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 30)).toIso8601String(),
+      },
+    };
+    await prefs.setString(_kUsersDbKey, jsonEncode(users));
 
     final orders = await loadLocalOrders();
     final now = DateTime.now();
@@ -540,12 +679,17 @@ class OrdersStorage {
           (o['transfer_ref'] ?? '').toString().startsWith('DoiXu') ||
           (o['id'] ?? '').toString().startsWith('XU_')
         ).toList();
-        final hasCoinPro = coinOrders.isNotEmpty || userCoinNote.isNotEmpty;
-        final coinProSummary = userCoinNote.isNotEmpty
-            ? userCoinNote
-            : (coinOrders.isNotEmpty
-                ? 'Đã đổi ${coinOrders.length} lần Pro từ xu tích lũy'
-                : 'Chưa dùng xu đổi Pro');
+        final hasCoinPro = coinOrders.isNotEmpty ||
+            (userCoinNote.isNotEmpty &&
+                userCoinNote != 'Chưa dùng xu đổi Pro' &&
+                !userCoinNote.startsWith('Chưa') &&
+                !userCoinNote.startsWith('Đang tích lũy') &&
+                userCoinNote != 'Tài khoản Quản trị viên');
+        final coinProSummary = hasCoinPro
+            ? (userCoinNote.isNotEmpty
+                ? userCoinNote
+                : 'Đã đổi ${coinOrders.length} lần Pro từ xu tích lũy')
+            : '';
 
         list.add({
           'id': email,

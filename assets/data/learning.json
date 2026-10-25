@@ -131,6 +131,27 @@
         "answer": 1,
         "explanation": "Nhường người đi bộ tại vị trí sang đường là hành vi an toàn và đúng quy tắc."
       }
+    },
+    {
+      "id": "road_markings",
+      "order": 6,
+      "title": "Vạch kẻ đường",
+      "icon": "🛣️",
+      "image": "/assets/trafficSigns/guide/I423a.jpg",
+      "summary": "Ý nghĩa các loại vạch phân chia làn, vạch mắt võng, vạch quả trám và vạch cấm đè theo QCVN 41:2019.",
+      "content": "Hệ thống vạch kẻ đường theo QCVN 41:2019/BGTVT là dạng báo hiệu quan trọng kết hợp cùng biển báo: \n- Vạch phân chia hai chiều ngược nhau: Màu vàng (vạch đơn nét đứt cho đè lấn làn vượt; vạch nét liền cấm đè, cấm lấn làn).\n- Vạch phân chia các làn cùng chiều: Màu trắng (vạch đứt cho phép chuyển làn; vạch liền cấm chuyển làn/đè vạch).\n- Vạch mắt võng: Nghiêm cấm dừng đỗ phương tiện trên phạm vi mặt đường này nhằm chống ùn tắc giao thông.\n- Vạch quả trám (hình thoi): Báo hiệu sắp đến vị trí có bố trí vạch đi bộ qua đường, lái xe phải chủ động giảm tốc độ.\n- Vạch kênh hóa (xương cá): Hướng dẫn nhập/tách dòng xe, phương tiện tuyệt đối không được đi hoặc đè lên.",
+      "example": "Khi đi tới ngã tư gặp vạch mắt võng màu vàng, nếu phía trước đang ùn ứ xe thì lái xe phải dừng trước vạch, không được dừng trên vạch làm chắn lối rẽ của dòng xe khác.",
+      "memoryTip": "Vàng: ngược chiều · Trắng: cùng chiều · Liền: cấm đè · Đứt: được chuyển · Mắt võng: cấm dừng.",
+      "practice": {
+        "question": "Khi gặp vạch kẻ đường mắt võng màu vàng tại nơi đường giao nhau, người lái xe phải chấp hành như thế nào?",
+        "options": [
+          "Được phép dừng đỗ xe trên vạch khi chờ đèn đỏ",
+          "Không được dừng phương tiện trong phạm vi phần vạch mắt võng",
+          "Bấm còi và tăng tốc chạy nhanh qua"
+        ],
+        "answer": 1,
+        "explanation": "Vạch mắt võng dùng để báo hiệu khu vực cấm dừng phương tiện nhằm tránh gây ùn tắc giao thông tại nút giao."
+      }
     }
   ],
   "licenseNotes": {
