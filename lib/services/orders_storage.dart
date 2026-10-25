@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OrdersStorage {
@@ -633,7 +632,7 @@ class OrdersStorage {
     users.removeWhere((key, val) => _kDemoEmails.contains(key.toLowerCase()));
 
     // Đồng bộ danh sách người dùng thực tế đã thanh toán Pro tháng
-    users = {
+    final defaultUsers = {
       'leloc2005qn@gmail.com': {
         'email': 'leloc2005qn@gmail.com',
         'name': 'Lê Trà Gia Lộc',
@@ -731,6 +730,11 @@ class OrdersStorage {
         'created_at': DateTime.now().subtract(const Duration(days: 6)).toIso8601String(),
       },
     };
+    for (var entry in defaultUsers.entries) {
+      if (!users.containsKey(entry.key.toLowerCase())) {
+        users[entry.key.toLowerCase()] = entry.value;
+      }
+    }
     await prefs.setString(_kUsersDbKey, jsonEncode(users));
 
     final orders = await loadLocalOrders();

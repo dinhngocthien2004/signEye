@@ -1262,7 +1262,6 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
     final pendingCount = _orders.where((o) => o['status'] == 'pending' || o['status'] == 'submitted').length;
     final totalUsers = (_summary?['total_users'] ?? _users.length.toString()).toString();
     final proUsers = (_summary?['pro_users'] ?? _users.where((u) => u['is_pro'] == true).length.toString()).toString();
-    final freeUsers = (_summary?['free_users'] ?? _users.where((u) => u['is_pro'] != true).length.toString()).toString();
 
     final totalCoins = _users.fold<int>(0, (sum, u) => sum + (int.tryParse(u['coins']?.toString() ?? '0') ?? 0));
     final coinRedeemUsers = _users.where((u) => u['has_coin_pro'] == true).length;
@@ -1270,7 +1269,6 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
     final items = [
       _summaryBox('Tổng người dùng', totalUsers, const Color(0xFF2563EB), const Color(0xFFEFF6FF), Icons.people_alt_rounded),
       _summaryBox('👑 Người dùng Pro', proUsers, const Color(0xFF0D8F5C), const Color(0xFFDEF7EC), Icons.workspace_premium_rounded),
-      _summaryBox('🌱 Người dùng thường', freeUsers, const Color(0xFF475569), const Color(0xFFF1F5F9), Icons.person_outline_rounded),
       _summaryBox('Chờ duyệt Pro', '$pendingCount', const Color(0xFFD97706), const Color(0xFFFEF3C7), Icons.hourglass_top_rounded),
       _summaryBox('Đơn đã duyệt', '$purchases', const Color(0xFF059669), const Color(0xFFECFDF5), Icons.verified_rounded),
       _summaryBox('Tổng doanh thu', revenue, const Color(0xFF4F46E5), const Color(0xFFEEF2FF), Icons.payments_rounded),
