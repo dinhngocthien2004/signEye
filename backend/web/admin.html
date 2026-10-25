@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SignEye · Quản trị duyệt Pro</title>
+  <title>SignEye · Quản trị duyệt Pro & Người dùng</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
     header {
       background: linear-gradient(135deg, #096842 0%, #0D8F5C 100%);
       color: white;
-      padding: 28px 6%;
+      padding: 26px 6%;
       box-shadow: 0 4px 20px rgba(13, 143, 92, 0.15);
       display: flex;
       justify-content: space-between;
@@ -39,55 +39,84 @@
     }
     header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
     header p { font-size: 13px; opacity: 0.9; }
-    main { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+    main { max-width: 1240px; margin: 26px auto; padding: 0 20px; }
     .auth-box {
-      background: var(--surface); padding: 20px 24px; border-radius: 16px;
+      background: var(--surface); padding: 18px 24px; border-radius: 16px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 14px;
-      flex-wrap: wrap; margin-bottom: 24px;
+      flex-wrap: wrap; margin-bottom: 20px;
     }
     .auth-box label { font-weight: 600; font-size: 14px; color: var(--text); }
-    input {
+    input, select {
       padding: 10px 16px; border: 1.5px solid var(--border); border-radius: 10px;
-      font-size: 14px; min-width: 280px; outline: none; transition: 0.2s;
+      font-size: 14px; outline: none; transition: 0.2s; background: white;
     }
-    input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(13, 143, 92, 0.15); }
+    input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(13, 143, 92, 0.15); }
     button.btn {
-      padding: 10px 20px; border: none; border-radius: 10px; font-weight: 700;
-      font-size: 14px; cursor: pointer; transition: 0.2s;
+      padding: 10px 18px; border: none; border-radius: 10px; font-weight: 700;
+      font-size: 13.5px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px;
     }
     .btn-primary { background: var(--primary); color: white; }
     .btn-primary:hover { background: var(--primary-dark); }
-    .btn-success { background: #10B981; color: white; padding: 6px 12px; font-size: 12px; border-radius: 6px; }
+    .btn-success { background: #10B981; color: white; padding: 7px 14px; font-size: 12.5px; border-radius: 8px; }
     .btn-success:hover { background: #059669; }
-    .btn-danger { background: #EF4444; color: white; padding: 6px 12px; font-size: 12px; border-radius: 6px; }
+    .btn-danger { background: #EF4444; color: white; padding: 7px 14px; font-size: 12.5px; border-radius: 8px; }
     .btn-danger:hover { background: #DC2626; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .btn-outline-danger {
+      background: #FFF1F2; color: #E11D48; border: 1px solid #FECDD3;
+      padding: 6px 12px; font-size: 12px; border-radius: 8px;
+    }
+    .btn-outline-danger:hover { background: #FFE4E6; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px; }
     .card {
-      background: var(--surface); padding: 20px; border-radius: 16px;
+      background: var(--surface); padding: 18px; border-radius: 16px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid var(--border);
     }
-    .card-label { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
-    .card-val { font-size: 24px; font-weight: 800; color: var(--primary-dark); }
+    .card-label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
+    .card-val { font-size: 22px; font-weight: 800; color: var(--primary-dark); }
+    .tabs {
+      display: flex; gap: 10px; margin-bottom: 16px; border-bottom: 2px solid var(--border); padding-bottom: 10px;
+    }
+    .tab-btn {
+      padding: 9px 20px; border-radius: 10px; border: 1.5px solid transparent; background: transparent;
+      font-weight: 700; font-size: 14px; color: var(--text-muted); cursor: pointer; transition: 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--primary-light); color: var(--primary-dark); border-color: var(--primary);
+    }
+    .sub-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+    .sub-tab {
+      padding: 6px 15px; border-radius: 20px; border: 1.5px solid var(--border);
+      background: white; font-size: 12.5px; font-weight: 700; color: var(--text-muted);
+      cursor: pointer; transition: 0.2s;
+    }
+    .sub-tab:hover { border-color: var(--primary); color: var(--primary); }
+    .sub-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
     .table-container {
       background: var(--surface); border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-      border: 1px solid var(--border); overflow-x: auto; margin-top: 16px;
+      border: 1px solid var(--border); overflow-x: auto; margin-top: 14px;
     }
-    table { width: 100%; border-collapse: collapse; min-width: 850px; }
+    table { width: 100%; border-collapse: collapse; min-width: 950px; }
     th {
-      background: #F8FAFC; padding: 14px 18px; text-align: left; font-size: 12px;
+      background: #F8FAFC; padding: 13px 16px; text-align: left; font-size: 12px;
       font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
       border-bottom: 1.5px solid var(--border);
     }
-    td { padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 13.5px; vertical-align: middle; }
+    td { padding: 13px 16px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
     .badge {
-      display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 700;
+      display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 800;
     }
-    .badge-paid { background: #DEF7EC; color: #03543F; }
+    .badge-paid, .badge-pro { background: #DEF7EC; color: #03543F; border: 1px solid #A7F3D0; }
     .badge-pending { background: #FEF08A; color: #854D0E; }
     .badge-submitted { background: #FEF3C7; color: #92400E; }
     .badge-rejected { background: #FEE2E2; color: #991B1B; }
-    #error { color: #DC2626; font-size: 14px; font-weight: 600; margin-top: 10px; }
+    .badge-free { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+    .badge-expired { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+    #error { color: #DC2626; font-size: 14px; font-weight: 600; margin-top: 6px; width: 100%; }
+    .search-bar {
+      margin-bottom: 12px; display: flex; gap: 10px; align-items: center; justify-content: space-between;
+    }
+    .search-input { flex: 1; max-width: 420px; }
   </style>
 </head>
 <body>
@@ -95,8 +124,8 @@
     <div class="brand">
       <div class="brand-icon">👁️</div>
       <div>
-        <h1>SignEye · Quản trị thanh toán Pro</h1>
-        <p>Hệ thống xét duyệt đăng ký gói Pro thủ công</p>
+        <h1>SignEye · Quản trị hệ thống & Duyệt Pro</h1>
+        <p>Quản lý người dùng thường/Pro và xét duyệt đơn hàng chuyển khoản</p>
       </div>
     </div>
     <div style="font-size: 13px;">Tài khoản Admin: <b>admin@signeye.vn</b></div>
@@ -105,15 +134,15 @@
   <main>
     <div class="auth-box">
       <label for="key">Khóa hoặc Mật khẩu Quản trị:</label>
-      <input id="key" type="password" value="Admin@123456" placeholder="Nhập khóa quản trị hoặc mật khẩu Admin">
-      <button class="btn btn-primary" id="load">Tải danh sách đơn hàng</button>
+      <input id="key" type="password" value="Admin@123456" placeholder="Nhập khóa quản trị hoặc mật khẩu Admin" style="min-width: 260px;">
+      <button class="btn btn-primary" id="load">Tải dữ liệu Admin</button>
       <div id="error" role="alert"></div>
     </div>
 
     <div class="auth-box" style="margin-top: -10px; border-left: 4px solid var(--primary); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-      <label for="grantUsername" style="font-weight: 700;">⚡ Cấp Pro trực tiếp theo Username:</label>
+      <label for="grantUsername" style="font-weight: 700;">⚡ Cấp Pro nhanh cho tài khoản:</label>
       <input id="grantUsername" type="text" placeholder="Nhập username hoặc email (VD: thien)" style="flex: 1; min-width: 200px;">
-      <select id="grantPlan" style="padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; outline: none; background: white;">
+      <select id="grantPlan">
         <option value="month">Gói 1 tháng (39.000đ)</option>
         <option value="year">Gói 1 năm (399.000đ)</option>
       </select>
@@ -122,57 +151,183 @@
 
     <div id="content" hidden>
       <div class="cards" id="cards"></div>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h2 style="font-size: 18px; font-weight: 800;">Danh sách đơn hàng SignEye Pro</h2>
-        <button class="btn btn-primary" onclick="load()" style="padding: 6px 14px; font-size: 12px;">Làm mới</button>
+
+      <div class="tabs">
+        <button class="tab-btn active" id="tabOrdersBtn" onclick="switchTab('orders')">📋 Đơn hàng Pro (<span id="ordersCount">0</span>)</button>
+        <button class="tab-btn" id="tabUsersBtn" onclick="switchTab('users')">👥 Quản lý Người dùng (<span id="usersCount">0</span>)</button>
       </div>
 
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Mã đơn</th>
-              <th>Người dùng</th>
-              <th>Email</th>
-              <th>Gói</th>
-              <th>Số tiền</th>
-              <th>Mã chuyển khoản</th>
-              <th>Trạng thái</th>
-              <th>Ngày tạo</th>
-              <th>Thao tác</th>
-            </tr>
-          </thead>
-          <tbody id="orders"></tbody>
-        </table>
+      <!-- Tab Đơn Hàng -->
+      <div id="ordersSection">
+        <div class="search-bar">
+          <input id="ordersSearch" class="search-input" type="text" placeholder="Tìm theo tên, email, mã CK..." oninput="renderOrders()">
+          <button class="btn btn-primary" onclick="load()" style="padding: 7px 14px; font-size: 12.5px;">Làm mới</button>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Mã đơn</th>
+                <th>Người dùng</th>
+                <th>Email</th>
+                <th>Gói</th>
+                <th>Số tiền</th>
+                <th>Nội dung chuyển khoản</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="orders"></tbody>
+          </table>
+        </div>
+        <p style="margin-top: 14px; font-size: 12.5px; color: var(--text-muted);">
+          ⚠️ <b>Lưu ý:</b> Chỉ nhấn "Duyệt Pro" sau khi đã kiểm tra và đối chiếu đúng số tiền và mã chuyển khoản trên tài khoản ngân hàng thực tế.
+        </p>
       </div>
-      <p style="margin-top: 14px; font-size: 12.5px; color: var(--text-muted);">
-        ⚠️ <b>Lưu ý:</b> Chỉ nhấn "Duyệt Pro" sau khi đã kiểm tra và đối chiếu tiền đã về tài khoản ngân hàng thực tế.
-      </p>
+
+      <!-- Tab Người Dùng -->
+      <div id="usersSection" style="display: none;">
+        <div class="search-bar">
+          <input id="usersSearch" class="search-input" type="text" placeholder="Tìm người dùng theo tên hoặc email..." oninput="renderUsers()">
+          <button class="btn btn-primary" onclick="load()" style="padding: 7px 14px; font-size: 12.5px;">Làm mới</button>
+        </div>
+
+        <div class="sub-tabs">
+          <button class="sub-tab active" id="userFilterAll" onclick="setUserFilter('all')">Tất cả (<span id="userFilterAllCount">0</span>)</button>
+          <button class="sub-tab" id="userFilterPro" onclick="setUserFilter('pro')">👑 Người dùng Pro (<span id="userFilterProCount">0</span>)</button>
+          <button class="sub-tab" id="userFilterFree" onclick="setUserFilter('free')">🌱 Người dùng thường (<span id="userFilterFreeCount">0</span>)</button>
+          <button class="sub-tab" id="userFilterCoin" onclick="setUserFilter('coin')">🪙 Đổi Pro bằng xu (<span id="userFilterCoinCount">0</span>)</button>
+          <button class="sub-tab" id="userFilterExpired" onclick="setUserFilter('expired')">⚠️ Hết hạn Pro (<span id="userFilterExpiredCount">0</span>)</button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Người dùng</th>
+                <th>Email</th>
+                <th>Phân loại</th>
+                <th>Gói & Thời hạn Pro</th>
+                <th>🪙 Xu tích lũy</th>
+                <th>Ghi chú đổi Pro bằng xu</th>
+                <th>Chi tiêu / Đơn</th>
+                <th>Ngày tham gia</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="users"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </main>
 
   <script>
     const $ = id => document.getElementById(id);
     let key = '';
+    let currentTab = 'orders';
+    let userFilter = 'all';
+    let allOrders = [];
+    let allUsers = [];
+    let userSummary = {};
     const money = n => new Intl.NumberFormat('vi-VN').format(Number(n||0)) + ' ₫';
+
+    function switchTab(tab) {
+      currentTab = tab;
+      $('tabOrdersBtn').classList.toggle('active', tab === 'orders');
+      $('tabUsersBtn').classList.toggle('active', tab === 'users');
+      $('ordersSection').style.display = tab === 'orders' ? 'block' : 'none';
+      $('usersSection').style.display = tab === 'users' ? 'block' : 'none';
+    }
+
+    function setUserFilter(f) {
+      userFilter = f;
+      $('userFilterAll').classList.toggle('active', f === 'all');
+      $('userFilterPro').classList.toggle('active', f === 'pro');
+      $('userFilterFree').classList.toggle('active', f === 'free');
+      $('userFilterCoin').classList.toggle('active', f === 'coin');
+      $('userFilterExpired').classList.toggle('active', f === 'expired');
+      renderUsers();
+    }
 
     async function load() {
       key = $('key').value.trim();
       $('error').textContent = '';
       try {
-        let r = await fetch('/admin/payments', {
-          headers: { 'x-admin-key': key },
-          cache: 'no-store'
-        });
-        if (!r.ok) throw Error('Không có quyền truy cập hoặc mật khẩu sai (' + r.status + ')');
-        let data = await r.json(), s = data.summary;
-        let metrics = [
-          ['Người mua', s.buyers || 0],
-          ['Giao dịch thành công', s.purchases || 0],
-          ['Gói tháng', s.monthly || 0],
-          ['Gói năm', s.yearly || 0],
-          ['Tổng doanh thu', money(s.revenue)]
+        const [payRes, usersRes] = await Promise.all([
+          fetch('/admin/payments', { headers: { 'x-admin-key': key }, cache: 'no-store' }),
+          fetch('/admin/users', { headers: { 'x-admin-key': key }, cache: 'no-store' }).catch(() => null)
+        ]);
+
+        if (!payRes.ok) throw Error('Không có quyền truy cập hoặc mật khẩu sai (' + payRes.status + ')');
+        const data = await payRes.json();
+        const s = data.summary || {};
+        allOrders = data.orders || [];
+
+        if (usersRes && usersRes.ok) {
+          const uData = await usersRes.json();
+          allUsers = uData.users || [];
+          userSummary = uData.summary || {};
+        } else {
+          // Fallback user list from orders
+          const emails = new Set();
+          allUsers = [];
+          for (let o of allOrders) {
+            if (o.email && !emails.has(o.email.toLowerCase())) {
+              emails.add(o.email.toLowerCase());
+              const isPro = o.status === 'paid';
+              const isCoinOrder = o.payment_method === 'coins' || (o.transfer_ref && o.transfer_ref.startsWith('DoiXu')) || (o.id && o.id.startsWith('XU_'));
+              allUsers.push({
+                email: o.email,
+                name: o.name || o.email.split('@')[0],
+                created_at: o.created_at,
+                is_pro: isPro,
+                is_expired: false,
+                account_type: isPro ? 'pro' : 'free',
+                status_label: isPro ? '👑 PRO VIP' : '🌱 Người dùng thường',
+                pro_expires_at: o.expiry_at || null,
+                days_remaining: isPro ? 30 : 0,
+                plan_label: o.plan === 'year' ? 'Gói 1 năm (399.000đ)' : 'Gói 1 tháng (39.000đ)',
+                total_spent: isPro ? o.amount : 0,
+                total_orders: 1,
+                coins: 0,
+                has_coin_pro: isCoinOrder,
+                coin_redeem_note: isCoinOrder ? (o.admin_note || 'Đã đổi Pro từ xu tích lũy') : 'Chưa dùng xu đổi Pro'
+              });
+            }
+          }
+        }
+
+        const totalUsers = userSummary.total_users || s.total_users || allUsers.length;
+        const proUsers = userSummary.pro_users || s.pro_users || allUsers.filter(u => u.is_pro).length;
+        const freeUsers = userSummary.free_users || s.free_users || allUsers.filter(u => !u.is_pro && !u.is_expired).length;
+        const expiredUsers = userSummary.expired_pro_users || allUsers.filter(u => u.is_expired).length;
+        const pendingOrders = allOrders.filter(o => o.status === 'pending' || o.status === 'submitted').length;
+        const totalCoins = userSummary.total_coins_system || allUsers.reduce((sum, u) => sum + (Number(u.coins) || 0), 0);
+        const coinUsersCount = userSummary.coin_redeemed_users || allUsers.filter(u => u.has_coin_pro || (u.coin_redeem_note && u.coin_redeem_note !== 'Chưa dùng xu đổi Pro' && u.coin_redeem_note !== 'Đang tích lũy xu (chưa đổi Pro)')).length;
+
+        $('ordersCount').textContent = allOrders.length;
+        $('usersCount').textContent = totalUsers;
+
+        $('userFilterAllCount').textContent = totalUsers;
+        $('userFilterProCount').textContent = proUsers;
+        $('userFilterFreeCount').textContent = freeUsers;
+        $('userFilterCoinCount').textContent = coinUsersCount;
+        $('userFilterExpiredCount').textContent = expiredUsers;
+
+        const metrics = [
+          ['Tổng người dùng', totalUsers],
+          ['👑 Người dùng Pro', proUsers],
+          ['🌱 Người dùng thường', freeUsers],
+          ['Chờ duyệt Pro', pendingOrders],
+          ['Đơn đã duyệt', s.purchases || 0],
+          ['Tổng doanh thu', money(s.revenue)],
+          ['🪙 Xu tích lũy hệ thống', new Intl.NumberFormat('vi-VN').format(totalCoins) + ' xu'],
+          ['🪙 Đổi Pro bằng xu', coinUsersCount + ' tài khoản']
         ];
+
         $('cards').replaceChildren();
         for (let [label, value] of metrics) {
           let box = document.createElement('div');
@@ -181,52 +336,171 @@
           $('cards').append(box);
         }
 
-        $('orders').replaceChildren();
-        if (!data.orders || data.orders.length === 0) {
-          let tr = document.createElement('tr');
-          tr.innerHTML = '<td colspan="9" style="text-align:center; color:#888; padding:30px;">Chưa có đơn hàng nào</td>';
-          $('orders').append(tr);
-        } else {
-          for (let o of data.orders) {
-            let tr = document.createElement('tr');
-            let badgeClass = o.status === 'paid' ? 'badge-paid' :
-                             o.status === 'submitted' ? 'badge-submitted' :
-                             o.status === 'pending' ? 'badge-pending' : 'badge-rejected';
-            let badgeText = o.status === 'paid' ? 'Đã kích hoạt Pro' :
-                            o.status === 'submitted' ? 'Chờ duyệt' :
-                            o.status === 'pending' ? 'Chờ thanh toán' : 'Từ chối';
-
-            let actions = '';
-            if (o.status === 'pending' || o.status === 'submitted') {
-              actions = `
-                <button class="btn btn-success" onclick="approveOrder('${o.id}', '${o.name || o.email}')">Duyệt Pro</button>
-                <button class="btn btn-danger" onclick="rejectOrder('${o.id}')" style="margin-left:4px;">Từ chối</button>
-              `;
-            } else if (o.status === 'paid') {
-              actions = `<span style="color:#059669; font-weight:700; font-size:12px;">✓ Đã duyệt Pro</span>`;
-            } else {
-              actions = `<span style="color:#DC2626; font-size:12px;">Đã từ chối</span>`;
-            }
-
-            tr.innerHTML = `
-              <td><b>#${o.id}</b></td>
-              <td><b>${o.name || 'Người dùng'}</b></td>
-              <td>${o.email}</td>
-              <td>${o.plan === 'year' ? 'Gói 1 năm' : 'Gói 1 tháng'}</td>
-              <td style="font-weight:700; color:var(--primary);">${money(o.amount)}</td>
-              <td><code style="background:#EDF2F7; padding:2px 6px; border-radius:4px; font-weight:700;">${o.transfer_ref || o.id}</code></td>
-              <td><span class="badge ${badgeClass}">${badgeText}</span></td>
-              <td style="color:#64748B; font-size:12px;">${new Date(o.created_at).toLocaleString('vi-VN')}</td>
-              <td>${actions}</td>
-            `;
-            $('orders').append(tr);
-          }
-        }
+        renderOrders();
+        renderUsers();
         $('content').hidden = false;
       } catch (e) {
         $('error').textContent = e.message;
         $('content').hidden = true;
       }
+    }
+
+    function renderOrders() {
+      const q = ($('ordersSearch') ? $('ordersSearch').value.trim().toLowerCase() : '');
+      const filtered = allOrders.filter(o => {
+        if (!q) return true;
+        const name = (o.name || '').toLowerCase();
+        const email = (o.email || '').toLowerCase();
+        const ref = (o.transfer_ref || o.id || '').toLowerCase();
+        return name.includes(q) || email.includes(q) || ref.includes(q);
+      });
+
+      $('orders').replaceChildren();
+      if (filtered.length === 0) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = '<td colspan="9" style="text-align:center; color:#888; padding:30px;">Không tìm thấy đơn hàng nào</td>';
+        $('orders').append(tr);
+        return;
+      }
+
+      for (let o of filtered) {
+        let tr = document.createElement('tr');
+        const isCoin = o.payment_method === 'coins' || (o.transfer_ref && o.transfer_ref.startsWith('DoiXu')) || (o.id && o.id.startsWith('XU_'));
+        let badgeClass = isCoin ? 'badge-submitted' :
+                         (o.status === 'paid' ? 'badge-paid' :
+                          o.status === 'submitted' ? 'badge-submitted' :
+                          o.status === 'pending' ? 'badge-pending' : 'badge-rejected');
+        let badgeText = isCoin ? '🪙 Đổi bằng xu' :
+                        (o.status === 'paid' ? 'Đã duyệt Pro' :
+                         o.status === 'submitted' ? 'Chờ Admin duyệt' :
+                         o.status === 'pending' ? 'Chờ thanh toán' : 'Từ chối');
+
+        let actions = '';
+        if (o.status === 'pending' || o.status === 'submitted') {
+          actions = `
+            <button class="btn btn-success" onclick="approveOrder('${o.id}', '${o.name || o.email}')">Duyệt Pro</button>
+            <button class="btn btn-danger" onclick="rejectOrder('${o.id}')" style="margin-left:4px;">Từ chối</button>
+          `;
+        } else if (o.status === 'paid') {
+          actions = `<span style="color:#059669; font-weight:700; font-size:12px;">✓ Đã cấp Pro</span>`;
+        } else {
+          actions = `<span style="color:#DC2626; font-size:12px;">Đã từ chối</span>`;
+        }
+
+        let refHtml = `<code style="background:#EDF2F7; padding:3px 8px; border-radius:6px; font-weight:800; color:#1E293B;">${o.transfer_ref || o.id}</code>`;
+        if (o.admin_note) {
+          refHtml += `<br><small style="color:#92400E; font-weight:700;">📝 ${o.admin_note}</small>`;
+        }
+
+        let amountHtml = isCoin
+          ? `<span style="font-weight:700; color:#D97706;">0 ₫</span><br><small style="color:#B45309; font-weight:700;">(Đổi bằng xu)</small>`
+          : `<span style="font-weight:700; color:var(--primary);">${money(o.amount)}</span>`;
+
+        tr.innerHTML = `
+          <td><b>#${o.id}</b></td>
+          <td><b>${o.name || 'Người dùng'}</b></td>
+          <td>${o.email}</td>
+          <td>${o.plan === 'year' ? 'Gói 1 năm' : (o.plan.includes('days') ? o.plan.replace('_days', ' ngày') : 'Gói 1 tháng')}</td>
+          <td>${amountHtml}</td>
+          <td>${refHtml}</td>
+          <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+          <td style="color:#64748B; font-size:12px;">${o.created_at ? new Date(o.created_at).toLocaleString('vi-VN') : '—'}</td>
+          <td>${actions}</td>
+        `;
+        $('orders').append(tr);
+      }
+    }
+
+    function renderUsers() {
+      const q = ($('usersSearch') ? $('usersSearch').value.trim().toLowerCase() : '');
+      const filtered = allUsers.filter(u => {
+        const isPro = u.is_pro === true;
+        const isExpired = u.is_expired === true;
+        const note = (u.coin_redeem_note || '').trim();
+        const hasCoinPro = u.has_coin_pro === true || (note.length > 0 && note !== 'Chưa dùng xu đổi Pro' && note !== 'Đang tích lũy xu (chưa đổi Pro)');
+        if (userFilter === 'pro' && !isPro) return false;
+        if (userFilter === 'free' && (isPro || isExpired)) return false;
+        if (userFilter === 'expired' && !isExpired) return false;
+        if (userFilter === 'coin' && !hasCoinPro) return false;
+
+        if (!q) return true;
+        const name = (u.name || '').toLowerCase();
+        const email = (u.email || '').toLowerCase();
+        return name.includes(q) || email.includes(q);
+      });
+
+      $('users').replaceChildren();
+      if (filtered.length === 0) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = '<td colspan="10" style="text-align:center; color:#888; padding:30px;">Không tìm thấy người dùng nào phù hợp</td>';
+        $('users').append(tr);
+        return;
+      }
+
+      let idx = 1;
+      for (let u of filtered) {
+        let tr = document.createElement('tr');
+        const isPro = u.is_pro === true;
+        const isExpired = u.is_expired === true;
+        const note = (u.coin_redeem_note || '').trim();
+        const hasCoinPro = u.has_coin_pro === true || (note.length > 0 && note !== 'Chưa dùng xu đổi Pro' && note !== 'Đang tích lũy xu (chưa đổi Pro)');
+
+        let badgeHtml = '';
+        if (isPro) {
+          badgeHtml = '<span class="badge badge-pro">👑 PRO VIP</span>';
+        } else if (isExpired) {
+          badgeHtml = '<span class="badge badge-expired">⚠️ Hết hạn</span>';
+        } else {
+          badgeHtml = '<span class="badge badge-free">🌱 Thường</span>';
+        }
+
+        let planHtml = '';
+        if (isPro) {
+          const expText = u.pro_expires_at ? new Date(u.pro_expires_at).toLocaleDateString('vi-VN') : '—';
+          planHtml = `<b>${u.plan_label || 'Gói 1 tháng'}</b><br><small style="color:#0D8F5C; font-weight:700;">Còn ${u.days_remaining || 0} ngày (Hết hạn ${expText})</small>`;
+        } else if (isExpired) {
+          const expText = u.pro_expires_at ? new Date(u.pro_expires_at).toLocaleDateString('vi-VN') : '—';
+          planHtml = `<span style="color:#D97706; font-size:12px; font-weight:600;">Đã hết hạn Pro (${expText})</span>`;
+        } else {
+          planHtml = `<span style="color:#94A3B8; font-size:12px;">Chưa đăng ký Pro</span>`;
+        }
+
+        const spentText = (u.total_spent && u.total_spent > 0) ? money(u.total_spent) : '0 ₫';
+        const ordersText = (u.total_orders || 0) + ' đơn';
+        const coinsFormatted = new Intl.NumberFormat('vi-VN').format(u.coins || 0) + ' xu';
+        const coinHtml = `<b style="color:#D97706; font-size:13px;">${coinsFormatted}</b>`;
+        const noteHtml = hasCoinPro
+          ? `<div style="background:#FFFBEB; border:1px solid #FDE68A; padding:5px 9px; border-radius:6px; color:#92400E; font-size:11.5px; font-weight:700;">🪙 ${u.coin_redeem_note}</div>`
+          : `<span style="color:#94A3B8; font-size:12px;">Chưa đổi Pro bằng xu</span>`;
+
+        let actions = `
+          <button class="btn btn-primary" style="padding:5px 10px; font-size:12px;" onclick="prefillGrant('${u.email}')">⚡ ${isPro ? 'Gia hạn' : 'Cấp Pro'}</button>
+        `;
+        if (isPro) {
+          actions += `
+            <button class="btn btn-outline-danger" style="margin-left:4px;" onclick="revokeProDirectly('${u.email}', '${u.name || u.email}')">Thu hồi</button>
+          `;
+        }
+
+        tr.innerHTML = `
+          <td>${idx++}</td>
+          <td><b>${u.name || 'Người dùng'}</b> ${hasCoinPro ? '<span class="badge" style="background:#FEF3C7; color:#92400E; font-size:10px; margin-left:4px;">🪙 Đổi Pro</span>' : ''}</td>
+          <td>${u.email}</td>
+          <td>${badgeHtml}</td>
+          <td>${planHtml}</td>
+          <td>${coinHtml}</td>
+          <td>${noteHtml}</td>
+          <td><b>${spentText}</b><br><small style="color:#888;">${ordersText}</small></td>
+          <td style="color:#64748B; font-size:12px;">${u.created_at ? new Date(u.created_at).toLocaleDateString('vi-VN') : '—'}</td>
+          <td>${actions}</td>
+        `;
+        $('users').append(tr);
+      }
+    }
+
+    function prefillGrant(target) {
+      $('grantUsername').value = target;
+      window.scrollTo({ top: 120, behavior: 'smooth' });
     }
 
     async function approveOrder(id, name) {
@@ -264,6 +538,29 @@
       }
     }
 
+    async function revokeProDirectly(email, name) {
+      if (!confirm(`Xác nhận thu hồi quyền Pro của tài khoản:\n• Người dùng: ${name}\n• Email: ${email}\n\nTài khoản này sẽ chuyển về Người dùng thường (Free).`)) return;
+      try {
+        let r = await fetch('/admin/revoke-pro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': $('key').value.trim()
+          },
+          body: JSON.stringify({ username: email })
+        });
+        if (r.ok) {
+          let res = await r.json();
+          alert(res.message || 'Đã thu hồi Pro thành công');
+          load();
+        } else {
+          alert('Lỗi: Không thể thu hồi quyền Pro');
+        }
+      } catch (e) {
+        alert('Lỗi kết nối: ' + e.message);
+      }
+    }
+
     async function grantProDirectly() {
       const u = $('grantUsername').value.trim();
       const plan = $('grantPlan').value;
@@ -295,7 +592,6 @@
     }
 
     $('load').onclick = load;
-    // Auto load on start
     window.addEventListener('DOMContentLoaded', load);
   </script>
 </body>

@@ -5,6 +5,7 @@ import 'services/app_state.dart';
 import 'theme.dart';
 import 'screens/auth_screen.dart';
 import 'screens/root_shell.dart';
+import 'screens/admin_orders_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +41,9 @@ class _SignEyeAppState extends State<SignEyeApp> {
             theme: buildAppTheme(dark: state.darkMode),
             home: !state.ready
                 ? const _SplashScreen()
-                : (state.isLoggedIn ? const RootShell() : const AuthScreen()),
+                : (state.isLoggedIn
+                    ? (state.isAdmin ? const AdminOrdersScreen() : const RootShell())
+                    : const AuthScreen()),
           );
         },
       ),
