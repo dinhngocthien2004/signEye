@@ -13,14 +13,30 @@ class VisualFeatures {
     required this.orientation,
   });
 
-  factory VisualFeatures.fromJson(Map<String, dynamic>? json) {
-    json ??= const {};
+  factory VisualFeatures.fromJson(dynamic json) {
+    if (json is Map<String, dynamic>) {
+      return VisualFeatures(
+        shape: json['shape']?.toString() ?? '',
+        background: json['background']?.toString() ?? '',
+        border: json['border']?.toString() ?? '',
+        symbol: json['symbol']?.toString() ?? '',
+        orientation: json['orientation']?.toString() ?? '',
+      );
+    } else if (json is Map) {
+      return VisualFeatures(
+        shape: json['shape']?.toString() ?? '',
+        background: json['background']?.toString() ?? '',
+        border: json['border']?.toString() ?? '',
+        symbol: json['symbol']?.toString() ?? '',
+        orientation: json['orientation']?.toString() ?? '',
+      );
+    }
     return VisualFeatures(
-      shape: json['shape']?.toString() ?? '',
-      background: json['background']?.toString() ?? '',
-      border: json['border']?.toString() ?? '',
-      symbol: json['symbol']?.toString() ?? '',
-      orientation: json['orientation']?.toString() ?? '',
+      shape: '',
+      background: '',
+      border: '',
+      symbol: json?.toString() ?? '',
+      orientation: '',
     );
   }
 }
@@ -60,6 +76,12 @@ class TrafficSign {
   factory TrafficSign.fromJson(Map<String, dynamic> json) {
     final rawImage = json['image']?.toString() ?? '';
     final normalized = rawImage.replaceFirst('/assets/trafficSigns/', 'assets/images/');
+    
+    final rawKw = json['keywords'];
+    final kwStr = rawKw is List
+        ? rawKw.map((e) => e.toString()).join(' ')
+        : (rawKw?.toString() ?? '');
+
     return TrafficSign(
       stt: json['stt'] is int ? json['stt'] as int : int.tryParse('${json['stt']}') ?? 0,
       maBien: json['maBien']?.toString() ?? '',
@@ -70,9 +92,9 @@ class TrafficSign {
       mucPhatOto: json['mucPhatOto']?.toString() ?? '',
       truDiemGPLX: json['truDiemGPLX']?.toString() ?? '',
       canCuPhapLy: json['canCuPhapLy']?.toString() ?? '',
-      keywords: json['keywords']?.toString() ?? '',
+      keywords: kwStr,
       image: normalized,
-      visualFeatures: VisualFeatures.fromJson(json['visualFeatures'] as Map<String, dynamic>?),
+      visualFeatures: VisualFeatures.fromJson(json['visualFeatures']),
       similarSigns: (json['similarSigns'] as List<dynamic>? ?? const [])
           .map((e) => e.toString())
           .toList(),

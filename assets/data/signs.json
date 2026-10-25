@@ -4189,12 +4189,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p124e",
-      "cam oto re trai va quay dau"
-    ],
+    "keywords": "p124e cam oto re trai va quay dau",
     "image": "assets/images/cam_oto_quay_dau.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hình ô tô con màu đen bên cạnh mũi tên rẽ trái và quay đầu bị gạch chéo đỏ.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Cấm ô tô rẽ trái và quay đầu xe",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hình ô tô con màu đen bên cạnh mũi tên rẽ trái và quay đầu bị gạch chéo đỏ."
+    },
     "similarSigns": [
       "P.124b",
       "P.124c",
@@ -4211,12 +4215,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p124f",
-      "cam oto re phai va quay dau"
-    ],
+    "keywords": "p124f cam oto re phai va quay dau",
     "image": "assets/images/cam_oto_quay_dau.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hình ô tô con màu đen bên cạnh mũi tên rẽ phải và quay đầu bị gạch chéo đỏ.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Cấm ô tô rẽ phải và quay đầu xe",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hình ô tô con màu đen bên cạnh mũi tên rẽ phải và quay đầu bị gạch chéo đỏ."
+    },
     "similarSigns": [
       "P.124d",
       "P.124b",
@@ -4233,14 +4241,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm (nếu quá tốc độ trên 20km/h)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p127a",
-      "toc do ban dem",
-      "gioi han toc do dem",
-      "22h den 5h"
-    ],
+    "keywords": "p127a toc do ban dem gioi han toc do dem 22h den 5h",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình chữ nhật đứng hoặc hình tròn, nền đen hoặc trắng ghi chỉ số tốc độ và khung giờ áp dụng ban đêm.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép vào ban đêm",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật đứng hoặc hình tròn, nền đen hoặc trắng ghi chỉ số tốc độ và khung giờ áp dụng ban đêm."
+    },
     "similarSigns": [
       "P.127",
       "P.134"
@@ -4256,14 +4266,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p129",
-      "tram kiem tra",
-      "dung xe kiem tra",
-      "kiem sat"
-    ],
+    "keywords": "p129 tram kiem tra dung xe kiem tra kiem sat",
     "image": "assets/images/dung_lai.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, ở giữa có chữ 'KIỂM TRA' hoặc 'CUSTOMS' / 'DOUANE' màu đen nằm giữa hai vạch đen ngang.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Kiểm tra (Trạm dừng kiểm tra)",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, ở giữa có chữ 'KIỂM TRA' hoặc 'CUSTOMS' / 'DOUANE' màu đen nằm giữa hai vạch đen ngang."
+    },
     "similarSigns": [
       "R.122",
       "I.432"
@@ -4279,12 +4291,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p136",
-      "cam di thang"
-    ],
+    "keywords": "p136 cam di thang",
     "image": "assets/images/cam_di_thang.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, mũi tên thẳng đứng hướng lên trên màu đen bị gạch chéo đỏ.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Cấm đi thẳng",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, mũi tên thẳng đứng hướng lên trên màu đen bị gạch chéo đỏ."
+    },
     "similarSigns": [
       "P.137",
       "P.138",
@@ -4301,12 +4317,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p138",
-      "cam di thang va re trai"
-    ],
+    "keywords": "p138 cam di thang va re trai",
     "image": "assets/images/cam_di_thang.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, mũi tên hướng thẳng và rẽ trái màu đen bị gạch chéo đỏ.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Cấm đi thẳng và rẽ trái",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, mũi tên hướng thẳng và rẽ trái màu đen bị gạch chéo đỏ."
+    },
     "similarSigns": [
       "P.136",
       "P.139"
@@ -4322,12 +4342,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p139",
-      "cam di thang va re phai"
-    ],
+    "keywords": "p139 cam di thang va re phai",
     "image": "assets/images/cam_di_thang.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, mũi tên hướng thẳng và rẽ phải màu đen bị gạch chéo đỏ.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Cấm đi thẳng và rẽ phải",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, mũi tên hướng thẳng và rẽ phải màu đen bị gạch chéo đỏ."
+    },
     "similarSigns": [
       "P.136",
       "P.138"
@@ -4343,13 +4367,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ (Tịch thu phương tiện tự chế)",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p140",
-      "cam xe cong nong",
-      "xe tu che"
-    ],
+    "keywords": "p140 cam xe cong nong xe tu che",
     "image": "assets/images/cam_may_keo.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, vẽ hình xe công nông đầu dọc/đầu ngang màu đen gạch chéo đỏ.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Cấm xe công nông và các loại xe tương tự",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, vẽ hình xe công nông đầu dọc/đầu ngang màu đen gạch chéo đỏ."
+    },
     "similarSigns": [
       "P.109",
       "P.111b"
@@ -4365,13 +4392,16 @@
     "mucPhatOto": "Không áp dụng (Biển cảnh báo)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w207c",
-      "giao khong uu tien xien phai",
-      "nhanh chech phai"
-    ],
+    "keywords": "w207c giao khong uu tien xien phai nhanh chech phai",
     "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
-    "visualFeatures": "Hình tam giác đều viền đỏ nền vàng, trục chính thẳng đứng và một vạch nhánh nhỏ chéo góc nhọn hướng lên bên phải.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Giao nhau với đường không ưu tiên (đường nhánh xiên bên phải)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác đều viền đỏ nền vàng, trục chính thẳng đứng và một vạch nhánh nhỏ chéo góc nhọn hướng lên bên phải."
+    },
     "similarSigns": [
       "W.207a",
       "W.207d"
@@ -4387,13 +4417,16 @@
     "mucPhatOto": "Không áp dụng (Biển cảnh báo)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w207d",
-      "giao khong uu tien xien trai",
-      "nhanh chech trai"
-    ],
+    "keywords": "w207d giao khong uu tien xien trai nhanh chech trai",
     "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
-    "visualFeatures": "Hình tam giác đều viền đỏ nền vàng, trục chính thẳng đứng và một vạch nhánh nhỏ chéo góc nhọn hướng lên bên trái.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Giao nhau với đường không ưu tiên (đường nhánh xiên bên trái)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác đều viền đỏ nền vàng, trục chính thẳng đứng và một vạch nhánh nhỏ chéo góc nhọn hướng lên bên trái."
+    },
     "similarSigns": [
       "W.207c",
       "W.207e"
@@ -4409,12 +4442,16 @@
     "mucPhatOto": "Không áp dụng (Biển cảnh báo)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w207e",
-      "giao khong uu tien chu y phai"
-    ],
+    "keywords": "w207e giao khong uu tien chu y phai",
     "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, trục thẳng đứng to màu đen và nhánh phụ nghiêng hình chữ Y bên phải.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Giao nhau với đường không ưu tiên (ngã ba nhánh chữ Y bên phải)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, trục thẳng đứng to màu đen và nhánh phụ nghiêng hình chữ Y bên phải."
+    },
     "similarSigns": [
       "W.207d",
       "W.207f"
@@ -4430,12 +4467,16 @@
     "mucPhatOto": "Không áp dụng (Biển cảnh báo)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w207f",
-      "giao khong uu tien chu y trai"
-    ],
+    "keywords": "w207f giao khong uu tien chu y trai",
     "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, trục thẳng đứng to màu đen và nhánh phụ nghiêng hình chữ Y bên trái.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Giao nhau với đường không ưu tiên (ngã ba nhánh chữ Y bên trái)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, trục thẳng đứng to màu đen và nhánh phụ nghiêng hình chữ Y bên trái."
+    },
     "similarSigns": [
       "W.207e",
       "W.207g"
@@ -4451,12 +4492,16 @@
     "mucPhatOto": "Không áp dụng (Biển cảnh báo)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w207g",
-      "duong nhanh so le phai"
-    ],
+    "keywords": "w207g duong nhanh so le phai",
     "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
-    "visualFeatures": "Hình tam giác đều viền đỏ nền vàng, trục đứng lớn có 2 vạch nhánh ngang nhỏ lệch nhau (bên phải ở dưới, bên trái ở trên).",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Giao nhau với đường không ưu tiên (đường nhánh so le bên phải trước)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác đều viền đỏ nền vàng, trục đứng lớn có 2 vạch nhánh ngang nhỏ lệch nhau (bên phải ở dưới, bên trái ở trên)."
+    },
     "similarSigns": [
       "W.207h",
       "W.207i"
@@ -4472,12 +4517,16 @@
     "mucPhatOto": "Không áp dụng (Biển cảnh báo)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w207h",
-      "duong nhanh so le trai"
-    ],
+    "keywords": "w207h duong nhanh so le trai",
     "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
-    "visualFeatures": "Hình tam giác đều viền đỏ nền vàng, trục đứng lớn có 2 vạch nhánh ngang nhỏ lệch nhau (bên trái ở dưới, bên phải ở trên).",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Giao nhau với đường không ưu tiên (đường nhánh so le bên trái trước)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác đều viền đỏ nền vàng, trục đứng lớn có 2 vạch nhánh ngang nhỏ lệch nhau (bên trái ở dưới, bên phải ở trên)."
+    },
     "similarSigns": [
       "W.207g",
       "W.207i"
@@ -4493,12 +4542,16 @@
     "mucPhatOto": "Không áp dụng (Biển cảnh báo)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w207i",
-      "giao khong uu tien chu t phai"
-    ],
+    "keywords": "w207i giao khong uu tien chu t phai",
     "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
-    "visualFeatures": "Hình tam giác đều viền đỏ nền vàng, trục chính rẽ vuông góc kết hợp nhánh phụ.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Giao nhau với đường không ưu tiên (đường nhánh chữ T bên phải)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác đều viền đỏ nền vàng, trục chính rẽ vuông góc kết hợp nhánh phụ."
+    },
     "similarSigns": [
       "W.207k",
       "W.207a"
@@ -4514,12 +4567,16 @@
     "mucPhatOto": "Không áp dụng (Biển cảnh báo)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w207k",
-      "giao khong uu tien chu t trai"
-    ],
+    "keywords": "w207k giao khong uu tien chu t trai",
     "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
-    "visualFeatures": "Hình tam giác đều viền đỏ nền vàng, trục chính rẽ vuông góc kết hợp nhánh phụ bên trái.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Giao nhau với đường không ưu tiên (đường nhánh chữ T bên trái)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác đều viền đỏ nền vàng, trục chính rẽ vuông góc kết hợp nhánh phụ bên trái."
+    },
     "similarSigns": [
       "W.207i",
       "W.207b"
@@ -4535,13 +4592,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w215c",
-      "bo vuc ben phai",
-      "ke bo song phai"
-    ],
+    "keywords": "w215c bo vuc ben phai ke bo song phai",
     "image": "assets/images/ke_vuc_sau.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, xe ô tô con lao xuống vực mép bên phải.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Kè, vực sâu phía bên phải đường",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, xe ô tô con lao xuống vực mép bên phải."
+    },
     "similarSigns": [
       "W.215a",
       "W.215b"
@@ -4557,13 +4617,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w228b",
-      "da lo ben trai",
-      "sat lo nui trai"
-    ],
+    "keywords": "w228b da lo ben trai sat lo nui trai",
     "image": "assets/images/da_lo.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, mô tả vách đá bên trái với các khối đá đang rơi xuống mặt đường.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Đá lở taluy bên trái",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, mô tả vách đá bên trái với các khối đá đang rơi xuống mặt đường."
+    },
     "similarSigns": [
       "W.228",
       "W.228a",
@@ -4580,13 +4643,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w228c",
-      "soi da ban len",
-      "soi dam"
-    ],
+    "keywords": "w228c soi da ban len soi dam",
     "image": "assets/images/da_lo.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vẽ bánh sau ô tô hất các viên sỏi đá văng về phía sau.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Sỏi đá bắn lên",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vẽ bánh sau ô tô hất các viên sỏi đá văng về phía sau."
+    },
     "similarSigns": [
       "W.228",
       "W.227"
@@ -4602,13 +4668,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w243b",
-      "giao duong sat 100m",
-      "khoang cach duong sat"
-    ],
+    "keywords": "w243b giao duong sat 100m khoang cach duong sat",
     "image": "assets/images/giao_nhau_duong_sat.png",
-    "visualFeatures": "Biển hình chữ nhật đứng nền trắng có 2 vạch chéo màu đỏ song song chếch nghiêng.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Nơi đường sắt giao nhau không vuông góc với đường bộ (cách 100m)",
+      "orientation": "unspecified",
+      "description": "Biển hình chữ nhật đứng nền trắng có 2 vạch chéo màu đỏ song song chếch nghiêng."
+    },
     "similarSigns": [
       "W.243",
       "W.243a",
@@ -4625,12 +4694,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w243c",
-      "giao duong sat 150m"
-    ],
+    "keywords": "w243c giao duong sat 150m",
     "image": "assets/images/giao_nhau_duong_sat.png",
-    "visualFeatures": "Biển hình chữ nhật đứng nền trắng có 3 vạch chéo màu đỏ song song chếch nghiêng.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Nơi đường sắt giao nhau không vuông góc với đường bộ (cách 150m)",
+      "orientation": "unspecified",
+      "description": "Biển hình chữ nhật đứng nền trắng có 3 vạch chéo màu đỏ song song chếch nghiêng."
+    },
     "similarSigns": [
       "W.243a",
       "W.243b"
@@ -4646,13 +4719,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w245b",
-      "di cham ban dem",
-      "slow night"
-    ],
+    "keywords": "w245b di cham ban dem slow night",
     "image": "assets/images/di_cham.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng (hoặc chữ nhật phản quang), có chữ 'ĐI CHẬM' màu đen nổi bật.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Đi chậm (Ban đêm)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng (hoặc chữ nhật phản quang), có chữ 'ĐI CHẬM' màu đen nổi bật."
+    },
     "similarSigns": [
       "W.245a",
       "W.233"
@@ -4668,13 +4744,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w246b",
-      "chu y chuong ngai vat trai",
-      "vong tranh trai"
-    ],
+    "keywords": "w246b chu y chuong ngai vat trai vong tranh trai",
     "image": "assets/images/chu_y_chuong_ngai_vat.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, mũi tên vòng sang bên trái của một chướng ngại vật hình chữ nhật.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Chú ý chướng ngại vật - Vòng tránh sang bên trái",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, mũi tên vòng sang bên trái của một chướng ngại vật hình chữ nhật."
+    },
     "similarSigns": [
       "W.246a",
       "W.246c",
@@ -4691,13 +4770,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w246c",
-      "chu y chuong ngai vat phai",
-      "vong tranh phai"
-    ],
+    "keywords": "w246c chu y chuong ngai vat phai vong tranh phai",
     "image": "assets/images/chu_y_chuong_ngai_vat.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, mũi tên vòng sang bên phải của chướng ngại vật hình chữ nhật.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Chú ý chướng ngại vật - Vòng tránh sang bên phải",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, mũi tên vòng sang bên phải của chướng ngại vật hình chữ nhật."
+    },
     "similarSigns": [
       "W.246a",
       "W.246b",
@@ -4714,13 +4796,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w247",
-      "chu y xe do",
-      "xe hong tren duong"
-    ],
+    "keywords": "w247 chu y xe do xe hong tren duong",
     "image": "assets/images/xe_do.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vẽ đuôi chiếc ô tô và biểu tượng tam giác phản quang nguy hiểm phía sau.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Chú ý xe đỗ",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vẽ đuôi chiếc ô tô và biểu tượng tam giác phản quang nguy hiểm phía sau."
+    },
     "similarSigns": [
       "W.244",
       "W.246a"
@@ -4736,12 +4821,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r301g",
-      "chi duoc re trai phia truoc"
-    ],
+    "keywords": "r301g chi duoc re trai phia truoc",
     "image": "assets/images/chi_duoc_re_trai.png",
-    "visualFeatures": "Hình tròn nền xanh lam, mũi tên trắng hướng thẳng lên rồi quặt vuông góc sang trái.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Các xe chỉ được rẽ trái phía trước",
+      "orientation": "unspecified",
+      "description": "Hình tròn nền xanh lam, mũi tên trắng hướng thẳng lên rồi quặt vuông góc sang trái."
+    },
     "similarSigns": [
       "R.301c",
       "R.301h"
@@ -4757,12 +4846,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r301h",
-      "chi duoc re phai phia truoc"
-    ],
+    "keywords": "r301h chi duoc re phai phia truoc",
     "image": "assets/images/chi_duoc_re_phai.png",
-    "visualFeatures": "Hình tròn nền xanh lam, mũi tên trắng hướng thẳng lên rồi quặt vuông góc sang phải.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Các xe chỉ được rẽ phải phía trước",
+      "orientation": "unspecified",
+      "description": "Hình tròn nền xanh lam, mũi tên trắng hướng thẳng lên rồi quặt vuông góc sang phải."
+    },
     "similarSigns": [
       "R.301b",
       "R.301g"
@@ -4778,13 +4871,16 @@
     "mucPhatOto": "400.000đ - 600.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r309",
-      "an coi",
-      "bam coi"
-    ],
+    "keywords": "r309 an coi bam coi",
     "image": "assets/images/an_coi.png",
-    "visualFeatures": "Hình tròn nền xanh lam, hình chiếc còi hơi màu trắng đang phát ra sóng âm thanh.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Ấn còi",
+      "orientation": "unspecified",
+      "description": "Hình tròn nền xanh lam, hình chiếc còi hơi màu trắng đang phát ra sóng âm thanh."
+    },
     "similarSigns": [
       "P.128"
     ],
@@ -4799,12 +4895,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "r310a",
-      "hang nguy hiem di thang"
-    ],
+    "keywords": "r310a hang nguy hiem di thang",
     "image": "assets/images/chi_duoc_di_thang.png",
-    "visualFeatures": "Hình tròn nền xanh lam, vẽ biểu tượng xe chở hàng nguy hiểm (thùng xe có viền cam) và mũi tên trắng chỉ hướng đi thẳng.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Hướng đi phải theo cho xe chở hàng nguy hiểm (Đi thẳng)",
+      "orientation": "unspecified",
+      "description": "Hình tròn nền xanh lam, vẽ biểu tượng xe chở hàng nguy hiểm (thùng xe có viền cam) và mũi tên trắng chỉ hướng đi thẳng."
+    },
     "similarSigns": [
       "R.310b",
       "R.310c",
@@ -4821,12 +4921,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "r310b",
-      "hang nguy hiem re trai"
-    ],
+    "keywords": "r310b hang nguy hiem re trai",
     "image": "assets/images/chi_duoc_re_trai.png",
-    "visualFeatures": "Hình tròn nền xanh lam, biểu tượng hàng nguy hiểm và mũi tên trắng rẽ trái.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Hướng đi phải theo cho xe chở hàng nguy hiểm (Rẽ trái)",
+      "orientation": "unspecified",
+      "description": "Hình tròn nền xanh lam, biểu tượng hàng nguy hiểm và mũi tên trắng rẽ trái."
+    },
     "similarSigns": [
       "R.310a",
       "R.310c"
@@ -4842,12 +4946,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "r310c",
-      "hang nguy hiem re phai"
-    ],
+    "keywords": "r310c hang nguy hiem re phai",
     "image": "assets/images/chi_duoc_re_phai.png",
-    "visualFeatures": "Hình tròn nền xanh lam, biểu tượng hàng nguy hiểm và mũi tên trắng rẽ phải.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Hướng đi phải theo cho xe chở hàng nguy hiểm (Rẽ phải)",
+      "orientation": "unspecified",
+      "description": "Hình tròn nền xanh lam, biểu tượng hàng nguy hiểm và mũi tên trắng rẽ phải."
+    },
     "similarSigns": [
       "R.310a",
       "R.310b"
@@ -4863,12 +4971,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ (Đi sai làn đường)",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "r403d",
-      "duong danh cho oto tai"
-    ],
+    "keywords": "r403d duong danh cho oto tai",
     "image": "assets/images/duong_danh_cho_oto.png",
-    "visualFeatures": "Hình chữ nhật hoặc vuông nền xanh lam, ở giữa vẽ hình xe ô tô tải màu trắng.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường dành cho xe ô tô tải",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật hoặc vuông nền xanh lam, ở giữa vẽ hình xe ô tô tải màu trắng."
+    },
     "similarSigns": [
       "R.403a",
       "R.404d"
@@ -4884,13 +4996,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ (Ô tô đi vào làn xe máy)",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r403e",
-      "duong danh cho mo to",
-      "lan xe may"
-    ],
+    "keywords": "r403e duong danh cho mo to lan xe may",
     "image": "assets/images/duong_danh_cho_xe_may.png",
-    "visualFeatures": "Hình chữ nhật hoặc vuông nền xanh lam, hình xe mô tô 2 bánh màu trắng.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường dành cho xe mô tô",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật hoặc vuông nền xanh lam, hình xe mô tô 2 bánh màu trắng."
+    },
     "similarSigns": [
       "R.403b",
       "R.404e"
@@ -4906,12 +5021,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r403f",
-      "duong danh cho xe dap"
-    ],
+    "keywords": "r403f duong danh cho xe dap",
     "image": "assets/images/duong_danh_cho_xe_dap.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ hình xe đạp thể thao màu trắng.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường dành cho xe đạp",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ hình xe đạp thể thao màu trắng."
+    },
     "similarSigns": [
       "R.304",
       "R.404f"
@@ -4927,12 +5046,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục D)",
-    "keywords": [
-      "r404a",
-      "het duong danh cho oto"
-    ],
+    "keywords": "r404a het duong danh cho oto",
     "image": "assets/images/duong_danh_cho_oto.png",
-    "visualFeatures": "Hình vuông nền xanh vẽ hình ô tô con màu trắng, có vạch chéo đỏ gạch từ góc trên phải xuống góc dưới trái.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Hết đoạn đường dành riêng cho ô tô",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh vẽ hình ô tô con màu trắng, có vạch chéo đỏ gạch từ góc trên phải xuống góc dưới trái."
+    },
     "similarSigns": [
       "R.403a",
       "R.404b"
@@ -4948,12 +5071,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục D)",
-    "keywords": [
-      "r404b",
-      "het duong oto va xe may"
-    ],
+    "keywords": "r404b het duong oto va xe may",
     "image": "assets/images/duong_danh_cho_oto_va_xe_may.png",
-    "visualFeatures": "Hình vuông nền xanh vẽ ô tô và xe máy màu trắng, có đường gạch chéo đỏ phủ lên.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Hết đoạn đường dành riêng cho ô tô và xe máy",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh vẽ ô tô và xe máy màu trắng, có đường gạch chéo đỏ phủ lên."
+    },
     "similarSigns": [
       "R.403b",
       "R.404a"
@@ -4969,13 +5096,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r412b",
-      "lan oto con",
-      "lan xe con"
-    ],
+    "keywords": "r412b lan oto con lan xe con",
     "image": "assets/images/lan_xe_con.png",
-    "visualFeatures": "Hình chữ nhật đứng nền xanh lam, vẽ hình xe ô tô con màu trắng và mũi tên chỉ làn hướng thẳng.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Làn đường dành riêng cho ô tô con",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật đứng nền xanh lam, vẽ hình xe ô tô con màu trắng và mũi tên chỉ làn hướng thẳng."
+    },
     "similarSigns": [
       "R.412a",
       "R.412c"
@@ -4991,13 +5121,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "r412c",
-      "lan xe tai",
-      "lan oto tai"
-    ],
+    "keywords": "r412c lan xe tai lan oto tai",
     "image": "assets/images/lan_xe_tai.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ hình xe ô tô tải màu trắng trên làn đường tương ứng.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Làn đường dành riêng cho ô tô tải",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ hình xe ô tô tải màu trắng trên làn đường tương ứng."
+    },
     "similarSigns": [
       "R.412a",
       "R.412b"
@@ -5013,13 +5146,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ (Ô tô đi vào làn xe mô tô)",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "r412d",
-      "lan danh cho mo to",
-      "lan xe may"
-    ],
+    "keywords": "r412d lan danh cho mo to lan xe may",
     "image": "assets/images/lan_xe_may.png",
-    "visualFeatures": "Hình chữ nhật đứng nền xanh lam, vẽ hình xe mô tô màu trắng và mũi tên chỉ hướng làn đường.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Làn đường dành riêng cho xe mô tô",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật đứng nền xanh lam, vẽ hình xe mô tô màu trắng và mũi tên chỉ hướng làn đường."
+    },
     "similarSigns": [
       "R.412e",
       "R.412a"
@@ -5035,14 +5171,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r412e",
-      "lan xe buyt",
-      "lan brt",
-      "lan bus"
-    ],
+    "keywords": "r412e lan xe buyt lan brt lan bus",
     "image": "assets/images/lan_xe_khach.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ chữ BUS màu trắng hoặc xe buýt lớn kèm mũi tên chỉ làn.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Làn đường dành riêng cho xe buýt",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ chữ BUS màu trắng hoặc xe buýt lớn kèm mũi tên chỉ làn."
+    },
     "similarSigns": [
       "R.412a",
       "I.413a"
@@ -5058,13 +5196,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r415a",
-      "gop lan duong",
-      "bien gop lan theo phuong tien"
-    ],
+    "keywords": "r415a gop lan duong bien gop lan theo phuong tien",
     "image": "assets/images/bien_gop_lan.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lam, chia thành 3 phần hiển thị rõ làn 1 (ô tô con), làn 2 (ô tô tải/khách), làn 3 (mô tô/xe gắn máy).",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển gộp làn đường theo phương tiện (Đường 3 làn)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lam, chia thành 3 phần hiển thị rõ làn 1 (ô tô con), làn 2 (ô tô tải/khách), làn 3 (mô tô/xe gắn máy)."
+    },
     "similarSigns": [
       "R.415b",
       "R.411",
@@ -5081,12 +5222,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "r415b",
-      "gop lan 4 lan xe"
-    ],
+    "keywords": "r415b gop lan 4 lan xe",
     "image": "assets/images/bien_gop_lan.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lam, chia thành 4 cột làn đường với biểu tượng các loại xe cơ giới tương ứng.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển gộp làn đường theo phương tiện (Đường 4 làn)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lam, chia thành 4 cột làn đường với biểu tượng các loại xe cơ giới tương ứng."
+    },
     "similarSigns": [
       "R.415a",
       "R.411"
@@ -5102,13 +5247,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i405a",
-      "duong cut",
-      "ngo cut"
-    ],
+    "keywords": "i405a duong cut ngo cut",
     "image": "assets/images/duong_cut.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vạch thẳng đứng màu trắng có vạch ngang màu đỏ chặn ở đầu đỉnh.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường cụt phía trước",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vạch thẳng đứng màu trắng có vạch ngang màu đỏ chặn ở đầu đỉnh."
+    },
     "similarSigns": [
       "I.405b",
       "I.405c"
@@ -5124,12 +5272,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i405b",
-      "duong cut re phai"
-    ],
+    "keywords": "i405b duong cut re phai",
     "image": "assets/images/duong_cut.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, nhánh rẽ ngang bên phải có vạch đỏ chặn đầu.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường cụt rẽ phải",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, nhánh rẽ ngang bên phải có vạch đỏ chặn đầu."
+    },
     "similarSigns": [
       "I.405a",
       "I.405c"
@@ -5145,12 +5297,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i405c",
-      "duong cut re trai"
-    ],
+    "keywords": "i405c duong cut re trai",
     "image": "assets/images/duong_cut.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, nhánh rẽ ngang bên trái có vạch đỏ chặn đầu.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường cụt rẽ trái",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, nhánh rẽ ngang bên trái có vạch đỏ chặn đầu."
+    },
     "similarSigns": [
       "I.405a",
       "I.405b"
@@ -5166,13 +5322,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ (nếu đi ngược chiều)",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "i407b",
-      "duong mot chieu phai",
-      "re phai mot chieu"
-    ],
+    "keywords": "i407b duong mot chieu phai re phai mot chieu",
     "image": "assets/images/duong_mot_chieu.png",
-    "visualFeatures": "Hình chữ nhật nằm ngang nền xanh lam, mũi tên to màu trắng chỉ sang bên phải.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường một chiều (Rẽ phải)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nằm ngang nền xanh lam, mũi tên to màu trắng chỉ sang bên phải."
+    },
     "similarSigns": [
       "I.407a",
       "I.407c",
@@ -5189,13 +5348,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ (nếu đi ngược chiều)",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "i407c",
-      "duong mot chieu trai",
-      "re trai mot chieu"
-    ],
+    "keywords": "i407c duong mot chieu trai re trai mot chieu",
     "image": "assets/images/duong_mot_chieu.png",
-    "visualFeatures": "Hình chữ nhật nằm ngang nền xanh lam, mũi tên to màu trắng chỉ sang bên trái.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường một chiều (Rẽ trái)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nằm ngang nền xanh lam, mũi tên to màu trắng chỉ sang bên trái."
+    },
     "similarSigns": [
       "I.407a",
       "I.407b",
@@ -5212,13 +5374,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i418",
-      "loi di cho cam re",
-      "so do vong tranh"
-    ],
+    "keywords": "i418 loi di cho cam re so do vong tranh",
     "image": "assets/images/loi_di_cho_cam_re.png",
-    "visualFeatures": "Hình vuông nền xanh lam, sơ đồ mũi tên màu trắng vẽ đường đi vòng qua các góc phố tránh ngã tư cấm rẽ.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Lối đi ở những chỗ cấm rẽ",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, sơ đồ mũi tên màu trắng vẽ đường đi vòng qua các góc phố tránh ngã tư cấm rẽ."
+    },
     "similarSigns": [
       "I.416",
       "P.123a"
@@ -5234,14 +5399,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i419a",
-      "dia gioi hanh chinh",
-      "dia phan tinh",
-      "thanh pho"
-    ],
+    "keywords": "i419a dia gioi hanh chinh dia phan tinh thanh pho",
     "image": "assets/images/dia_phan.png",
-    "visualFeatures": "Hình chữ nhật đứng nền xanh lam, chữ viết hoa màu trắng ghi 'ĐỊA PHẬN TỈNH/THÀNH PHỐ...'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Chỉ dẫn địa giới hành chính (Tên tỉnh/thành phố)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật đứng nền xanh lam, chữ viết hoa màu trắng ghi 'ĐỊA PHẬN TỈNH/THÀNH PHỐ...'."
+    },
     "similarSigns": [
       "I.419b",
       "I.414"
@@ -5257,13 +5424,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i419b",
-      "dia phan huyen",
-      "thi xa"
-    ],
+    "keywords": "i419b dia phan huyen thi xa",
     "image": "assets/images/dia_phan.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, chữ viết hoa màu trắng ghi tên đơn vị cấp huyện.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Chỉ dẫn địa giới hành chính (Huyện/Thị xã)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, chữ viết hoa màu trắng ghi tên đơn vị cấp huyện."
+    },
     "similarSigns": [
       "I.419a"
     ],
@@ -5278,13 +5448,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i422a",
-      "di tich lich su",
-      "khu di tich"
-    ],
+    "keywords": "i422a di tich lich su khu di tich",
     "image": "assets/images/danh_lam_thang_canh.png",
-    "visualFeatures": "Hình chữ nhật nền nâu hoặc xanh lam, biểu tượng cổng đền di tích màu trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Di tích lịch sử",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền nâu hoặc xanh lam, biểu tượng cổng đền di tích màu trắng."
+    },
     "similarSigns": [
       "I.422b",
       "I.429"
@@ -5300,13 +5473,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i422b",
-      "danh lam thang canh",
-      "khu du lich"
-    ],
+    "keywords": "i422b danh lam thang canh khu du lich",
     "image": "assets/images/danh_lam_thang_canh.png",
-    "visualFeatures": "Hình chữ nhật nền xanh hoặc nâu, biểu tượng cây cối non nước hoặc di sản thiên nhiên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Danh lam thắng cảnh",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh hoặc nâu, biểu tượng cây cối non nước hoặc di sản thiên nhiên."
+    },
     "similarSigns": [
       "I.422a",
       "I.429"
@@ -5322,13 +5498,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i426",
-      "tram cap cuu",
-      "so cuu y te"
-    ],
+    "keywords": "i426 tram cap cuu so cuu y te",
     "image": "assets/images/tram_cap_cuu.png",
-    "visualFeatures": "Hình vuông nền xanh lam, biểu tượng chữ thập đỏ trên nền trắng nhỏ ở giữa.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Trạm cấp cứu",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, biểu tượng chữ thập đỏ trên nền trắng nhỏ ở giữa."
+    },
     "similarSigns": [
       "I.425"
     ],
@@ -5343,14 +5522,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i427a",
-      "tram sua chua",
-      "garage",
-      "sua xe"
-    ],
+    "keywords": "i427a tram sua chua garage sua xe",
     "image": "assets/images/tram_sua_chua.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ biểu tượng mỏ lết (cờ-lê) màu đen trên nền trắng nhỏ.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Trạm sửa chữa xe cơ giới",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ biểu tượng mỏ lết (cờ-lê) màu đen trên nền trắng nhỏ."
+    },
     "similarSigns": [
       "I.427c",
       "I.427i"
@@ -5366,14 +5547,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i427c",
-      "cay xang",
-      "tram xang dau",
-      "xang dau"
-    ],
+    "keywords": "i427c cay xang tram xang dau xang dau",
     "image": "assets/images/cay_xang.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, hình trụ bơm xăng màu đen trên ô vuông trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Trạm cung cấp xăng dầu",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, hình trụ bơm xăng màu đen trên ô vuông trắng."
+    },
     "similarSigns": [
       "I.427a",
       "I.427k"
@@ -5389,14 +5572,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i427d",
-      "khach san",
-      "nha nghi",
-      "hotel"
-    ],
+    "keywords": "i427d khach san nha nghi hotel",
     "image": "assets/images/khach_san.png",
-    "visualFeatures": "Hình vuông hoặc chữ nhật nền xanh, biểu tượng chiếc giường nằm có người và chữ 'H' màu đen trên nền trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Khách sạn, nhà nghỉ",
+      "orientation": "unspecified",
+      "description": "Hình vuông hoặc chữ nhật nền xanh, biểu tượng chiếc giường nằm có người và chữ 'H' màu đen trên nền trắng."
+    },
     "similarSigns": [
       "I.427e",
       "I.429"
@@ -5412,14 +5597,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i427e",
-      "nha hang",
-      "quan an",
-      "an uong"
-    ],
+    "keywords": "i427e nha hang quan an an uong",
     "image": "assets/images/nha_hang.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, hình cái thìa và dĩa bắt chéo nhau màu đen trên ô trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Nhà hàng ẩm thực, quán ăn",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, hình cái thìa và dĩa bắt chéo nhau màu đen trên ô trắng."
+    },
     "similarSigns": [
       "I.427d",
       "I.427f"
@@ -5435,14 +5622,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i427k",
-      "tram sac xe dien",
-      "sac pin oto",
-      "ev charging"
-    ],
+    "keywords": "i427k tram sac xe dien sac pin oto ev charging",
     "image": "assets/images/cay_xang.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ trụ sạc điện kèm dây sạc và biểu tượng tia sét màu xanh lá cây hoặc trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Trạm sạc xe điện",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ trụ sạc điện kèm dây sạc và biểu tượng tia sét màu xanh lá cây hoặc trắng."
+    },
     "similarSigns": [
       "I.427c"
     ],
@@ -5457,13 +5646,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i431",
-      "tram csgt",
-      "canh sat giao thong"
-    ],
+    "keywords": "i431 tram csgt canh sat giao thong",
     "image": "assets/images/tram_csgt.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, có chữ 'TRẠM CẢNH SÁT GIAO THÔNG' màu vàng hoặc trắng cùng biểu tượng huy hiệu công an.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Trạm cảnh sát giao thông",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, có chữ 'TRẠM CẢNH SÁT GIAO THÔNG' màu vàng hoặc trắng cùng biểu tượng huy hiệu công an."
+    },
     "similarSigns": [
       "I.432",
       "P.129"
@@ -5479,13 +5671,16 @@
     "mucPhatOto": "Không chấp hành kiểm tra tải trọng: 14.000.000đ - 16.000.000đ",
     "truDiemGPLX": "4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "i432",
-      "tram can tai trong",
-      "kiem tra tai trong"
-    ],
+    "keywords": "i432 tram can tai trong kiem tra tai trong",
     "image": "assets/images/tram_csgt.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ biểu tượng chiếc cân tải trọng và xe ô tô tải màu trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Trạm kiểm tra tải trọng xe",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ biểu tượng chiếc cân tải trọng và xe ô tô tải màu trắng."
+    },
     "similarSigns": [
       "P.115",
       "P.129"
@@ -5501,13 +5696,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i436",
-      "ben xe taxi",
-      "diem don taxi"
-    ],
+    "keywords": "i436 ben xe taxi diem don taxi",
     "image": "assets/images/ben_xe_taxi.png",
-    "visualFeatures": "Hình vuông nền xanh lam, chữ 'TAXI' màu vàng hoặc trắng nổi bật ở giữa.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Bến xe taxi",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, chữ 'TAXI' màu vàng hoặc trắng nổi bật ở giữa."
+    },
     "similarSigns": [
       "I.433",
       "I.408"
@@ -5523,14 +5721,16 @@
     "mucPhatOto": "Không áp dụng (Quy định bắt đầu)",
     "truDiemGPLX": "3 điểm (đối với xe máy đi vào)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 7)",
-    "keywords": [
-      "i437",
-      "duong cao toc",
-      "bat dau cao toc",
-      "expressway"
-    ],
+    "keywords": "i437 duong cao toc bat dau cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Hình chữ nhật lớn nền xanh lá cây, vẽ biểu tượng 2 dải đường cao tốc có cầu vượt cắt ngang màu trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường cao tốc",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật lớn nền xanh lá cây, vẽ biểu tượng 2 dải đường cao tốc có cầu vượt cắt ngang màu trắng."
+    },
     "similarSigns": [
       "I.438",
       "W.238"
@@ -5546,13 +5746,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i438",
-      "het duong cao toc",
-      "ket thuc cao toc"
-    ],
+    "keywords": "i438 het duong cao toc ket thuc cao toc",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lá cây vẽ đường cao tốc bị gạch chéo màu đỏ đậm.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Hết đường cao tốc",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lá cây vẽ đường cao tốc bị gạch chéo màu đỏ đậm."
+    },
     "similarSigns": [
       "I.437"
     ],
@@ -5567,13 +5770,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i444a",
-      "chi dan dia danh",
-      "bien ten dia phuong"
-    ],
+    "keywords": "i444a chi dan dia danh bien ten dia phuong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, ghi rõ tên địa danh bằng chữ in hoa màu trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, ghi rõ tên địa danh bằng chữ in hoa màu trắng."
+    },
     "similarSigns": [
       "I.414",
       "I.445"
@@ -5589,13 +5795,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i447b",
-      "lan cuu nan 1km",
-      "thoat hiem deo doc"
-    ],
+    "keywords": "i447b lan cuu nan 1km thoat hiem deo doc",
     "image": "assets/images/lan_cuu_nan.png",
-    "visualFeatures": "Hình vuông nền xanh lam, hình xe ô tô tải đâm vào bẫy cát cứu nạn kèm chữ '1 km'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Khoảng cách đến làn cứu nạn (1 km)",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, hình xe ô tô tải đâm vào bẫy cát cứu nạn kèm chữ '1 km'."
+    },
     "similarSigns": [
       "I.446",
       "I.447"
@@ -5611,12 +5820,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i447c",
-      "lan cuu nan 500m"
-    ],
+    "keywords": "i447c lan cuu nan 500m",
     "image": "assets/images/lan_cuu_nan.png",
-    "visualFeatures": "Hình vuông nền xanh lam, ghi rõ '500 m' và biểu tượng thoát hiểm.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Khoảng cách đến làn cứu nạn (500 m)",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, ghi rõ '500 m' và biểu tượng thoát hiểm."
+    },
     "similarSigns": [
       "I.447b",
       "I.446"
@@ -5632,14 +5845,16 @@
     "mucPhatOto": "Lùi/quay đầu xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi quay đầu lùi xe)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3 - Đường cao tốc)",
-    "keywords": [
-      "ie451",
-      "loi ra cao toc",
-      "exit",
-      "nut giao cao toc"
-    ],
+    "keywords": "ie451 loi ra cao toc exit nut giao cao toc",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây, chữ màu trắng ghi tên nút giao, mã số Exit và khoảng cách (ví dụ: Exit 12 - 1 km).",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển báo lối ra phía trước trên đường cao tốc (Exit)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây, chữ màu trắng ghi tên nút giao, mã số Exit và khoảng cách (ví dụ: Exit 12 - 1 km)."
+    },
     "similarSigns": [
       "IE.452",
       "IE.453",
@@ -5656,13 +5871,16 @@
     "mucPhatOto": "16.000.000đ - 18.000.000đ (nếu lùi xe)",
     "truDiemGPLX": "6 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3 - Đường cao tốc)",
-    "keywords": [
-      "ie452",
-      "re loi ra cao toc",
-      "exit sign"
-    ],
+    "keywords": "ie452 re loi ra cao toc exit sign",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển nền xanh lá cây, mũi tên xiên màu trắng chỉ về hướng nhánh rẽ bên phải kèm số hiệu lối ra.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển chỉ hướng tại lối ra cao tốc (Exit Direction)",
+      "orientation": "unspecified",
+      "description": "Biển nền xanh lá cây, mũi tên xiên màu trắng chỉ về hướng nhánh rẽ bên phải kèm số hiệu lối ra."
+    },
     "similarSigns": [
       "IE.451",
       "IE.454"
@@ -5678,14 +5896,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3 - Đường cao tốc)",
-    "keywords": [
-      "ie455",
-      "tram dung nghi cao toc",
-      "rest area",
-      "diem dung chan"
-    ],
+    "keywords": "ie455 tram dung nghi cao toc rest area diem dung chan",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lá cây, biểu tượng cây xăng, tách cà phê, cờ lê sửa chữa, nhà vệ sinh và khoảng cách (ví dụ 2km).",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Trạm dừng nghỉ trên đường cao tốc (Rest Area)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lá cây, biểu tượng cây xăng, tách cà phê, cờ lê sửa chữa, nhà vệ sinh và khoảng cách (ví dụ 2km)."
+    },
     "similarSigns": [
       "I.427c",
       "I.427e"
@@ -5701,14 +5921,16 @@
     "mucPhatOto": "1.000.000đ - 2.000.000đ (Xe không đủ điều kiện đi vào làn ETC)",
     "truDiemGPLX": "1 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "ie457",
-      "tram thu phi etc",
-      "thu phi khong dung",
-      "toll booth"
-    ],
+    "keywords": "ie457 tram thu phi etc thu phi khong dung toll booth",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lá cây hoặc xanh lam, có chữ 'TRẠM THU PHÍ' và biểu tượng sóng thẻ ETC điện tử.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Trạm thu phí tự động không dừng ETC trên cao tốc (Toll Plaza)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lá cây hoặc xanh lam, có chữ 'TRẠM THU PHÍ' và biểu tượng sóng thẻ ETC điện tử."
+    },
     "similarSigns": [
       "S.510",
       "P.129"
@@ -5724,13 +5946,16 @@
     "mucPhatOto": "Không nhường đường khi nhập làn: 800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie460",
-      "nhap lan cao toc",
-      "merge lane"
-    ],
+    "keywords": "ie460 nhap lan cao toc merge lane",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển nền xanh lá cây vẽ trục đường chính thẳng đứng màu trắng và một vạch mũi tên nhánh nối uốn cong nhập vào làn chính.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Nhập làn đường cao tốc (Merge)",
+      "orientation": "unspecified",
+      "description": "Biển nền xanh lá cây vẽ trục đường chính thẳng đứng màu trắng và một vạch mũi tên nhánh nối uốn cong nhập vào làn chính."
+    },
     "similarSigns": [
       "W.207",
       "IE.462"
@@ -5746,13 +5971,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie462",
-      "tach lan cao toc",
-      "phan nhanh cao toc"
-    ],
+    "keywords": "ie462 tach lan cao toc phan nhanh cao toc",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển nền xanh lá cây, một trục thẳng tách thành hai mũi tên trắng rẽ về hai hướng khác nhau.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Tách làn đường cao tốc (Diverge)",
+      "orientation": "unspecified",
+      "description": "Biển nền xanh lá cây, một trục thẳng tách thành hai mũi tên trắng rẽ về hai hướng khác nhau."
+    },
     "similarSigns": [
       "IE.460",
       "IE.452"
@@ -5768,13 +5996,16 @@
     "mucPhatOto": "Không giữ khoảng cách an toàn: 800.000đ - 1.000.000đ (Gây tai nạn: 10.000.000đ - 12.000.000đ)",
     "truDiemGPLX": "Không trừ điểm (Gây TNGT: 3 điểm)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3); NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "ie468",
-      "cu ly an toan cao toc",
-      "khoang cach 50m 100m"
-    ],
+    "keywords": "ie468 cu ly an toan cao toc khoang cach 50m 100m",
     "image": "assets/images/cu_ly_toi_thieu.png",
-    "visualFeatures": "Biển hình vuông nền xanh lá cây, ở giữa ghi các mốc khoảng cách màu trắng '0m', '50m', '100m' dựng liên tiếp ven đường.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển mốc kiểm tra cự ly an toàn trên cao tốc (0m - 50m - 100m)",
+      "orientation": "unspecified",
+      "description": "Biển hình vuông nền xanh lá cây, ở giữa ghi các mốc khoảng cách màu trắng '0m', '50m', '100m' dựng liên tiếp ven đường."
+    },
     "similarSigns": [
       "P.121"
     ],
@@ -5789,13 +6020,16 @@
     "mucPhatOto": "Chạy vào làn khẩn cấp: 4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "ie470",
-      "lan dung khan cap",
-      "lan khan cap cao toc"
-    ],
+    "keywords": "ie470 lan dung khan cap lan khan cap cao toc",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển nền xanh lá cây hoặc xanh lam, vẽ biểu tượng xe ô tô đỗ bên lề có đèn nhấp nháy cảnh báo nguy hiểm.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Làn dừng xe khẩn cấp trên cao tốc (Emergency Shoulder)",
+      "orientation": "unspecified",
+      "description": "Biển nền xanh lá cây hoặc xanh lam, vẽ biểu tượng xe ô tô đỗ bên lề có đèn nhấp nháy cảnh báo nguy hiểm."
+    },
     "similarSigns": [
       "I.437",
       "P.130"
@@ -5811,12 +6045,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s503d",
-      "huong tac dung sau"
-    ],
+    "keywords": "s503d huong tac dung sau",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, mũi tên đen thẳng đứng chúc đầu xuống dưới.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Hướng tác dụng của biển (Chỉ về phía sau)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, mũi tên đen thẳng đứng chúc đầu xuống dưới."
+    },
     "similarSigns": [
       "S.503a",
       "S.503e"
@@ -5832,12 +6070,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s503e",
-      "huong tac dung truoc va sau"
-    ],
+    "keywords": "s503e huong tac dung truoc va sau",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, mũi tên hai đầu đen chỉ thẳng lên trên và xuống dưới.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Hướng tác dụng của biển (Cả phía trước và phía sau)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, mũi tên hai đầu đen chỉ thẳng lên trên và xuống dưới."
+    },
     "similarSigns": [
       "S.503d",
       "S.503c"
@@ -5853,13 +6095,16 @@
     "mucPhatOto": "1.000.000đ - 2.000.000đ (Xe không đủ điều kiện đi vào làn ETC)",
     "truDiemGPLX": "1 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "s510",
-      "lan thu phi etc",
-      "thu phi khong dung"
-    ],
+    "keywords": "s510 lan thu phi etc thu phi khong dung",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình chữ nhật nền xanh hoặc trắng có chữ 'ETC' màu trắng hoặc đỏ nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ làn thu phí tự động không dừng (ETC)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh hoặc trắng có chữ 'ETC' màu trắng hoặc đỏ nổi bật."
+    },
     "similarSigns": [
       "IE.457",
       "P.129"
@@ -5876,13 +6121,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ (tùy % quá tải)",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.115-5t",
-      "cam xe qua tai 5 tan",
-      "tai trong xe"
-    ],
+    "keywords": "p.115-5t cam xe qua tai 5 tan tai trong xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số '5t' màu đen ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng toàn bộ xe trên 5 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số '5t' màu đen ở chính giữa."
+    },
     "similarSigns": [
       "P.115",
       "P.116"
@@ -5898,13 +6146,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ (tùy % quá tải)",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.115-7t",
-      "cam xe qua tai 7 tan",
-      "tai trong xe"
-    ],
+    "keywords": "p.115-7t cam xe qua tai 7 tan tai trong xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số '7t' màu đen ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng toàn bộ xe trên 7 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số '7t' màu đen ở chính giữa."
+    },
     "similarSigns": [
       "P.115",
       "P.116"
@@ -5920,13 +6171,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ (tùy % quá tải)",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.115-8t",
-      "cam xe qua tai 8 tan",
-      "tai trong xe"
-    ],
+    "keywords": "p.115-8t cam xe qua tai 8 tan tai trong xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số '8t' màu đen ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng toàn bộ xe trên 8 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số '8t' màu đen ở chính giữa."
+    },
     "similarSigns": [
       "P.115",
       "P.116"
@@ -5942,13 +6196,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ (tùy % quá tải)",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.115-14t",
-      "cam xe qua tai 14 tan",
-      "tai trong xe"
-    ],
+    "keywords": "p.115-14t cam xe qua tai 14 tan tai trong xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số '14t' màu đen ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng toàn bộ xe trên 14 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số '14t' màu đen ở chính giữa."
+    },
     "similarSigns": [
       "P.115",
       "P.116"
@@ -5964,13 +6221,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ (tùy % quá tải)",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.115-20t",
-      "cam xe qua tai 20 tan",
-      "tai trong xe"
-    ],
+    "keywords": "p.115-20t cam xe qua tai 20 tan tai trong xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số '20t' màu đen ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng toàn bộ xe trên 20 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số '20t' màu đen ở chính giữa."
+    },
     "similarSigns": [
       "P.115",
       "P.116"
@@ -5986,13 +6246,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ (tùy % quá tải)",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.115-25t",
-      "cam xe qua tai 25 tan",
-      "tai trong xe"
-    ],
+    "keywords": "p.115-25t cam xe qua tai 25 tan tai trong xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số '25t' màu đen ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng toàn bộ xe trên 25 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số '25t' màu đen ở chính giữa."
+    },
     "similarSigns": [
       "P.115",
       "P.116"
@@ -6008,13 +6271,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ (tùy % quá tải)",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.115-30t",
-      "cam xe qua tai 30 tan",
-      "tai trong xe"
-    ],
+    "keywords": "p.115-30t cam xe qua tai 30 tan tai trong xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số '30t' màu đen ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng toàn bộ xe trên 30 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số '30t' màu đen ở chính giữa."
+    },
     "similarSigns": [
       "P.115",
       "P.116"
@@ -6030,13 +6296,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.116-6t",
-      "tai trong truc xe 6t",
-      "truc xe"
-    ],
+    "keywords": "p.116-6t tai trong truc xe 6t truc xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '6t'.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng trên trục xe trên 6 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '6t'."
+    },
     "similarSigns": [
       "P.116",
       "P.115"
@@ -6052,13 +6321,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.116-7t",
-      "tai trong truc xe 7t",
-      "truc xe"
-    ],
+    "keywords": "p.116-7t tai trong truc xe 7t truc xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '7t'.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng trên trục xe trên 7 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '7t'."
+    },
     "similarSigns": [
       "P.116",
       "P.115"
@@ -6074,13 +6346,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.116-8t",
-      "tai trong truc xe 8t",
-      "truc xe"
-    ],
+    "keywords": "p.116-8t tai trong truc xe 8t truc xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '8t'.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng trên trục xe trên 8 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '8t'."
+    },
     "similarSigns": [
       "P.116",
       "P.115"
@@ -6096,13 +6371,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.116-9t",
-      "tai trong truc xe 9t",
-      "truc xe"
-    ],
+    "keywords": "p.116-9t tai trong truc xe 9t truc xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '9t'.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng trên trục xe trên 9 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '9t'."
+    },
     "similarSigns": [
       "P.116",
       "P.115"
@@ -6118,13 +6396,16 @@
     "mucPhatOto": "3.000.000đ - 16.000.000đ",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.116-10t",
-      "tai trong truc xe 10t",
-      "truc xe"
-    ],
+    "keywords": "p.116-10t tai trong truc xe 10t truc xe",
     "image": "assets/images/han_che_tai_trong.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '10t'.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế tải trọng trên trục xe trên 10 tấn",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, vẽ biểu tượng trục bánh xe và chữ số '10t'."
+    },
     "similarSigns": [
       "P.116",
       "P.115"
@@ -6140,13 +6421,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.117-2.5m",
-      "chieu cao 2.5m",
-      "gioi han chieu cao"
-    ],
+    "keywords": "p.117-2.5m chieu cao 2.5m gioi han chieu cao",
     "image": "assets/images/han_che_chieu_cao.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '2.5m' ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế chiều cao phương tiện 2.5m",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '2.5m' ở giữa."
+    },
     "similarSigns": [
       "P.117",
       "P.118"
@@ -6162,13 +6446,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.117-3.0m",
-      "chieu cao 3.0m",
-      "gioi han chieu cao"
-    ],
+    "keywords": "p.117-3.0m chieu cao 3.0m gioi han chieu cao",
     "image": "assets/images/han_che_chieu_cao.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '3.0m' ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế chiều cao phương tiện 3.0m",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '3.0m' ở giữa."
+    },
     "similarSigns": [
       "P.117",
       "P.118"
@@ -6184,13 +6471,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.117-3.2m",
-      "chieu cao 3.2m",
-      "gioi han chieu cao"
-    ],
+    "keywords": "p.117-3.2m chieu cao 3.2m gioi han chieu cao",
     "image": "assets/images/han_che_chieu_cao.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '3.2m' ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế chiều cao phương tiện 3.2m",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '3.2m' ở giữa."
+    },
     "similarSigns": [
       "P.117",
       "P.118"
@@ -6206,13 +6496,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.117-3.8m",
-      "chieu cao 3.8m",
-      "gioi han chieu cao"
-    ],
+    "keywords": "p.117-3.8m chieu cao 3.8m gioi han chieu cao",
     "image": "assets/images/han_che_chieu_cao.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '3.8m' ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế chiều cao phương tiện 3.8m",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '3.8m' ở giữa."
+    },
     "similarSigns": [
       "P.117",
       "P.118"
@@ -6228,13 +6521,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.117-4.0m",
-      "chieu cao 4.0m",
-      "gioi han chieu cao"
-    ],
+    "keywords": "p.117-4.0m chieu cao 4.0m gioi han chieu cao",
     "image": "assets/images/han_che_chieu_cao.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '4.0m' ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế chiều cao phương tiện 4.0m",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '4.0m' ở giữa."
+    },
     "similarSigns": [
       "P.117",
       "P.118"
@@ -6250,13 +6546,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.117-4.2m",
-      "chieu cao 4.2m",
-      "gioi han chieu cao"
-    ],
+    "keywords": "p.117-4.2m chieu cao 4.2m gioi han chieu cao",
     "image": "assets/images/han_che_chieu_cao.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '4.2m' ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế chiều cao phương tiện 4.2m",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '4.2m' ở giữa."
+    },
     "similarSigns": [
       "P.117",
       "P.118"
@@ -6272,13 +6571,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
-    "keywords": [
-      "p.117-4.5m",
-      "chieu cao 4.5m",
-      "gioi han chieu cao"
-    ],
+    "keywords": "p.117-4.5m chieu cao 4.5m gioi han chieu cao",
     "image": "assets/images/han_che_chieu_cao.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '4.5m' ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Hạn chế chiều cao phương tiện 4.5m",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, hai tam giác nhọn đen chỉ vào con số '4.5m' ở giữa."
+    },
     "similarSigns": [
       "P.117",
       "P.118"
@@ -6294,14 +6596,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p.127-30",
-      "toc do 30km/h",
-      "gioi han toc do",
-      "chay qua 30"
-    ],
+    "keywords": "p.127-30 toc do 30km/h gioi han toc do chay qua 30",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '30' màu đen to rõ nét.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 30 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '30' màu đen to rõ nét."
+    },
     "similarSigns": [
       "P.127",
       "P.134",
@@ -6318,14 +6622,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p.127-40",
-      "toc do 40km/h",
-      "gioi han toc do",
-      "chay qua 40"
-    ],
+    "keywords": "p.127-40 toc do 40km/h gioi han toc do chay qua 40",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '40' màu đen to rõ nét.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 40 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '40' màu đen to rõ nét."
+    },
     "similarSigns": [
       "P.127",
       "P.134",
@@ -6342,14 +6648,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p.127-70",
-      "toc do 70km/h",
-      "gioi han toc do",
-      "chay qua 70"
-    ],
+    "keywords": "p.127-70 toc do 70km/h gioi han toc do chay qua 70",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '70' màu đen to rõ nét.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 70 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '70' màu đen to rõ nét."
+    },
     "similarSigns": [
       "P.127",
       "P.134",
@@ -6366,14 +6674,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p.127-80",
-      "toc do 80km/h",
-      "gioi han toc do",
-      "chay qua 80"
-    ],
+    "keywords": "p.127-80 toc do 80km/h gioi han toc do chay qua 80",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '80' màu đen to rõ nét.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 80 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '80' màu đen to rõ nét."
+    },
     "similarSigns": [
       "P.127",
       "P.134",
@@ -6390,14 +6700,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p.127-90",
-      "toc do 90km/h",
-      "gioi han toc do",
-      "chay qua 90"
-    ],
+    "keywords": "p.127-90 toc do 90km/h gioi han toc do chay qua 90",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '90' màu đen to rõ nét.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 90 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '90' màu đen to rõ nét."
+    },
     "similarSigns": [
       "P.127",
       "P.134",
@@ -6414,14 +6726,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p.127-100",
-      "toc do 100km/h",
-      "gioi han toc do",
-      "chay qua 100"
-    ],
+    "keywords": "p.127-100 toc do 100km/h gioi han toc do chay qua 100",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '100' màu đen to rõ nét.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 100 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '100' màu đen to rõ nét."
+    },
     "similarSigns": [
       "P.127",
       "P.134",
@@ -6438,14 +6752,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
-    "keywords": [
-      "p.127-120",
-      "toc do 120km/h",
-      "gioi han toc do",
-      "chay qua 120"
-    ],
+    "keywords": "p.127-120 toc do 120km/h gioi han toc do chay qua 120",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '120' màu đen to rõ nét.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 120 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, ở giữa ghi chữ số '120' màu đen to rõ nét."
+    },
     "similarSigns": [
       "P.127",
       "P.134",
@@ -6462,13 +6778,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w.219-9%",
-      "doc xuong 9%",
-      "do doc"
-    ],
+    "keywords": "w.219-9% doc xuong 9% do doc",
     "image": "assets/images/doc_xuong_nguy_hiem.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vệt đen dốc xuống kèm chỉ số '9%'.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Dốc xuống nguy hiểm 9%",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vệt đen dốc xuống kèm chỉ số '9%'."
+    },
     "similarSigns": [
       "W.219",
       "W.220"
@@ -6484,13 +6803,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w.220-9%",
-      "doc len 9%",
-      "leo doc"
-    ],
+    "keywords": "w.220-9% doc len 9% leo doc",
     "image": "assets/images/doc_len_nguy_hiem.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vệt đen dốc lên kèm chỉ số '9%'.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Dốc lên nguy hiểm 9%",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vệt đen dốc lên kèm chỉ số '9%'."
+    },
     "similarSigns": [
       "W.220",
       "W.219"
@@ -6506,13 +6828,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w.219-10%",
-      "doc xuong 10%",
-      "do doc"
-    ],
+    "keywords": "w.219-10% doc xuong 10% do doc",
     "image": "assets/images/doc_xuong_nguy_hiem.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vệt đen dốc xuống kèm chỉ số '10%'.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Dốc xuống nguy hiểm 10%",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vệt đen dốc xuống kèm chỉ số '10%'."
+    },
     "similarSigns": [
       "W.219",
       "W.220"
@@ -6528,13 +6853,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w.220-10%",
-      "doc len 10%",
-      "leo doc"
-    ],
+    "keywords": "w.220-10% doc len 10% leo doc",
     "image": "assets/images/doc_len_nguy_hiem.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vệt đen dốc lên kèm chỉ số '10%'.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Dốc lên nguy hiểm 10%",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vệt đen dốc lên kèm chỉ số '10%'."
+    },
     "similarSigns": [
       "W.220",
       "W.219"
@@ -6550,13 +6878,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w.219-12%",
-      "doc xuong 12%",
-      "do doc"
-    ],
+    "keywords": "w.219-12% doc xuong 12% do doc",
     "image": "assets/images/doc_xuong_nguy_hiem.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vệt đen dốc xuống kèm chỉ số '12%'.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Dốc xuống nguy hiểm 12%",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vệt đen dốc xuống kèm chỉ số '12%'."
+    },
     "similarSigns": [
       "W.219",
       "W.220"
@@ -6572,13 +6903,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w.220-12%",
-      "doc len 12%",
-      "leo doc"
-    ],
+    "keywords": "w.220-12% doc len 12% leo doc",
     "image": "assets/images/doc_len_nguy_hiem.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vệt đen dốc lên kèm chỉ số '12%'.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Dốc lên nguy hiểm 12%",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vệt đen dốc lên kèm chỉ số '12%'."
+    },
     "similarSigns": [
       "W.220",
       "W.219"
@@ -6594,13 +6928,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w.219-14%",
-      "doc xuong 14%",
-      "do doc"
-    ],
+    "keywords": "w.219-14% doc xuong 14% do doc",
     "image": "assets/images/doc_xuong_nguy_hiem.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vệt đen dốc xuống kèm chỉ số '14%'.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Dốc xuống nguy hiểm 14%",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vệt đen dốc xuống kèm chỉ số '14%'."
+    },
     "similarSigns": [
       "W.219",
       "W.220"
@@ -6616,13 +6953,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
-    "keywords": [
-      "w.220-14%",
-      "doc len 14%",
-      "leo doc"
-    ],
+    "keywords": "w.220-14% doc len 14% leo doc",
     "image": "assets/images/doc_len_nguy_hiem.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vệt đen dốc lên kèm chỉ số '14%'.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Dốc lên nguy hiểm 14%",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vệt đen dốc lên kèm chỉ số '14%'."
+    },
     "similarSigns": [
       "W.220",
       "W.219"
@@ -6638,12 +6978,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.447-2km",
-      "lan cuu nan 2km"
-    ],
+    "keywords": "i.447-2km lan cuu nan 2km",
     "image": "assets/images/lan_cuu_nan.png",
-    "visualFeatures": "Hình vuông nền xanh lam, biểu tượng xe tải rẽ vào dốc cứu nạn kèm khoảng cách '2km'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Chỉ dẫn khoảng cách đến làn cứu nạn (2km)",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, biểu tượng xe tải rẽ vào dốc cứu nạn kèm khoảng cách '2km'."
+    },
     "similarSigns": [
       "I.446",
       "I.447"
@@ -6659,12 +7003,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.447-3km",
-      "lan cuu nan 3km"
-    ],
+    "keywords": "i.447-3km lan cuu nan 3km",
     "image": "assets/images/lan_cuu_nan.png",
-    "visualFeatures": "Hình vuông nền xanh lam, biểu tượng xe tải rẽ vào dốc cứu nạn kèm khoảng cách '3km'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Chỉ dẫn khoảng cách đến làn cứu nạn (3km)",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, biểu tượng xe tải rẽ vào dốc cứu nạn kèm khoảng cách '3km'."
+    },
     "similarSigns": [
       "I.446",
       "I.447"
@@ -6680,12 +7028,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.447-5km",
-      "lan cuu nan 5km"
-    ],
+    "keywords": "i.447-5km lan cuu nan 5km",
     "image": "assets/images/lan_cuu_nan.png",
-    "visualFeatures": "Hình vuông nền xanh lam, biểu tượng xe tải rẽ vào dốc cứu nạn kèm khoảng cách '5km'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Chỉ dẫn khoảng cách đến làn cứu nạn (5km)",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, biểu tượng xe tải rẽ vào dốc cứu nạn kèm khoảng cách '5km'."
+    },
     "similarSigns": [
       "I.446",
       "I.447"
@@ -6701,13 +7053,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit1",
-      "exit 1",
-      "loi ra so 1"
-    ],
+    "keywords": "ie.451-exit1 exit 1 loi ra so 1",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 1' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 1 (Exit 1)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 1' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6723,13 +7078,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit2",
-      "exit 2",
-      "loi ra so 2"
-    ],
+    "keywords": "ie.451-exit2 exit 2 loi ra so 2",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 2' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 2 (Exit 2)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 2' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6745,13 +7103,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit3",
-      "exit 3",
-      "loi ra so 3"
-    ],
+    "keywords": "ie.451-exit3 exit 3 loi ra so 3",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 3' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 3 (Exit 3)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 3' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6767,13 +7128,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit4",
-      "exit 4",
-      "loi ra so 4"
-    ],
+    "keywords": "ie.451-exit4 exit 4 loi ra so 4",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 4' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 4 (Exit 4)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 4' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6789,13 +7153,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit5",
-      "exit 5",
-      "loi ra so 5"
-    ],
+    "keywords": "ie.451-exit5 exit 5 loi ra so 5",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 5' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 5 (Exit 5)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 5' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6811,13 +7178,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit6",
-      "exit 6",
-      "loi ra so 6"
-    ],
+    "keywords": "ie.451-exit6 exit 6 loi ra so 6",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 6' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 6 (Exit 6)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 6' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6833,13 +7203,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit7",
-      "exit 7",
-      "loi ra so 7"
-    ],
+    "keywords": "ie.451-exit7 exit 7 loi ra so 7",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 7' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 7 (Exit 7)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 7' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6855,13 +7228,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit8",
-      "exit 8",
-      "loi ra so 8"
-    ],
+    "keywords": "ie.451-exit8 exit 8 loi ra so 8",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 8' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 8 (Exit 8)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 8' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6877,13 +7253,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit9",
-      "exit 9",
-      "loi ra so 9"
-    ],
+    "keywords": "ie.451-exit9 exit 9 loi ra so 9",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 9' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 9 (Exit 9)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 9' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6899,13 +7278,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit10",
-      "exit 10",
-      "loi ra so 10"
-    ],
+    "keywords": "ie.451-exit10 exit 10 loi ra so 10",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 10' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 10 (Exit 10)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 10' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6921,13 +7303,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit11",
-      "exit 11",
-      "loi ra so 11"
-    ],
+    "keywords": "ie.451-exit11 exit 11 loi ra so 11",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 11' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 11 (Exit 11)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 11' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6943,13 +7328,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit12",
-      "exit 12",
-      "loi ra so 12"
-    ],
+    "keywords": "ie.451-exit12 exit 12 loi ra so 12",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 12' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 12 (Exit 12)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 12' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6965,13 +7353,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit13",
-      "exit 13",
-      "loi ra so 13"
-    ],
+    "keywords": "ie.451-exit13 exit 13 loi ra so 13",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 13' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 13 (Exit 13)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 13' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -6987,13 +7378,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit14",
-      "exit 14",
-      "loi ra so 14"
-    ],
+    "keywords": "ie.451-exit14 exit 14 loi ra so 14",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 14' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 14 (Exit 14)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 14' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -7009,13 +7403,16 @@
     "mucPhatOto": "Lùi xe trên cao tốc: 16.000.000đ - 18.000.000đ",
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.451-exit15",
-      "exit 15",
-      "loi ra so 15"
-    ],
+    "keywords": "ie.451-exit15 exit 15 loi ra so 15",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 15' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Lối ra đường cao tốc số 15 (Exit 15)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn màu xanh lá cây có chữ 'EXIT 15' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "IE.451",
       "IE.452"
@@ -7030,12 +7427,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục D)",
-    "keywords": [
-      "r308a",
-      "cau vuot cat qua thang"
-    ],
+    "keywords": "r308a cau vuot cat qua thang",
     "image": "assets/images/cau_vuot_cat_qua.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ biểu tượng cầu vượt bắc ngang qua tuyến đường thẳng.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Tuyến đường cầu vượt cắt qua (Đi thẳng)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ biểu tượng cầu vượt bắc ngang qua tuyến đường thẳng."
+    },
     "similarSigns": [
       "R.308b",
       "I.448"
@@ -7051,12 +7452,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục D)",
-    "keywords": [
-      "r308b",
-      "cau vuot cat qua re"
-    ],
+    "keywords": "r308b cau vuot cat qua re",
     "image": "assets/images/cau_vuot_cat_qua.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ mũi tên nhánh rẽ cong uốn lên thân cầu vượt.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Tuyến đường cầu vượt cắt qua (Tuyến rẽ)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ mũi tên nhánh rẽ cong uốn lên thân cầu vượt."
+    },
     "similarSigns": [
       "R.308a",
       "I.448"
@@ -7072,13 +7477,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i413a",
-      "lan rieng xe buyt phia truoc",
-      "lan bus"
-    ],
+    "keywords": "i413a lan rieng xe buyt phia truoc lan bus",
     "image": "assets/images/lan_xe_khach.png",
-    "visualFeatures": "Hình vuông nền xanh lam, hình xe buýt màu trắng nằm trong ô nét đứt.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đường phía trước có làn đường dành riêng cho xe buýt",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, hình xe buýt màu trắng nằm trong ô nét đứt."
+    },
     "similarSigns": [
       "R.412e",
       "I.433"
@@ -7094,13 +7502,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i417a",
-      "huong di tung loai xe",
-      "phan luong tai nut giao"
-    ],
+    "keywords": "i417a huong di tung loai xe phan luong tai nut giao",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lam, hiển thị sơ đồ ngã tư và phân hướng cụ thể cho từng loại xe bằng hình vẽ.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Chỉ hướng đường phải đi cho từng loại xe tại ngã tư",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lam, hiển thị sơ đồ ngã tư và phân hướng cụ thể cho từng loại xe bằng hình vẽ."
+    },
     "similarSigns": [
       "I.414",
       "R.411"
@@ -7116,13 +7527,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i424c",
-      "ham chui di bo",
-      "ham sang duong"
-    ],
+    "keywords": "i424c ham chui di bo ham sang duong",
     "image": "assets/images/ham_chui_di_bo.png",
-    "visualFeatures": "Hình vuông nền xanh lam, vẽ người đi bộ đang bước xuống các bậc thang ngầm màu trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Hầm chui qua đường cho người đi bộ (Lối xuống bậc thang)",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, vẽ người đi bộ đang bước xuống các bậc thang ngầm màu trắng."
+    },
     "similarSigns": [
       "I.424a",
       "I.424d"
@@ -7138,12 +7552,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i424d",
-      "ham chui di bo loi len"
-    ],
+    "keywords": "i424d ham chui di bo loi len",
     "image": "assets/images/ham_chui_di_bo.png",
-    "visualFeatures": "Hình vuông nền xanh lam, vẽ người đi bộ đang bước lên các bậc thang từ hầm ngầm.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Hầm chui qua đường cho người đi bộ (Lối lên bậc thang)",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, vẽ người đi bộ đang bước lên các bậc thang từ hầm ngầm."
+    },
     "similarSigns": [
       "I.424c",
       "I.424b"
@@ -7159,13 +7577,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i427f",
-      "nuoc uong",
-      "diem cap nuoc"
-    ],
+    "keywords": "i427f nuoc uong diem cap nuoc",
     "image": "assets/images/tram_dien_thoai.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, biểu tượng vòi nước hoặc chiếc ly nước màu đen trên nền vuông trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Điểm cấp nước uống",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, biểu tượng vòi nước hoặc chiếc ly nước màu đen trên nền vuông trắng."
+    },
     "similarSigns": [
       "I.427e"
     ],
@@ -7180,13 +7601,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i427i",
-      "rua xe",
-      "diem rua xe"
-    ],
+    "keywords": "i427i rua xe diem rua xe",
     "image": "assets/images/tram_sua_chua.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, biểu tượng xe ô tô được phun các tia nước rửa trên nền trắng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Điểm rửa xe cơ giới",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, biểu tượng xe ô tô được phun các tia nước rửa trên nền trắng."
+    },
     "similarSigns": [
       "I.427a"
     ],
@@ -7201,13 +7625,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i430",
-      "ben xe khach",
-      "ben xe lien tinh"
-    ],
+    "keywords": "i430 ben xe khach ben xe lien tinh",
     "image": "assets/images/ben_xe_taxi.png",
-    "visualFeatures": "Hình vuông nền xanh lam, hình chiếc xe khách màu trắng và chữ 'BẾN XE' ở phía dưới.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Bến xe khách liên tỉnh",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, hình chiếc xe khách màu trắng và chữ 'BẾN XE' ở phía dưới."
+    },
     "similarSigns": [
       "I.433",
       "I.436"
@@ -7223,13 +7650,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i434a",
-      "ben tau khach",
-      "cang thuy"
-    ],
+    "keywords": "i434a ben tau khach cang thuy",
     "image": "assets/images/ben_pha.png",
-    "visualFeatures": "Hình vuông nền xanh lam, vẽ hình mỏ neo hoặc chiếc tàu thủy màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Bến tàu khách đường thủy",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền xanh lam, vẽ hình mỏ neo hoặc chiếc tàu thủy màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.435"
     ],
@@ -7244,13 +7674,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i440",
-      "doan duong thi cong",
-      "duong sua chua"
-    ],
+    "keywords": "i440 doan duong thi cong duong sua chua",
     "image": "assets/images/cong_truong.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, có dòng chữ 'ĐOẠN ĐƯỜNG ĐANG THI CÔNG' màu trắng kèm chiều dài đoạn đường.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Đoạn đường đang thi công",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, có dòng chữ 'ĐOẠN ĐƯỜNG ĐANG THI CÔNG' màu trắng kèm chiều dài đoạn đường."
+    },
     "similarSigns": [
       "W.227",
       "I.441"
@@ -7266,13 +7699,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "i450",
-      "khoang cach cao toc",
-      "bien km cao toc"
-    ],
+    "keywords": "i450 khoang cach cao toc bien km cao toc",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển hình chữ nhật lớn nền xanh lá cây, danh sách các thành phố kèm số km màu trắng căn thẳng cột bên phải.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn khoảng cách trên đường cao tốc",
+      "orientation": "unspecified",
+      "description": "Biển hình chữ nhật lớn nền xanh lá cây, danh sách các thành phố kèm số km màu trắng căn thẳng cột bên phải."
+    },
     "similarSigns": [
       "I.445",
       "IE.451"
@@ -7289,13 +7725,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-hn",
-      "dia danh hà nội",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-hn dia danh hà nội bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'HÀ NỘI' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Hà Nội",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'HÀ NỘI' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7311,13 +7750,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-hp",
-      "dia danh hải phòng",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-hp dia danh hải phòng bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'HẢI PHÒNG' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Hải Phòng",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'HẢI PHÒNG' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7333,13 +7775,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-dn",
-      "dia danh đà nẵng",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-dn dia danh đà nẵng bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'ĐÀ NẴNG' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Đà Nẵng",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'ĐÀ NẴNG' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7355,13 +7800,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-hcm",
-      "dia danh tp. hồ chí minh",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-hcm dia danh tp. hồ chí minh bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'TP. HỒ CHÍ MINH' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: TP. Hồ Chí Minh",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'TP. HỒ CHÍ MINH' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7377,13 +7825,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-ct",
-      "dia danh cần thơ",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-ct dia danh cần thơ bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'CẦN THƠ' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Cần Thơ",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'CẦN THƠ' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7399,13 +7850,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-nt",
-      "dia danh nha trang",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-nt dia danh nha trang bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'NHA TRANG' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Nha Trang",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'NHA TRANG' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7421,13 +7875,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-hue",
-      "dia danh thừa thiên huế",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-hue dia danh thừa thiên huế bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'THỪA THIÊN HUẾ' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Thừa Thiên Huế",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'THỪA THIÊN HUẾ' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7443,13 +7900,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-vt",
-      "dia danh vũng tàu",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-vt dia danh vũng tàu bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'VŨNG TÀU' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Vũng Tàu",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'VŨNG TÀU' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7465,13 +7925,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-bmt",
-      "dia danh buôn ma thuột",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-bmt dia danh buôn ma thuột bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'BUÔN MA THUỘT' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Buôn Ma Thuột",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'BUÔN MA THUỘT' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7487,13 +7950,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-cm",
-      "dia danh cà mau",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-cm dia danh cà mau bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'CÀ MAU' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Cà Mau",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'CÀ MAU' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7509,13 +7975,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-hl",
-      "dia danh hạ long",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-hl dia danh hạ long bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'HẠ LONG' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Hạ Long",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'HẠ LONG' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7531,13 +8000,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-sp",
-      "dia danh sa pa",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-sp dia danh sa pa bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'SA PA' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Sa Pa",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'SA PA' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7553,13 +8025,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.444-dl",
-      "dia danh đà lạt",
-      "bien dia danh"
-    ],
+    "keywords": "i.444-dl dia danh đà lạt bien dia danh",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'ĐÀ LẠT' màu trắng nổi bật.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn địa danh: Đà Lạt",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, viền trắng, dòng chữ in hoa 'ĐÀ LẠT' màu trắng nổi bật."
+    },
     "similarSigns": [
       "I.444",
       "I.414"
@@ -7575,13 +8050,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.445-ql1a",
-      "lo trinh ql1a",
-      "so hieu duong"
-    ],
+    "keywords": "i.445-ql1a lo trinh ql1a so hieu duong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL1A' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển mô tả lộ trình và số hiệu đường: Quốc lộ 1A",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL1A' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "I.445",
       "I.414"
@@ -7597,13 +8075,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.445-ql5",
-      "lo trinh ql5",
-      "so hieu duong"
-    ],
+    "keywords": "i.445-ql5 lo trinh ql5 so hieu duong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL5' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển mô tả lộ trình và số hiệu đường: Quốc lộ 5",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL5' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "I.445",
       "I.414"
@@ -7619,13 +8100,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.445-ql14",
-      "lo trinh ql14",
-      "so hieu duong"
-    ],
+    "keywords": "i.445-ql14 lo trinh ql14 so hieu duong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL14' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển mô tả lộ trình và số hiệu đường: Quốc lộ 14 (Đường Hồ Chí Minh)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL14' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "I.445",
       "I.414"
@@ -7641,13 +8125,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.445-ql51",
-      "lo trinh ql51",
-      "so hieu duong"
-    ],
+    "keywords": "i.445-ql51 lo trinh ql51 so hieu duong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL51' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển mô tả lộ trình và số hiệu đường: Quốc lộ 51",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL51' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "I.445",
       "I.414"
@@ -7663,13 +8150,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.445-ct01",
-      "lo trinh ct01",
-      "so hieu duong"
-    ],
+    "keywords": "i.445-ct01 lo trinh ct01 so hieu duong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'CT01' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển mô tả lộ trình và số hiệu đường: Cao tốc Bắc - Nam phía Đông (CT.01)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'CT01' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "I.445",
       "I.414"
@@ -7685,13 +8175,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.445-ct02",
-      "lo trinh ct02",
-      "so hieu duong"
-    ],
+    "keywords": "i.445-ct02 lo trinh ct02 so hieu duong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'CT02' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển mô tả lộ trình và số hiệu đường: Cao tốc Bắc - Nam phía Tây (CT.02)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'CT02' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "I.445",
       "I.414"
@@ -7707,13 +8200,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.445-ql2",
-      "lo trinh ql2",
-      "so hieu duong"
-    ],
+    "keywords": "i.445-ql2 lo trinh ql2 so hieu duong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL2' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển mô tả lộ trình và số hiệu đường: Quốc lộ 2",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL2' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "I.445",
       "I.414"
@@ -7729,13 +8225,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.445-ql3",
-      "lo trinh ql3",
-      "so hieu duong"
-    ],
+    "keywords": "i.445-ql3 lo trinh ql3 so hieu duong",
     "image": "assets/images/chi_huong_duong.png",
-    "visualFeatures": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL3' màu vàng hoặc trắng ở góc trên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển mô tả lộ trình và số hiệu đường: Quốc lộ 3",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật nền xanh lam, huy hiệu số hiệu đường 'QL3' màu vàng hoặc trắng ở góc trên."
+    },
     "similarSigns": [
       "I.445",
       "I.414"
@@ -7751,13 +8250,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-biên",
-      "ten cau cầu long biên",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-biên ten cau cầu long biên cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU LONG BIÊN'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Long Biên",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU LONG BIÊN'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7773,13 +8275,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-long",
-      "ten cau cầu thăng long",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-long ten cau cầu thăng long cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU THĂNG LONG'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Thăng Long",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU THĂNG LONG'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7795,13 +8300,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-tân",
-      "ten cau cầu nhật tân",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-tân ten cau cầu nhật tân cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU NHẬT TÂN'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Nhật Tân",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU NHẬT TÂN'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7817,13 +8325,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-cháy",
-      "ten cau cầu bãi cháy",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-cháy ten cau cầu bãi cháy cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU BÃI CHÁY'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Bãi Cháy",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU BÃI CHÁY'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7839,13 +8350,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-nẵng",
-      "ten cau cầu rồng đà nẵng",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-nẵng ten cau cầu rồng đà nẵng cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU RỒNG ĐÀ NẴNG'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Rồng Đà Nẵng",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU RỒNG ĐÀ NẴNG'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7861,13 +8375,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-phước",
-      "ten cau cầu thuận phước",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-phước ten cau cầu thuận phước cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU THUẬN PHƯỚC'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Thuận Phước",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU THUẬN PHƯỚC'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7883,13 +8400,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-thuận",
-      "ten cau cầu mỹ thuận",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-thuận ten cau cầu mỹ thuận cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU MỸ THUẬN'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Mỹ Thuận",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU MỸ THUẬN'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7905,13 +8425,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-thơ",
-      "ten cau cầu cần thơ",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-thơ ten cau cầu cần thơ cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU CẦN THƠ'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Cần Thơ",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU CẦN THƠ'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7927,13 +8450,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-gòn",
-      "ten cau cầu sài gòn",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-gòn ten cau cầu sài gòn cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU SÀI GÒN'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Sài Gòn",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU SÀI GÒN'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7949,13 +8475,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
-    "keywords": [
-      "i.439-mỹ",
-      "ten cau cầu phú mỹ",
-      "cau vuot song"
-    ],
+    "keywords": "i.439-mỹ ten cau cầu phú mỹ cau vuot song",
     "image": "assets/images/cau_hep.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU PHÚ MỸ'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Biển báo tên cầu: Cầu Phú Mỹ",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ in hoa màu trắng ghi rõ 'CẦU PHÚ MỸ'."
+    },
     "similarSigns": [
       "I.439",
       "W.212"
@@ -7971,13 +8500,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.505-otocon",
-      "bien phu otocon",
-      "loai xe ap dung"
-    ],
+    "keywords": "s.505-otocon bien phu otocon loai xe ap dung",
     "image": "assets/images/lan_xe_con.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe ô tô con dưới 9 chỗ ngồi.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ loại phương tiện áp dụng: Xe ô tô con dưới 9 chỗ ngồi",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe ô tô con dưới 9 chỗ ngồi."
+    },
     "similarSigns": [
       "S.505a",
       "S.505b",
@@ -7994,13 +8526,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.505-otokhach",
-      "bien phu otokhach",
-      "loai xe ap dung"
-    ],
+    "keywords": "s.505-otokhach bien phu otokhach loai xe ap dung",
     "image": "assets/images/lan_xe_khach.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe ô tô chở khách trên 9 chỗ.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ loại phương tiện áp dụng: Xe ô tô chở khách trên 9 chỗ",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe ô tô chở khách trên 9 chỗ."
+    },
     "similarSigns": [
       "S.505a",
       "S.505b",
@@ -8017,13 +8552,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.505-ototai",
-      "bien phu ototai",
-      "loai xe ap dung"
-    ],
+    "keywords": "s.505-ototai bien phu ototai loai xe ap dung",
     "image": "assets/images/lan_xe_tai.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe ô tô tải chở hàng.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ loại phương tiện áp dụng: Xe ô tô tải chở hàng",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe ô tô tải chở hàng."
+    },
     "similarSigns": [
       "S.505a",
       "S.505b",
@@ -8040,13 +8578,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.505-container",
-      "bien phu container",
-      "loai xe ap dung"
-    ],
+    "keywords": "s.505-container bien phu container loai xe ap dung",
     "image": "assets/images/cam_oto_ro_mooc.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe ô tô đầu kéo kéo sơ-mi rơ-moóc (Container).",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ loại phương tiện áp dụng: Xe ô tô đầu kéo kéo sơ-mi rơ-moóc (Container)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe ô tô đầu kéo kéo sơ-mi rơ-moóc (Container)."
+    },
     "similarSigns": [
       "S.505a",
       "S.505b",
@@ -8063,13 +8604,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.505-moto",
-      "bien phu moto",
-      "loai xe ap dung"
-    ],
+    "keywords": "s.505-moto bien phu moto loai xe ap dung",
     "image": "assets/images/lan_xe_may.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe mô tô hai bánh từ 50cc trở lên.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ loại phương tiện áp dụng: Xe mô tô hai bánh từ 50cc trở lên",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe mô tô hai bánh từ 50cc trở lên."
+    },
     "similarSigns": [
       "S.505a",
       "S.505b",
@@ -8086,13 +8630,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.505-ganmay",
-      "bien phu ganmay",
-      "loai xe ap dung"
-    ],
+    "keywords": "s.505-ganmay bien phu ganmay loai xe ap dung",
     "image": "assets/images/cam_xe_gan_may.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe gắn máy và xe máy điện dưới 50cc.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ loại phương tiện áp dụng: Xe gắn máy và xe máy điện dưới 50cc",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe gắn máy và xe máy điện dưới 50cc."
+    },
     "similarSigns": [
       "S.505a",
       "S.505b",
@@ -8109,13 +8656,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.505-xedap",
-      "bien phu xedap",
-      "loai xe ap dung"
-    ],
+    "keywords": "s.505-xedap bien phu xedap loai xe ap dung",
     "image": "assets/images/duong_danh_cho_xe_dap.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe đạp và người đi xe thô sơ.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ loại phương tiện áp dụng: Xe đạp và người đi xe thô sơ",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe đạp và người đi xe thô sơ."
+    },
     "similarSigns": [
       "S.505a",
       "S.505b",
@@ -8132,13 +8682,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.505-xebuyt",
-      "bien phu xebuyt",
-      "loai xe ap dung"
-    ],
+    "keywords": "s.505-xebuyt bien phu xebuyt loai xe ap dung",
     "image": "assets/images/lan_xe_khach.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe buýt công cộng nội đô và liên tỉnh.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ loại phương tiện áp dụng: Xe buýt công cộng nội đô và liên tỉnh",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, vẽ hình biểu tượng màu đen đặc trưng của Xe buýt công cộng nội đô và liên tỉnh."
+    },
     "similarSigns": [
       "S.505a",
       "S.505b",
@@ -8155,13 +8708,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.508-sang",
-      "khung gio sang",
-      "thoi gian hieu luc"
-    ],
+    "keywords": "s.508-sang khung gio sang thoi gian hieu luc",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian '06h00 - 09h00 (Khung giờ cao điểm sáng)'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ thời gian hiệu lực: 06h00 - 09h00 (Khung giờ cao điểm sáng)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian '06h00 - 09h00 (Khung giờ cao điểm sáng)'."
+    },
     "similarSigns": [
       "S.508",
       "S.509a"
@@ -8177,13 +8733,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.508-chieu",
-      "khung gio chieu",
-      "thoi gian hieu luc"
-    ],
+    "keywords": "s.508-chieu khung gio chieu thoi gian hieu luc",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian '16h00 - 19h30 (Khung giờ cao điểm chiều)'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ thời gian hiệu lực: 16h00 - 19h30 (Khung giờ cao điểm chiều)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian '16h00 - 19h30 (Khung giờ cao điểm chiều)'."
+    },
     "similarSigns": [
       "S.508",
       "S.509a"
@@ -8199,13 +8758,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.508-dem",
-      "khung gio dem",
-      "thoi gian hieu luc"
-    ],
+    "keywords": "s.508-dem khung gio dem thoi gian hieu luc",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian '22h00 - 05h00 (Khung giờ ban đêm)'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ thời gian hiệu lực: 22h00 - 05h00 (Khung giờ ban đêm)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian '22h00 - 05h00 (Khung giờ ban đêm)'."
+    },
     "similarSigns": [
       "S.508",
       "S.509a"
@@ -8221,13 +8783,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.508-t7cn",
-      "khung gio t7cn",
-      "thoi gian hieu luc"
-    ],
+    "keywords": "s.508-t7cn khung gio t7cn thoi gian hieu luc",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian 'Thứ 7 và Chủ nhật (Áp dụng ngày cuối tuần)'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ thời gian hiệu lực: Thứ 7 và Chủ nhật (Áp dụng ngày cuối tuần)",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian 'Thứ 7 và Chủ nhật (Áp dụng ngày cuối tuần)'."
+    },
     "similarSigns": [
       "S.508",
       "S.509a"
@@ -8243,13 +8808,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.508-ngayle",
-      "khung gio ngayle",
-      "thoi gian hieu luc"
-    ],
+    "keywords": "s.508-ngayle khung gio ngayle thoi gian hieu luc",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian 'Các ngày lễ tết theo quy định'.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Biển phụ thời gian hiệu lực: Các ngày lễ tết theo quy định",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền trắng viền đen, dòng chữ số đen ghi rõ mốc thời gian 'Các ngày lễ tết theo quy định'."
+    },
     "similarSigns": [
       "S.508",
       "S.509a"
@@ -8265,13 +8833,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.506a-rephai",
-      "huong duong uu tien",
-      "huong re"
-    ],
+    "keywords": "s.506a-rephai huong duong uu tien huong re",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình vuông nền trắng viền đen, sơ đồ chữ thập hoặc chữ T với nhánh đường ưu tiên được tô nét đậm màu đen.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Hướng đường ưu tiên rẽ phải tại ngã tư",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền trắng viền đen, sơ đồ chữ thập hoặc chữ T với nhánh đường ưu tiên được tô nét đậm màu đen."
+    },
     "similarSigns": [
       "S.506a",
       "S.506b",
@@ -8288,13 +8859,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.506b-retrai",
-      "huong duong uu tien",
-      "huong re"
-    ],
+    "keywords": "s.506b-retrai huong duong uu tien huong re",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình vuông nền trắng viền đen, sơ đồ chữ thập hoặc chữ T với nhánh đường ưu tiên được tô nét đậm màu đen.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Hướng đường ưu tiên rẽ trái tại ngã ba",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền trắng viền đen, sơ đồ chữ thập hoặc chữ T với nhánh đường ưu tiên được tô nét đậm màu đen."
+    },
     "similarSigns": [
       "S.506a",
       "S.506b",
@@ -8311,13 +8885,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.507-rephai",
-      "huong duong uu tien",
-      "huong re"
-    ],
+    "keywords": "s.507-rephai huong duong uu tien huong re",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình vuông nền trắng viền đen, sơ đồ chữ thập hoặc chữ T với nhánh đường ưu tiên được tô nét đậm màu đen.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Hướng rẽ phải của xe ưu tiên",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền trắng viền đen, sơ đồ chữ thập hoặc chữ T với nhánh đường ưu tiên được tô nét đậm màu đen."
+    },
     "similarSigns": [
       "S.506a",
       "S.506b",
@@ -8334,13 +8911,16 @@
     "mucPhatOto": "Căn cứ biển chính",
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
-    "keywords": [
-      "s.507-retrai",
-      "huong duong uu tien",
-      "huong re"
-    ],
+    "keywords": "s.507-retrai huong duong uu tien huong re",
     "image": "assets/images/bien_phu.png",
-    "visualFeatures": "Hình vuông nền trắng viền đen, sơ đồ chữ thập hoặc chữ T với nhánh đường ưu tiên được tô nét đậm màu đen.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "white",
+      "border": "black",
+      "symbol": "Hướng rẽ trái của xe ưu tiên",
+      "orientation": "unspecified",
+      "description": "Hình vuông nền trắng viền đen, sơ đồ chữ thập hoặc chữ T với nhánh đường ưu tiên được tô nét đậm màu đen."
+    },
     "similarSigns": [
       "S.506a",
       "S.506b",
@@ -8357,14 +8937,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.453",
-      "biển chỉ dẫn lối ra tiếp theo (next exit 5km)",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.453 biển chỉ dẫn lối ra tiếp theo (next exit 5km) cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn lối ra tiếp theo (Next Exit 5km)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8381,14 +8963,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.454",
-      "sơ đồ nút giao lập thể trên cao tốc",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.454 sơ đồ nút giao lập thể trên cao tốc cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Sơ đồ nút giao lập thể trên cao tốc",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8405,14 +8989,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.456",
-      "trạm dịch vụ kỹ thuật khẩn cấp cao tốc",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.456 trạm dịch vụ kỹ thuật khẩn cấp cao tốc cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Trạm dịch vụ kỹ thuật khẩn cấp cao tốc",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8429,14 +9015,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.458",
-      "biển báo kết thúc đoạn thu phí",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.458 biển báo kết thúc đoạn thu phí cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển báo kết thúc đoạn thu phí",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8453,14 +9041,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.461",
-      "biển bắt đầu đường cao tốc 4 làn xe",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.461 biển bắt đầu đường cao tốc 4 làn xe cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển bắt đầu đường cao tốc 4 làn xe",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8477,14 +9067,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.463",
-      "biển kết thúc nhánh rẽ nhập cao tốc",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.463 biển kết thúc nhánh rẽ nhập cao tốc cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển kết thúc nhánh rẽ nhập cao tốc",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8501,14 +9093,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.464",
-      "biển chỉ dẫn hướng đi các làn tại trạm thu phí",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.464 biển chỉ dẫn hướng đi các làn tại trạm thu phí cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển chỉ dẫn hướng đi các làn tại trạm thu phí",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8525,14 +9119,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.465",
-      "biển cự ly an toàn 200m trên cao tốc",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.465 biển cự ly an toàn 200m trên cao tốc cao toc expressway",
     "image": "assets/images/cu_ly_toi_thieu.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển cự ly an toàn 200m trên cao tốc",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8549,14 +9145,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.466",
-      "biển báo đoạn đường cao tốc hay có sương mù",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.466 biển báo đoạn đường cao tốc hay có sương mù cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển báo đoạn đường cao tốc hay có sương mù",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8573,14 +9171,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.467",
-      "biển báo độ dốc cao tốc lớn hơn 5%",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.467 biển báo độ dốc cao tốc lớn hơn 5% cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển báo độ dốc cao tốc lớn hơn 5%",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8597,14 +9197,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.469",
-      "biển thông báo điện thoại khẩn cấp sos cao tốc",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.469 biển thông báo điện thoại khẩn cấp sos cao tốc cao toc expressway",
     "image": "assets/images/tram_dien_thoai.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển thông báo điện thoại khẩn cấp SOS cao tốc",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8621,14 +9223,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.471",
-      "biển báo tốc độ lưu thông khuyến nghị trên cao tốc",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.471 biển báo tốc độ lưu thông khuyến nghị trên cao tốc cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển báo tốc độ lưu thông khuyến nghị trên cao tốc",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8645,14 +9249,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.472",
-      "biển báo điểm kết nối camera giám sát phạt nguội",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.472 biển báo điểm kết nối camera giám sát phạt nguội cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển báo điểm kết nối camera giám sát phạt nguội",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8669,14 +9275,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.473",
-      "biển báo khu vực cấm dừng đỗ trên toàn bộ tuyến cao tốc",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.473 biển báo khu vực cấm dừng đỗ trên toàn bộ tuyến cao tốc cao toc expressway",
     "image": "assets/images/duong_cao_toc.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển báo khu vực cấm dừng đỗ trên toàn bộ tuyến cao tốc",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8693,14 +9301,16 @@
     "mucPhatOto": "Căn cứ lỗi vi phạm thực tế",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
-    "keywords": [
-      "ie.474",
-      "biển báo trạm cân kiểm tra tải trọng tự động tốc độ cao (wim)",
-      "cao toc",
-      "expressway"
-    ],
+    "keywords": "ie.474 biển báo trạm cân kiểm tra tải trọng tự động tốc độ cao (wim) cao toc expressway",
     "image": "assets/images/tram_csgt.png",
-    "visualFeatures": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "green",
+      "border": "white",
+      "symbol": "Biển báo trạm cân kiểm tra tải trọng tự động tốc độ cao (WIM)",
+      "orientation": "unspecified",
+      "description": "Biển chữ nhật lớn nền xanh lá cây tiêu chuẩn đường cao tốc, hình vẽ và chữ viết màu trắng phản quang cao cấp."
+    },
     "similarSigns": [
       "I.437",
       "IE.451",
@@ -8716,13 +9326,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
-    "keywords": [
-      "r412f",
-      "lan xe tai nang",
-      "lan oto tai"
-    ],
+    "keywords": "r412f lan xe tai nang lan oto tai",
     "image": "assets/images/lan_xe_tai.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ hình ô tô tải nặng màu trắng trên làn đường chỉ định.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Làn đường dành riêng cho xe ô tô tải nặng",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ hình ô tô tải nặng màu trắng trên làn đường chỉ định."
+    },
     "similarSigns": [
       "R.412c",
       "R.412a"
@@ -8738,12 +9351,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
-    "keywords": [
-      "r412g",
-      "lan mo to va xe dap"
-    ],
+    "keywords": "r412g lan mo to va xe dap",
     "image": "assets/images/lan_xe_may.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, vẽ biểu tượng xe máy và xe đạp màu trắng song song.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Làn đường dành cho xe mô tô và xe đạp",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, vẽ biểu tượng xe máy và xe đạp màu trắng song song."
+    },
     "similarSigns": [
       "R.412d",
       "R.403e"
@@ -8759,13 +9376,16 @@
     "mucPhatOto": "4.000.000đ - 6.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
-    "keywords": [
-      "r412h",
-      "lan xe taxi",
-      "uu tien taxi"
-    ],
+    "keywords": "r412h lan xe taxi uu tien taxi",
     "image": "assets/images/ben_xe_taxi.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, chữ TAXI màu trắng cùng mũi tên làn đường.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Làn đường ưu tiên cho xe taxi",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, chữ TAXI màu trắng cùng mũi tên làn đường."
+    },
     "similarSigns": [
       "I.436",
       "R.412e"
@@ -8781,13 +9401,16 @@
     "mucPhatOto": "2.000.000đ - 3.000.000đ",
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
-    "keywords": [
-      "p106d",
-      "cam container",
-      "xe dau keo container"
-    ],
+    "keywords": "p106d cam container xe dau keo container",
     "image": "assets/images/cam_oto_ro_mooc.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, vẽ hình xe đầu kéo container màu đen gạch chéo đỏ.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Cấm xe ô tô kéo rơ-moóc chở container",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, vẽ hình xe đầu kéo container màu đen gạch chéo đỏ."
+    },
     "similarSigns": [
       "P.108a",
       "P.106a"
@@ -8803,14 +9426,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT",
-    "keywords": [
-      "w205f",
-      "nga nam",
-      "nga sau",
-      "giao nhau phuc tap"
-    ],
+    "keywords": "w205f nga nam nga sau giao nhau phuc tap",
     "image": "assets/images/giao_nhau_cung_muc.png",
-    "visualFeatures": "Hình tam giác viền đỏ nền vàng, vẽ biểu tượng nút giao nhiều tia phân nhánh.",
+    "visualFeatures": {
+      "shape": "triangle",
+      "background": "yellow",
+      "border": "red",
+      "symbol": "Đường giao nhau phức tạp (Ngã năm, ngã sáu)",
+      "orientation": "unspecified",
+      "description": "Hình tam giác viền đỏ nền vàng, vẽ biểu tượng nút giao nhiều tia phân nhánh."
+    },
     "similarSigns": [
       "W.205a",
       "W.206"
@@ -8826,13 +9451,16 @@
     "mucPhatOto": "Không áp dụng",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT",
-    "keywords": [
-      "i441d",
-      "het cong truong",
-      "ket thuc thi cong"
-    ],
+    "keywords": "i441d het cong truong ket thuc thi cong",
     "image": "assets/images/cong_truong.png",
-    "visualFeatures": "Hình chữ nhật nền xanh lam, dòng chữ HẾT CÔNG TRƯỜNG ĐANG THI CÔNG màu trắng gạch chéo đỏ.",
+    "visualFeatures": {
+      "shape": "rectangle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Báo hiệu kết thúc khu vực công trường thi công",
+      "orientation": "unspecified",
+      "description": "Hình chữ nhật nền xanh lam, dòng chữ HẾT CÔNG TRƯỜNG ĐANG THI CÔNG màu trắng gạch chéo đỏ."
+    },
     "similarSigns": [
       "I.440",
       "W.227"
@@ -8848,13 +9476,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
-    "keywords": [
-      "p127-60",
-      "toc do 60",
-      "60km/h"
-    ],
+    "keywords": "p127-60 toc do 60 60km/h",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số 60 màu đen to rõ nét ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 60 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số 60 màu đen to rõ nét ở chính giữa."
+    },
     "similarSigns": [
       "P.127",
       "P.134"
@@ -8870,13 +9501,16 @@
     "mucPhatOto": "800.000đ - 12.000.000đ",
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
-    "keywords": [
-      "p127-50",
-      "toc do 50",
-      "50km/h khu dan cu"
-    ],
+    "keywords": "p127-50 toc do 50 50km/h khu dan cu",
     "image": "assets/images/toc_do_toi_da.png",
-    "visualFeatures": "Hình tròn viền đỏ nền trắng, chữ số 50 màu đen ở chính giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "white",
+      "border": "red",
+      "symbol": "Tốc độ tối đa cho phép 50 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn viền đỏ nền trắng, chữ số 50 màu đen ở chính giữa."
+    },
     "similarSigns": [
       "P.127",
       "R.420"
@@ -8892,13 +9526,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ (Chạy dưới tốc độ tối thiểu)",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
-    "keywords": [
-      "r306-60",
-      "toc do toi thieu 60",
-      "min speed 60"
-    ],
+    "keywords": "r306-60 toc do toi thieu 60 min speed 60",
     "image": "assets/images/toc_do_toi_thieu.png",
-    "visualFeatures": "Hình tròn nền xanh lam, chữ số 60 màu trắng to ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Tốc độ tối thiểu cho phép 60 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn nền xanh lam, chữ số 60 màu trắng to ở giữa."
+    },
     "similarSigns": [
       "R.306",
       "R.307"
@@ -8914,13 +9551,16 @@
     "mucPhatOto": "800.000đ - 1.000.000đ",
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
-    "keywords": [
-      "r306-80",
-      "toc do toi thieu 80",
-      "min speed 80"
-    ],
+    "keywords": "r306-80 toc do toi thieu 80 min speed 80",
     "image": "assets/images/toc_do_toi_thieu.png",
-    "visualFeatures": "Hình tròn nền xanh lam, chữ số 80 màu trắng to ở giữa.",
+    "visualFeatures": {
+      "shape": "circle",
+      "background": "blue",
+      "border": "white",
+      "symbol": "Tốc độ tối thiểu cho phép 80 km/h",
+      "orientation": "unspecified",
+      "description": "Hình tròn nền xanh lam, chữ số 80 màu trắng to ở giữa."
+    },
     "similarSigns": [
       "R.306",
       "R.307"
