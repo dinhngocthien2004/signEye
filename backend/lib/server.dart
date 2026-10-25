@@ -136,6 +136,11 @@ Future<void> main() async {
       if (!await _isAdmin(request, db)) return Response.forbidden('Unauthorized');
       return Response.ok(jsonEncode(await db.paymentStats()), headers: {'Content-Type': 'application/json'});
     })
+    ..get('/admin/users', (Request request) async {
+      if (!await _isAdmin(request, db)) return Response.forbidden('Unauthorized');
+      final users = await db.getUsers();
+      return Response.ok(jsonEncode({'users': users, 'total': users.length}), headers: {'Content-Type': 'application/json'});
+    })
     ..post('/admin/payments/<id>/confirm', (Request request, String id) async {
       if (!await _isAdmin(request, db)) return Response.forbidden('Unauthorized');
       final parsed = int.tryParse(id);
@@ -163,6 +168,18 @@ Future<void> main() async {
       await db.grantProToUser(username, plan: plan);
       return Response.ok(
         jsonEncode({'status': 'ok', 'message': 'Đã cấp Pro thành công cho $username'}),
+        headers: {'Content-Type': 'application/json'},
+      );
+    })
+    ..post('/admin/revoke-pro', (Request request) async {
+      if (!await _isAdmin(request, db)) return Response.forbidden('Unauthorized');
+      final payload = await _readJson(request);
+      if (payload == null) return Response(400, body: 'Invalid JSON payload');
+      final username = (payload['username'] ?? payload['email'] ?? '').toString().trim();
+      if (username.isEmpty) return Response(400, body: 'Username hoặc email không được để trống');
+      await db.revokeProUser(username);
+      return Response.ok(
+        jsonEncode({'status': 'ok', 'message': 'Đã thu hồi Pro cho $username, chuyển về Người dùng thường'}),
         headers: {'Content-Type': 'application/json'},
       );
     })

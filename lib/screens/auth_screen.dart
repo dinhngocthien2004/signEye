@@ -42,7 +42,24 @@ class _AuthScreenState extends State<AuthScreen> {
         register: !isLoginTab,
       );
     } catch (e) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+      String msg = e is StateError ? e.message : e.toString();
+      if (msg.startsWith('Bad state: ')) {
+        msg = msg.substring(11);
+      }
+      if (msg.toLowerCase().contains('invalid credentials')) {
+        msg = 'Sai tài khoản hoặc mật khẩu! Mặc định Admin: admin@signeye.vn / Admin@123456';
+      }
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(msg),
+            backgroundColor: const Color(0xFFDC2626),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            duration: const Duration(seconds: 4),
+          ),
+        );
+      }
     }
   }
 
@@ -144,7 +161,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         controller: _emailCtrl,
                         keyboardType: TextInputType.emailAddress,
                         decoration:
-                            const InputDecoration(hintText: 'admin hoặc ban@email.com'),
+                            const InputDecoration(hintText: 'ban@email.com hoặc username'),
                         validator: (v) => (v == null || v.trim().isEmpty)
                             ? 'Vui lòng nhập tài khoản hoặc email'
                             : null,
@@ -168,25 +185,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               Text(isLoginTab ? 'Đăng nhập' : 'Tạo tài khoản'),
                         ),
                       ),
-                      if (isLoginTab) ...[
-                        const SizedBox(height: 6),
-                        Center(
-                          child: TextButton.icon(
-                            style: TextButton.styleFrom(
-                              foregroundColor: const Color(0xFF0D8F5C),
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _emailCtrl.text = 'admin@signeye.vn';
-                                _passCtrl.text = 'Admin@123456';
-                              });
-                            },
-                            icon: const Icon(Icons.admin_panel_settings_outlined, size: 16),
-                            label: const Text('Điền tài khoản Admin (Duyệt Pro)',
-                                style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700)),
-                          ),
-                        ),
-                      ],
+                      const SizedBox(height: 16),
                       const SizedBox(height: 8),
                       Center(
                         child: Text(

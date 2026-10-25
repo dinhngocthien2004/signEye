@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/exam_models.dart';
@@ -316,7 +317,10 @@ class AppState extends ChangeNotifier {
           // Máy chủ từ chối vì sai mật khẩu hoặc lỗi đăng ký -> Báo lỗi chính xác
           try {
             final errorData = jsonDecode(utf8.decode(response.bodyBytes));
-            final msg = errorData is Map ? (errorData['detail'] ?? errorData['error'] ?? 'Sai email hoặc mật khẩu') : 'Sai email hoặc mật khẩu';
+            var msg = errorData is Map ? (errorData['detail'] ?? errorData['error'] ?? 'Sai email hoặc mật khẩu') : 'Sai email hoặc mật khẩu';
+            if (msg.toString().toLowerCase().contains('invalid credentials')) {
+              msg = 'Sai tài khoản hoặc mật khẩu! (Mặc định Admin: admin@signeye.vn / Admin@123456)';
+            }
             throw StateError(msg.toString());
           } catch (e) {
             if (e is StateError) rethrow;
@@ -470,6 +474,19 @@ class AppState extends ChangeNotifier {
     if (amount <= 0) return;
     coins += amount;
     await _prefs.setInt(_kCoins, coins);
+    if (userEmail.isNotEmpty) {
+      await OrdersStorage.updateUserCoins(userEmail, coins: coins);
+      final base = await OrdersStorage.getApiBaseUrl();
+      if (base.isNotEmpty) {
+        try {
+          await http.post(
+            Uri.parse('$base/coins/sync'),
+            headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer $authToken'},
+            body: jsonEncode({'email': userEmail, 'coins': coins}),
+          ).timeout(const Duration(seconds: 3));
+        } catch (_) {}
+      }
+    }
     notifyListeners();
   }
 
@@ -483,6 +500,9 @@ class AppState extends ChangeNotifier {
     rewardBalance += validAmount;
     await _prefs.setInt(_kCoins, coins);
     await _prefs.setInt(_kRewardBalance, rewardBalance);
+    if (userEmail.isNotEmpty) {
+      await OrdersStorage.updateUserCoins(userEmail, coins: coins, rewardBalance: rewardBalance);
+    }
     notifyListeners();
     return true;
   }
@@ -499,6 +519,26 @@ class AppState extends ChangeNotifier {
     await _prefs.setInt(_kRewardBalance, rewardBalance);
     await _prefs.setBool(_kIsPro, true);
     await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
+
+    final note = '💵 Dùng ${NumberFormat("#,###", "vi").format(costVnd)}đ từ xu đổi $days ngày Pro VIP';
+    final cashOrder = {
+      'id': 'XU_CASH_${DateTime.now().millisecondsSinceEpoch}',
+      'email': userEmail.isEmpty ? 'nguoidung@signeye.vn' : userEmail,
+      'name': userName.isEmpty ? 'Người dùng' : userName,
+      'plan': '${days}_days',
+      'amount': costVnd,
+      'transfer_ref': 'TienThuong_${costVnd}d',
+      'status': 'paid',
+      'created_at': DateTime.now().toIso8601String(),
+      'paid_at': DateTime.now().toIso8601String(),
+      'payment_method': 'reward_cash',
+      'admin_note': note,
+    };
+    await OrdersStorage.addOrder(cashOrder);
+    if (userEmail.isNotEmpty) {
+      await OrdersStorage.updateUserCoins(userEmail, rewardBalance: rewardBalance, lastCoinRedemption: note);
+    }
+
     notifyListeners();
     return true;
   }
@@ -515,6 +555,42 @@ class AppState extends ChangeNotifier {
     await _prefs.setInt(_kCoins, coins);
     await _prefs.setBool(_kIsPro, true);
     await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
+
+    final note = '🪙 Đổi ${NumberFormat("#,###", "vi").format(costCoins)} xu tích lũy lấy $days ngày Pro VIP';
+    final coinOrder = {
+      'id': 'XU_${DateTime.now().millisecondsSinceEpoch}',
+      'email': userEmail.isEmpty ? 'nguoidung@signeye.vn' : userEmail,
+      'name': userName.isEmpty ? 'Người dùng' : userName,
+      'plan': '${days}_days',
+      'amount': 0,
+      'transfer_ref': 'DoiXu_${costCoins}xu',
+      'status': 'paid',
+      'created_at': DateTime.now().toIso8601String(),
+      'paid_at': DateTime.now().toIso8601String(),
+      'payment_method': 'coins',
+      'coins_used': costCoins,
+      'admin_note': note,
+    };
+    await OrdersStorage.addOrder(coinOrder);
+    if (userEmail.isNotEmpty) {
+      await OrdersStorage.updateUserCoins(userEmail, coins: coins, lastCoinRedemption: note);
+      final baseApi = await OrdersStorage.getApiBaseUrl();
+      if (baseApi.isNotEmpty) {
+        try {
+          await http.post(
+            Uri.parse('$baseApi/coins/redeem-pro'),
+            headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer $authToken'},
+            body: jsonEncode({
+              'email': userEmail,
+              'cost_coins': costCoins,
+              'days': days,
+              'remaining_coins': coins,
+            }),
+          ).timeout(const Duration(seconds: 3));
+        } catch (_) {}
+      }
+    }
+
     notifyListeners();
     return true;
   }

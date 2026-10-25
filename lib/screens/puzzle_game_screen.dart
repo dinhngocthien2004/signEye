@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../models/traffic_sign.dart';
@@ -179,8 +178,6 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
   }
 
   void _showExplanationModal(TrafficSign sign) {
-    final nf = NumberFormat('#,###', 'vi');
-
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
