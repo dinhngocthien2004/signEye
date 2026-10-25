@@ -333,13 +333,38 @@ class SignEyeDatabase {
       coins = (rows.first[5] as int?) ?? 0;
       rewardBalance = (rows.first[6] as int?) ?? 0;
       coinRedeemNote = (rows.first[7] as String?) ?? '';
+
+      if (isAdminAccount || isAdmin) {
+        proExpiry ??= DateTime.now().toUtc().add(const Duration(days: 3650));
+      } else if (proExpiry == null || proExpiry.isBefore(DateTime.now().toUtc())) {
+        // Tự động kiểm tra đơn hàng đã duyệt trong pro_orders để khôi phục quyền Pro
+        try {
+          final paidOrders = await _connection.query(
+            "SELECT plan, paid_at, created_at FROM pro_orders WHERE LOWER(email)=@email AND status='paid' ORDER BY paid_at DESC, created_at DESC LIMIT 1",
+            substitutionValues: {'email': cleanEmail},
+          );
+          if (paidOrders.isNotEmpty) {
+            final orderPlan = (paidOrders.first[0] ?? 'month').toString();
+            final paidDate = (paidOrders.first[1] as DateTime?) ?? (paidOrders.first[2] as DateTime?) ?? DateTime.now().toUtc();
+            final duration = orderPlan == 'year' ? const Duration(days: 365) : const Duration(days: 30);
+            final computedExpiry = paidDate.add(duration);
+            if (proExpiry == null || computedExpiry.isAfter(proExpiry)) {
+              proExpiry = computedExpiry;
+              await _connection.query(
+                'UPDATE users SET pro_expires_at=@exp, updated_at=NOW() WHERE LOWER(email)=@email',
+                substitutionValues: {'exp': proExpiry, 'email': cleanEmail},
+              );
+            }
+          }
+        } catch (_) {}
+      }
     }
     final token = _randomToken();
     await _connection.query(
       "INSERT INTO auth_sessions(token_hash,email,expires_at) VALUES (@hash,@email,NOW()+INTERVAL '30 days')",
       substitutionValues: {'hash': _hash(token), 'email': cleanEmail},
     );
-    final isPro = proExpiry != null && proExpiry.isAfter(DateTime.now().toUtc());
+    final isPro = isAdmin || (proExpiry != null && proExpiry.isAfter(DateTime.now().toUtc()));
     return {
       'token': token,
       'email': cleanEmail,
@@ -347,6 +372,7 @@ class SignEyeDatabase {
       'isAdmin': isAdmin,
       'isPro': isPro,
       'proExpiresAt': proExpiry?.toIso8601String(),
+      'expiresAt': proExpiry?.toIso8601String(),
       'coins': coins,
       'reward_balance': rewardBalance,
       'coin_redeem_note': coinRedeemNote,
@@ -488,14 +514,46 @@ class SignEyeDatabase {
 
   Future<Map<String, dynamic>> subscription(String email) async {
     final cleanEmail = email.trim().toLowerCase();
+    DateTime? expiry;
+    bool isAdmin = false;
     final rows = await _connection.query(
-      "SELECT pro_expires_at FROM users WHERE LOWER(email)=@email",
+      "SELECT pro_expires_at, is_admin FROM users WHERE LOWER(email)=@email",
       substitutionValues: {'email': cleanEmail},
     );
-    if (rows.isEmpty) return {'isPro': false, 'expiresAt': null};
-    final expiry = rows.first[0] as DateTime?;
+    if (rows.isNotEmpty) {
+      isAdmin = (rows.first[1] as bool?) ?? false;
+      expiry = rows.first[0] as DateTime?;
+    }
+    if (isAdmin || cleanEmail == 'admin@signeye.vn' || cleanEmail == 'admin') {
+      return {
+        'isPro': true,
+        'expiresAt': DateTime.now().toUtc().add(const Duration(days: 3650)).toIso8601String(),
+      };
+    }
+    if (expiry == null || expiry.isBefore(DateTime.now().toUtc())) {
+      try {
+        final paidOrders = await _connection.query(
+          "SELECT plan, paid_at, created_at FROM pro_orders WHERE LOWER(email)=@email AND status='paid' ORDER BY paid_at DESC, created_at DESC LIMIT 1",
+          substitutionValues: {'email': cleanEmail},
+        );
+        if (paidOrders.isNotEmpty) {
+          final orderPlan = (paidOrders.first[0] ?? 'month').toString();
+          final paidDate = (paidOrders.first[1] as DateTime?) ?? (paidOrders.first[2] as DateTime?) ?? DateTime.now().toUtc();
+          final duration = orderPlan == 'year' ? const Duration(days: 365) : const Duration(days: 30);
+          final computedExpiry = paidDate.add(duration);
+          if (computedExpiry.isAfter(DateTime.now().toUtc())) {
+            expiry = computedExpiry;
+            await _connection.query(
+              'UPDATE users SET pro_expires_at=@exp, updated_at=NOW() WHERE LOWER(email)=@email',
+              substitutionValues: {'exp': expiry, 'email': cleanEmail},
+            );
+          }
+        }
+      } catch (_) {}
+    }
+    final isPro = expiry != null && expiry.isAfter(DateTime.now().toUtc());
     return {
-      'isPro': expiry != null && expiry.isAfter(DateTime.now().toUtc()),
+      'isPro': isPro,
       'expiresAt': expiry?.toIso8601String(),
     };
   }
@@ -557,7 +615,7 @@ class SignEyeDatabase {
       final proExp = map['pro_expires_at'] as DateTime?;
       final isPro = proExp != null && proExp.isAfter(now);
       final isExpired = proExp != null && !isPro;
-      final daysRemaining = isPro && proExp != null ? proExp.difference(now).inDays + 1 : 0;
+      final daysRemaining = isPro ? proExp.difference(now).inDays + 1 : 0;
       final statusLabel = isPro ? '👑 PRO VIP' : (isExpired ? '⚠️ Hết hạn Pro' : '🌱 Người dùng thường');
       final accountType = isPro ? 'pro' : (isExpired ? 'expired' : 'free');
 
@@ -883,7 +941,6 @@ class SignEyeDatabase {
     int? daysRemaining,
   }) async {
     final strId = id.toString();
-    final parsedId = int.tryParse(strId);
 
     final rows = await _connection.query(
       'SELECT id, email, plan, amount, status, transfer_ref FROM pro_orders WHERE id::text=@id OR transfer_ref=@id',
@@ -901,12 +958,17 @@ class SignEyeDatabase {
     DateTime? paidAt;
     if (currentStatus == 'paid') {
       paidAt = DateTime.now().toUtc();
-      if (daysRemaining != null && daysRemaining > 0) {
-        await _connection.query(
-          "UPDATE users SET pro_expires_at = NOW() + (@days || ' days')::INTERVAL, updated_at = NOW() WHERE LOWER(email)=@email",
-          substitutionValues: {'days': daysRemaining.toString(), 'email': currentEmail},
-        );
-      }
+      final numDays = daysRemaining != null && daysRemaining > 0
+          ? daysRemaining
+          : (currentPlan == 'year' ? 365 : 30);
+      await _connection.query(
+        'INSERT INTO users (name, email) VALUES (@name, @email) ON CONFLICT (email) DO NOTHING',
+        substitutionValues: {'name': currentEmail.split('@').first, 'email': currentEmail},
+      );
+      await _connection.query(
+        "UPDATE users SET pro_expires_at = GREATEST(COALESCE(pro_expires_at, NOW()), NOW()) + (@days || ' days')::INTERVAL, updated_at = NOW() WHERE LOWER(email)=@email",
+        substitutionValues: {'days': numDays.toString(), 'email': currentEmail},
+      );
     }
 
     await _connection.query(

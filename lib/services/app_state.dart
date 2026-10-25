@@ -99,36 +99,18 @@ class AppState extends ChangeNotifier {
     _prefs = await SharedPreferences.getInstance();
     authToken = _prefs.getString('se_auth_token') ?? '';
     isLoggedIn = _prefs.getBool(_kLoggedIn) ?? authToken.isNotEmpty;
-    if (isLoggedIn && authToken.isNotEmpty && authToken != 'offline_session') {
-      try {
-        const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'https://signeye.onrender.com');
-        final response = await http.get(
-          Uri.parse('$base/payments/subscription'),
-          headers: {'Authorization': 'Bearer $authToken'},
-        ).timeout(const Duration(seconds: 2));
-        if (response.statusCode == 200) {
-          final subscription = jsonDecode(response.body) as Map<String, dynamic>;
-          final expiry = DateTime.tryParse((subscription['expiresAt'] ?? '').toString());
-          isPro = subscription['isPro'] == true && expiry != null && expiry.isAfter(DateTime.now());
-          proExpiry = expiry;
-        } else if (response.statusCode == 401) {
-          isLoggedIn = false;
-          authToken = '';
-          await _prefs.remove('se_auth_token');
-          await _prefs.setBool(_kLoggedIn, false);
-        }
-      } catch (_) {}
-    }
     userName = _prefs.getString(_kUserName) ?? '';
     userEmail = _prefs.getString(_kUserEmail) ?? '';
     isAdmin = _prefs.getBool('se_is_admin') ?? (userEmail.trim().toLowerCase() == 'admin@signeye.vn');
     darkMode = _prefs.getBool(_kThemeDark) ?? false;
     coins = _prefs.getInt(_kCoins) ?? 0;
     rewardBalance = _prefs.getInt(_kRewardBalance) ?? 0;
+
     final expiryRaw = _prefs.getString(_kProExpiry);
     proExpiry = expiryRaw != null ? DateTime.tryParse(expiryRaw) : null;
-    if (proExpiry != null && proExpiry!.isAfter(DateTime.now())) {
+    if ((proExpiry != null && proExpiry!.isAfter(DateTime.now())) || isAdmin) {
       isPro = true;
+      proExpiry ??= DateTime.now().add(const Duration(days: 3650));
     } else {
       isPro = false;
       proExpiry = null;
@@ -149,17 +131,20 @@ class AppState extends ChangeNotifier {
         final base = await OrdersStorage.getApiBaseUrl();
         if (base.isNotEmpty) {
           final res = await http.get(
-            Uri.parse('$base/payments/subscription?email=$userEmail'),
-            headers: {'Authorization': 'Bearer $authToken'},
-          ).timeout(const Duration(seconds: 2));
+            Uri.parse('$base/payments/subscription?email=${Uri.encodeComponent(userEmail)}'),
+            headers: {
+              if (authToken.isNotEmpty) 'Authorization': 'Bearer $authToken',
+              'X-User-Email': userEmail,
+            },
+          ).timeout(const Duration(seconds: 3));
           if (res.statusCode == 200) {
             final data = jsonDecode(utf8.decode(res.bodyBytes)) as Map<String, dynamic>;
             final exp = DateTime.tryParse(data['expiresAt']?.toString() ?? '');
-            if (data['isPro'] == true && exp != null && exp.isAfter(DateTime.now())) {
+            if (data['isPro'] == true && (exp == null || exp.isAfter(DateTime.now()))) {
               isPro = true;
-              proExpiry = exp;
+              proExpiry = exp ?? DateTime.now().add(const Duration(days: 30));
               await _prefs.setBool(_kIsPro, true);
-              await _prefs.setString(_kProExpiry, exp.toIso8601String());
+              await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
             }
           }
         }
@@ -275,14 +260,55 @@ class AppState extends ChangeNotifier {
           isAdmin = data['isAdmin'] == true || cleanEmail == 'admin@signeye.vn';
           await _prefs.setBool('se_is_admin', isAdmin);
 
-          // Lấy trực tiếp thông tin Pro từ Database PostgreSQL
-          final backendIsPro = data['isPro'] == true;
-          final backendExpiry = DateTime.tryParse(data['proExpiresAt']?.toString() ?? data['expiresAt']?.toString() ?? '');
+          // Lấy trực tiếp thông tin Pro từ backend
+          var backendIsPro = data['isPro'] == true;
+          var backendExpiry = DateTime.tryParse(data['proExpiresAt']?.toString() ?? data['expiresAt']?.toString() ?? '');
+
+          // Nếu máy chủ chưa trả về Pro, hãy truy vấn /payments/subscription
+          if (!backendIsPro && !isAdmin) {
+            try {
+              final subRes = await http.get(
+                Uri.parse('$base/payments/subscription?email=${Uri.encodeComponent(cleanEmail)}'),
+                headers: {
+                  if (authToken.isNotEmpty) 'Authorization': 'Bearer $authToken',
+                  'X-User-Email': cleanEmail,
+                },
+              ).timeout(const Duration(seconds: 3));
+              if (subRes.statusCode == 200) {
+                final subData = jsonDecode(utf8.decode(subRes.bodyBytes));
+                if (subData is Map && subData['isPro'] == true) {
+                  final exp = DateTime.tryParse(subData['expiresAt']?.toString() ?? '');
+                  if (exp != null && exp.isAfter(DateTime.now())) {
+                    backendIsPro = true;
+                    backendExpiry = exp;
+                  }
+                }
+              }
+            } catch (_) {}
+          }
+
+          // Kiểm tra thêm từ OrdersStorage (phòng trường hợp đơn được duyệt cục bộ)
+          if (!backendIsPro && !isAdmin) {
+            final localPro = await OrdersStorage.checkUserPro(cleanEmail);
+            if (localPro != null && localPro['isPro'] == true) {
+              final localExp = DateTime.tryParse(localPro['expiresAt']?.toString() ?? '');
+              if (localExp != null && localExp.isAfter(DateTime.now())) {
+                backendIsPro = true;
+                backendExpiry = localExp;
+              }
+            }
+          }
+
           if (backendIsPro && backendExpiry != null && backendExpiry.isAfter(DateTime.now())) {
             isPro = true;
             proExpiry = backendExpiry;
             await _prefs.setBool(_kIsPro, true);
             await _prefs.setString(_kProExpiry, backendExpiry.toIso8601String());
+          } else if (isAdmin) {
+            isPro = true;
+            proExpiry = DateTime.now().add(const Duration(days: 3650));
+            await _prefs.setBool(_kIsPro, true);
+            await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
           } else {
             isPro = false;
             proExpiry = null;
@@ -358,13 +384,23 @@ class AppState extends ChangeNotifier {
     await _prefs.setString(_kUserName, userName);
     await _prefs.setString(_kUserEmail, userEmail);
 
-    final userIsPro = authResult['isPro'] == true;
-    final userExp = DateTime.tryParse(authResult['expiresAt']?.toString() ?? '');
-    if (userIsPro && userExp != null && userExp.isAfter(DateTime.now())) {
+    var userIsPro = authResult['isPro'] == true;
+    var userExp = DateTime.tryParse(authResult['expiresAt']?.toString() ?? '');
+    if (!userIsPro && !isAdmin) {
+      final proCheck = await OrdersStorage.checkUserPro(cleanEmail);
+      if (proCheck != null && proCheck['isPro'] == true) {
+        final exp = DateTime.tryParse(proCheck['expiresAt']?.toString() ?? '');
+        if (exp != null && exp.isAfter(DateTime.now())) {
+          userIsPro = true;
+          userExp = exp;
+        }
+      }
+    }
+    if ((userIsPro && userExp != null && userExp.isAfter(DateTime.now())) || isAdmin) {
       isPro = true;
-      proExpiry = userExp;
+      proExpiry = userExp ?? DateTime.now().add(const Duration(days: 3650));
       await _prefs.setBool(_kIsPro, true);
-      await _prefs.setString(_kProExpiry, userExp.toIso8601String());
+      await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
     } else {
       isPro = false;
       proExpiry = null;
@@ -377,6 +413,14 @@ class AppState extends ChangeNotifier {
 
   Future<void> checkLocalProStatus() async {
     if (userEmail.isEmpty) return;
+    if (isAdmin) {
+      isPro = true;
+      proExpiry ??= DateTime.now().add(const Duration(days: 3650));
+      await _prefs.setBool(_kIsPro, true);
+      await _prefs.setString(_kProExpiry, proExpiry!.toIso8601String());
+      notifyListeners();
+      return;
+    }
     final proCheck = await OrdersStorage.checkUserPro(userEmail);
     if (proCheck != null && proCheck['isPro'] == true) {
       final exp = DateTime.tryParse(proCheck['expiresAt']?.toString() ?? '');
