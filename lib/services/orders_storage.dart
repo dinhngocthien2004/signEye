@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OrdersStorage {
@@ -348,22 +347,40 @@ class OrdersStorage {
         users = Map<String, dynamic>.from(jsonDecode(raw));
       } catch (_) {}
     }
+
+    var finalIsPro = isPro;
+    var finalExpiry = proExpiry;
+
+    // Không tự ý xóa quyền Pro nếu local database hoặc đơn hàng đã duyệt trước đó
+    if (!finalIsPro) {
+      final existingPro = await checkUserPro(cleanEmail);
+      if (existingPro != null && existingPro['isPro'] == true) {
+        final exp = DateTime.tryParse(existingPro['expiresAt']?.toString() ?? '');
+        if (exp != null && exp.isAfter(DateTime.now())) {
+          finalIsPro = true;
+          finalExpiry = exp;
+        }
+      }
+    }
+
+    final existing = users[cleanEmail] is Map ? Map<String, dynamic>.from(users[cleanEmail] as Map) : <String, dynamic>{};
     users[cleanEmail] = {
+      ...existing,
       'email': cleanEmail,
-      'name': name,
-      'password': password,
+      'name': name.isNotEmpty ? name : (existing['name'] ?? cleanEmail.split('@').first),
+      'password': password.isNotEmpty ? password : (existing['password'] ?? '123456'),
       'isAdmin': isAdmin,
-      'isPro': isPro,
-      'expiresAt': proExpiry?.toIso8601String(),
+      'isPro': finalIsPro,
+      'expiresAt': finalExpiry?.toIso8601String(),
       'updated_at': DateTime.now().toIso8601String(),
     };
     await prefs.setString(_kUsersDbKey, jsonEncode(users));
-    if (isPro && proExpiry != null) {
+    if (finalIsPro && finalExpiry != null) {
       await grantProUser(cleanEmail, plan: 'month');
     }
   }
 
-  /// Kích hoạt quyền Pro trực tiếp cho Username hoặc Email (chỉ áp dụng cho tài khoản ĐÃ ĐĂNG KÝ)
+  /// Kích hoạt quyền Pro trực tiếp cho Username hoặc Email (luôn lưu trữ vĩnh viễn)
   static Future<bool> grantProUser(String usernameOrEmail, {String plan = 'month'}) async {
     final clean = usernameOrEmail.trim().toLowerCase();
     final targetEmail = clean.contains('@') ? clean : '$clean@signeye.vn';
@@ -395,10 +412,7 @@ class OrdersStorage {
       }
     }
 
-    // Không cấp tự do cho người chưa đăng ký
-    if (matchedEmail == null) {
-      return false;
-    }
+    matchedEmail ??= targetEmail;
 
     final raw = prefs.getString(_kProUsersKey);
     Map<String, dynamic> proMap = {};
@@ -411,13 +425,27 @@ class OrdersStorage {
     final expiry = DateTime.now().add(duration).toIso8601String();
     proMap[matchedEmail] = {'isPro': true, 'expiresAt': expiry, 'plan': plan};
     proMap[clean] = {'isPro': true, 'expiresAt': expiry, 'plan': plan};
+    proMap[targetEmail] = {'isPro': true, 'expiresAt': expiry, 'plan': plan};
     await prefs.setString(_kProUsersKey, jsonEncode(proMap));
 
     // Đồng bộ cập nhật thẳng vào Database người dùng
-    final u = Map<String, dynamic>.from(users[matchedEmail] as Map);
-    u['isPro'] = true;
-    u['expiresAt'] = expiry;
-    users[matchedEmail] = u;
+    final existingUser = users[matchedEmail] != null
+        ? Map<String, dynamic>.from(users[matchedEmail] as Map)
+        : <String, dynamic>{
+            'email': matchedEmail,
+            'name': clean.split('@').first,
+            'password': '***',
+            'isAdmin': false,
+            'created_at': DateTime.now().toIso8601String(),
+          };
+    existingUser['isPro'] = true;
+    existingUser['expiresAt'] = expiry;
+    existingUser['plan'] = plan;
+    existingUser['updated_at'] = DateTime.now().toIso8601String();
+    users[matchedEmail] = existingUser;
+    if (matchedEmail != targetEmail) {
+      users[targetEmail] = existingUser;
+    }
     await prefs.setString(_kUsersDbKey, jsonEncode(users));
     return true;
   }
@@ -557,19 +585,76 @@ class OrdersStorage {
     return true;
   }
 
-  /// Kiểm tra tài khoản có được cấp Pro hay không
+  /// Kiểm tra tài khoản có được cấp Pro hay không (kiểm tra _kProUsersKey, Database người dùng, và đơn hàng đã thanh toán)
   static Future<Map<String, dynamic>?> checkUserPro(String usernameOrEmail) async {
     final clean = usernameOrEmail.trim().toLowerCase();
+    final targetEmail = clean.contains('@') ? clean : '$clean@signeye.vn';
+    final now = DateTime.now();
     final prefs = await SharedPreferences.getInstance();
+
+    // 1. Kiểm tra bảng Pro Users Key
     final raw = prefs.getString(_kProUsersKey);
-    if (raw == null || raw.isEmpty) return null;
+    if (raw != null && raw.isNotEmpty) {
+      try {
+        final proMap = Map<String, dynamic>.from(jsonDecode(raw));
+        final info = proMap[clean] ?? proMap[targetEmail] ?? proMap['$clean@signeye.vn'];
+        if (info != null && info is Map) {
+          final exp = DateTime.tryParse(info['expiresAt']?.toString() ?? '');
+          if (exp != null && exp.isAfter(now)) {
+            return Map<String, dynamic>.from(info);
+          }
+        }
+      } catch (_) {}
+    }
+
+    // 2. Kiểm tra Database người dùng _kUsersDbKey
+    final rawUsers = prefs.getString(_kUsersDbKey);
+    if (rawUsers != null && rawUsers.isNotEmpty) {
+      try {
+        final users = Map<String, dynamic>.from(jsonDecode(rawUsers));
+        final u = users[clean] ?? users[targetEmail] ?? users['$clean@signeye.vn'];
+        if (u != null && u is Map && u['isPro'] == true) {
+          final exp = DateTime.tryParse(u['expiresAt']?.toString() ?? '');
+          if (exp != null && exp.isAfter(now)) {
+            return {
+              'isPro': true,
+              'expiresAt': exp.toIso8601String(),
+              'plan': u['plan'] ?? 'month',
+            };
+          }
+        }
+      } catch (_) {}
+    }
+
+    // 3. Tự động phục hồi Pro nếu có đơn hàng đã duyệt thanh toán (paid / approved)
     try {
-      final proMap = Map<String, dynamic>.from(jsonDecode(raw));
-      final info = proMap[clean] ?? proMap['$clean@signeye.vn'];
-      if (info != null && info is Map) {
-        return Map<String, dynamic>.from(info);
+      final orders = await loadLocalOrders();
+      final paidOrders = orders.where((o) {
+        final e = (o['email'] ?? '').toString().toLowerCase();
+        final st = (o['status'] ?? '').toString();
+        return (e == clean || e == targetEmail || e == '$clean@signeye.vn') && (st == 'paid' || st == 'approved');
+      }).toList();
+
+      if (paidOrders.isNotEmpty) {
+        final latest = paidOrders.first;
+        final plan = (latest['plan'] ?? 'month').toString();
+        final paidDateStr = latest['paid_at'] ?? latest['created_at'];
+        final paidDate = DateTime.tryParse(paidDateStr?.toString() ?? '') ?? now;
+        final duration = plan == 'year' ? const Duration(days: 365) : const Duration(days: 30);
+        final computedExpiry = paidDate.add(duration);
+
+        if (computedExpiry.isAfter(now)) {
+          // Lưu lại vào _kProUsersKey và _kUsersDbKey để duy trì vĩnh viễn
+          await grantProUser(targetEmail, plan: plan);
+          return {
+            'isPro': true,
+            'expiresAt': computedExpiry.toIso8601String(),
+            'plan': plan,
+          };
+        }
       }
     } catch (_) {}
+
     return null;
   }
 
@@ -654,7 +739,7 @@ class OrdersStorage {
     users.removeWhere((key, val) => _kDemoEmails.contains(key.toLowerCase()));
 
     // Đồng bộ danh sách người dùng thực tế đã thanh toán Pro tháng
-    users = {
+    final defaultUsers = {
       'lyly1222005@gmail.com': {
         'email': 'lyly1222005@gmail.com',
         'name': 'Phan Thị Thanh Ly',
@@ -667,6 +752,43 @@ class OrdersStorage {
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
         'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
       },
+      'legiahieu27@gmail.com': {
+        'email': 'legiahieu27@gmail.com',
+        'name': 'Lê Trà Gia Hiếu',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      'khoitdqe170065@gmail.com': {
+        'email': 'khoitdqe170065@gmail.com',
+        'name': 'Trần Đăng Khôi',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      'ycao123@gmail.com': {
+        'email': 'ycao123@gmail.com',
+        'name': 'Cao Ngọc Ý',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+
       'leloc2005qn@gmail.com': {
         'email': 'leloc2005qn@gmail.com',
         'name': 'Lê Trà Gia Lộc',
@@ -788,6 +910,11 @@ class OrdersStorage {
         'created_at': DateTime.now().subtract(const Duration(days: 6)).toIso8601String(),
       },
     };
+    for (var entry in defaultUsers.entries) {
+      if (!users.containsKey(entry.key.toLowerCase())) {
+        users[entry.key.toLowerCase()] = entry.value;
+      }
+    }
     await prefs.setString(_kUsersDbKey, jsonEncode(users));
 
     final orders = await loadLocalOrders();
