@@ -20,130 +20,257 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
     final df = DateFormat('dd/MM/yyyy');
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Tài khoản')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppColors.surface,
-              border: Border.all(color: AppColors.line),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 26,
+      appBar: AppBar(
+        title: const Text('Tài khoản & Cá nhân', style: TextStyle(fontWeight: FontWeight.w800)),
+        elevation: 0,
+        centerTitle: false,
+        actions: [
+          if (state.isAdmin)
+            Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: TextButton.icon(
+                style: TextButton.styleFrom(
                   backgroundColor: AppColors.primaryPale,
-                  child: Text(
-                    state.userName.isNotEmpty
-                        ? state.userName[0].toUpperCase()
-                        : 'U',
-                    style: const TextStyle(
-                        color: AppColors.primary,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 20),
-                  ),
+                  foregroundColor: AppColors.primary,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          state.userName.isEmpty
-                              ? 'Người dùng'
-                              : state.userName,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w800, fontSize: 16)),
-                      const SizedBox(height: 2),
-                      Text(state.userEmail,
-                          style: const TextStyle(
-                              color: AppColors.text2, fontSize: 12.5)),
-                    ],
-                  ),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const AdminOrdersScreen()),
+                ),
+                icon: const Icon(Icons.admin_panel_settings_rounded, size: 18),
+                label: const Text('Admin', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13)),
+              ),
+            ),
+        ],
+      ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        children: [
+          // ─── 1. Thẻ hồ sơ người dùng cao cấp (User Profile Card) ───
+          Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: isDark
+                    ? [const Color(0xFF1E293B), const Color(0xFF0F172A)]
+                    : [Colors.white, const Color(0xFFF8FAFC)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: state.isPro ? const Color(0xFF818CF8).withValues(alpha: 0.5) : AppColors.line,
+                width: state.isPro ? 1.5 : 1.0,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.04),
+                  blurRadius: 16,
+                  offset: const Offset(0, 6),
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 16),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: state.isPro
-                    ? [AppColors.primary, AppColors.primary2]
-                    : [AppColors.surface2, AppColors.surface2],
-              ),
-              borderRadius: BorderRadius.circular(16),
-              border: state.isPro ? null : Border.all(color: AppColors.line),
-            ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Icon(Icons.workspace_premium_rounded,
-                        color: state.isPro ? Colors.white : AppColors.primary),
-                    const SizedBox(width: 8),
-                    Text(
-                      state.isPro ? 'Đã đăng ký SignEye Pro' : 'Gói Free',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 15,
-                        color: state.isPro ? Colors.white : AppColors.text,
+                    Stack(
+                      children: [
+                        Container(
+                          width: 58,
+                          height: 58,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: state.isPro
+                                  ? [const Color(0xFF6366F1), const Color(0xFF8B5CF6)]
+                                  : [AppColors.primary, AppColors.primary2],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: (state.isPro ? const Color(0xFF6366F1) : AppColors.primary)
+                                    .withValues(alpha: 0.35),
+                                blurRadius: 10,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            state.userName.isNotEmpty ? state.userName[0].toUpperCase() : 'U',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 24,
+                            ),
+                          ),
+                        ),
+                        if (state.isPro)
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(3),
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFF59E0B),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(Icons.star_rounded, size: 14, color: Colors.white),
+                            ),
+                          ),
+                      ],
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  state.userName.isEmpty ? 'Người dùng SignEye' : state.userName,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 17,
+                                    letterSpacing: -0.3,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 3),
+                          Text(
+                            state.userEmail,
+                            style: const TextStyle(
+                              color: AppColors.text2,
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 6),
+                          Wrap(
+                            spacing: 6,
+                            runSpacing: 4,
+                            children: [
+                              if (state.isAdmin)
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2.5),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFEF4444).withValues(alpha: 0.12),
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: const Color(0xFFEF4444).withValues(alpha: 0.3)),
+                                  ),
+                                  child: const Text(
+                                    '👑 Quản trị viên',
+                                    style: TextStyle(
+                                      color: Color(0xFFDC2626),
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2.5),
+                                decoration: BoxDecoration(
+                                  color: state.isPro
+                                      ? const Color(0xFF6366F1).withValues(alpha: 0.12)
+                                      : Colors.grey.withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                    color: state.isPro
+                                        ? const Color(0xFF6366F1).withValues(alpha: 0.35)
+                                        : Colors.grey.withValues(alpha: 0.25),
+                                  ),
+                                ),
+                                child: Text(
+                                  state.isPro ? '⭐ Thành viên VIP Pro' : 'Thành viên Free',
+                                  style: TextStyle(
+                                    color: state.isPro ? const Color(0xFF4F46E5) : AppColors.text2,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  state.isPro
-                      ? 'Hết hạn: ${state.proExpiry != null ? df.format(state.proExpiry!) : "—"}'
-                      : 'Tối đa ${AppState.freeDailyScanLimit} lượt quét AI/ngày · lưu ${AppState.freeHistoryLimit} lịch sử gần nhất.\nHọc GPLX, thi thử và cẩm nang vẫn dùng miễn phí.',
-                  style: TextStyle(
-                    fontSize: 12.5,
-                    color: state.isPro ? Colors.white70 : AppColors.text2,
-                    height: 1.4,
-                  ),
+
+                const SizedBox(height: 16),
+                const Divider(height: 1, thickness: 0.7),
+                const SizedBox(height: 14),
+
+                // Thanh thống kê nhanh (Quick Highlights)
+                Row(
+                  children: [
+                    _quickStatItem(
+                      label: 'Biển báo',
+                      value: '119 biển',
+                      icon: Icons.traffic_rounded,
+                      color: const Color(0xFF0EA5E9),
+                    ),
+                    Container(height: 28, width: 1, color: AppColors.line),
+                    _quickStatItem(
+                      label: 'Ví xu',
+                      value: '${state.coins} xu',
+                      icon: Icons.monetization_on_rounded,
+                      color: const Color(0xFFF59E0B),
+                    ),
+                    Container(height: 28, width: 1, color: AppColors.line),
+                    _quickStatItem(
+                      label: 'Gói dùng',
+                      value: state.isPro ? 'Gói Pro' : 'Miễn phí',
+                      icon: Icons.verified_rounded,
+                      color: state.isPro ? const Color(0xFF10B981) : AppColors.text2,
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 12),
-                if (state.isPro)
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      side: const BorderSide(color: Colors.white54),
-                    ),
-                    onPressed: () => state.cancelPro(),
-                    child: const Text('Hủy gói Pro'),
-                  )
-                else
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () => _openPaymentSheet(context),
-                      child: const Text('Nâng cấp Pro'),
-                    ),
-                  ),
               ],
             ),
           ),
 
-          const SizedBox(height: 16),
-          // Game coin wallet & redeem card
+          const SizedBox(height: 14),
+
+          // ─── 2. Thẻ Đăng ký SignEye Pro (Premium Subscription Card) ───
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFFFFFBEB), Color(0xFFFEF3C7)],
+              gradient: LinearGradient(
+                colors: state.isPro
+                    ? [const Color(0xFF4338CA), const Color(0xFF6366F1)]
+                    : isDark
+                        ? [const Color(0xFF1E1B4B), const Color(0xFF312E81)]
+                        : [const Color(0xFFEEF2FF), const Color(0xFFE0E7FF)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: const Color(0xFFFDE68A)),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: state.isPro ? Colors.transparent : const Color(0xFFC7D2FE),
+                width: 1,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: (state.isPro ? const Color(0xFF6366F1) : const Color(0xFF6366F1))
+                      .withValues(alpha: isDark ? 0.25 : 0.12),
+                  blurRadius: 18,
+                  offset: const Offset(0, 6),
+                ),
+              ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,48 +278,204 @@ class AccountScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Row(
+                    Row(
                       children: [
-                        Text('🪙', style: TextStyle(fontSize: 18)),
-                        SizedBox(width: 6),
-                        Text(
-                          'Ví Xu Thưởng Minigame',
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: state.isPro
+                                ? Colors.white.withValues(alpha: 0.2)
+                                : const Color(0xFF6366F1).withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Icon(
+                            Icons.workspace_premium_rounded,
+                            color: state.isPro ? Colors.white : const Color(0xFF4F46E5),
+                            size: 22,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              state.isPro ? 'SignEye Pro Đang Kích Hoạt' : 'Nâng cấp SignEye Pro',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w900,
+                                fontSize: 15.5,
+                                color: state.isPro ? Colors.white : const Color(0xFF1E1B4B),
+                              ),
+                            ),
+                            Text(
+                              state.isPro
+                                  ? 'Đặc quyền thành viên cao cấp'
+                                  : 'Chỉ từ 39.000đ / tháng',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: state.isPro ? Colors.white.withValues(alpha: 0.8) : const Color(0xFF4338CA),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    if (state.isPro)
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF10B981),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Text(
+                          'ĐANG DÙNG',
+                          style: TextStyle(color: Colors.white, fontSize: 10.5, fontWeight: FontWeight.w900),
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  state.isPro
+                      ? 'Thời hạn sử dụng: ${state.proExpiry != null ? df.format(state.proExpiry!) : "Không thời hạn"}\nBạn có toàn quyền quét AI không giới hạn và nhận diện chuẩn xác mọi biển báo.'
+                      : '✓ Quét AI nhận diện biển báo không giới hạn\n✓ Tìm kiếm thông minh bằng hình ảnh & giọng nói\n✓ Lưu trữ lịch sử học tập trọn đời & hỗ trợ ưu tiên',
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    color: state.isPro ? Colors.white.withValues(alpha: 0.9) : const Color(0xFF374151),
+                    height: 1.45,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 14),
+                if (state.isPro)
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            side: BorderSide(color: Colors.white.withValues(alpha: 0.6)),
+                            padding: const EdgeInsets.symmetric(vertical: 11),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          ),
+                          onPressed: () => _openPaymentSheet(context),
+                          icon: const Icon(Icons.autorenew_rounded, size: 17),
+                          label: const Text('Gia hạn thêm gói Pro', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      IconButton(
+                        tooltip: 'Hủy gói',
+                        style: IconButton.styleFrom(
+                          foregroundColor: Colors.white.withValues(alpha: 0.8),
+                          backgroundColor: Colors.white.withValues(alpha: 0.12),
+                        ),
+                        onPressed: () => state.cancelPro(),
+                        icon: const Icon(Icons.close_rounded, size: 18),
+                      ),
+                    ],
+                  )
+                else
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4F46E5),
+                        foregroundColor: Colors.white,
+                        elevation: 0,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                      onPressed: () => _openPaymentSheet(context),
+                      icon: const Icon(Icons.flash_on_rounded, size: 18),
+                      label: const Text(
+                        'Nâng cấp Pro ngay (Quét VietQR 39k)',
+                        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13.5),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 14),
+
+          // ─── 3. Thẻ Ví Xu Thưởng & Minigame (Gamification Card) ───
+          Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: isDark
+                    ? [const Color(0xFF292524), const Color(0xFF1C1917)]
+                    : [const Color(0xFFFFFBEB), const Color(0xFFFEF3C7)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: const Color(0xFFFDE68A)),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFFF59E0B).withValues(alpha: isDark ? 0.15 : 0.08),
+                  blurRadius: 14,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(7),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF59E0B).withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Text('🪙', style: TextStyle(fontSize: 18)),
+                        ),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Ví Xu Thưởng SignEye',
                           style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 14.5,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 15,
                             color: Color(0xFF78350F),
                           ),
                         ),
                       ],
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
                         color: const Color(0xFFF59E0B),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(14),
                       ),
                       child: Text(
                         '${state.coins} xu',
                         style: const TextStyle(
                           color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 11.5,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 12,
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 Text(
-                  'Đang có ${state.coins} xu · Đã đổi: ${NumberFormat("#,###", "vi").format(state.rewardBalance)}đ\n(1.000 xu = 1.000 VNĐ · Chơi ghép hình nhận 10 xu, đố vui nhận 5 xu để tích lũy mua gói Pro 1 hoặc 2 tháng)',
+                  'Đang tích lũy: ${state.coins} xu (Tương đương ${NumberFormat("#,###", "vi").format(state.coins)}đ)\nQuy đổi: 1.000 xu = 1.000 VNĐ. Chơi ghép hình nhận 10 xu, đố vui nhận 5 xu để đổi ngay gói Pro.',
                   style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xFF92400E),
-                    height: 1.4,
+                    height: 1.45,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 14),
                 Row(
                   children: [
                     Expanded(
@@ -200,16 +483,16 @@ class AccountScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF6366F1),
                           foregroundColor: Colors.white,
+                          elevation: 0,
                           padding: const EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                         ),
                         onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (_) => const PuzzleGameScreen()),
+                          MaterialPageRoute(builder: (_) => const PuzzleGameScreen()),
                         ),
-                        icon: const Icon(Icons.extension_rounded, size: 18),
+                        icon: const Icon(Icons.extension_rounded, size: 17),
                         label: const Text('Ghép Hình (+10 xu)',
-                            style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w700)),
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
                       ),
                     ),
                     const SizedBox(width: 8),
@@ -219,15 +502,14 @@ class AccountScreen extends StatelessWidget {
                           foregroundColor: const Color(0xFFB45309),
                           side: const BorderSide(color: Color(0xFFD97706)),
                           padding: const EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                         ),
                         onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (_) => const TrafficSignGameScreen()),
+                          MaterialPageRoute(builder: (_) => const TrafficSignGameScreen()),
                         ),
-                        icon: const Icon(Icons.videogame_asset_rounded, size: 18),
+                        icon: const Icon(Icons.videogame_asset_rounded, size: 17),
                         label: const Text('Đố Vui (+5 xu)',
-                            style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w700)),
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
                       ),
                     ),
                   ],
@@ -239,7 +521,9 @@ class AccountScreen extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFD97706),
                       foregroundColor: Colors.white,
+                      elevation: 0,
                       padding: const EdgeInsets.symmetric(vertical: 10),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () => showModalBottomSheet(
                       context: context,
@@ -248,49 +532,129 @@ class AccountScreen extends StatelessWidget {
                       builder: (_) => const RedeemProSheet(),
                     ),
                     icon: const Icon(Icons.swap_horiz_rounded, size: 18),
-                    label: const Text('Đổi Xu Ra Tiền & Mua Pro (1 - 2 tháng)',
-                        style: TextStyle(
-                            fontSize: 12.5, fontWeight: FontWeight.w800)),
+                    label: const Text(
+                      'Đổi Xu Lấy Gói Pro (39.000 xu / tháng)',
+                      style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w800),
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 20),
-          const Text('Cài đặt',
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 14)),
-          const SizedBox(height: 8),
+
+          const SizedBox(height: 22),
+
+          // ─── 4. Cài đặt & Tiện ích mở rộng cho người dùng ───
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            child: Text(
+              'Cài đặt & Trợ giúp',
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 14.5, letterSpacing: -0.2),
+            ),
+          ),
+          const SizedBox(height: 6),
+
           _settingsTile(
             icon: Icons.dark_mode_outlined,
-            title: 'Chế độ tối',
+            title: 'Chế độ tối (Dark Mode)',
+            subtitle: state.darkMode ? 'Giao diện tối dịu mắt' : 'Giao diện sáng tiêu chuẩn',
             trailing: Switch(
               value: state.darkMode,
               activeColor: AppColors.primary,
               onChanged: (v) => state.toggleDarkMode(v),
             ),
           ),
+
           _settingsTile(
-            icon: Icons.smart_toy_outlined,
-            title: 'Gemini API Key (cho quét AI)',
-            subtitle:
-                state.geminiApiKey.isEmpty ? 'Chưa thiết lập' : '•••• đã lưu',
-            onTap: () => _openApiKeySheet(context, state),
-          ),
-          _settingsTile(
-            icon: Icons.help_outline_rounded,
-            title: 'Trợ giúp & phản hồi',
-            onTap: () {},
+            icon: Icons.menu_book_rounded,
+            title: 'Quy chuẩn QCVN 41:2019/BGTVT',
+            subtitle: 'Tra cứu 119 biển báo và mức phạt Nghị định 168/2024',
+            onTap: () => _showRegulationDialog(context),
           ),
 
-          const SizedBox(height: 20),
+          _settingsTile(
+            icon: Icons.info_outline_rounded,
+            title: 'Thông tin ứng dụng',
+            subtitle: 'SignEye AI v2.5.0 Pro · Giấy phép GPLX Việt Nam',
+            onTap: () => _showAboutDialog(context),
+          ),
+
+          _settingsTile(
+            icon: Icons.support_agent_rounded,
+            title: 'Hỗ trợ & Hướng dẫn sử dụng',
+            subtitle: 'Giải đáp thắc mắc, phản hồi chất lượng',
+            onTap: () => _showSupportDialog(context),
+          ),
+
+          if (state.isAdmin) ...[
+            const SizedBox(height: 12),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(color: const Color(0xFFF87171)),
+              ),
+              child: ListTile(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                tileColor: const Color(0xFFFEF2F2),
+                leading: const Icon(Icons.admin_panel_settings_rounded, color: Color(0xFFDC2626)),
+                title: const Text(
+                  'Bảng điều khiển Quản trị (Admin)',
+                  style: TextStyle(fontWeight: FontWeight.w800, color: Color(0xFF991B1B), fontSize: 13.5),
+                ),
+                subtitle: const Text(
+                  'Duyệt đơn, quản lý người dùng & thống kê doanh thu',
+                  style: TextStyle(fontSize: 11.5, color: Color(0xFFB91C1C)),
+                ),
+                trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFFDC2626)),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const AdminOrdersScreen()),
+                ),
+              ),
+            ),
+          ],
+
+          const SizedBox(height: 24),
+
+          // ─── 5. Nút Đăng xuất an toàn ───
           SizedBox(
             width: double.infinity,
-            child: OutlinedButton(
-              onPressed: () => state.logout(),
-              style:
-                  OutlinedButton.styleFrom(foregroundColor: AppColors.danger),
-              child: const Text('Đăng xuất'),
+            child: OutlinedButton.icon(
+              onPressed: () => _confirmLogout(context, state),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: AppColors.danger,
+                side: const BorderSide(color: Color(0xFFFCA5A5)),
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              ),
+              icon: const Icon(Icons.logout_rounded, size: 18),
+              label: const Text('Đăng xuất tài khoản', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13.5)),
             ),
+          ),
+          const SizedBox(height: 20),
+        ],
+      ),
+    );
+  }
+
+  Widget _quickStatItem({
+    required String label,
+    required String value,
+    required IconData icon,
+    required Color color,
+  }) {
+    return Expanded(
+      child: Column(
+        children: [
+          Icon(icon, size: 20, color: color),
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 13.5),
+          ),
+          const SizedBox(height: 1),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 11, color: AppColors.muted, fontWeight: FontWeight.w600),
           ),
         ],
       ),
@@ -310,68 +674,193 @@ class AccountScreen extends StatelessWidget {
         color: AppColors.surface,
         shape: RoundedRectangleBorder(
           side: const BorderSide(color: AppColors.line),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(14),
         ),
         child: ListTile(
           onTap: onTap,
-          leading: Icon(icon, color: AppColors.text2, size: 20),
-          title: Text(title,
-              style:
-                  const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600)),
+          leading: Container(
+            padding: const EdgeInsets.all(7),
+            decoration: BoxDecoration(
+              color: AppColors.primaryPale.withValues(alpha: 0.6),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Icon(icon, color: AppColors.primary, size: 19),
+          ),
+          title: Text(
+            title,
+            style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
+          ),
           subtitle: subtitle != null
-              ? Text(subtitle,
-                  style:
-                      const TextStyle(fontSize: 11.5, color: AppColors.muted))
+              ? Text(
+                  subtitle,
+                  style: const TextStyle(fontSize: 11.5, color: AppColors.muted),
+                )
               : null,
-          trailing: trailing ??
-              (onTap != null ? const Icon(Icons.chevron_right_rounded) : null),
+          trailing: trailing ?? (onTap != null ? const Icon(Icons.chevron_right_rounded, size: 20, color: AppColors.text2) : null),
         ),
       ),
     );
   }
 
-  void _openApiKeySheet(BuildContext context, AppState state) {
-    final ctrl = TextEditingController(text: state.geminiApiKey);
-    showModalBottomSheet(
+  void _showRegulationDialog(BuildContext context) {
+    showDialog(
       context: context,
-      isScrollControlled: true,
-      builder: (ctx) => Padding(
-        padding: EdgeInsets.only(
-          left: 20,
-          right: 20,
-          top: 20,
-          bottom: MediaQuery.of(ctx).viewInsets.bottom + 20,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Row(
+          children: [
+            Icon(Icons.menu_book_rounded, color: AppColors.primary),
+            SizedBox(width: 8),
+            Text('Quy chuẩn QCVN 41:2019', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+          ],
         ),
-        child: Column(
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Theo Điều 15 Quy chuẩn kỹ thuật quốc gia QCVN 41:2019/BGTVT, Việt Nam có hơn 382 loại biển báo giao thông được chia thành 5 nhóm cơ bản:',
+                style: TextStyle(fontSize: 13, height: 1.45),
+              ),
+              SizedBox(height: 10),
+              Text('1. Biển báo cấm (64 loại):', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: Color(0xFFDC2626))),
+              Text('Dạng hình tròn, viền đỏ, nền trắng, hình vẽ màu đen thể hiện điều cấm mà người tham gia giao thông không được vi phạm.', style: TextStyle(fontSize: 12, height: 1.4)),
+              SizedBox(height: 8),
+              Text('2. Biển hiệu lệnh (66 loại):', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: Color(0xFF2563EB))),
+              Text('Dạng hình tròn, nền xanh lam, hình vẽ màu trắng báo hiệu các hiệu lệnh bắt buộc phải chấp hành.', style: TextStyle(fontSize: 12, height: 1.4)),
+              SizedBox(height: 8),
+              Text('3. Biển báo nguy hiểm và cảnh báo (84 loại):', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: Color(0xFFD97706))),
+              Text('Dạng hình tam giác đều, viền đỏ, nền vàng, hình vẽ màu đen mô tả sự việc cần chủ động phòng ngừa kịp thời.', style: TextStyle(fontSize: 12, height: 1.4)),
+              SizedBox(height: 8),
+              Text('4. Biển chỉ dẫn (136 loại):', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: Color(0xFF0D9488))),
+              Text('Hình chữ nhật hoặc hình vuông nền xanh, cung cấp thông tin và hướng dẫn cần thiết trên đường.', style: TextStyle(fontSize: 12, height: 1.4)),
+              SizedBox(height: 8),
+              Text('5. Biển phụ & biển viết bằng chữ (32 loại):', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: Color(0xFF4B5563))),
+              Text('Thuyết minh bổ sung nội dung cho 4 nhóm biển chính hoặc sử dụng độc lập.', style: TextStyle(fontSize: 12, height: 1.4)),
+              SizedBox(height: 8),
+              Text('6. Hệ thống Vạch kẻ đường:', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: Color(0xFF7C3AED))),
+              Text('Bao gồm vạch phân chia làn (vạch liền, vạch đứt), vạch mắt võng, vạch quả trám, vạch nhường đường, vạch dừng xe công cộng...', style: TextStyle(fontSize: 12, height: 1.4)),
+              SizedBox(height: 12),
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Color(0xFFEEF2FF),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                ),
+                child: Text(
+                  '💡 SignEye đã số hóa đầy đủ các biển báo trọng tâm xuất hiện trong 600 câu hỏi sát hạch GPLX và lưu thông hàng ngày.',
+                  style: TextStyle(fontSize: 11.5, color: Color(0xFF3730A3), fontWeight: FontWeight.w600),
+                ),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Đã hiểu', style: TextStyle(fontWeight: FontWeight.w800)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showAboutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Row(
+          children: [
+            Icon(Icons.info_rounded, color: AppColors.primary),
+            SizedBox(width: 8),
+            Text('Về SignEye AI', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+          ],
+        ),
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Gemini API Key',
-                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-            const SizedBox(height: 6),
-            const Text(
-              'Dùng để nhận diện biển báo trong tính năng Quét. Khóa được lưu cục bộ trên thiết bị, không gửi tới máy chủ SignEye.',
-              style:
-                  TextStyle(fontSize: 12, color: AppColors.text2, height: 1.4),
-            ),
-            const SizedBox(height: 14),
-            TextField(
-              controller: ctrl,
-              decoration: const InputDecoration(hintText: 'AIza...'),
-            ),
-            const SizedBox(height: 14),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  state.setGeminiApiKey(ctrl.text);
-                  Navigator.pop(ctx);
-                },
-                child: const Text('Lưu'),
-              ),
-            ),
+            Text('SignEye là ứng dụng thông minh hỗ trợ người tham gia giao thông và ôn thi giấy phép lái xe (GPLX):', style: TextStyle(fontSize: 13, height: 1.4)),
+            SizedBox(height: 8),
+            Text('• Quét & nhận diện biển báo giao thông thời gian thực', style: TextStyle(fontSize: 12.5)),
+            Text('• Tra cứu mức phạt chi tiết xe máy & ô tô', style: TextStyle(fontSize: 12.5)),
+            Text('• Ôn thi sát hạch lý thuyết GPLX mọi hạng', style: TextStyle(fontSize: 12.5)),
+            Text('• Minigame đố vui và ghép hình nhận xu tích lũy', style: TextStyle(fontSize: 12.5)),
+            SizedBox(height: 10),
+            Text('Phiên bản: 2.5.0 Pro (2026)', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12, color: AppColors.primary)),
           ],
         ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Đóng', style: TextStyle(fontWeight: FontWeight.w800)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showSupportDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Row(
+          children: [
+            Icon(Icons.help_center_rounded, color: AppColors.primary),
+            SizedBox(width: 8),
+            Text('Hỗ trợ người dùng', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+          ],
+        ),
+        content: const Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Nếu cần hỗ trợ kỹ thuật hoặc kích hoạt gói Pro:', style: TextStyle(fontSize: 13, height: 1.4)),
+            SizedBox(height: 8),
+            Text('• Email: hotro@signeye.vn', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+            Text('• Thời gian hỗ trợ: 24/7', style: TextStyle(fontSize: 12.5, color: AppColors.text2)),
+            SizedBox(height: 8),
+            Text('Đơn hàng thanh toán Pro sẽ được hệ thống và Admin kiểm duyệt kích hoạt tự động.', style: TextStyle(fontSize: 12, color: AppColors.text2)),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('OK', style: TextStyle(fontWeight: FontWeight.w800)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _confirmLogout(BuildContext context, AppState state) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Text('Xác nhận đăng xuất', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+        content: const Text('Bạn có chắc chắn muốn đăng xuất khỏi tài khoản này không?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Hủy', style: TextStyle(color: AppColors.text2)),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.danger,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            ),
+            onPressed: () {
+              Navigator.pop(ctx);
+              state.logout();
+            },
+            child: const Text('Đăng xuất'),
+          ),
+        ],
       ),
     );
   }

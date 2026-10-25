@@ -24,7 +24,7 @@
     header {
       background: linear-gradient(135deg, #096842 0%, #0D8F5C 100%);
       color: white;
-      padding: 26px 6%;
+      padding: 24px 6%;
       box-shadow: 0 4px 20px rgba(13, 143, 92, 0.15);
       display: flex;
       justify-content: space-between;
@@ -39,72 +39,82 @@
     }
     header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
     header p { font-size: 13px; opacity: 0.9; }
-    main { max-width: 1240px; margin: 26px auto; padding: 0 20px; }
+    main { max-width: 1280px; margin: 24px auto; padding: 0 16px; }
     .auth-box {
-      background: var(--surface); padding: 18px 24px; border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 14px;
-      flex-wrap: wrap; margin-bottom: 20px;
+      background: var(--surface); padding: 16px 22px; border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 18px;
     }
-    .auth-box label { font-weight: 600; font-size: 14px; color: var(--text); }
+    .auth-box label { font-weight: 700; font-size: 13.5px; color: var(--text); }
     input, select {
-      padding: 10px 16px; border: 1.5px solid var(--border); border-radius: 10px;
-      font-size: 14px; outline: none; transition: 0.2s; background: white;
+      padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 13.5px; outline: none; transition: 0.2s; background: white;
     }
     input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(13, 143, 92, 0.15); }
     button.btn {
-      padding: 10px 18px; border: none; border-radius: 10px; font-weight: 700;
-      font-size: 13.5px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 16px; border: none; border-radius: 10px; font-weight: 700;
+      font-size: 13px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px;
     }
     .btn-primary { background: var(--primary); color: white; }
     .btn-primary:hover { background: var(--primary-dark); }
-    .btn-success { background: #10B981; color: white; padding: 7px 14px; font-size: 12.5px; border-radius: 8px; }
+    .btn-success { background: #10B981; color: white; }
     .btn-success:hover { background: #059669; }
-    .btn-danger { background: #EF4444; color: white; padding: 7px 14px; font-size: 12.5px; border-radius: 8px; }
+    .btn-blue { background: #2563EB; color: white; }
+    .btn-blue:hover { background: #1D4ED8; }
+    .btn-danger { background: #EF4444; color: white; }
     .btn-danger:hover { background: #DC2626; }
+    .btn-outline-primary {
+      background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE;
+    }
+    .btn-outline-primary:hover { background: #DBEAFE; }
     .btn-outline-danger {
       background: #FFF1F2; color: #E11D48; border: 1px solid #FECDD3;
-      padding: 6px 12px; font-size: 12px; border-radius: 8px;
     }
     .btn-outline-danger:hover { background: #FFE4E6; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px; }
-    .card {
-      background: var(--surface); padding: 18px; border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid var(--border);
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
     }
-    .card-label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
-    .card-val { font-size: 22px; font-weight: 800; color: var(--primary-dark); }
+    .card {
+      background: var(--surface); padding: 16px; border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid var(--border);
+    }
+    .card-label { font-size: 12px; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+    .card-val { font-size: 20px; font-weight: 800; color: var(--primary-dark); }
     .tabs {
       display: flex; gap: 10px; margin-bottom: 16px; border-bottom: 2px solid var(--border); padding-bottom: 10px;
     }
     .tab-btn {
-      padding: 9px 20px; border-radius: 10px; border: 1.5px solid transparent; background: transparent;
-      font-weight: 700; font-size: 14px; color: var(--text-muted); cursor: pointer; transition: 0.2s;
+      padding: 9px 18px; border-radius: 10px; border: 1.5px solid transparent; background: transparent;
+      font-weight: 700; font-size: 13.5px; color: var(--text-muted); cursor: pointer; transition: 0.2s;
     }
     .tab-btn.active {
       background: var(--primary-light); color: var(--primary-dark); border-color: var(--primary);
     }
     .sub-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
     .sub-tab {
-      padding: 6px 15px; border-radius: 20px; border: 1.5px solid var(--border);
-      background: white; font-size: 12.5px; font-weight: 700; color: var(--text-muted);
+      padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border);
+      background: white; font-size: 12px; font-weight: 700; color: var(--text-muted);
       cursor: pointer; transition: 0.2s;
     }
     .sub-tab:hover { border-color: var(--primary); color: var(--primary); }
     .sub-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
     .table-container {
-      background: var(--surface); border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-      border: 1px solid var(--border); overflow-x: auto; margin-top: 14px;
+      background: var(--surface); border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      border: 1px solid var(--border); overflow-x: auto; margin-top: 12px;
     }
-    table { width: 100%; border-collapse: collapse; min-width: 950px; }
+    table { width: 100%; border-collapse: collapse; min-width: 980px; }
     th {
-      background: #F8FAFC; padding: 13px 16px; text-align: left; font-size: 12px;
+      background: #F8FAFC; padding: 12px 14px; text-align: left; font-size: 11.5px;
       font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
       border-bottom: 1.5px solid var(--border);
     }
-    td { padding: 13px 16px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
     .badge {
-      display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 800;
+      display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 800;
     }
     .badge-paid, .badge-pro { background: #DEF7EC; color: #03543F; border: 1px solid #A7F3D0; }
     .badge-pending { background: #FEF08A; color: #854D0E; }
@@ -112,11 +122,28 @@
     .badge-rejected { background: #FEE2E2; color: #991B1B; }
     .badge-free { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
     .badge-expired { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
-    #error { color: #DC2626; font-size: 14px; font-weight: 600; margin-top: 6px; width: 100%; }
+    #error { color: #DC2626; font-size: 13.5px; font-weight: 600; margin-top: 4px; width: 100%; }
     .search-bar {
-      margin-bottom: 12px; display: flex; gap: 10px; align-items: center; justify-content: space-between;
+      margin-bottom: 12px; display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap;
     }
-    .search-input { flex: 1; max-width: 420px; }
+    .search-input { flex: 1; min-width: 260px; max-width: 450px; }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; z-index: 1000; padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: white; border-radius: 16px; padding: 22px; width: 100%; max-width: 480px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15); animation: popIn 0.2s ease-out;
+    }
+    .modal-title { font-size: 17px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .modal-form-group { margin-bottom: 12px; }
+    .modal-form-group label { display: block; font-size: 12.5px; font-weight: 700; color: #475569; margin-bottom: 4px; }
+    .modal-form-group input, .modal-form-group select { width: 100%; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+    @keyframes popIn { from { transform: scale(0.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   </style>
 </head>
 <body>
@@ -125,28 +152,30 @@
       <div class="brand-icon">👁️</div>
       <div>
         <h1>SignEye · Quản trị hệ thống & Duyệt Pro</h1>
-        <p>Quản lý người dùng thường/Pro và xét duyệt đơn hàng chuyển khoản</p>
+        <p>Quản lý người dùng, phân quyền Pro VIP và xét duyệt đơn hàng ngân hàng</p>
       </div>
     </div>
-    <div style="font-size: 13px;">Tài khoản Admin: <b>admin@signeye.vn</b></div>
+    <div style="font-size: 13px;">Tài khoản Quản trị: <b>admin@signeye.vn</b></div>
   </header>
 
   <main>
     <div class="auth-box">
-      <label for="key">Khóa hoặc Mật khẩu Quản trị:</label>
-      <input id="key" type="password" value="Admin@123456" placeholder="Nhập khóa quản trị hoặc mật khẩu Admin" style="min-width: 260px;">
-      <button class="btn btn-primary" id="load">Tải dữ liệu Admin</button>
+      <label for="key">Khóa / Mật khẩu Admin:</label>
+      <input id="key" type="password" value="Admin@123456" placeholder="Admin@123456" style="min-width: 240px;">
+      <button class="btn btn-primary" id="load">Đăng nhập Admin</button>
       <div id="error" role="alert"></div>
     </div>
 
-    <div class="auth-box" style="margin-top: -10px; border-left: 4px solid var(--primary); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-      <label for="grantUsername" style="font-weight: 700;">⚡ Cấp Pro nhanh cho tài khoản:</label>
-      <input id="grantUsername" type="text" placeholder="Nhập username hoặc email (VD: thien)" style="flex: 1; min-width: 200px;">
+    <div class="auth-box" style="margin-top: -8px; border-left: 4px solid var(--primary); display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <label for="grantUsername" style="font-weight: 700;">⚡ Cấp Pro nhanh cho tài khoản đã đăng ký:</label>
+      <input id="grantUsername" list="registeredUsersDatalist" type="text" placeholder="Gõ tên hoặc email người dùng đã đăng ký..." style="flex: 1; min-width: 260px;">
+      <datalist id="registeredUsersDatalist"></datalist>
       <select id="grantPlan">
         <option value="month">Gói 1 tháng (39.000đ)</option>
         <option value="year">Gói 1 năm (399.000đ)</option>
       </select>
       <button class="btn btn-primary" onclick="grantProDirectly()">Kích hoạt Pro ngay</button>
+      <button class="btn btn-blue" onclick="openCreateUserModal()" style="margin-left: auto;">+ Thêm Người Dùng</button>
     </div>
 
     <div id="content" hidden>
@@ -172,7 +201,7 @@
                 <th>Email</th>
                 <th>Gói</th>
                 <th>Số tiền</th>
-                <th>Nội dung chuyển khoản</th>
+                <th>Mã chuyển khoản</th>
                 <th>Trạng thái</th>
                 <th>Ngày tạo</th>
                 <th>Thao tác</th>
@@ -190,7 +219,10 @@
       <div id="usersSection" style="display: none;">
         <div class="search-bar">
           <input id="usersSearch" class="search-input" type="text" placeholder="Tìm người dùng theo tên hoặc email..." oninput="renderUsers()">
-          <button class="btn btn-primary" onclick="load()" style="padding: 7px 14px; font-size: 12.5px;">Làm mới</button>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-blue" onclick="openCreateUserModal()">+ Thêm Người Dùng</button>
+            <button class="btn btn-primary" onclick="load()">Làm mới</button>
+          </div>
         </div>
 
         <div class="sub-tabs">
@@ -224,6 +256,84 @@
     </div>
   </main>
 
+  <!-- Modal Thêm Người Dùng -->
+  <div class="modal-overlay" id="modalCreateUser">
+    <div class="modal-card">
+      <div class="modal-title">👤 Thêm Tài Khoản Người Dùng Mới</div>
+      <div class="modal-form-group">
+        <label>Họ và tên:</label>
+        <input id="cName" type="text" placeholder="VD: Nguyễn Văn A">
+      </div>
+      <div class="modal-form-group">
+        <label>Email đăng nhập (*):</label>
+        <input id="cEmail" type="email" placeholder="VD: user@signeye.vn">
+      </div>
+      <div class="modal-form-group">
+        <label>Mật khẩu khởi tạo:</label>
+        <input id="cPass" type="text" value="123456" placeholder="123456">
+      </div>
+      <div class="modal-form-group">
+        <label>Số xu ban đầu:</label>
+        <input id="cCoins" type="number" value="0">
+      </div>
+      <div class="modal-form-group">
+        <label>Phân loại quyền:</label>
+        <select id="cRole" onchange="toggleCreatePlan()">
+          <option value="free">🌱 Người dùng thường (Free)</option>
+          <option value="pro">👑 Kích hoạt Pro VIP</option>
+        </select>
+      </div>
+      <div class="modal-form-group" id="cPlanGroup" style="display: none;">
+        <label>Thời hạn Pro:</label>
+        <select id="cPlan">
+          <option value="month">Gói 1 tháng (39.000đ)</option>
+          <option value="year">Gói 1 năm (399.000đ)</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline-danger" onclick="closeModal('modalCreateUser')">Hủy</button>
+        <button class="btn btn-primary" onclick="submitCreateUser()">Tạo người dùng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sửa Người Dùng -->
+  <div class="modal-overlay" id="modalEditUser">
+    <div class="modal-card">
+      <div class="modal-title">✏️ Chỉnh Sửa Người Dùng</div>
+      <div class="modal-form-group">
+        <label>Email (Không đổi):</label>
+        <input id="eEmail" type="text" readonly style="background: #F1F5F9; color: #64748B;">
+      </div>
+      <div class="modal-form-group">
+        <label>Họ và tên:</label>
+        <input id="eName" type="text">
+      </div>
+      <div class="modal-form-group">
+        <label>Số xu tích lũy:</label>
+        <input id="eCoins" type="number">
+      </div>
+      <div class="modal-form-group">
+        <label>Trạng thái Pro VIP:</label>
+        <select id="eRole" onchange="toggleEditPlan()">
+          <option value="free">🌱 Người dùng thường (Free)</option>
+          <option value="pro">👑 Người dùng Pro VIP</option>
+        </select>
+      </div>
+      <div class="modal-form-group" id="ePlanGroup" style="display: none;">
+        <label>Thời hạn Pro (khi kích hoạt/gia hạn):</label>
+        <select id="ePlan">
+          <option value="month">Gói 1 tháng (39.000đ)</option>
+          <option value="year">Gói 1 năm (399.000đ)</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline-danger" onclick="closeModal('modalEditUser')">Hủy</button>
+        <button class="btn btn-primary" onclick="submitEditUser()">Lưu thay đổi</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const $ = id => document.getElementById(id);
     let key = '';
@@ -252,6 +362,133 @@
       renderUsers();
     }
 
+    function closeModal(id) {
+      $(id).classList.remove('active');
+    }
+
+    function openCreateUserModal() {
+      $('cName').value = '';
+      $('cEmail').value = '';
+      $('cPass').value = '123456';
+      $('cCoins').value = '0';
+      $('cRole').value = 'free';
+      toggleCreatePlan();
+      $('modalCreateUser').classList.add('active');
+    }
+
+    function toggleCreatePlan() {
+      $('cPlanGroup').style.display = $('cRole').value === 'pro' ? 'block' : 'none';
+    }
+
+    async function submitCreateUser() {
+      const email = $('cEmail').value.trim().toLowerCase();
+      const name = $('cName').value.trim();
+      const password = $('cPass').value.trim() || '123456';
+      const coins = parseInt($('cCoins').value.trim(), 10) || 0;
+      const isPro = $('cRole').value === 'pro';
+      const plan = $('cPlan').value;
+
+      if (!email || !email.includes('@')) {
+        alert('Vui lòng nhập email hợp lệ!');
+        return;
+      }
+
+      try {
+        let r = await fetch('/admin/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-key': key },
+          body: JSON.stringify({ email, name: name || email.split('@')[0], password, coins, is_pro: isPro, plan })
+        });
+        if (r.ok) {
+          alert(`Đã thêm người dùng ${name || email} thành công!`);
+          closeModal('modalCreateUser');
+          load();
+        } else {
+          let txt = await r.text();
+          alert('Lỗi tạo người dùng: ' + txt);
+        }
+      } catch (e) {
+        alert('Lỗi kết nối: ' + e.message);
+      }
+    }
+
+    function openEditUserModal(email) {
+      const u = allUsers.find(item => item.email.toLowerCase() === email.toLowerCase());
+      if (!u) return;
+      $('eEmail').value = u.email;
+      $('eName').value = u.name || '';
+      $('eCoins').value = u.coins || 0;
+      $('eRole').value = u.is_pro ? 'pro' : 'free';
+      toggleEditPlan();
+      $('modalEditUser').classList.add('active');
+    }
+
+    function toggleEditPlan() {
+      $('ePlanGroup').style.display = $('eRole').value === 'pro' ? 'block' : 'none';
+    }
+
+    async function submitEditUser() {
+      const email = $('eEmail').value.trim().toLowerCase();
+      const name = $('eName').value.trim();
+      const coins = parseInt($('eCoins').value.trim(), 10) || 0;
+      const isPro = $('eRole').value === 'pro';
+      const plan = $('ePlan').value;
+
+      try {
+        let r = await fetch(`/admin/users/${encodeURIComponent(email)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', 'x-admin-key': key },
+          body: JSON.stringify({ name, coins, is_pro: isPro, plan })
+        });
+        if (r.ok) {
+          alert(`Đã cập nhật thông tin người dùng ${email}!`);
+          closeModal('modalEditUser');
+          load();
+        } else {
+          let txt = await r.text();
+          alert('Lỗi cập nhật: ' + txt);
+        }
+      } catch (e) {
+        alert('Lỗi kết nối: ' + e.message);
+      }
+    }
+
+    async function deleteUserDirectly(email, name) {
+      if (email.toLowerCase() === 'admin@signeye.vn') {
+        alert('Không thể xóa tài khoản Quản trị viên hệ thống!');
+        return;
+      }
+      if (!confirm(`Bạn có chắc chắn muốn xóa vĩnh viễn tài khoản:\n• Người dùng: ${name}\n• Email: ${email}\n\nToàn bộ dữ liệu của người dùng này sẽ bị xóa khỏi hệ thống.`)) return;
+
+      try {
+        let r = await fetch(`/admin/users/${encodeURIComponent(email)}`, {
+          method: 'DELETE',
+          headers: { 'x-admin-key': key }
+        });
+        if (r.ok) {
+          alert(`Đã xóa tài khoản ${name} (${email}) thành công!`);
+          load();
+        } else {
+          let txt = await r.text();
+          alert('Lỗi xóa người dùng: ' + txt);
+        }
+      } catch (e) {
+        alert('Lỗi kết nối: ' + e.message);
+      }
+    }
+
+    function updateRegisteredUsersDatalist() {
+      const dl = $('registeredUsersDatalist');
+      if (!dl) return;
+      dl.innerHTML = '';
+      for (let u of allUsers) {
+        let opt = document.createElement('option');
+        opt.value = u.email;
+        opt.label = `${u.name || u.email} (${u.is_pro ? '👑 Pro' : '🌱 Thường'})`;
+        dl.appendChild(opt);
+      }
+    }
+
     async function load() {
       key = $('key').value.trim();
       $('error').textContent = '';
@@ -263,15 +500,22 @@
 
         if (!payRes.ok) throw Error('Không có quyền truy cập hoặc mật khẩu sai (' + payRes.status + ')');
         const data = await payRes.json();
-        const s = data.summary || {};
-        allOrders = data.orders || [];
+        const demoEmails = new Set([
+          'demo@signeye.vn',
+          'user_demo@signeye.vn',
+          'signeye.test2026@gmail.com',
+          'thien123@gmail.com',
+          'myduyen261104@gmail.com',
+          'student.signeye@gmail.com',
+          'ngocthien@signeye.vn'
+        ]);
+        allOrders = (data.orders || []).filter(o => !demoEmails.has((o.email || '').toLowerCase()));
 
         if (usersRes && usersRes.ok) {
           const uData = await usersRes.json();
-          allUsers = uData.users || [];
+          allUsers = (uData.users || []).filter(u => !demoEmails.has((u.email || '').toLowerCase()));
           userSummary = uData.summary || {};
         } else {
-          // Fallback user list from orders
           const emails = new Set();
           allUsers = [];
           for (let o of allOrders) {
@@ -294,48 +538,41 @@
                 total_orders: 1,
                 coins: 0,
                 has_coin_pro: isCoinOrder,
-                coin_redeem_note: isCoinOrder ? (o.admin_note || 'Đã đổi Pro từ xu tích lũy') : 'Chưa dùng xu đổi Pro'
+                coin_redeem_note: isCoinOrder ? (o.admin_note || 'Đã đổi Pro từ xu tích lũy') : ''
               });
             }
           }
         }
 
+        const s = data.summary || {};
         const totalUsers = userSummary.total_users || s.total_users || allUsers.length;
         const proUsers = userSummary.pro_users || s.pro_users || allUsers.filter(u => u.is_pro).length;
         const freeUsers = userSummary.free_users || s.free_users || allUsers.filter(u => !u.is_pro && !u.is_expired).length;
         const expiredUsers = userSummary.expired_pro_users || allUsers.filter(u => u.is_expired).length;
         const pendingOrders = allOrders.filter(o => o.status === 'pending' || o.status === 'submitted').length;
         const totalCoins = userSummary.total_coins_system || allUsers.reduce((sum, u) => sum + (Number(u.coins) || 0), 0);
-        const coinUsersCount = userSummary.coin_redeemed_users || allUsers.filter(u => u.has_coin_pro || (u.coin_redeem_note && u.coin_redeem_note !== 'Chưa dùng xu đổi Pro' && u.coin_redeem_note !== 'Đang tích lũy xu (chưa đổi Pro)')).length;
+        const coinUsersCount = userSummary.coin_redeemed_users || allUsers.filter(u => u.has_coin_pro).length;
 
         $('ordersCount').textContent = allOrders.length;
-        $('usersCount').textContent = totalUsers;
-
-        $('userFilterAllCount').textContent = totalUsers;
+        $('usersCount').textContent = allUsers.length;
+        $('userFilterAllCount').textContent = allUsers.length;
         $('userFilterProCount').textContent = proUsers;
         $('userFilterFreeCount').textContent = freeUsers;
         $('userFilterCoinCount').textContent = coinUsersCount;
         $('userFilterExpiredCount').textContent = expiredUsers;
 
-        const metrics = [
-          ['Tổng người dùng', totalUsers],
-          ['👑 Người dùng Pro', proUsers],
-          ['🌱 Người dùng thường', freeUsers],
-          ['Chờ duyệt Pro', pendingOrders],
-          ['Đơn đã duyệt', s.purchases || 0],
-          ['Tổng doanh thu', money(s.revenue)],
-          ['🪙 Xu tích lũy hệ thống', new Intl.NumberFormat('vi-VN').format(totalCoins) + ' xu'],
-          ['🪙 Đổi Pro bằng xu', coinUsersCount + ' tài khoản']
-        ];
+        $('cards').innerHTML = `
+          <div class="card"><div class="card-label">👥 Tổng người dùng</div><div class="card-val" style="color:#2563EB;">${totalUsers}</div></div>
+          <div class="card"><div class="card-label">👑 Người dùng Pro</div><div class="card-val" style="color:#0D8F5C;">${proUsers}</div></div>
+          <div class="card"><div class="card-label">🌱 Người dùng thường</div><div class="card-val" style="color:#475569;">${freeUsers}</div></div>
+          <div class="card"><div class="card-label">⏳ Chờ duyệt Pro</div><div class="card-val" style="color:#D97706;">${pendingOrders}</div></div>
+          <div class="card"><div class="card-label">✓ Đơn đã duyệt</div><div class="card-val" style="color:#059669;">${s.purchases || allOrders.filter(o => o.status === 'paid').length}</div></div>
+          <div class="card"><div class="card-label">💰 Tổng doanh thu</div><div class="card-val" style="color:#4F46E5;">${money(s.revenue)}</div></div>
+          <div class="card"><div class="card-label">🪙 Xu tích lũy toàn hệ thống</div><div class="card-val" style="color:#D97706;">${new Intl.NumberFormat('vi-VN').format(totalCoins)} xu</div></div>
+          <div class="card"><div class="card-label">🪙 Đã đổi Pro bằng xu</div><div class="card-val" style="color:#0D8F5C;">${coinUsersCount} tài khoản</div></div>
+        `;
 
-        $('cards').replaceChildren();
-        for (let [label, value] of metrics) {
-          let box = document.createElement('div');
-          box.className = 'card';
-          box.innerHTML = `<div class="card-label">${label}</div><div class="card-val">${value}</div>`;
-          $('cards').append(box);
-        }
-
+        updateRegisteredUsersDatalist();
         renderOrders();
         renderUsers();
         $('content').hidden = false;
@@ -378,11 +615,11 @@
         let actions = '';
         if (o.status === 'pending' || o.status === 'submitted') {
           actions = `
-            <button class="btn btn-success" onclick="approveOrder('${o.id}', '${o.name || o.email}')">Duyệt Pro</button>
-            <button class="btn btn-danger" onclick="rejectOrder('${o.id}')" style="margin-left:4px;">Từ chối</button>
+            <button class="btn btn-success" style="padding: 6px 12px; font-size: 12px;" onclick="approveOrder('${o.id}', '${o.name || o.email}')">Duyệt Pro</button>
+            <button class="btn btn-danger" style="padding: 6px 12px; font-size: 12px; margin-left: 4px;" onclick="rejectOrder('${o.id}')">Từ chối</button>
           `;
         } else if (o.status === 'paid') {
-          actions = `<span style="color:#059669; font-weight:700; font-size:12px;">✓ Đã cấp Pro</span>`;
+          actions = `<span style="color:#059669; font-weight:700; font-size:12px;">✓ Đã duyệt Pro</span>`;
         } else {
           actions = `<span style="color:#DC2626; font-size:12px;">Đã từ chối</span>`;
         }
@@ -416,8 +653,7 @@
       const filtered = allUsers.filter(u => {
         const isPro = u.is_pro === true;
         const isExpired = u.is_expired === true;
-        const note = (u.coin_redeem_note || '').trim();
-        const hasCoinPro = u.has_coin_pro === true || (note.length > 0 && note !== 'Chưa dùng xu đổi Pro' && note !== 'Đang tích lũy xu (chưa đổi Pro)');
+        const hasCoinPro = u.has_coin_pro === true;
         if (userFilter === 'pro' && !isPro) return false;
         if (userFilter === 'free' && (isPro || isExpired)) return false;
         if (userFilter === 'expired' && !isExpired) return false;
@@ -442,8 +678,7 @@
         let tr = document.createElement('tr');
         const isPro = u.is_pro === true;
         const isExpired = u.is_expired === true;
-        const note = (u.coin_redeem_note || '').trim();
-        const hasCoinPro = u.has_coin_pro === true || (note.length > 0 && note !== 'Chưa dùng xu đổi Pro' && note !== 'Đang tích lũy xu (chưa đổi Pro)');
+        const hasCoinPro = u.has_coin_pro === true;
 
         let badgeHtml = '';
         if (isPro) {
@@ -469,16 +704,22 @@
         const ordersText = (u.total_orders || 0) + ' đơn';
         const coinsFormatted = new Intl.NumberFormat('vi-VN').format(u.coins || 0) + ' xu';
         const coinHtml = `<b style="color:#D97706; font-size:13px;">${coinsFormatted}</b>`;
-        const noteHtml = hasCoinPro
+        const noteHtml = (hasCoinPro && u.coin_redeem_note)
           ? `<div style="background:#FFFBEB; border:1px solid #FDE68A; padding:5px 9px; border-radius:6px; color:#92400E; font-size:11.5px; font-weight:700;">🪙 ${u.coin_redeem_note}</div>`
-          : `<span style="color:#94A3B8; font-size:12px;">Chưa đổi Pro bằng xu</span>`;
+          : `<span style="color:#94A3B8; font-size:12px;">—</span>`;
 
         let actions = `
-          <button class="btn btn-primary" style="padding:5px 10px; font-size:12px;" onclick="prefillGrant('${u.email}')">⚡ ${isPro ? 'Gia hạn' : 'Cấp Pro'}</button>
+          <button class="btn btn-outline-primary" style="padding:5px 9px; font-size:11.5px;" onclick="openEditUserModal('${u.email}')">Sửa</button>
+          <button class="btn btn-primary" style="padding:5px 9px; font-size:11.5px; margin-left:3px;" onclick="prefillGrant('${u.email}')">⚡ ${isPro ? 'Gia hạn' : 'Cấp Pro'}</button>
         `;
+        if (u.email.toLowerCase() !== 'admin@signeye.vn') {
+          actions += `
+            <button class="btn btn-outline-danger" style="padding:5px 9px; font-size:11.5px; margin-left:3px;" onclick="deleteUserDirectly('${u.email}', '${u.name || u.email}')">Xóa</button>
+          `;
+        }
         if (isPro) {
           actions += `
-            <button class="btn btn-outline-danger" style="margin-left:4px;" onclick="revokeProDirectly('${u.email}', '${u.name || u.email}')">Thu hồi</button>
+            <button class="btn btn-outline-danger" style="padding:5px 9px; font-size:11.5px; margin-left:3px;" onclick="revokeProDirectly('${u.email}', '${u.name || u.email}')">Thu hồi</button>
           `;
         }
 
@@ -492,7 +733,7 @@
           <td>${noteHtml}</td>
           <td><b>${spentText}</b><br><small style="color:#888;">${ordersText}</small></td>
           <td style="color:#64748B; font-size:12px;">${u.created_at ? new Date(u.created_at).toLocaleDateString('vi-VN') : '—'}</td>
-          <td>${actions}</td>
+          <td style="white-space: nowrap;">${actions}</td>
         `;
         $('users').append(tr);
       }
@@ -565,9 +806,18 @@
       const u = $('grantUsername').value.trim();
       const plan = $('grantPlan').value;
       if (!u) {
-        alert('Vui lòng nhập username hoặc email của tài khoản cần cấp Pro!');
+        alert('Vui lòng chọn hoặc nhập tài khoản người dùng đã đăng ký!');
         return;
       }
+
+      // Kiểm tra người dùng có tồn tại trong danh sách đã đăng ký không
+      const clean = u.toLowerCase();
+      const exists = allUsers.some(uObj => (uObj.email || '').toLowerCase() === clean || (uObj.name || '').toLowerCase() === clean);
+      if (!exists) {
+        alert(`⚠️ Tài khoản "${u}" chưa đăng ký trên hệ thống!\nBạn chỉ có thể cấp quyền Pro cho người dùng đã đăng ký tài khoản (hoặc nhấn "+ Thêm Người Dùng" trước).`);
+        return;
+      }
+
       try {
         let r = await fetch('/admin/grant-pro', {
           method: 'POST',

@@ -185,11 +185,11 @@ def get_user_from_auth(con, authorization=None, x_user_email=None):
         raise HTTPException(401, 'Authentication required')
     token = authorization[7:].strip()
     if token in ('offline_session', 'offline_token', '') or token.startswith('session_'):
-        row = con.execute('SELECT id, email, name FROM users ORDER BY created_at DESC').fetchone()
+        row = con.execute('SELECT id, email, name FROM users WHERE LOWER(email) != "admin@signeye.vn" ORDER BY created_at DESC').fetchone()
         if not row:
-            con.execute('INSERT OR IGNORE INTO users(id, email, name, salt, password_hash, created_at) VALUES (?,?,?,?,?,?)',
-                        ('u_demo', 'demo@signeye.vn', 'Người dùng', 'salt', 'hash', now()))
-            row = con.execute('SELECT id, email, name FROM users WHERE email=?', ('demo@signeye.vn',)).fetchone()
+            row = con.execute('SELECT id, email, name FROM users ORDER BY created_at DESC').fetchone()
+        if not row:
+            raise HTTPException(401, 'Chưa có tài khoản người dùng nào được đăng ký')
         return row
     return auth_support.user(con, authorization)
 
@@ -580,13 +580,14 @@ def admin_users_list(x_admin_key: str | None = Header(None)):
         user_coins = int(r['coins'] or 0)
         total_coins_system += user_coins
         user_coin_note = (r['coin_note'] or '').strip()
-        has_coin_pro = bool(user_coin_orders or (user_coin_note and user_coin_note not in ('Chưa dùng xu đổi Pro', 'Đang tích lũy xu (chưa đổi Pro)')))
+        is_coin_redeemed = bool(user_coin_orders) or ('đổi' in user_coin_note.lower() and 'pro' in user_coin_note.lower())
+        has_coin_pro = is_coin_redeemed
         if has_coin_pro:
             coin_redeemed_users += 1
             if not user_coin_note and user_coin_orders:
                 user_coin_note = user_coin_orders[0]['admin_note'] or f"Đã đổi {len(user_coin_orders)} lần Pro từ xu"
-        elif not user_coin_note:
-            user_coin_note = 'Đang tích lũy xu (chưa đổi Pro)'
+        else:
+            user_coin_note = ''
 
         users_list.append({
             'id': r['id'],
@@ -731,14 +732,9 @@ def admin_grant_pro(body: GrantProRequest, x_admin_key: str | None = Header(None
     with db() as con:
         row = con.execute('SELECT id, email, name FROM users WHERE LOWER(email)=? OR LOWER(name)=?', (email, target)).fetchone()
         if not row:
-            uid = 'u_' + secrets.token_hex(8)
-            actual_name = target.split('@')[0]
-            con.execute('INSERT INTO users(id, email, name, salt, password_hash, created_at) VALUES (?,?,?,?,?,?)',
-                        (uid, email, actual_name, 'salt', 'hash', now()))
-            actual_email = email
-        else:
-            actual_email = row['email']
-            actual_name = row['name']
+            raise HTTPException(404, 'Tài khoản này chưa đăng ký. Chỉ có thể cấp quyền Pro cho người dùng đã đăng ký tài khoản!')
+        actual_email = row['email']
+        actual_name = row['name']
 
         last_row = con.execute("SELECT MAX(expiry_at) AS expiry FROM orders WHERE user_email=? AND status IN ('paid', 'approved')", (actual_email,)).fetchone()
         last = last_row['expiry'] if last_row else None
@@ -751,6 +747,96 @@ def admin_grant_pro(body: GrantProRequest, x_admin_key: str | None = Header(None
             (oid, actual_email, plan, amount, 'paid', now(), now(), expiry, 'Cấp Pro trực tiếp bởi Admin')
         )
     return {'status': 'ok', 'message': f'Đã cấp Pro ({plan}) thành công cho {actual_name} ({actual_email})', 'expiry_at': expiry}
+
+class CreateUserRequest(BaseModel):
+    name: str
+    email: str
+    password: str = '123456'
+    is_pro: bool = False
+    plan: str = 'month'
+    coins: int = 0
+
+@app.post('/admin/users')
+def admin_create_user(body: CreateUserRequest, x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    clean_email = body.email.strip().lower()
+    clean_name = body.name.strip()
+    if not clean_email or '@' not in clean_email:
+        raise HTTPException(400, 'Email không hợp lệ')
+    if not clean_name:
+        clean_name = clean_email.split('@')[0]
+    with db() as con:
+        existing = con.execute('SELECT id FROM users WHERE LOWER(email)=?', (clean_email,)).fetchone()
+        if existing:
+            raise HTTPException(400, 'Email này đã tồn tại trong hệ thống')
+        uid = 'u_' + secrets.token_hex(8)
+        salt = secrets.token_hex(16)
+        pw_hash = hashlib.sha256((salt + body.password.strip()).encode()).hexdigest()
+        con.execute(
+            'INSERT INTO users (id, email, name, salt, password_hash, created_at, coins, reward_balance, coin_note) VALUES (?,?,?,?,?,?,?,?,?)',
+            (uid, clean_email, clean_name, salt, pw_hash, now(), max(0, body.coins), 0, '')
+        )
+        if body.is_pro:
+            plan = body.plan if body.plan in PLANS else 'month'
+            amount = PLANS[plan][0]
+            oid = 'SE' + str(int(time.time() * 1000))
+            expiry = add_months(datetime.now(timezone.utc), PLANS[plan][1]).isoformat()
+            con.execute(
+                'INSERT INTO orders (id, user_email, plan, amount, status, created_at, decided_at, expiry_at, admin_note) VALUES (?,?,?,?,?,?,?,?,?)',
+                (oid, clean_email, plan, amount, 'paid', now(), now(), expiry, 'Cấp Pro khi tạo tài khoản bởi Admin')
+            )
+    return {'status': 'ok', 'message': f'Đã thêm tài khoản {clean_name} ({clean_email}) thành công'}
+
+class UpdateUserRequest(BaseModel):
+    name: str | None = None
+    coins: int | None = None
+    is_pro: bool | None = None
+    plan: str | None = None
+
+@app.put('/admin/users/{email}')
+def admin_update_user(email: str, body: UpdateUserRequest, x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    clean_email = email.strip().lower()
+    with db() as con:
+        user = con.execute('SELECT id, email, name, coins FROM users WHERE LOWER(email)=?', (clean_email,)).fetchone()
+        if not user:
+            raise HTTPException(404, 'Không tìm thấy người dùng này')
+        
+        if body.name is not None and body.name.strip():
+            con.execute('UPDATE users SET name=? WHERE LOWER(email)=?', (body.name.strip(), clean_email))
+        if body.coins is not None:
+            con.execute('UPDATE users SET coins=? WHERE LOWER(email)=?', (max(0, body.coins), clean_email))
+            
+        if body.is_pro is not None:
+            if body.is_pro:
+                plan = body.plan if (body.plan and body.plan in PLANS) else 'month'
+                amount = PLANS[plan][0]
+                oid = 'SE' + str(int(time.time() * 1000))
+                expiry = add_months(datetime.now(timezone.utc), PLANS[plan][1]).isoformat()
+                con.execute(
+                    'INSERT INTO orders (id, user_email, plan, amount, status, created_at, decided_at, expiry_at, admin_note) VALUES (?,?,?,?,?,?,?,?,?)',
+                    (oid, clean_email, plan, amount, 'paid', now(), now(), expiry, 'Cập nhật quyền Pro bởi Admin')
+                )
+            else:
+                con.execute(
+                    "UPDATE orders SET expiry_at=?, admin_note=? WHERE LOWER(user_email)=? AND status IN ('paid', 'approved')",
+                    (now(), 'Thu hồi quyền Pro bởi Admin', clean_email)
+                )
+    return {'status': 'ok', 'message': f'Đã cập nhật thông tin tài khoản {clean_email}'}
+
+@app.delete('/admin/users/{email}')
+def admin_delete_user(email: str, x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    clean_email = email.strip().lower()
+    if clean_email == 'admin@signeye.vn':
+        raise HTTPException(400, 'Không thể xóa tài khoản Quản trị viên hệ thống')
+    with db() as con:
+        user = con.execute('SELECT id FROM users WHERE LOWER(email)=?', (clean_email,)).fetchone()
+        if not user:
+            raise HTTPException(404, 'Không tìm thấy người dùng cần xóa')
+        con.execute('DELETE FROM users WHERE LOWER(email)=?', (clean_email,))
+        con.execute('DELETE FROM orders WHERE LOWER(user_email)=?', (clean_email,))
+    return {'status': 'ok', 'message': f'Đã xóa hoàn toàn tài khoản {clean_email}'}
 
 @app.post('/admin/payments/{order_id}/confirm')
 def admin_confirm_payment(order_id: str, x_admin_key: str | None = Header(None)):
