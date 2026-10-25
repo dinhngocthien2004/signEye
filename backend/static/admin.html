@@ -190,7 +190,10 @@
       <div id="ordersSection">
         <div class="search-bar">
           <input id="ordersSearch" class="search-input" type="text" placeholder="Tìm theo tên, email, mã CK..." oninput="renderOrders()">
-          <button class="btn btn-primary" onclick="load()" style="padding: 7px 14px; font-size: 12.5px;">Làm mới</button>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-blue" onclick="openCreateOrderModal()">+ Thêm Đơn Hàng</button>
+            <button class="btn btn-primary" onclick="load()" style="padding: 7px 14px; font-size: 12.5px;">Làm mới</button>
+          </div>
         </div>
         <div class="table-container">
           <table>
@@ -320,8 +323,13 @@
           <option value="pro">👑 Người dùng Pro VIP</option>
         </select>
       </div>
+      <div class="modal-form-group" id="eDaysGroup">
+        <label>⏳ Số ngày Pro còn lại (chỉnh số ngày):</label>
+        <input id="eDaysRemaining" type="number" min="0" placeholder="Số ngày Pro (ví dụ: 30)">
+        <small style="color:#64748B; font-size:11.5px;">Chỉnh trực tiếp số ngày Pro cho tài khoản (0 = hết hạn, 30 = 1 tháng, 365 = 1 năm...).</small>
+      </div>
       <div class="modal-form-group" id="ePlanGroup" style="display: none;">
-        <label>Thời hạn Pro (khi kích hoạt/gia hạn):</label>
+        <label>Gói Pro:</label>
         <select id="ePlan">
           <option value="month">Gói 1 tháng (39.000đ)</option>
           <option value="year">Gói 1 năm (399.000đ)</option>
@@ -330,6 +338,112 @@
       <div class="modal-actions">
         <button class="btn btn-outline-danger" onclick="closeModal('modalEditUser')">Hủy</button>
         <button class="btn btn-primary" onclick="submitEditUser()">Lưu thay đổi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Thêm Đơn Hàng -->
+  <div class="modal-overlay" id="modalCreateOrder">
+    <div class="modal-card">
+      <div class="modal-title">📦 Thêm Đơn Hàng Mới</div>
+      <div class="modal-form-group">
+        <label>Mã đơn hàng (để trống tự sinh dạng SE...):</label>
+        <input id="coId" type="text" placeholder="VD: SE04815737">
+      </div>
+      <div class="modal-form-group">
+        <label>Email người mua (*):</label>
+        <input id="coEmail" type="email" placeholder="VD: buyer@gmail.com">
+      </div>
+      <div class="modal-form-group">
+        <label>Họ và tên người mua:</label>
+        <input id="coName" type="text" placeholder="VD: Lê Trà Gia Lộc">
+      </div>
+      <div class="modal-form-group">
+        <label>Gói dịch vụ:</label>
+        <select id="coPlan" onchange="updateCreateOrderAmount()">
+          <option value="month">Gói 1 tháng (39.000đ)</option>
+          <option value="year">Gói 1 năm (399.000đ)</option>
+        </select>
+      </div>
+      <div class="modal-form-group">
+        <label>Số tiền (VNĐ):</label>
+        <input id="coAmount" type="number" value="39000">
+      </div>
+      <div class="modal-form-group">
+        <label>Mã chuyển khoản (Nội dung CK):</label>
+        <input id="coRef" type="text" placeholder="VD: SE04815737">
+      </div>
+      <div class="modal-form-group">
+        <label>Trạng thái đơn hàng:</label>
+        <select id="coStatus">
+          <option value="paid">✓ Đã duyệt Pro (Kích hoạt ngay)</option>
+          <option value="submitted">⏳ Chờ duyệt Pro</option>
+          <option value="pending">⏳ Chờ thanh toán</option>
+          <option value="rejected">✕ Từ chối</option>
+        </select>
+      </div>
+      <div class="modal-form-group">
+        <label>Số ngày Pro cấp (nếu duyệt):</label>
+        <input id="coDays" type="number" value="31">
+      </div>
+      <div class="modal-form-group">
+        <label>Ghi chú Admin:</label>
+        <input id="coNote" type="text" placeholder="VD: Chuyển khoản VietQR MBBank">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline-danger" onclick="closeModal('modalCreateOrder')">Hủy</button>
+        <button class="btn btn-primary" onclick="submitCreateOrder()">Tạo đơn hàng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Sửa Đơn Hàng -->
+  <div class="modal-overlay" id="modalEditOrder">
+    <div class="modal-card">
+      <div class="modal-title">✏️ Chỉnh Sửa Đơn Hàng</div>
+      <div class="modal-form-group">
+        <label>Mã đơn hàng (Không đổi):</label>
+        <input id="eoId" type="text" readonly style="background: #F1F5F9; color: #64748B;">
+      </div>
+      <div class="modal-form-group">
+        <label>Email người mua:</label>
+        <input id="eoEmail" type="email">
+      </div>
+      <div class="modal-form-group">
+        <label>Gói dịch vụ:</label>
+        <select id="eoPlan">
+          <option value="month">Gói 1 tháng (39.000đ)</option>
+          <option value="year">Gói 1 năm (399.000đ)</option>
+        </select>
+      </div>
+      <div class="modal-form-group">
+        <label>Số tiền (VNĐ):</label>
+        <input id="eoAmount" type="number">
+      </div>
+      <div class="modal-form-group">
+        <label>Mã chuyển khoản (Nội dung CK):</label>
+        <input id="eoRef" type="text">
+      </div>
+      <div class="modal-form-group">
+        <label>Trạng thái đơn hàng:</label>
+        <select id="eoStatus">
+          <option value="paid">✓ Đã duyệt Pro</option>
+          <option value="submitted">⏳ Chờ duyệt Pro</option>
+          <option value="pending">⏳ Chờ thanh toán</option>
+          <option value="rejected">✕ Từ chối</option>
+        </select>
+      </div>
+      <div class="modal-form-group">
+        <label>Số ngày Pro còn lại (khi là Pro):</label>
+        <input id="eoDays" type="number" min="0" placeholder="Số ngày (ví dụ: 30)">
+      </div>
+      <div class="modal-form-group">
+        <label>Ghi chú Admin:</label>
+        <input id="eoNote" type="text">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline-danger" onclick="closeModal('modalEditOrder')">Hủy</button>
+        <button class="btn btn-primary" onclick="submitEditOrder()">Lưu thay đổi</button>
       </div>
     </div>
   </div>
@@ -419,12 +533,19 @@
       $('eName').value = u.name || '';
       $('eCoins').value = u.coins || 0;
       $('eRole').value = u.is_pro ? 'pro' : 'free';
+      $('eDaysRemaining').value = (u.days_remaining != null) ? u.days_remaining : (u.is_pro ? 30 : 0);
       toggleEditPlan();
       $('modalEditUser').classList.add('active');
     }
 
     function toggleEditPlan() {
-      $('ePlanGroup').style.display = $('eRole').value === 'pro' ? 'block' : 'none';
+      const isPro = $('eRole').value === 'pro';
+      $('ePlanGroup').style.display = isPro ? 'block' : 'none';
+      if (!isPro) {
+        $('eDaysRemaining').value = 0;
+      } else if (parseInt($('eDaysRemaining').value, 10) <= 0) {
+        $('eDaysRemaining').value = 30;
+      }
     }
 
     async function submitEditUser() {
@@ -433,12 +554,19 @@
       const coins = parseInt($('eCoins').value.trim(), 10) || 0;
       const isPro = $('eRole').value === 'pro';
       const plan = $('ePlan').value;
+      const daysRemaining = parseInt($('eDaysRemaining').value.trim(), 10);
 
       try {
         let r = await fetch(`/admin/users/${encodeURIComponent(email)}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', 'x-admin-key': key },
-          body: JSON.stringify({ name, coins, is_pro: isPro, plan })
+          body: JSON.stringify({ 
+            name, 
+            coins, 
+            is_pro: isPro, 
+            plan,
+            days_remaining: isNaN(daysRemaining) ? null : daysRemaining
+          })
         });
         if (r.ok) {
           alert(`Đã cập nhật thông tin người dùng ${email}!`);
@@ -447,6 +575,135 @@
         } else {
           let txt = await r.text();
           alert('Lỗi cập nhật: ' + txt);
+        }
+      } catch (e) {
+        alert('Lỗi kết nối: ' + e.message);
+      }
+    }
+
+    function openCreateOrderModal() {
+      $('coId').value = '';
+      $('coEmail').value = '';
+      $('coName').value = '';
+      $('coPlan').value = 'month';
+      $('coAmount').value = '39000';
+      $('coRef').value = '';
+      $('coStatus').value = 'paid';
+      $('coDays').value = '31';
+      $('coNote').value = 'Tạo thủ công bởi Admin';
+      $('modalCreateOrder').classList.add('active');
+    }
+
+    function updateCreateOrderAmount() {
+      const p = $('coPlan').value;
+      if (p === 'year') {
+        $('coAmount').value = '399000';
+        $('coDays').value = '365';
+      } else {
+        $('coAmount').value = '39000';
+        $('coDays').value = '31';
+      }
+    }
+
+    async function submitCreateOrder() {
+      const id = $('coId').value.trim();
+      const email = $('coEmail').value.trim().toLowerCase();
+      const name = $('coName').value.trim();
+      const plan = $('coPlan').value;
+      const amount = parseInt($('coAmount').value.trim(), 10) || (plan === 'year' ? 399000 : 39000);
+      const transfer_ref = $('coRef').value.trim() || id;
+      const status = $('coStatus').value;
+      const days = parseInt($('coDays').value.trim(), 10) || (plan === 'year' ? 365 : 31);
+      const admin_note = $('coNote').value.trim();
+
+      if (!email || !email.includes('@')) {
+        alert('Vui lòng nhập email hợp lệ!');
+        return;
+      }
+
+      try {
+        let r = await fetch('/admin/payments/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-key': key },
+          body: JSON.stringify({ id, email, name, plan, amount, transfer_ref, status, days, admin_note })
+        });
+        if (r.ok) {
+          alert('Đã tạo đơn hàng thành công!');
+          closeModal('modalCreateOrder');
+          load();
+        } else {
+          let txt = await r.text();
+          alert('Lỗi tạo đơn hàng: ' + txt);
+        }
+      } catch (e) {
+        alert('Lỗi kết nối: ' + e.message);
+      }
+    }
+
+    function openEditOrderModal(orderId) {
+      const o = allOrders.find(item => String(item.id) === String(orderId));
+      if (!o) return;
+      $('eoId').value = o.id;
+      $('eoEmail').value = o.email || '';
+      $('eoPlan').value = o.plan === 'year' ? 'year' : 'month';
+      $('eoAmount').value = o.amount || 0;
+      $('eoRef').value = o.transfer_ref || o.id;
+      $('eoStatus').value = o.status || 'paid';
+      $('eoDays').value = o.days_remaining != null ? o.days_remaining : 30;
+      $('eoNote').value = o.admin_note || '';
+      $('modalEditOrder').classList.add('active');
+    }
+
+    async function submitEditOrder() {
+      const id = $('eoId').value;
+      const email = $('eoEmail').value.trim().toLowerCase();
+      const plan = $('eoPlan').value;
+      const amount = parseInt($('eoAmount').value.trim(), 10) || 0;
+      const transfer_ref = $('eoRef').value.trim();
+      const status = $('eoStatus').value;
+      const daysRemaining = parseInt($('eoDays').value.trim(), 10);
+      const admin_note = $('eoNote').value.trim();
+
+      try {
+        let r = await fetch(`/admin/payments/orders/${encodeURIComponent(id)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', 'x-admin-key': key },
+          body: JSON.stringify({ 
+            user_email: email, 
+            plan, 
+            amount, 
+            transfer_ref, 
+            status, 
+            days_remaining: isNaN(daysRemaining) ? null : daysRemaining,
+            admin_note 
+          })
+        });
+        if (r.ok) {
+          alert(`Đã cập nhật đơn hàng #${id}!`);
+          closeModal('modalEditOrder');
+          load();
+        } else {
+          let txt = await r.text();
+          alert('Lỗi cập nhật: ' + txt);
+        }
+      } catch (e) {
+        alert('Lỗi kết nối: ' + e.message);
+      }
+    }
+
+    async function deleteOrderDirectly(orderId) {
+      if (!confirm(`Bạn có chắc chắn muốn xóa vĩnh viễn đơn hàng #${orderId}?\nThao tác này không thể hoàn tác.`)) return;
+      try {
+        let r = await fetch(`/admin/payments/orders/${encodeURIComponent(orderId)}`, {
+          method: 'DELETE',
+          headers: { 'x-admin-key': key }
+        });
+        if (r.ok) {
+          alert(`Đã xóa đơn hàng #${orderId}!`);
+          load();
+        } else {
+          let txt = await r.text();
+          alert('Lỗi xóa đơn hàng: ' + txt);
         }
       } catch (e) {
         alert('Lỗi kết nối: ' + e.message);
@@ -545,13 +802,13 @@
         }
 
         const s = data.summary || {};
-        const totalUsers = userSummary.total_users || s.total_users || allUsers.length;
-        const proUsers = userSummary.pro_users || s.pro_users || allUsers.filter(u => u.is_pro).length;
-        const freeUsers = userSummary.free_users || s.free_users || allUsers.filter(u => !u.is_pro && !u.is_expired).length;
-        const expiredUsers = userSummary.expired_pro_users || allUsers.filter(u => u.is_expired).length;
+        const totalUsers = allUsers.length;
+        const proUsers = allUsers.filter(u => u.is_pro).length;
+        const freeUsers = allUsers.filter(u => !u.is_pro && !u.is_expired).length;
+        const expiredUsers = allUsers.filter(u => u.is_expired).length;
         const pendingOrders = allOrders.filter(o => o.status === 'pending' || o.status === 'submitted').length;
-        const totalCoins = userSummary.total_coins_system || allUsers.reduce((sum, u) => sum + (Number(u.coins) || 0), 0);
-        const coinUsersCount = userSummary.coin_redeemed_users || allUsers.filter(u => u.has_coin_pro).length;
+        const totalCoins = allUsers.reduce((sum, u) => sum + (Number(u.coins) || 0), 0);
+        const coinUsersCount = allUsers.filter(u => u.has_coin_pro).length;
 
         $('ordersCount').textContent = allOrders.length;
         $('usersCount').textContent = allUsers.length;
@@ -566,7 +823,7 @@
           <div class="card"><div class="card-label">👑 Người dùng Pro</div><div class="card-val" style="color:#0D8F5C;">${proUsers}</div></div>
           <div class="card"><div class="card-label">🌱 Người dùng thường</div><div class="card-val" style="color:#475569;">${freeUsers}</div></div>
           <div class="card"><div class="card-label">⏳ Chờ duyệt Pro</div><div class="card-val" style="color:#D97706;">${pendingOrders}</div></div>
-          <div class="card"><div class="card-label">✓ Đơn đã duyệt</div><div class="card-val" style="color:#059669;">${s.purchases || allOrders.filter(o => o.status === 'paid').length}</div></div>
+          <div class="card"><div class="card-label">✓ Đơn đã duyệt</div><div class="card-val" style="color:#059669;">${allOrders.filter(o => o.status === 'paid').length}</div></div>
           <div class="card"><div class="card-label">💰 Tổng doanh thu</div><div class="card-val" style="color:#4F46E5;">${money(s.revenue)}</div></div>
           <div class="card"><div class="card-label">🪙 Xu tích lũy toàn hệ thống</div><div class="card-val" style="color:#D97706;">${new Intl.NumberFormat('vi-VN').format(totalCoins)} xu</div></div>
           <div class="card"><div class="card-label">🪙 Đã đổi Pro bằng xu</div><div class="card-val" style="color:#0D8F5C;">${coinUsersCount} tài khoản</div></div>
@@ -612,16 +869,19 @@
                          o.status === 'submitted' ? 'Chờ Admin duyệt' :
                          o.status === 'pending' ? 'Chờ thanh toán' : 'Từ chối');
 
-        let actions = '';
+        let actions = `
+          <button class="btn btn-outline-primary" style="padding: 5px 8px; font-size: 11px;" onclick="openEditOrderModal('${o.id}')">Sửa</button>
+          <button class="btn btn-outline-danger" style="padding: 5px 8px; font-size: 11px; margin-left: 2px;" onclick="deleteOrderDirectly('${o.id}')">Xóa</button>
+        `;
         if (o.status === 'pending' || o.status === 'submitted') {
-          actions = `
-            <button class="btn btn-success" style="padding: 6px 12px; font-size: 12px;" onclick="approveOrder('${o.id}', '${o.name || o.email}')">Duyệt Pro</button>
-            <button class="btn btn-danger" style="padding: 6px 12px; font-size: 12px; margin-left: 4px;" onclick="rejectOrder('${o.id}')">Từ chối</button>
+          actions += `
+            <button class="btn btn-success" style="padding: 5px 8px; font-size: 11px; margin-left: 2px;" onclick="approveOrder('${o.id}', '${o.name || o.email}')">Duyệt</button>
+            <button class="btn btn-danger" style="padding: 5px 8px; font-size: 11px; margin-left: 2px;" onclick="rejectOrder('${o.id}')">Từ chối</button>
           `;
         } else if (o.status === 'paid') {
-          actions = `<span style="color:#059669; font-weight:700; font-size:12px;">✓ Đã duyệt Pro</span>`;
+          actions += `<span style="color:#059669; font-weight:700; font-size:11px; margin-left: 3px;">✓ Pro</span>`;
         } else {
-          actions = `<span style="color:#DC2626; font-size:12px;">Đã từ chối</span>`;
+          actions += `<span style="color:#DC2626; font-size:11px; margin-left: 3px;">✕ Từ chối</span>`;
         }
 
         let refHtml = `<code style="background:#EDF2F7; padding:3px 8px; border-radius:6px; font-weight:800; color:#1E293B;">${o.transfer_ref || o.id}</code>`;

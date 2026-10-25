@@ -127,9 +127,15 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
 
         if (mounted) {
           final usersListFinal = loadedUsers.isNotEmpty ? loadedUsers : _deriveUsersFromOrders(ordersList);
+          final proCount = usersListFinal.where((u) => u['is_pro'] == true).length;
+          final freeCount = usersListFinal.where((u) => u['is_pro'] != true && u['is_expired'] != true).length;
+          final updatedSummary = Map<String, dynamic>.from(summaryData);
+          updatedSummary['total_users'] = usersListFinal.length;
+          updatedSummary['pro_users'] = proCount;
+          updatedSummary['free_users'] = freeCount;
           setState(() {
             _isVercelMode = false;
-            _summary = summaryData;
+            _summary = updatedSummary;
             _orders = ordersList;
             _users = usersListFinal;
           });

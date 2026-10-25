@@ -477,9 +477,10 @@ def admin_payments_list(x_admin_key: str | None = Header(None)):
                    MAX(CASE WHEN o.status IN ('paid', 'approved') THEN o.expiry_at ELSE NULL END) AS pro_expiry
             FROM users u
             LEFT JOIN orders o ON LOWER(o.user_email) = LOWER(u.email)
+            WHERE LOWER(u.email) NOT IN ('admin@signeye.vn', 'admin') AND LOWER(u.email) NOT LIKE 'admin@%'
             GROUP BY u.id, u.email
         ''').fetchall()
-    paid_rows = [r for r in rows if r['status'] in ('paid', 'approved')]
+    paid_rows = [r for r in rows if r['status'] in ('paid', 'approved') and (r['user_email'] or '').lower() not in ('admin@signeye.vn', 'admin') and not (r['user_email'] or '').lower().startswith('admin@')]
     total_users = len(user_rows)
     pro_users = len([u for u in user_rows if u['pro_expiry'] and u['pro_expiry'] > now_str])
     free_users = total_users - pro_users
@@ -793,6 +794,7 @@ class UpdateUserRequest(BaseModel):
     coins: int | None = None
     is_pro: bool | None = None
     plan: str | None = None
+    days_remaining: int | None = None
 
 @app.put('/admin/users/{email}')
 def admin_update_user(email: str, body: UpdateUserRequest, x_admin_key: str | None = Header(None)):
@@ -808,7 +810,25 @@ def admin_update_user(email: str, body: UpdateUserRequest, x_admin_key: str | No
         if body.coins is not None:
             con.execute('UPDATE users SET coins=? WHERE LOWER(email)=?', (max(0, body.coins), clean_email))
             
-        if body.is_pro is not None:
+        if body.days_remaining is not None:
+            days = max(0, body.days_remaining)
+            if days == 0:
+                con.execute(
+                    "UPDATE orders SET expiry_at=?, admin_note=? WHERE LOWER(user_email)=? AND status IN ('paid', 'approved')",
+                    (now(), 'Hết hạn Pro bởi Admin', clean_email)
+                )
+            else:
+                new_exp = (datetime.now(timezone.utc) + timedelta(days=days)).isoformat()
+                latest = con.execute("SELECT id FROM orders WHERE LOWER(user_email)=? AND status IN ('paid', 'approved') ORDER BY expiry_at DESC LIMIT 1", (clean_email,)).fetchone()
+                if latest:
+                    con.execute("UPDATE orders SET expiry_at=?, admin_note=? WHERE id=?", (new_exp, f'Chỉnh còn {days} ngày bởi Admin', latest['id']))
+                else:
+                    oid = 'SE' + str(int(time.time() * 1000))
+                    con.execute(
+                        'INSERT INTO orders (id, user_email, plan, amount, status, created_at, decided_at, expiry_at, admin_note) VALUES (?,?,?,?,?,?,?,?,?)',
+                        (oid, clean_email, 'month', 39000, 'paid', now(), now(), new_exp, f'Cấp {days} ngày Pro bởi Admin')
+                    )
+        elif body.is_pro is not None:
             if body.is_pro:
                 plan = body.plan if (body.plan and body.plan in PLANS) else 'month'
                 amount = PLANS[plan][0]
@@ -863,5 +883,107 @@ def admin_reject_payment(order_id: str, x_admin_key: str | None = Header(None)):
             raise HTTPException(404, 'Order not found')
         con.execute("UPDATE orders SET status='rejected', decided_at=? WHERE id=?", (now(), order_id))
     return {'status': 'rejected'}
+
+class AdminCreateOrderRequest(BaseModel):
+    id: str | None = None
+    email: str
+    name: str | None = None
+    plan: str = 'month'
+    amount: int | None = None
+    status: str = 'paid'
+    transfer_ref: str | None = None
+    admin_note: str | None = None
+    days: int | None = None
+
+@app.post('/admin/payments/orders')
+def admin_create_order(body: AdminCreateOrderRequest, x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    clean_email = body.email.strip().lower()
+    if not clean_email or '@' not in clean_email:
+        raise HTTPException(400, 'Email không hợp lệ')
+    
+    plan = body.plan if body.plan in PLANS else 'month'
+    amount = body.amount if body.amount is not None else PLANS.get(plan, (39000, 1))[0]
+    status = body.status if body.status in ('paid', 'pending', 'submitted', 'rejected') else 'paid'
+    oid = body.id.strip() if (body.id and body.id.strip()) else ('SE' + str(int(time.time() * 1000)))
+    transfer_ref = body.transfer_ref.strip() if (body.transfer_ref and body.transfer_ref.strip()) else oid
+    note = body.admin_note or ('Tạo thủ công bởi Admin' if status == 'paid' else '')
+    
+    expiry = None
+    if status == 'paid':
+        days = body.days if (body.days and body.days > 0) else (365 if plan == 'year' else 31)
+        expiry = (datetime.now(timezone.utc) + timedelta(days=days)).isoformat()
+    
+    with db() as con:
+        u_row = con.execute('SELECT id FROM users WHERE LOWER(email)=?', (clean_email,)).fetchone()
+        if not u_row:
+            u_name = body.name.strip() if (body.name and body.name.strip()) else clean_email.split('@')[0]
+            uid = 'u_' + secrets.token_hex(8)
+            salt = secrets.token_hex(16)
+            pw_hash = hashlib.sha256((salt + 'SignEye@2025').encode()).hexdigest()
+            con.execute(
+                'INSERT INTO users (id, email, name, salt, password_hash, created_at, coins, reward_balance, coin_note) VALUES (?,?,?,?,?,?,?,?,?)',
+                (uid, clean_email, u_name, salt, pw_hash, now(), 0, 0, '')
+            )
+        
+        con.execute('''
+            INSERT INTO orders (id, user_email, plan, amount, status, created_at, decided_at, expiry_at, admin_note, transfer_ref)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (oid, clean_email, plan, amount, status, now(), (now() if status in ('paid', 'rejected') else None), expiry, note, transfer_ref))
+        
+    return {'status': 'ok', 'message': f'Đã thêm đơn hàng #{oid} thành công', 'order_id': oid}
+
+class AdminUpdateOrderRequest(BaseModel):
+    user_email: str | None = None
+    plan: str | None = None
+    amount: int | None = None
+    status: str | None = None
+    transfer_ref: str | None = None
+    admin_note: str | None = None
+    days_remaining: int | None = None
+
+@app.put('/admin/payments/orders/{order_id}')
+def admin_update_order(order_id: str, body: AdminUpdateOrderRequest, x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    with db() as con:
+        row = con.execute('SELECT * FROM orders WHERE id=?', (order_id,)).fetchone()
+        if not row:
+            raise HTTPException(404, 'Không tìm thấy đơn hàng này')
+        
+        plan = body.plan if (body.plan and body.plan in PLANS) else row['plan']
+        amount = body.amount if body.amount is not None else row['amount']
+        status = body.status if (body.status and body.status in ('paid', 'pending', 'submitted', 'rejected')) else row['status']
+        email = body.user_email.strip().lower() if (body.user_email and body.user_email.strip()) else row['user_email']
+        transfer_ref = body.transfer_ref.strip() if body.transfer_ref is not None else (row['transfer_ref'] if 'transfer_ref' in row.keys() else row['id'])
+        admin_note = body.admin_note if body.admin_note is not None else (row['admin_note'] if 'admin_note' in row.keys() else '')
+        
+        expiry = row['expiry_at']
+        if status == 'paid':
+            if body.days_remaining is not None and body.days_remaining > 0:
+                expiry = (datetime.now(timezone.utc) + timedelta(days=body.days_remaining)).isoformat()
+            elif not expiry or expiry <= now():
+                days = 365 if plan == 'year' else 31
+                expiry = (datetime.now(timezone.utc) + timedelta(days=days)).isoformat()
+        elif status in ('pending', 'submitted', 'rejected'):
+            expiry = None
+            
+        con.execute('''
+            UPDATE orders 
+            SET user_email=?, plan=?, amount=?, status=?, transfer_ref=?, admin_note=?, expiry_at=?, decided_at=?
+            WHERE id=?
+        ''', (email, plan, amount, status, transfer_ref, admin_note, expiry, (now() if status in ('paid', 'rejected') else None), order_id))
+        
+    return {'status': 'ok', 'message': f'Đã cập nhật đơn hàng #{order_id}'}
+
+@app.delete('/admin/payments/orders/{order_id}')
+def admin_delete_order(order_id: str, x_admin_key: str | None = Header(None)):
+    admin(x_admin_key)
+    with db() as con:
+        row = con.execute('SELECT * FROM orders WHERE id=?', (order_id,)).fetchone()
+        if not row:
+            raise HTTPException(404, 'Không tìm thấy đơn hàng cần xóa')
+        con.execute('DELETE FROM orders WHERE id=?', (order_id,))
+        con.execute('DELETE FROM admin_audit WHERE order_id=?', (order_id,))
+    return {'status': 'ok', 'message': f'Đã xóa đơn hàng #{order_id} thành công'}
 
 
