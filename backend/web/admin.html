@@ -651,6 +651,8 @@
     function renderUsers() {
       const q = ($('usersSearch') ? $('usersSearch').value.trim().toLowerCase() : '');
       const filtered = allUsers.filter(u => {
+        const emailLower = (u.email || '').toLowerCase();
+        if (emailLower === 'admin' || emailLower === 'admin@signeye.vn' || emailLower.startsWith('admin@')) return false;
         const isPro = u.is_pro === true;
         const isExpired = u.is_expired === true;
         const hasCoinPro = u.has_coin_pro === true;

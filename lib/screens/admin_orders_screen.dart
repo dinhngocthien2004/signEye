@@ -1033,6 +1033,8 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
     }).toList();
 
     final filteredUsers = _users.where((u) {
+      final emailClean = (u['email'] ?? '').toString().toLowerCase();
+      if (emailClean == 'admin@signeye.vn' || emailClean == 'admin' || emailClean.startsWith('admin@')) return false;
       final isPro = u['is_pro'] == true;
       final isExpired = u['is_expired'] == true;
       final note = (u['coin_redeem_note'] ?? '').toString();

@@ -12,6 +12,13 @@ import '../theme.dart';
 import 'admin_orders_screen.dart';
 import 'game_screen.dart';
 import 'puzzle_game_screen.dart';
+import 'scan_screen.dart';
+import 'search_screen.dart';
+import 'compare_screen.dart';
+import 'exam_home_screen.dart';
+import 'learning_screen.dart';
+import 'chatbot_screen.dart';
+import 'history_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -219,9 +226,10 @@ class AccountScreen extends StatelessWidget {
                   children: [
                     _quickStatItem(
                       label: 'Biển báo',
-                      value: '119 biển',
+                      value: '386 biển',
                       icon: Icons.traffic_rounded,
                       color: const Color(0xFF0EA5E9),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SearchScreen())),
                     ),
                     Container(height: 28, width: 1, color: AppColors.line),
                     _quickStatItem(
@@ -236,6 +244,123 @@ class AccountScreen extends StatelessWidget {
                       value: state.isPro ? 'Gói Pro' : 'Miễn phí',
                       icon: Icons.verified_rounded,
                       color: state.isPro ? const Color(0xFF10B981) : AppColors.text2,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 14),
+
+          // ─── Thanh công cụ tính năng trực quan (User Feature Actions Toolbar) ───
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF1E293B) : Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Row(
+                      children: [
+                        Icon(Icons.dashboard_customize_rounded, size: 18, color: AppColors.primary),
+                        SizedBox(width: 8),
+                        Text(
+                          'Tiện ích & Tính năng nhanh',
+                          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 14, letterSpacing: -0.2),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2.5),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Text(
+                        '8 tính năng',
+                        style: TextStyle(fontSize: 11, color: AppColors.primary, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                GridView.count(
+                  crossAxisCount: 4,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 0.92,
+                  children: [
+                    _featureActionItem(
+                      icon: Icons.camera_alt_rounded,
+                      color: const Color(0xFF0D9488),
+                      label: 'Quét AI',
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ScanScreen())),
+                      isDark: isDark,
+                    ),
+                    _featureActionItem(
+                      icon: Icons.search_rounded,
+                      color: const Color(0xFF2563EB),
+                      label: 'Tra cứu',
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SearchScreen())),
+                      isDark: isDark,
+                    ),
+                    _featureActionItem(
+                      icon: Icons.compare_arrows_rounded,
+                      color: const Color(0xFF7C3AED),
+                      label: 'So sánh',
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CompareScreen())),
+                      isDark: isDark,
+                    ),
+                    _featureActionItem(
+                      icon: Icons.school_rounded,
+                      color: const Color(0xFFF59E0B),
+                      label: 'Thi GPLX',
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ExamHomeScreen())),
+                      isDark: isDark,
+                    ),
+                    _featureActionItem(
+                      icon: Icons.auto_stories_rounded,
+                      color: const Color(0xFF10B981),
+                      label: 'Học luật',
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LearningScreen())),
+                      isDark: isDark,
+                    ),
+                    _featureActionItem(
+                      icon: Icons.smart_toy_rounded,
+                      color: const Color(0xFF6366F1),
+                      label: 'Trợ lý AI',
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AiChatbotScreen())),
+                      isDark: isDark,
+                    ),
+                    _featureActionItem(
+                      icon: Icons.history_rounded,
+                      color: const Color(0xFFEC4899),
+                      label: 'Lịch sử',
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const HistoryScreen())),
+                      isDark: isDark,
+                    ),
+                    _featureActionItem(
+                      icon: Icons.extension_rounded,
+                      color: const Color(0xFFE11D48),
+                      label: 'Đố vui',
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const PuzzleGameScreen())),
+                      isDark: isDark,
                     ),
                   ],
                 ),
@@ -568,7 +693,7 @@ class AccountScreen extends StatelessWidget {
           _settingsTile(
             icon: Icons.menu_book_rounded,
             title: 'Quy chuẩn QCVN 41:2019/BGTVT',
-            subtitle: 'Tra cứu 119 biển báo và mức phạt Nghị định 168/2024',
+            subtitle: 'Tra cứu 386 biển báo và mức phạt Nghị định 168/2024',
             onTap: () => _showRegulationDialog(context),
           ),
 
@@ -641,22 +766,77 @@ class AccountScreen extends StatelessWidget {
     required String value,
     required IconData icon,
     required Color color,
+    VoidCallback? onTap,
   }) {
+    final content = Column(
+      children: [
+        Icon(icon, size: 20, color: color),
+        const SizedBox(height: 4),
+        Text(
+          value,
+          style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 13.5),
+        ),
+        const SizedBox(height: 1),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 11, color: AppColors.muted, fontWeight: FontWeight.w600),
+        ),
+      ],
+    );
+
     return Expanded(
-      child: Column(
-        children: [
-          Icon(icon, size: 20, color: color),
-          const SizedBox(height: 4),
-          Text(
-            value,
-            style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 13.5),
-          ),
-          const SizedBox(height: 1),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 11, color: AppColors.muted, fontWeight: FontWeight.w600),
-          ),
-        ],
+      child: onTap != null
+          ? InkWell(
+              onTap: onTap,
+              borderRadius: BorderRadius.circular(10),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2),
+                child: content,
+              ),
+            )
+          : content,
+    );
+  }
+
+  Widget _featureActionItem({
+    required IconData icon,
+    required Color color,
+    required String label,
+    required VoidCallback onTap,
+    required bool isDark,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(14),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: isDark ? 0.15 : 0.08),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: color.withValues(alpha: isDark ? 0.3 : 0.15)),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(7),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.15),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, color: color, size: 20),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 11.5,
+                color: isDark ? Colors.white : const Color(0xFF1E293B),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

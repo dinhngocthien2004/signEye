@@ -532,6 +532,7 @@ def admin_users_list(x_admin_key: str | None = Header(None)):
                    ) AS latest_plan
             FROM users u
             LEFT JOIN orders o ON LOWER(o.user_email) = LOWER(u.email)
+            WHERE LOWER(u.email) NOT IN ('admin@signeye.vn', 'admin') AND LOWER(u.email) NOT LIKE 'admin@%'
             GROUP BY u.id, u.email, u.name, u.created_at, u.coins, u.reward_balance, u.coin_note
             ORDER BY u.created_at DESC
         ''').fetchall()

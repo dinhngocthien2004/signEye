@@ -46,8 +46,8 @@ class _AuthScreenState extends State<AuthScreen> {
       if (msg.startsWith('Bad state: ')) {
         msg = msg.substring(11);
       }
-      if (msg.toLowerCase().contains('invalid credentials')) {
-        msg = 'Sai tài khoản hoặc mật khẩu! Mặc định Admin: admin@signeye.vn / Admin@123456';
+      if (msg.toLowerCase().contains('invalid credentials') || msg.toLowerCase().contains('sai email')) {
+        msg = 'Tài khoản chưa được đăng ký hoặc sai mật khẩu! Nếu chưa có tài khoản, vui lòng chọn tab "Đăng ký" ở trên.';
       }
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(

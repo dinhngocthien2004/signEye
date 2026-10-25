@@ -13,7 +13,7 @@ def register(con,email,name,password):
     email=email.strip().lower()
     if len(password)<4 or len(password)>128: raise HTTPException(422,'Password must be 4-128 characters')
     salt=secrets.token_hex(16); uid=secrets.token_hex(16)
-    try: con.execute('INSERT INTO users VALUES (?,?,?,?,?,?)',(uid,email,name.strip(),salt,digest(password,salt),datetime.now(timezone.utc).isoformat()))
+    try: con.execute('INSERT INTO users (id, email, name, salt, password_hash, created_at) VALUES (?,?,?,?,?,?)',(uid,email,name.strip(),salt,digest(password,salt),datetime.now(timezone.utc).isoformat()))
     except sqlite3.IntegrityError: raise HTTPException(409,'Email already registered')
     return uid
 
@@ -25,7 +25,7 @@ def authenticate(con,email,password):
             if not row:
                 salt = secrets.token_hex(16)
                 uid = 'u_admin'
-                con.execute('INSERT INTO users VALUES (?,?,?,?,?,?)', (uid, 'admin@signeye.vn', 'Quản trị viên', salt, digest('Admin@123456', salt), datetime.now(timezone.utc).isoformat()))
+                con.execute('INSERT INTO users (id, email, name, salt, password_hash, created_at) VALUES (?,?,?,?,?,?)', (uid, 'admin@signeye.vn', 'Quản trị viên', salt, digest('Admin@123456', salt), datetime.now(timezone.utc).isoformat()))
                 return uid
             return row['id']
     row = con.execute('SELECT * FROM users WHERE email=?', (clean_email,)).fetchone()
