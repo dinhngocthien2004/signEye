@@ -818,13 +818,15 @@
         $('userFilterCoinCount').textContent = coinUsersCount;
         $('userFilterExpiredCount').textContent = expiredUsers;
 
+        const totalRevenue = allOrders.filter(o => o.status === 'paid').reduce((sum, o) => sum + (Number(o.amount) || 0), 0);
+
         $('cards').innerHTML = `
           <div class="card"><div class="card-label">👥 Tổng người dùng</div><div class="card-val" style="color:#2563EB;">${totalUsers}</div></div>
           <div class="card"><div class="card-label">👑 Người dùng Pro</div><div class="card-val" style="color:#0D8F5C;">${proUsers}</div></div>
           <div class="card"><div class="card-label">🌱 Người dùng thường</div><div class="card-val" style="color:#475569;">${freeUsers}</div></div>
           <div class="card"><div class="card-label">⏳ Chờ duyệt Pro</div><div class="card-val" style="color:#D97706;">${pendingOrders}</div></div>
           <div class="card"><div class="card-label">✓ Đơn đã duyệt</div><div class="card-val" style="color:#059669;">${allOrders.filter(o => o.status === 'paid').length}</div></div>
-          <div class="card"><div class="card-label">💰 Tổng doanh thu</div><div class="card-val" style="color:#4F46E5;">${money(s.revenue)}</div></div>
+          <div class="card"><div class="card-label">💰 Tổng doanh thu</div><div class="card-val" style="color:#4F46E5;">${money(s.revenue != null && s.revenue > 0 ? s.revenue : totalRevenue)}</div></div>
           <div class="card"><div class="card-label">🪙 Xu tích lũy toàn hệ thống</div><div class="card-val" style="color:#D97706;">${new Intl.NumberFormat('vi-VN').format(totalCoins)} xu</div></div>
           <div class="card"><div class="card-label">🪙 Đã đổi Pro bằng xu</div><div class="card-val" style="color:#0D8F5C;">${coinUsersCount} tài khoản</div></div>
         `;
