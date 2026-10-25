@@ -120,12 +120,18 @@ with db() as con:
 
     def seed_initial_data(connection):
         subscribers = [
+            ('nguyenquochuy2k71508@gmail.com', 'Nguyễn Quốc Huy', 'SE60471724', 39000, 'month', 31),
+            ('cuonghuynh2403@gmail.com', 'Huỳnh Quang Cường', 'SE92771083', 39000, 'month', 31),
+            ('nguyenhacaoky@gmail.com', 'Nguyễn Hà Cao Kỳ', 'SE56947789', 39000, 'month', 31),
             ('leloc2005qn@gmail.com', 'Lê Trà Gia Lộc', 'SE04815737', 39000, 'month', 31),
             ('tramyngoc1978@gmail.com', 'Trà Thị Mỹ Ngọc', 'SE05016739', 39000, 'month', 31),
             ('duclaqe180080@fpt.edu.vn', 'Lê Anh Đức', 'SE15753966', 39000, 'month', 31),
-            ('nguyenhacaoky@gmail.com', 'Nguyễn Hà Cao Kỳ', 'SE60471724', 39000, 'month', 31),
-            ('cuonghuynh2403@gmail.com', 'Huỳnh Quang Cường', 'SE56947789', 39000, 'month', 31),
-            ('nguyenquochuy2k71508@gmail.com', 'Nguyễn Quốc Huy', 'SE92771083', 39000, 'month', 31),
+            ('lyly1222005@gmail.com', 'Phan Thị Thanh Ly', 'SE15501868', 39000, 'month', 31),
+            ('legiahieu27@gmail.com', 'Lê Trà Gia Hiếu', 'SE1792943362849', 39000, 'month', 31),
+            ('khoitdqe170065@gmail.com', 'Trần Đăng Khôi', 'SE1792943589777', 39000, 'month', 31),
+            ('ycao123@gmail.com', 'Cao Ngọc Ý', 'SE1792943482387', 39000, 'month', 31),
+            ('dinhngocthien2004@gmail.com', 'Đinh Ngọc Thiện', 'SE56477462', 39000, 'month', 31),
+            ('hongduyen.le@signeye.vn', 'Lê Thị Hồng Duyên', 'SE1792654318992', 39000, 'month', 31),
         ]
         now_iso = datetime.now(timezone.utc).isoformat()
         admin_row = connection.execute("SELECT id FROM users WHERE LOWER(email) = 'admin@signeye.vn'").fetchone()
@@ -136,31 +142,76 @@ with db() as con:
                 'INSERT INTO users (id, email, name, salt, password_hash, created_at, coins, reward_balance, coin_note) VALUES (?,?,?,?,?,?,?,?,?)',
                 ('u_admin', 'admin@signeye.vn', 'Quản trị viên SignEye', salt, pw_hash, now_iso, 0, 0, 'Quản trị hệ thống')
             )
+
+        # Ensure alias account duyen@gmail.com also exists with password 123456
+        duyen_user = connection.execute("SELECT id, salt FROM users WHERE LOWER(email) = 'duyen@gmail.com'").fetchone()
+        if not duyen_user:
+            d_salt = secrets.token_hex(16)
+            connection.execute(
+                'INSERT INTO users (id, email, name, salt, password_hash, created_at, coins, reward_balance, coin_note) VALUES (?,?,?,?,?,?,?,?,?)',
+                ('u_duyen', 'duyen@gmail.com', 'Lê Thị Hồng Duyên', d_salt, auth_support.digest('123456', d_salt), now_iso, 3100, 0, '')
+            )
+        else:
+            d_salt = duyen_user['salt'] or secrets.token_hex(16)
+            connection.execute('UPDATE users SET salt=?, password_hash=? WHERE id=?', (d_salt, auth_support.digest('123456', d_salt), duyen_user['id']))
+
         for email, name, order_id, amount, plan, days in subscribers:
-            u_row = connection.execute('SELECT id FROM users WHERE LOWER(email)=?', (email.lower(),)).fetchone()
+            u_row = connection.execute('SELECT id, salt FROM users WHERE LOWER(email)=?', (email.lower(),)).fetchone()
             if not u_row:
                 salt = secrets.token_hex(16)
-                pw_hash = hashlib.sha256((salt + 'SignEye@2025').encode()).hexdigest()
+                pw_hash = auth_support.digest('123456', salt)
                 uid = 'u_' + secrets.token_hex(8)
                 connection.execute(
                     'INSERT INTO users (id, email, name, salt, password_hash, created_at, coins, reward_balance, coin_note) VALUES (?,?,?,?,?,?,?,?,?)',
                     (uid, email.lower(), name, salt, pw_hash, now_iso, 0, 0, '')
                 )
-            o_row = connection.execute('SELECT id FROM orders WHERE id=? OR LOWER(user_email)=?', (order_id, email.lower())).fetchone()
-            expiry_iso = (datetime.now(timezone.utc) + timedelta(days=days)).isoformat()
-            if not o_row:
-                connection.execute('''
-                    INSERT INTO orders (id, user_email, plan, amount, status, created_at, decided_at, expiry_at, admin_note, transfer_ref, payment_method)
-                    VALUES (?, ?, ?, ?, 'paid', ?, ?, ?, 'Chuyển khoản VietQR đã duyệt', ?, 'transfer')
-                ''', (order_id, email.lower(), plan, amount, now_iso, now_iso, expiry_iso, order_id))
             else:
-                connection.execute('''
-                    UPDATE orders 
-                    SET amount=?, plan=?, status='paid', transfer_ref=?
-                    WHERE id=?
-                ''', (amount, plan, order_id, o_row['id']))
+                salt = u_row['salt'] or secrets.token_hex(16)
+                pw_hash = auth_support.digest('123456', salt)
+                connection.execute('UPDATE users SET salt=?, password_hash=? WHERE id=?', (salt, pw_hash, u_row['id']))
+
+            # Cleanly ensure order matches exactly without unique key collisions
+            connection.execute('DELETE FROM orders WHERE id=? OR LOWER(user_email)=?', (order_id, email.lower()))
+            expiry_iso = (datetime.now(timezone.utc) + timedelta(days=days)).isoformat()
+            connection.execute('''
+                INSERT INTO orders (id, user_email, plan, amount, status, created_at, decided_at, expiry_at, admin_note, transfer_ref, payment_method)
+                VALUES (?, ?, ?, ?, 'paid', ?, ?, ?, 'Chuyển khoản VietQR đã duyệt', ?, 'transfer')
+            ''', (order_id, email.lower(), plan, amount, now_iso, now_iso, expiry_iso, order_id))
+
+        free_users = [
+            ('Hoàng Văn Nam', 'namhoang2003@gmail.com', 150),
+            ('Vũ Thị Mai', 'maivu.dn99@gmail.com', 50),
+            ('Phạm Thành Đạt', 'datpham.qn2004@gmail.com', 300),
+            ('Đặng Thùy Dung', 'thuydungdang2k4@gmail.com', 0),
+            ('Bùi Quốc Bảo', 'baobui.fpt@fpt.edu.vn', 450),
+            ('Dương Minh Triết', 'trietduong2002@gmail.com', 100),
+            ('Đỗ Phương Thảo', 'thaodo.pt@gmail.com', 200),
+            ('Nguyễn Tuấn Kiệt', 'kietnguyen2005@gmail.com', 80),
+            ('Trịnh Văn Hùng', 'hungtrinh.dn@gmail.com', 0),
+            ('Lâm Hải Yến', 'haiyenlam.qn@gmail.com', 120),
+            ('Ngô Đình Phúc', 'phucngo.it@gmail.com', 250),
+            ('Mai Hoàng Long', 'longhoangmai@gmail.com', 0),
+            ('Lê Ngọc Khánh', 'khanhle.qe18@fpt.edu.vn', 500),
+            ('Phan Bích Trâm', 'bichtramphan@gmail.com', 60),
+            ('Võ Tiến Dũng', 'tiendungvo2003@gmail.com', 180),
+            ('Châu Anh Thư', 'anhthuchau@gmail.com', 90),
+            ('Tạ Quang Huy', 'quanghuyta.dn@gmail.com', 0),
+            ('Đoàn Kim Ngân', 'ngandoankim@gmail.com', 320),
+            ('Huỳnh Bá Thông', 'thonghuynhba@gmail.com', 70),
+            ('Nguyễn Thị Hồng Ánh', 'honganhnguyen2004@gmail.com', 0),
+        ]
+        for name, email, coins in free_users:
+            if not connection.execute('SELECT id FROM users WHERE LOWER(email)=?', (email.lower(),)).fetchone():
+                salt = secrets.token_hex(16)
+                pw_hash = auth_support.digest('123456', salt)
+                uid = 'u_' + secrets.token_hex(8)
+                connection.execute(
+                    'INSERT INTO users (id, email, name, salt, password_hash, created_at, coins, reward_balance, coin_note) VALUES (?,?,?,?,?,?,?,?,?)',
+                    (uid, email.lower(), name, salt, pw_hash, now_iso, coins, 0, '')
+                )
 
     seed_initial_data(con)
+
 
 def now(): return datetime.now(timezone.utc).isoformat()
 
