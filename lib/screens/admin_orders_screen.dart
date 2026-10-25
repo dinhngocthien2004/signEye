@@ -968,14 +968,14 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Nếu bạn chạy backend local (http://127.0.0.1:8000) hoặc deploy Render/VPS, nhập URL tại đây. Để trống sẽ dùng Chế độ Vercel Độc lập.',
+              'Máy chủ backend chính thức hiện tại là: https://signeye.onrender.com. Bạn có thể nhập URL khác nếu muốn kiểm thử local.',
               style: TextStyle(fontSize: 12.5, color: Colors.black87),
             ),
             const SizedBox(height: 12),
             TextField(
               controller: ctrl,
               decoration: InputDecoration(
-                hintText: 'http://127.0.0.1:8000 (hoặc để trống)',
+                hintText: 'https://signeye.onrender.com',
                 filled: true,
                 fillColor: const Color(0xFFF1F5F9),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),

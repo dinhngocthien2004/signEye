@@ -18,15 +18,7 @@ class OrdersStorage {
     const envUrl = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: '');
     if (envUrl.isNotEmpty) return envUrl;
 
-    // Nếu đang chạy trên web qua HTTPS (ví dụ Vercel), không dùng http://127.0.0.1 vì trình duyệt sẽ chặn Mixed Content
-    if (kIsWeb) {
-      final origin = Uri.base.origin;
-      if (origin.startsWith('https://')) {
-        // Trả về rỗng để báo hiệu chế độ Vercel Standalone
-        return '';
-      }
-    }
-    return 'http://127.0.0.1:8000';
+    return 'https://signeye.onrender.com';
   }
 
   /// Cấu hình URL máy chủ Backend tùy chỉnh

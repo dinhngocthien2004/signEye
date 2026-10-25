@@ -101,7 +101,7 @@ class AppState extends ChangeNotifier {
     isLoggedIn = _prefs.getBool(_kLoggedIn) ?? authToken.isNotEmpty;
     if (isLoggedIn && authToken.isNotEmpty && authToken != 'offline_session') {
       try {
-        const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'http://127.0.0.1:8000');
+        const base = String.fromEnvironment('SIGN_EYE_API_URL', defaultValue: 'https://signeye.onrender.com');
         final response = await http.get(
           Uri.parse('$base/payments/subscription'),
           headers: {'Authorization': 'Bearer $authToken'},

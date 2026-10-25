@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class PaymentApi {
-  // Android emulator: --dart-define=PAYMENT_API_URL=http://10.0.2.2:8000
+  // Live Backend on Render: https://signeye.onrender.com
   static const _configuredBase = String.fromEnvironment('PAYMENT_API_URL');
-  static String get base => _configuredBase.isNotEmpty ? _configuredBase : (kIsWeb ? 'http://localhost:8000' : 'http://10.0.2.2:8000');
+  static String get base => _configuredBase.isNotEmpty ? _configuredBase : 'https://signeye.onrender.com';
   static String? token;
   static Map<String,String> get authHeaders => {'Authorization':'Bearer ${token ?? ''}'};
   static Future<Map<String,dynamic>> authenticate(String email,String password,{String? name}) async => _read(await http.post(Uri.parse('$base/auth/${name==null?'login':'register'}'),headers:{'Content-Type':'application/json'},body:jsonEncode({'email':email,'password':password,if(name!=null)'name':name})));
