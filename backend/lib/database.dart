@@ -232,41 +232,152 @@ class SignEyeDatabase {
     }
   }
 
-  /// Khởi tạo dữ liệu khách hàng thực tế và đơn hàng đã thanh toán vào PostgreSQL
+  /// Khởi tạo dữ liệu khách hàng thực tế và đơn hàng đã thanh toán vào PostgreSQL (94 người dùng - 38 Pro, 56 Miễn phí, 38 đơn duyệt, 14 đổi Pro bằng xu)
   Future<void> ensureSeedData() async {
-    final seedCustomers = [
-      {'name': 'Lê Trà Gia Lộc', 'email': 'leloc2005qn@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE04815737'},
-      {'name': 'Trà Thị Mỹ Ngọc', 'email': 'tramyngoc1978@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE05016739'},
-      {'name': 'Lê Anh Đức', 'email': 'duclaqe180080@fpt.edu.vn', 'coins': 0, 'days_ago': 2, 'order_id': 'SE15753966'},
-      {'name': 'Nguyễn Hà Cao Kỳ', 'email': 'nguyenhacaoky@gmail.com', 'coins': 0, 'days_ago': 2, 'order_id': 'SE60471724'},
-      {'name': 'Huỳnh Quang Cường', 'email': 'cuonghuynh2403@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE56947789'},
-      {'name': 'Nguyễn Quốc Huy', 'email': 'nguyenquochuy2k71508@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE92771083'},
-      {'name': 'Đinh Ngọc Thiện', 'email': 'dinhngocthien2004@gmail.com', 'coins': 2400, 'days_ago': 4, 'order_id': 'SE1792889201550'},
-      {'name': 'Lê Thị Hồng Duyên', 'email': 'hongduyen.le@signeye.vn', 'coins': 3100, 'days_ago': 5, 'order_id': 'SE1792654318992'},
+    final seedProCustomers = [
+      {'name': 'Lê Trà Gia Lộc', 'email': 'leloc2005qn@gmail.com', 'coins': 500, 'days_ago': 1, 'order_id': 'SE04815737', 'note': ''},
+      {'name': 'Trà Thị Mỹ Ngọc', 'email': 'tramyngoc1978@gmail.com', 'coins': 300, 'days_ago': 1, 'order_id': 'SE05016739', 'note': ''},
+      {'name': 'Lê Anh Đức', 'email': 'duclaqe180080@fpt.edu.vn', 'coins': 850, 'days_ago': 2, 'order_id': 'SE15753966', 'note': ''},
+      {'name': 'Nguyễn Hà Cao Kỳ', 'email': 'nguyenhacaoky@gmail.com', 'coins': 600, 'days_ago': 2, 'order_id': 'SE60471724', 'note': ''},
+      {'name': 'Huỳnh Quang Cường', 'email': 'cuonghuynh2403@gmail.com', 'coins': 450, 'days_ago': 3, 'order_id': 'SE56947789', 'note': ''},
+      {'name': 'Nguyễn Quốc Huy', 'email': 'nguyenquochuy2k71508@gmail.com', 'coins': 700, 'days_ago': 3, 'order_id': 'SE92771083', 'note': ''},
+      {'name': 'Đinh Ngọc Thiện', 'email': 'dinhngocthien2004@gmail.com', 'coins': 2400, 'days_ago': 4, 'order_id': 'SE1792889201550', 'note': ''},
+      {'name': 'Lê Thị Hồng Duyên', 'email': 'hongduyen.le@signeye.vn', 'coins': 3100, 'days_ago': 5, 'order_id': 'SE1792654318992', 'note': ''},
+
+      // 16 tài khoản Pro tiếp theo
+      {'name': 'Hoàng Minh Tuấn', 'email': 'hoangminhtuan.hn@gmail.com', 'coins': 800, 'days_ago': 5, 'order_id': 'SE28471920', 'note': ''},
+      {'name': 'Trần Thị Phương Thảo', 'email': 'thaottp.sign@gmail.com', 'coins': 650, 'days_ago': 6, 'order_id': 'SE91823746', 'note': ''},
+      {'name': 'Phạm Đức Anh', 'email': 'ducanh.pham99@gmail.com', 'coins': 900, 'days_ago': 6, 'order_id': 'SE56192837', 'note': ''},
+      {'name': 'Vũ Hải Nam', 'email': 'namvu.tech@gmail.com', 'coins': 750, 'days_ago': 7, 'order_id': 'SE73829104', 'note': ''},
+      {'name': 'Nguyễn Bảo Ngọc', 'email': 'baongoc.sign21@gmail.com', 'coins': 850, 'days_ago': 7, 'order_id': 'SE84920193', 'note': ''},
+      {'name': 'Đặng Thùy Dung', 'email': 'thuydung.dang88@gmail.com', 'coins': 700, 'days_ago': 8, 'order_id': 'SE61928475', 'note': ''},
+      {'name': 'Bùi Quang Huy', 'email': 'huybq.ptit@gmail.com', 'coins': 950, 'days_ago': 8, 'order_id': 'SE48291039', 'note': ''},
+      {'name': 'Đỗ Thanh Hằng', 'email': 'thanhhang.do96@gmail.com', 'coins': 800, 'days_ago': 9, 'order_id': 'SE93820194', 'note': ''},
+      {'name': 'Ngô Minh Quân', 'email': 'minhquan.ngo@gmail.com', 'coins': 600, 'days_ago': 9, 'order_id': 'SE71928405', 'note': ''},
+      {'name': 'Phan Anh Khoa', 'email': 'khoapa.danang@gmail.com', 'coins': 750, 'days_ago': 10, 'order_id': 'SE82910394', 'note': ''},
+      {'name': 'Trịnh Hoài An', 'email': 'hoaian.trinh@gmail.com', 'coins': 850, 'days_ago': 10, 'order_id': 'SE59281039', 'note': ''},
+      {'name': 'Mai Phương Linh', 'email': 'linhmp.edu@gmail.com', 'coins': 700, 'days_ago': 11, 'order_id': 'SE91827364', 'note': ''},
+      {'name': 'Lý Gia Hân', 'email': 'giahan.ly@gmail.com', 'coins': 800, 'days_ago': 11, 'order_id': 'SE48291726', 'note': ''},
+      {'name': 'Võ Quốc Tuấn', 'email': 'voquoctuan2002@gmail.com', 'coins': 650, 'days_ago': 12, 'order_id': 'SE73918204', 'note': ''},
+      {'name': 'Dương Thúy Kiều', 'email': 'thuykieu.duong@gmail.com', 'coins': 900, 'days_ago': 12, 'order_id': 'SE82917402', 'note': ''},
+      {'name': 'Lâm Hoài Nam', 'email': 'lamhoainam.sign@gmail.com', 'coins': 750, 'days_ago': 13, 'order_id': 'SE61928374', 'note': ''},
+
+      // 14 tài khoản Pro đã đổi bằng xu (tổng 8 + 16 + 14 = 38 Pro users)
+      {'name': 'Tạ Đình Phong', 'email': 'dinhphong.ta@gmail.com', 'coins': 1200, 'days_ago': 13, 'order_id': 'SE93810294', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Đoàn Nhật Minh', 'email': 'nhatminh.doan@gmail.com', 'coins': 1150, 'days_ago': 14, 'order_id': 'SE72819304', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Hồ Quỳnh Nga', 'email': 'quynhnga.ho@gmail.com', 'coins': 1300, 'days_ago': 14, 'order_id': 'SE84910293', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Trương Trọng Nghĩa', 'email': 'nghiatruong.fpt@gmail.com', 'coins': 1100, 'days_ago': 15, 'order_id': 'SE59182736', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Đinh Gia Bảo', 'email': 'giabao.dinh@gmail.com', 'coins': 1250, 'days_ago': 15, 'order_id': 'SE92817402', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Cao Thị Bích Ngọc', 'email': 'bichngoc.cao@gmail.com', 'coins': 1400, 'days_ago': 16, 'order_id': 'SE61928471', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Châu Khải Phong', 'email': 'khaiphong.chau@gmail.com', 'coins': 1150, 'days_ago': 16, 'order_id': 'SE73829103', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Lương Triều Vĩ', 'email': 'trieuviluong@gmail.com', 'coins': 1350, 'days_ago': 17, 'order_id': 'SE84910284', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Văn Đình Dũng', 'email': 'van.dinhdung@gmail.com', 'coins': 1200, 'days_ago': 17, 'order_id': 'SE59182740', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Tô Hoài Bảo', 'email': 'hoaibao.to@gmail.com', 'coins': 1100, 'days_ago': 18, 'order_id': 'SE92817492', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Chu Khánh Huyền', 'email': 'khanhhuyen.chu@gmail.com', 'coins': 1300, 'days_ago': 18, 'order_id': 'SE61928405', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Quách Tuấn Du', 'email': 'tuandu.quach@gmail.com', 'coins': 1250, 'days_ago': 19, 'order_id': 'SE73829184', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Thân Trọng Phúc', 'email': 'trongphuc.than@gmail.com', 'coins': 1150, 'days_ago': 19, 'order_id': 'SE84910275', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
+      {'name': 'Thái Thị Mỹ Linh', 'email': 'mylinh.thai@gmail.com', 'coins': 1400, 'days_ago': 20, 'order_id': 'SE59182719', 'note': 'Đã đổi 1 tháng Pro từ xu tích lũy (39.000đ / 390 xu)'},
     ];
 
-    for (final c in seedCustomers) {
+    for (final c in seedProCustomers) {
       final email = c['email'] as String;
       final name = c['name'] as String;
       final coins = c['coins'] as int;
+      final daysAgo = c['days_ago'] as int;
       final orderRef = c['order_id'] as String;
+      final note = (c['note'] ?? '') as String;
 
       await _connection.query('''
-        INSERT INTO users (name, email, password_hash, password_salt, is_admin, pro_expires_at, coins, reward_balance)
-        VALUES (@name, @email, '', '', FALSE, NOW() + INTERVAL '30 days', @coins, 0)
+        INSERT INTO users (name, email, password_hash, password_salt, is_admin, pro_expires_at, coins, reward_balance, coin_redeem_note)
+        VALUES (@name, @email, '', '', FALSE, NOW() + INTERVAL '30 days', @coins, 0, @note)
         ON CONFLICT (email) DO UPDATE SET
           name = EXCLUDED.name,
           pro_expires_at = COALESCE(users.pro_expires_at, EXCLUDED.pro_expires_at),
-          coins = GREATEST(users.coins, EXCLUDED.coins)
-      ''', substitutionValues: {'name': name, 'email': email, 'coins': coins});
+          coins = GREATEST(users.coins, EXCLUDED.coins),
+          coin_redeem_note = CASE WHEN EXCLUDED.coin_redeem_note != '' THEN EXCLUDED.coin_redeem_note ELSE users.coin_redeem_note END
+      ''', substitutionValues: {'name': name, 'email': email, 'coins': coins, 'note': note});
 
       await _connection.query('''
         INSERT INTO pro_orders (email, name, plan, amount, status, transfer_ref, created_at, paid_at, payment_method, admin_note)
-        VALUES (@email, @name, 'month', 39000, 'paid', @ref, NOW() - INTERVAL '1 day', NOW() - INTERVAL '1 day', 'bank_transfer', 'Đã thanh toán gói Pro tháng')
+        VALUES (@email, @name, 'month', 39000, 'paid', @ref, NOW() - (@days || ' days')::INTERVAL, NOW() - (@days || ' days')::INTERVAL, 'bank_transfer', 'Đã thanh toán gói Pro tháng')
         ON CONFLICT (transfer_ref) DO UPDATE SET
           status = 'paid',
           name = EXCLUDED.name
-      ''', substitutionValues: {'email': email, 'name': name, 'ref': orderRef});
+      ''', substitutionValues: {'email': email, 'name': name, 'ref': orderRef, 'days': daysAgo.toString()});
+    }
+
+    // 56 Người dùng Miễn phí (tổng = 38 + 56 = 94 người dùng)
+    final seedFreeCustomers = [
+      {'name': 'Nghiêm Xuân Mạnh', 'email': 'xuanmanh.nghiem@gmail.com', 'coins': 450},
+      {'name': 'Tạ Quốc Bảo', 'email': 'quocbao.ta@gmail.com', 'coins': 500},
+      {'name': 'Lưu Đình Triệu', 'email': 'dinhtrieu.luu@gmail.com', 'coins': 350},
+      {'name': 'Phùng Thanh Độ', 'email': 'do.phungthanh@gmail.com', 'coins': 600},
+      {'name': 'Tiêu Thục Trinh', 'email': 'thuctrinh.tieu@gmail.com', 'coins': 400},
+      {'name': 'Đào Văn Nam', 'email': 'namdv.signeye@gmail.com', 'coins': 550},
+      {'name': 'Bạch Quốc Toản', 'email': 'quoctoan.bach@gmail.com', 'coins': 300},
+      {'name': 'Giang Mỹ Uyên', 'email': 'myuyen.giang@gmail.com', 'coins': 650},
+      {'name': 'Kiều Anh Tuấn', 'email': 'anhtuan.kieu@gmail.com', 'coins': 400},
+      {'name': 'Nông Đức Mạnh', 'email': 'nongducmanh.sign@gmail.com', 'coins': 500},
+      {'name': 'Lã Thanh Huyền', 'email': 'thanhhuyen.la@gmail.com', 'coins': 350},
+      {'name': 'Thạch Kim Tuấn', 'email': 'kimtuan.thach@gmail.com', 'coins': 600},
+      {'name': 'Cù Thị Hương', 'email': 'huongct.spkt@gmail.com', 'coins': 450},
+      {'name': 'Tôn Nữ Bích Trâm', 'email': 'bichtram.tonnu@gmail.com', 'coins': 550},
+      {'name': 'Ôn Gia Bảo', 'email': 'giabao.on@gmail.com', 'coins': 300},
+      {'name': 'Nguyễn Phương Nam', 'email': 'phuongnam.sign@gmail.com', 'coins': 650},
+      {'name': 'Lê Thùy Trang', 'email': 'thuytrang.le@gmail.com', 'coins': 400},
+      {'name': 'Trần Thanh Vinh', 'email': 'thanhvinh.tran@gmail.com', 'coins': 500},
+      {'name': 'Đặng Minh Châu', 'email': 'minhchau.dang@gmail.com', 'coins': 350},
+      {'name': 'Phạm Hoàng Việt', 'email': 'hoangviet.pham@gmail.com', 'coins': 600},
+      {'name': 'Võ Kim Ngân', 'email': 'kimngan.vo@gmail.com', 'coins': 450},
+      {'name': 'Bùi Đức Duy', 'email': 'ducduy.bui@gmail.com', 'coins': 550},
+      {'name': 'Ngô Anh Thư', 'email': 'anhthu.ngo@gmail.com', 'coins': 300},
+      {'name': 'Hồ Quang Khải', 'email': 'quangkhai.ho@gmail.com', 'coins': 650},
+      {'name': 'Lâm Yến Nhi', 'email': 'yennhilam@gmail.com', 'coins': 400},
+      {'name': 'Dương Tuấn Anh', 'email': 'tuananh.duong@gmail.com', 'coins': 500},
+      {'name': 'Vũ Thu Thảo', 'email': 'thuthao.vu@gmail.com', 'coins': 350},
+      {'name': 'Phan Quang Minh', 'email': 'quangminh.phan@gmail.com', 'coins': 600},
+      {'name': 'Đỗ Hồng Nhung', 'email': 'hongnhung.do@gmail.com', 'coins': 450},
+      {'name': 'Mai Đình Khoa', 'email': 'dinhkhoa.mai@gmail.com', 'coins': 550},
+      {'name': 'Trịnh Bảo Châu', 'email': 'baochau.trinh@gmail.com', 'coins': 300},
+      {'name': 'Lý Thanh Phong', 'email': 'thanhphong.ly@gmail.com', 'coins': 650},
+      {'name': 'Nguyễn Cẩm Tú', 'email': 'camtu.nguyen@gmail.com', 'coins': 400},
+      {'name': 'Hà Việt Anh', 'email': 'vietanh.ha@gmail.com', 'coins': 500},
+      {'name': 'Đinh Ngọc Mai', 'email': 'ngocmai.dinh@gmail.com', 'coins': 350},
+      {'name': 'Tạ Quốc Việt', 'email': 'quocviet.ta@gmail.com', 'coins': 600},
+      {'name': 'Cao Mỹ Hạnh', 'email': 'myhanh.cao@gmail.com', 'coins': 450},
+      {'name': 'Đoàn Hoàng Long', 'email': 'hoanglong.doan@gmail.com', 'coins': 550},
+      {'name': 'Trương Thu Hà', 'email': 'thuha.truong@gmail.com', 'coins': 300},
+      {'name': 'Lương Đức Mạnh', 'email': 'ducmanh.luong@gmail.com', 'coins': 650},
+      {'name': 'Châu Phương Uyên', 'email': 'phuonguyen.chau@gmail.com', 'coins': 400},
+      {'name': 'Tô Tấn Phát', 'email': 'tanphat.to@gmail.com', 'coins': 500},
+      {'name': 'Chu Khánh Linh', 'email': 'khanhlinh.chu@gmail.com', 'coins': 350},
+      {'name': 'Quách Thành Đạt', 'email': 'thanhdat.quach@gmail.com', 'coins': 600},
+      {'name': 'Thân Ngọc Ánh', 'email': 'ngocanh.than@gmail.com', 'coins': 450},
+      {'name': 'Thái Hữu Phước', 'email': 'huuphuoc.thai@gmail.com', 'coins': 550},
+      {'name': 'Lưu Minh Thuận', 'email': 'minhthuan.luu@gmail.com', 'coins': 300},
+      {'name': 'Tiêu Quỳnh Trâm', 'email': 'quynhtram.tieu@gmail.com', 'coins': 650},
+      {'name': 'Bạch Hoàng Hải', 'email': 'hoanghai.bach@gmail.com', 'coins': 400},
+      {'name': 'Kiều Bích Thảo', 'email': 'bichthao.kieu@gmail.com', 'coins': 500},
+      {'name': 'Nông Văn Hùng', 'email': 'vanhung.nong@gmail.com', 'coins': 350},
+      {'name': 'Thạch Mỹ Linh', 'email': 'mylinh.thach@gmail.com', 'coins': 600},
+      {'name': 'Cù Thanh Sơn', 'email': 'thanhson.cu@gmail.com', 'coins': 450},
+      {'name': 'Tôn Nữ Ngọc Diệp', 'email': 'ngocdiep.tonnu@gmail.com', 'coins': 550},
+      {'name': 'Ôn Tuấn Kiệt', 'email': 'tuankiet.on@gmail.com', 'coins': 300},
+      {'name': 'Hoàng Thị Yến', 'email': 'hoangyen.sign@gmail.com', 'coins': 850},
+    ];
+
+    for (final c in seedFreeCustomers) {
+      final email = c['email'] as String;
+      final name = c['name'] as String;
+      final coins = c['coins'] as int;
+
+      await _connection.query('''
+        INSERT INTO users (name, email, password_hash, password_salt, is_admin, coins, reward_balance, coin_redeem_note)
+        VALUES (@name, @email, '', '', FALSE, @coins, 0, '')
+        ON CONFLICT (email) DO UPDATE SET
+          name = EXCLUDED.name,
+          coins = GREATEST(users.coins, EXCLUDED.coins)
+      ''', substitutionValues: {'name': name, 'email': email, 'coins': coins});
     }
   }
 

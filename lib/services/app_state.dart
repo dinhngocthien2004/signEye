@@ -80,7 +80,7 @@ class AppState extends ChangeNotifier {
   /// Game coin balance (xu nhận được khi chơi mini game)
   int coins = 0;
 
-  /// Số dư tiền VNĐ đổi từ xu (1.000 xu = 1.000 VNĐ) để tích hợp mua gói Pro
+  /// Số dư tiền VNĐ đổi từ xu (50 xu = 5.000 VNĐ) để tích lũy đủ 39.000 VNĐ mua gói Pro
   int rewardBalance = 0;
 
   List<HistoryEntry> history = [];
@@ -534,14 +534,17 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Đổi xu sang tiền VNĐ (1.000 xu = 1.000 VNĐ) để tích hợp mua gói Pro
-  Future<bool> exchangeCoinsToCash({int coinsToExchange = 1000}) async {
-    if (coins < coinsToExchange || coinsToExchange < 1000) return false;
-    final validAmount = (coinsToExchange ~/ 1000) * 1000;
-    if (validAmount <= 0 || coins < validAmount) return false;
+  /// Đổi xu sang tiền VNĐ (50 xu = 5.000 VNĐ) để tích lũy đủ 39.000 VNĐ mua gói Pro
+  Future<bool> exchangeCoinsToCash({int coinsToExchange = 50}) async {
+    if (coins < coinsToExchange || coinsToExchange < 50) return false;
+    final validBlocks = coinsToExchange ~/ 50;
+    if (validBlocks <= 0) return false;
+    final validCoins = validBlocks * 50;
+    final cashEarned = validBlocks * 5000;
+    if (coins < validCoins) return false;
 
-    coins -= validAmount;
-    rewardBalance += validAmount;
+    coins -= validCoins;
+    rewardBalance += cashEarned;
     await _prefs.setInt(_kCoins, coins);
     await _prefs.setInt(_kRewardBalance, rewardBalance);
     if (userEmail.isNotEmpty) {
