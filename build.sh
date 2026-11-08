@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 set -e
 
 echo "===> 1. Cáº¥u hÃ¬nh Git an toÃ n..."

@@ -687,8 +687,7 @@ class OrdersStorage {
     users.removeWhere((key, val) => _kDemoEmails.contains(key.toLowerCase()));
 
     // Đồng bộ danh sách 94 người dùng thực tế (38 Pro, 56 Người dùng thường, 14 tài khoản đổi bằng xu)
-    final defaultUsers = {
-<<<<<<< HEAD
+    final defaultUsers = <String, Map<String, dynamic>>{
       // 8 tài khoản Pro ban đầu
       'leloc2005qn@gmail.com': {'email': 'leloc2005qn@gmail.com', 'name': 'Lê Trà Gia Lộc', 'password': '***', 'isAdmin': false, 'isPro': true, 'coins': 0, 'reward_balance': 0, 'coin_redeem_note': '', 'has_coin_pro': false, 'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(), 'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String()},
       'tramyngoc1978@gmail.com': {'email': 'tramyngoc1978@gmail.com', 'name': 'Trà Thị Mỹ Ngọc', 'password': '***', 'isAdmin': false, 'isPro': true, 'coins': 0, 'reward_balance': 0, 'coin_redeem_note': '', 'has_coin_pro': false, 'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(), 'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String()},
@@ -790,107 +789,18 @@ class OrdersStorage {
       'ngocdiep.tonnu@gmail.com': {'email': 'ngocdiep.tonnu@gmail.com', 'name': 'Tôn Nữ Ngọc Diệp', 'password': '***', 'isAdmin': false, 'isPro': false, 'coins': 550, 'reward_balance': 0, 'coin_redeem_note': '', 'has_coin_pro': false, 'expiresAt': null, 'created_at': DateTime.now().subtract(const Duration(days: 28)).toIso8601String()},
       'tuankiet.on@gmail.com': {'email': 'tuankiet.on@gmail.com', 'name': 'Ôn Tuấn Kiệt', 'password': '***', 'isAdmin': false, 'isPro': false, 'coins': 300, 'reward_balance': 0, 'coin_redeem_note': '', 'has_coin_pro': false, 'expiresAt': null, 'created_at': DateTime.now().subtract(const Duration(days: 29)).toIso8601String()},
       'hoangyen.sign@gmail.com': {'email': 'hoangyen.sign@gmail.com', 'name': 'Hoàng Thị Yến', 'password': '***', 'isAdmin': false, 'isPro': false, 'coins': 850, 'reward_balance': 0, 'coin_redeem_note': '', 'has_coin_pro': false, 'expiresAt': null, 'created_at': DateTime.now().subtract(const Duration(days: 30)).toIso8601String()},
-      'lyly1222005@gmail.com': {
-        'email': 'lyly1222005@gmail.com',
-        'name': 'Phan Thị Thanh Ly',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
-      'legiahieu27@gmail.com': {
-        'email': 'legiahieu27@gmail.com',
-        'name': 'Lê Trà Gia Hiếu',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
-      'khoitdqe170065@gmail.com': {
-        'email': 'khoitdqe170065@gmail.com',
-        'name': 'Trần Đăng Khôi',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
-      'ycao123@gmail.com': {
-        'email': 'ycao123@gmail.com',
-        'name': 'Cao Ngọc Ý',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
+    };
 
-      'leloc2005qn@gmail.com': {
-        'email': 'leloc2005qn@gmail.com',
-        'name': 'Lê Trà Gia Lộc',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
-      'tramyngoc1978@gmail.com': {
-        'email': 'tramyngoc1978@gmail.com',
-        'name': 'Trà Thị Mỹ Ngọc',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
-      'duclaqe180080@fpt.edu.vn': {
-        'email': 'duclaqe180080@fpt.edu.vn',
-        'name': 'Lê Anh Đức',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
-      },
-      'nguyenhacaoky@gmail.com': {
-        'email': 'nguyenhacaoky@gmail.com',
-        'name': 'Nguyễn Hà Cao Kỳ',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
-      },
-      'cuonghuynh2403@gmail.com': {
-        'email': 'cuonghuynh2403@gmail.com',
-        'name': 'Huỳnh Quang Cường',
-        'password': '123456',
+    // Nạp defaultUsers vào users nếu chưa có
+    for (final entry in defaultUsers.entries) {
+      if (!users.containsKey(entry.key.toLowerCase())) {
+        users[entry.key.toLowerCase()] = entry.value;
+      }
+    }
+    await prefs.setString(_kUsersDbKey, jsonEncode(users));
+
+    return users.values.map((u) => Map<String, dynamic>.from(u as Map)).toList();
+  }
   static Map<String, dynamic> calculateSummary(
     List<dynamic> orders, {
     int? totalUsers,
