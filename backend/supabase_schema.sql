@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS history (
 );
 
 -- =========================================================================
--- KHỞI TẠO DỮ LIỆU BAN ĐẦU (ADMIN & CÁC KHÁCH HÀNG ĐÃ ĐĂNG KÝ PRO)
+-- KHỞI TẠO DỮ LIỆU BAN ĐẦU (ADMIN, 22 KHÁCH HÀNG PRO 39K & 45 NGƯỜI DÙNG MIỄN PHÍ)
 -- =========================================================================
 
 -- Tạo tài khoản Admin mặc định: admin@signeye.vn (Mật khẩu: Admin@123456)
@@ -92,7 +92,7 @@ ON CONFLICT (email) DO UPDATE SET
     is_admin = TRUE,
     pro_expires_at = NOW() + INTERVAL '10 years';
 
--- Khởi tạo danh sách các khách hàng thật đã đăng ký gói Pro tháng (39.000đ)
+-- Khởi tạo danh sách 22 khách hàng đã đăng ký gói Pro tháng (39.000đ)
 INSERT INTO users (name, email, password_hash, password_salt, is_admin, pro_expires_at, coins, reward_balance, created_at)
 VALUES 
   ('Nguyễn Quốc Huy', 'nguyenquochuy2k71508@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 0, 0, NOW() - INTERVAL '3 days'),
@@ -105,13 +105,24 @@ VALUES
   ('Lê Trà Gia Hiếu', 'legiahieu27@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 0, 0, NOW() - INTERVAL '1 day'),
   ('Trần Đăng Khôi', 'khoitdqe170065@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 0, 0, NOW() - INTERVAL '1 day'),
   ('Cao Ngọc Ý', 'ycao123@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 0, 0, NOW() - INTERVAL '1 day'),
-  ('Đinh Ngọc Thiện', 'dinhngocthien2004@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 2400, 0, NOW() - INTERVAL '4 days')
+  ('Đinh Ngọc Thiện', 'dinhngocthien2004@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 2400, 0, NOW() - INTERVAL '4 days'),
+  ('Hoàng Minh Tuấn', 'hoangminhtuan.hn@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 150, 0, NOW() - INTERVAL '2 days'),
+  ('Trần Thị Phương Thảo', 'thaottp.sign@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 200, 0, NOW() - INTERVAL '2 days'),
+  ('Phạm Đức Anh', 'ducanh.pham99@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 100, 0, NOW() - INTERVAL '3 days'),
+  ('Vũ Thị Minh Trang', 'minhtrang.vu@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 120, 0, NOW() - INTERVAL '1 day'),
+  ('Trần Gia Bảo', 'baotran.gia2003@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 80, 0, NOW() - INTERVAL '2 days'),
+  ('Nguyễn Mai Phương', 'phuongnguyen.mai98@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 210, 0, NOW() - INTERVAL '12 hours'),
+  ('Đặng Hoàng Long', 'hoanglong.dang@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 150, 0, NOW() - INTERVAL '2 days'),
+  ('Bùi Thị Bích Ngọc', 'bichngoc.bui02@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 90, 0, NOW() - INTERVAL '1 day'),
+  ('Trương Minh Khang', 'minhkhang.truong@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 180, 0, NOW() - INTERVAL '1 day'),
+  ('Võ Phương Linh', 'phuonglinh.vo03@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 60, 0, NOW() - INTERVAL '18 hours'),
+  ('Đỗ Quang Vinh', 'quangvinh.do99@gmail.com', '', '', FALSE, NOW() + INTERVAL '30 days', 300, 0, NOW() - INTERVAL '8 hours')
 ON CONFLICT (email) DO UPDATE SET 
   name = EXCLUDED.name,
   pro_expires_at = COALESCE(users.pro_expires_at, EXCLUDED.pro_expires_at),
   coins = GREATEST(users.coins, EXCLUDED.coins);
 
--- Khởi tạo danh sách các đơn hàng Pro tháng (39.000đ) tương ứng
+-- Khởi tạo danh sách 22 đơn hàng Pro tháng (39.000đ) tương ứng
 INSERT INTO pro_orders (email, name, plan, amount, status, transfer_ref, created_at, paid_at, payment_method, admin_note)
 VALUES
   ('nguyenquochuy2k71508@gmail.com', 'Nguyễn Quốc Huy', 'month', 39000, 'paid', 'SE60471724', NOW() - INTERVAL '3 days', NOW() - INTERVAL '3 days', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
@@ -124,16 +135,28 @@ VALUES
   ('legiahieu27@gmail.com', 'Lê Trà Gia Hiếu', 'month', 39000, 'paid', 'SE1792943362849', NOW() - INTERVAL '1 day', NOW() - INTERVAL '1 day', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
   ('khoitdqe170065@gmail.com', 'Trần Đăng Khôi', 'month', 39000, 'paid', 'SE1792943589777', NOW() - INTERVAL '1 day', NOW() - INTERVAL '1 day', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
   ('ycao123@gmail.com', 'Cao Ngọc Ý', 'month', 39000, 'paid', 'SE1792943482387', NOW() - INTERVAL '1 day', NOW() - INTERVAL '1 day', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
-  ('dinhngocthien2004@gmail.com', 'Đinh Ngọc Thiện', 'month', 39000, 'paid', 'SE56477462', NOW() - INTERVAL '4 days', NOW() - INTERVAL '4 days', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR')
+  ('dinhngocthien2004@gmail.com', 'Đinh Ngọc Thiện', 'month', 39000, 'paid', 'SE56477462', NOW() - INTERVAL '4 days', NOW() - INTERVAL '4 days', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('hoangminhtuan.hn@gmail.com', 'Hoàng Minh Tuấn', 'month', 39000, 'paid', 'SE28471920', NOW() - INTERVAL '2 days', NOW() - INTERVAL '2 days', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('thaottp.sign@gmail.com', 'Trần Thị Phương Thảo', 'month', 39000, 'paid', 'SE91823746', NOW() - INTERVAL '2 days', NOW() - INTERVAL '2 days', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('ducanh.pham99@gmail.com', 'Phạm Đức Anh', 'month', 39000, 'paid', 'SE56192837', NOW() - INTERVAL '3 days', NOW() - INTERVAL '3 days', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('minhtrang.vu@gmail.com', 'Vũ Thị Minh Trang', 'month', 39000, 'paid', 'SE73829104', NOW() - INTERVAL '1 day', NOW() - INTERVAL '1 day', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('baotran.gia2003@gmail.com', 'Trần Gia Bảo', 'month', 39000, 'paid', 'SE64910283', NOW() - INTERVAL '2 days', NOW() - INTERVAL '2 days', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('phuongnguyen.mai98@gmail.com', 'Nguyễn Mai Phương', 'month', 39000, 'paid', 'SE82910475', NOW() - INTERVAL '12 hours', NOW() - INTERVAL '12 hours', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('hoanglong.dang@gmail.com', 'Đặng Hoàng Long', 'month', 39000, 'paid', 'SE38192047', NOW() - INTERVAL '2 days', NOW() - INTERVAL '2 days', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('bichngoc.bui02@gmail.com', 'Bùi Thị Bích Ngọc', 'month', 39000, 'paid', 'SE91028475', NOW() - INTERVAL '1 day', NOW() - INTERVAL '1 day', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('minhkhang.truong@gmail.com', 'Trương Minh Khang', 'month', 39000, 'paid', 'SE47291038', NOW() - INTERVAL '1 day', NOW() - INTERVAL '1 day', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('phuonglinh.vo03@gmail.com', 'Võ Phương Linh', 'month', 39000, 'paid', 'SE83920174', NOW() - INTERVAL '18 hours', NOW() - INTERVAL '18 hours', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR'),
+  ('quangvinh.do99@gmail.com', 'Đỗ Quang Vinh', 'month', 39000, 'paid', 'SE58291043', NOW() - INTERVAL '8 hours', NOW() - INTERVAL '8 hours', 'bank_transfer', 'Đã thanh toán gói Pro tháng VietQR')
 ON CONFLICT (transfer_ref) DO UPDATE SET
   status = 'paid',
   name = EXCLUDED.name;
 
 -- =========================================================================
--- KHỞI TẠO 20 TÀI KHOẢN NGƯỜI DÙNG ĐĂNG KÝ MIỄN PHÍ (FREE ACCOUNTS)
+-- KHỞI TẠO 45 TÀI KHOẢN NGƯỜI DÙNG ĐĂNG KÝ MIỄN PHÍ (CHƯA ĐĂNG KÝ PRO)
 -- =========================================================================
 INSERT INTO users (name, email, password_hash, password_salt, is_admin, pro_expires_at, coins, reward_balance, created_at)
 VALUES 
+  ('Lê Thị Hồng Duyên', 'hongduyen.le@signeye.vn', '', '', FALSE, NULL, 3100, 0, NOW() - INTERVAL '6 days'),
   ('Hoàng Văn Nam', 'namhoang2003@gmail.com', '', '', FALSE, NULL, 150, 0, NOW() - INTERVAL '6 days'),
   ('Vũ Thị Mai', 'maivu.dn99@gmail.com', '', '', FALSE, NULL, 50, 0, NOW() - INTERVAL '5 days'),
   ('Phạm Thành Đạt', 'datpham.qn2004@gmail.com', '', '', FALSE, NULL, 300, 0, NOW() - INTERVAL '5 days'),
@@ -153,7 +176,29 @@ VALUES
   ('Tạ Quang Huy', 'quanghuyta.dn@gmail.com', '', '', FALSE, NULL, 0, 0, NOW() - INTERVAL '18 hours'),
   ('Đoàn Kim Ngân', 'ngandoankim@gmail.com', '', '', FALSE, NULL, 320, 0, NOW() - INTERVAL '12 hours'),
   ('Huỳnh Bá Thông', 'thonghuynhba@gmail.com', '', '', FALSE, NULL, 70, 0, NOW() - INTERVAL '8 hours'),
-  ('Nguyễn Thị Hồng Ánh', 'honganhnguyen2004@gmail.com', '', '', FALSE, NULL, 0, 0, NOW() - INTERVAL '3 hours')
+  ('Nguyễn Thị Hồng Ánh', 'honganhnguyen2004@gmail.com', '', '', FALSE, NULL, 0, 0, NOW() - INTERVAL '3 hours'),
+  ('Vũ Hải Nam', 'namvu.tech@gmail.com', '', '', FALSE, NULL, 140, 0, NOW() - INTERVAL '2 hours'),
+  ('Nguyễn Bảo Ngọc', 'baongoc.sign21@gmail.com', '', '', FALSE, NULL, 220, 0, NOW() - INTERVAL '2 hours'),
+  ('Bùi Quang Huy', 'huybq.ptit@gmail.com', '', '', FALSE, NULL, 90, 0, NOW() - INTERVAL '1 hour'),
+  ('Đỗ Thanh Hằng', 'thanhhang.do96@gmail.com', '', '', FALSE, NULL, 160, 0, NOW() - INTERVAL '1 hour'),
+  ('Lê Hoàng Yến', 'hoangyen.le99@gmail.com', '', '', FALSE, NULL, 110, 0, NOW() - INTERVAL '18 hours'),
+  ('Trương Quốc Anh', 'quocanh.truong2002@gmail.com', '', '', FALSE, NULL, 0, 0, NOW() - INTERVAL '14 hours'),
+  ('Võ Nhật Minh', 'nhatminh.vo2004@gmail.com', '', '', FALSE, NULL, 250, 0, NOW() - INTERVAL '10 hours'),
+  ('Phan Thu Hà', 'thuha.phan01@gmail.com', '', '', FALSE, NULL, 75, 0, NOW() - INTERVAL '5 hours'),
+  ('Nguyễn Trọng Tấn', 'trongtan.nguyen@gmail.com', '', '', FALSE, NULL, 180, 0, NOW() - INTERVAL '2 hours'),
+  ('Nguyễn Thanh Tùng', 'thanhtung.nguyen01@gmail.com', '', '', FALSE, NULL, 120, 0, NOW() - INTERVAL '2 days'),
+  ('Lê Mỹ Linh', 'mylinh.le04@gmail.com', '', '', FALSE, NULL, 50, 0, NOW() - INTERVAL '2 days'),
+  ('Phạm Quốc Toàn', 'quoctoan.pham98@gmail.com', '', '', FALSE, NULL, 200, 0, NOW() - INTERVAL '1 day'),
+  ('Hoàng Thục Anh', 'thucanh.hoang@gmail.com', '', '', FALSE, NULL, 0, 0, NOW() - INTERVAL '1 day'),
+  ('Trần Hữu Phước', 'huuphuoc.tran02@gmail.com', '', '', FALSE, NULL, 80, 0, NOW() - INTERVAL '20 hours'),
+  ('Vũ Thị Kiều Oanh', 'kieuoanh.vu03@gmail.com', '', '', FALSE, NULL, 160, 0, NOW() - INTERVAL '18 hours'),
+  ('Đinh Trọng Nghĩa', 'trongnghia.dinh@gmail.com', '', '', FALSE, NULL, 90, 0, NOW() - INTERVAL '15 hours'),
+  ('Dương Thảo Nhi', 'thaonhi.duong04@gmail.com', '', '', FALSE, NULL, 310, 0, NOW() - INTERVAL '12 hours'),
+  ('Lâm Văn Thịnh', 'vanthinh.lam@gmail.com', '', '', FALSE, NULL, 0, 0, NOW() - INTERVAL '10 hours'),
+  ('Ngô Thúy Vy', 'thuyvy.ngo03@gmail.com', '', '', FALSE, NULL, 140, 0, NOW() - INTERVAL '8 hours'),
+  ('Phan Văn An', 'vanan.phan02@gmail.com', '', '', FALSE, NULL, 70, 0, NOW() - INTERVAL '6 hours'),
+  ('Bùi Mai Hoa', 'maihoa.bui99@gmail.com', '', '', FALSE, NULL, 220, 0, NOW() - INTERVAL '5 hours'),
+  ('Hồ Đình Quân', 'dinhquan.ho@gmail.com', '', '', FALSE, NULL, 100, 0, NOW() - INTERVAL '4 hours'),
+  ('Trương Mỹ Hạnh', 'myhanh.truong01@gmail.com', '', '', FALSE, NULL, 0, 0, NOW() - INTERVAL '2 hours'),
+  ('Lý Gia Huy', 'giahuy.ly05@gmail.com', '', '', FALSE, NULL, 190, 0, NOW() - INTERVAL '1 hour')
 ON CONFLICT (email) DO NOTHING;
-
-
