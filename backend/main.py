@@ -131,6 +131,9 @@ with db() as con:
             ('khoitdqe170065@gmail.com', 'Trần Đăng Khôi', 'SE1792943589777', 39000, 'month', 31),
             ('ycao123@gmail.com', 'Cao Ngọc Ý', 'SE1792943482387', 39000, 'month', 31),
             ('dinhngocthien2004@gmail.com', 'Đinh Ngọc Thiện', 'SE56477462', 39000, 'month', 31),
+            ('hoangminhtuan.hn@gmail.com', 'Hoàng Minh Tuấn', 'SE28471920', 39000, 'month', 31),
+            ('thaottp.sign@gmail.com', 'Trần Thị Phương Thảo', 'SE91823746', 39000, 'month', 31),
+            ('ducanh.pham99@gmail.com', 'Phạm Đức Anh', 'SE56192837', 39000, 'month', 31),
         ]
         now_iso = datetime.now(timezone.utc).isoformat()
         admin_row = connection.execute("SELECT id FROM users WHERE LOWER(email) = 'admin@signeye.vn'").fetchone()
@@ -198,6 +201,10 @@ with db() as con:
             ('Đoàn Kim Ngân', 'ngandoankim@gmail.com', 320),
             ('Huỳnh Bá Thông', 'thonghuynhba@gmail.com', 70),
             ('Nguyễn Thị Hồng Ánh', 'honganhnguyen2004@gmail.com', 0),
+            ('Vũ Hải Nam', 'namvu.tech@gmail.com', 140),
+            ('Nguyễn Bảo Ngọc', 'baongoc.sign21@gmail.com', 220),
+            ('Bùi Quang Huy', 'huybq.ptit@gmail.com', 90),
+            ('Đỗ Thanh Hằng', 'thanhhang.do96@gmail.com', 160),
         ]
         for name, email, coins in free_users:
             if not connection.execute('SELECT id FROM users WHERE LOWER(email)=?', (email.lower(),)).fetchone():

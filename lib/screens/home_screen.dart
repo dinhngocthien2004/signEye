@@ -374,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: 3),
                         Text(
-                          'Chơi đoán biển báo tích lũy xu. Đạt 1.000 xu đổi sang 1.000đ mua Pro!',
+                          'Chơi đoán biển báo tích lũy xu. Cứ 50 xu đổi sang 5.000đ, đủ 39.000đ mở Pro!',
                           style: TextStyle(
                             fontSize: 11.5,
                             color: const Color(0xFF92400E).withValues(alpha: 0.9),

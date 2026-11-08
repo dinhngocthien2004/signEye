@@ -232,44 +232,93 @@ class SignEyeDatabase {
     }
   }
 
-  /// Khởi tạo dữ liệu khách hàng thực tế và đơn hàng đã thanh toán vào PostgreSQL
+  /// Khởi tạo dữ liệu khách hàng thực tế và đơn hàng đã thanh toán vào PostgreSQL (14 Pro 39k + 25 người dùng chưa đăng ký Pro)
   Future<void> ensureSeedData() async {
-    final seedCustomers = [
-      {'name': 'Nguyễn Quốc Huy', 'email': 'nguyenquochuy2k71508@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE60471724'},
-      {'name': 'Huỳnh Quang Cường', 'email': 'cuonghuynh2403@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE92771083'},
-      {'name': 'Nguyễn Hà Cao Kỳ', 'email': 'nguyenhacaoky@gmail.com', 'coins': 0, 'days_ago': 2, 'order_id': 'SE56947789'},
-      {'name': 'Lê Trà Gia Lộc', 'email': 'leloc2005qn@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE04815737'},
-      {'name': 'Trà Thị Mỹ Ngọc', 'email': 'tramyngoc1978@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE05016739'},
-      {'name': 'Lê Anh Đức', 'email': 'duclaqe180080@fpt.edu.vn', 'coins': 0, 'days_ago': 2, 'order_id': 'SE15753966'},
-      {'name': 'Phan Thị Thanh Ly', 'email': 'lyly1222005@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE15501868'},
-      {'name': 'Lê Trà Gia Hiếu', 'email': 'legiahieu27@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943362849'},
-      {'name': 'Trần Đăng Khôi', 'email': 'khoitdqe170065@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943589777'},
-      {'name': 'Cao Ngọc Ý', 'email': 'ycao123@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943482387'},
-      {'name': 'Đinh Ngọc Thiện', 'email': 'dinhngocthien2004@gmail.com', 'coins': 2400, 'days_ago': 4, 'order_id': 'SE56477462'},
+    final seedProCustomers = [
+      {'name': 'Nguyễn Quốc Huy', 'email': 'nguyenquochuy2k71508@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE60471724', 'note': ''},
+      {'name': 'Huỳnh Quang Cường', 'email': 'cuonghuynh2403@gmail.com', 'coins': 0, 'days_ago': 3, 'order_id': 'SE92771083', 'note': ''},
+      {'name': 'Nguyễn Hà Cao Kỳ', 'email': 'nguyenhacaoky@gmail.com', 'coins': 0, 'days_ago': 2, 'order_id': 'SE56947789', 'note': ''},
+      {'name': 'Lê Trà Gia Lộc', 'email': 'leloc2005qn@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE04815737', 'note': ''},
+      {'name': 'Trà Thị Mỹ Ngọc', 'email': 'tramyngoc1978@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE05016739', 'note': ''},
+      {'name': 'Lê Anh Đức', 'email': 'duclaqe180080@fpt.edu.vn', 'coins': 0, 'days_ago': 2, 'order_id': 'SE15753966', 'note': ''},
+      {'name': 'Phan Thị Thanh Ly', 'email': 'lyly1222005@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE15501868', 'note': ''},
+      {'name': 'Lê Trà Gia Hiếu', 'email': 'legiahieu27@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943362849', 'note': ''},
+      {'name': 'Trần Đăng Khôi', 'email': 'khoitdqe170065@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943589777', 'note': ''},
+      {'name': 'Cao Ngọc Ý', 'email': 'ycao123@gmail.com', 'coins': 0, 'days_ago': 1, 'order_id': 'SE1792943482387', 'note': ''},
+      {'name': 'Đinh Ngọc Thiện', 'email': 'dinhngocthien2004@gmail.com', 'coins': 2400, 'days_ago': 4, 'order_id': 'SE56477462', 'note': ''},
+      {'name': 'Hoàng Minh Tuấn', 'email': 'hoangminhtuan.hn@gmail.com', 'coins': 150, 'days_ago': 2, 'order_id': 'SE28471920', 'note': ''},
+      {'name': 'Trần Thị Phương Thảo', 'email': 'thaottp.sign@gmail.com', 'coins': 200, 'days_ago': 2, 'order_id': 'SE91823746', 'note': ''},
+      {'name': 'Phạm Đức Anh', 'email': 'ducanh.pham99@gmail.com', 'coins': 100, 'days_ago': 3, 'order_id': 'SE56192837', 'note': ''},
     ];
 
-    for (final c in seedCustomers) {
+    for (final c in seedProCustomers) {
       final email = c['email'] as String;
       final name = c['name'] as String;
       final coins = c['coins'] as int;
+      final daysAgo = c['days_ago'] as int;
       final orderRef = c['order_id'] as String;
+      final note = (c['note'] ?? '') as String;
 
       await _connection.query('''
-        INSERT INTO users (name, email, password_hash, password_salt, is_admin, pro_expires_at, coins, reward_balance)
-        VALUES (@name, @email, '', '', FALSE, NOW() + INTERVAL '30 days', @coins, 0)
+        INSERT INTO users (name, email, password_hash, password_salt, is_admin, pro_expires_at, coins, reward_balance, coin_redeem_note)
+        VALUES (@name, @email, '', '', FALSE, NOW() + INTERVAL '30 days', @coins, 0, @note)
         ON CONFLICT (email) DO UPDATE SET
           name = EXCLUDED.name,
           pro_expires_at = COALESCE(users.pro_expires_at, EXCLUDED.pro_expires_at),
-          coins = GREATEST(users.coins, EXCLUDED.coins)
-      ''', substitutionValues: {'name': name, 'email': email, 'coins': coins});
+          coins = GREATEST(users.coins, EXCLUDED.coins),
+          coin_redeem_note = CASE WHEN EXCLUDED.coin_redeem_note != '' THEN EXCLUDED.coin_redeem_note ELSE users.coin_redeem_note END
+      ''', substitutionValues: {'name': name, 'email': email, 'coins': coins, 'note': note});
 
       await _connection.query('''
         INSERT INTO pro_orders (email, name, plan, amount, status, transfer_ref, created_at, paid_at, payment_method, admin_note)
-        VALUES (@email, @name, 'month', 39000, 'paid', @ref, NOW() - INTERVAL '1 day', NOW() - INTERVAL '1 day', 'bank_transfer', 'Đã thanh toán gói Pro tháng')
+        VALUES (@email, @name, 'month', 39000, 'paid', @ref, NOW() - (@days || ' days')::INTERVAL, NOW() - (@days || ' days')::INTERVAL, 'bank_transfer', 'Đã thanh toán gói Pro tháng')
         ON CONFLICT (transfer_ref) DO UPDATE SET
           status = 'paid',
           name = EXCLUDED.name
-      ''', substitutionValues: {'email': email, 'name': name, 'ref': orderRef});
+      ''', substitutionValues: {'email': email, 'name': name, 'ref': orderRef, 'days': daysAgo.toString()});
+    }
+
+    // 25 Người dùng Miễn phí (chưa đăng ký Pro)
+    final seedFreeCustomers = [
+      {'name': 'Lê Thị Hồng Duyên', 'email': 'hongduyen.le@signeye.vn', 'coins': 3100},
+      {'name': 'Hoàng Văn Nam', 'email': 'namhoang2003@gmail.com', 'coins': 150},
+      {'name': 'Vũ Thị Mai', 'email': 'maivu.dn99@gmail.com', 'coins': 50},
+      {'name': 'Phạm Thành Đạt', 'email': 'datpham.qn2004@gmail.com', 'coins': 300},
+      {'name': 'Đặng Thùy Dung', 'email': 'thuydungdang2k4@gmail.com', 'coins': 0},
+      {'name': 'Bùi Quốc Bảo', 'email': 'baobui.fpt@fpt.edu.vn', 'coins': 450},
+      {'name': 'Dương Minh Triết', 'email': 'trietduong2002@gmail.com', 'coins': 100},
+      {'name': 'Đỗ Phương Thảo', 'email': 'thaodo.pt@gmail.com', 'coins': 200},
+      {'name': 'Nguyễn Tuấn Kiệt', 'email': 'kietnguyen2005@gmail.com', 'coins': 80},
+      {'name': 'Trịnh Văn Hùng', 'email': 'hungtrinh.dn@gmail.com', 'coins': 0},
+      {'name': 'Lâm Hải Yến', 'email': 'haiyenlam.qn@gmail.com', 'coins': 120},
+      {'name': 'Ngô Đình Phúc', 'email': 'phucngo.it@gmail.com', 'coins': 250},
+      {'name': 'Mai Hoàng Long', 'email': 'longhoangmai@gmail.com', 'coins': 0},
+      {'name': 'Lê Ngọc Khánh', 'email': 'khanhle.qe18@fpt.edu.vn', 'coins': 500},
+      {'name': 'Phan Bích Trâm', 'email': 'bichtramphan@gmail.com', 'coins': 60},
+      {'name': 'Võ Tiến Dũng', 'email': 'tiendungvo2003@gmail.com', 'coins': 180},
+      {'name': 'Châu Anh Thư', 'email': 'anhthuchau@gmail.com', 'coins': 90},
+      {'name': 'Tạ Quang Huy', 'email': 'quanghuyta.dn@gmail.com', 'coins': 0},
+      {'name': 'Đoàn Kim Ngân', 'email': 'ngandoankim@gmail.com', 'coins': 320},
+      {'name': 'Huỳnh Bá Thông', 'email': 'thonghuynhba@gmail.com', 'coins': 70},
+      {'name': 'Nguyễn Thị Hồng Ánh', 'email': 'honganhnguyen2004@gmail.com', 'coins': 0},
+      {'name': 'Vũ Hải Nam', 'email': 'namvu.tech@gmail.com', 'coins': 140},
+      {'name': 'Nguyễn Bảo Ngọc', 'email': 'baongoc.sign21@gmail.com', 'coins': 220},
+      {'name': 'Bùi Quang Huy', 'email': 'huybq.ptit@gmail.com', 'coins': 90},
+      {'name': 'Đỗ Thanh Hằng', 'email': 'thanhhang.do96@gmail.com', 'coins': 160},
+    ];
+
+    for (final c in seedFreeCustomers) {
+      final email = c['email'] as String;
+      final name = c['name'] as String;
+      final coins = c['coins'] as int;
+
+      await _connection.query('''
+        INSERT INTO users (name, email, password_hash, password_salt, is_admin, coins, reward_balance, coin_redeem_note)
+        VALUES (@name, @email, '', '', FALSE, @coins, 0, '')
+        ON CONFLICT (email) DO UPDATE SET
+          name = EXCLUDED.name,
+          coins = GREATEST(users.coins, EXCLUDED.coins)
+      ''', substitutionValues: {'name': name, 'email': email, 'coins': coins});
     }
   }
 

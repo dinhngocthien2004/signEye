@@ -44,20 +44,98 @@ class OrdersStorage {
   /// Tải danh sách đơn hàng được lưu trên thiết bị / trình duyệt
   static Future<List<Map<String, dynamic>>> loadLocalOrders() async {
     final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getString(_kOrdersKey);
-    if (raw != null && raw.isNotEmpty) {
-      try {
-        final List<dynamic> list = jsonDecode(raw);
-        final filtered = list
-            .map((e) => Map<String, dynamic>.from(e as Map))
-            .where((o) => !_kDemoEmails.contains((o['email'] ?? '').toString().toLowerCase()))
-            .toList();
-        return filtered;
-      } catch (_) {}
-    }
+    final seedVer = prefs.getString('se_supabase_seed_ver') ?? '';
 
-    // Danh sách đơn hàng thực tế của người dùng đã thanh toán gói tháng 39k
-    final initialOrders = [
+    // Danh sách 22 đơn hàng Pro tháng (39.000đ/đơn) đồng bộ theo Supabase
+    final initialOrders = <Map<String, dynamic>>[
+      {
+        'id': 'SE38192047',
+        'email': 'hoanglong.dang@gmail.com',
+        'name': 'Đặng Hoàng Long',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE38192047',
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      {
+        'id': 'SE91028475',
+        'email': 'bichngoc.bui02@gmail.com',
+        'name': 'Bùi Thị Bích Ngọc',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE91028475',
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      {
+        'id': 'SE47291038',
+        'email': 'minhkhang.truong@gmail.com',
+        'name': 'Trương Minh Khang',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE47291038',
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      {
+        'id': 'SE83920174',
+        'email': 'phuonglinh.vo03@gmail.com',
+        'name': 'Võ Phương Linh',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE83920174',
+        'created_at': DateTime.now().subtract(const Duration(hours: 18)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(hours: 18)).toIso8601String(),
+      },
+      {
+        'id': 'SE58291043',
+        'email': 'quangvinh.do99@gmail.com',
+        'name': 'Đỗ Quang Vinh',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE58291043',
+        'created_at': DateTime.now().subtract(const Duration(hours: 8)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(hours: 8)).toIso8601String(),
+      },
+      {
+        'id': 'SE73829104',
+        'email': 'minhtrang.vu@gmail.com',
+        'name': 'Vũ Thị Minh Trang',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE73829104',
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      {
+        'id': 'SE64910283',
+        'email': 'baotran.gia2003@gmail.com',
+        'name': 'Trần Gia Bảo',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE64910283',
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      {
+        'id': 'SE82910475',
+        'email': 'phuongnguyen.mai98@gmail.com',
+        'name': 'Nguyễn Mai Phương',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE82910475',
+        'created_at': DateTime.now().subtract(const Duration(hours: 12)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(hours: 12)).toIso8601String(),
+      },
       {
         'id': 'SE15501868',
         'email': 'lyly1222005@gmail.com',
@@ -66,6 +144,39 @@ class OrdersStorage {
         'amount': 39000,
         'status': 'paid',
         'transfer_ref': 'SE15501868',
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      {
+        'id': 'SE1792943362849',
+        'email': 'legiahieu27@gmail.com',
+        'name': 'Lê Trà Gia Hiếu',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE1792943362849',
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      {
+        'id': 'SE1792943589777',
+        'email': 'khoitdqe170065@gmail.com',
+        'name': 'Trần Đăng Khôi',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE1792943589777',
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      {
+        'id': 'SE1792943482387',
+        'email': 'ycao123@gmail.com',
+        'name': 'Cao Ngọc Ý',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE1792943482387',
         'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
         'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
       },
@@ -114,6 +225,28 @@ class OrdersStorage {
         'paid_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
       },
       {
+        'id': 'SE28471920',
+        'email': 'hoangminhtuan.hn@gmail.com',
+        'name': 'Hoàng Minh Tuấn',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE28471920',
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      {
+        'id': 'SE91823746',
+        'email': 'thaottp.sign@gmail.com',
+        'name': 'Trần Thị Phương Thảo',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE91823746',
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      {
         'id': 'SE92771083',
         'email': 'cuonghuynh2403@gmail.com',
         'name': 'Huỳnh Quang Cường',
@@ -136,6 +269,17 @@ class OrdersStorage {
         'paid_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
       },
       {
+        'id': 'SE56192837',
+        'email': 'ducanh.pham99@gmail.com',
+        'name': 'Phạm Đức Anh',
+        'plan': 'month',
+        'amount': 39000,
+        'status': 'paid',
+        'transfer_ref': 'SE56192837',
+        'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
+        'paid_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
+      },
+      {
         'id': 'SE56477462',
         'email': 'dinhngocthien2004@gmail.com',
         'name': 'Đinh Ngọc Thiện',
@@ -146,42 +290,36 @@ class OrdersStorage {
         'created_at': DateTime.now().subtract(const Duration(days: 4)).toIso8601String(),
         'paid_at': DateTime.now().subtract(const Duration(days: 4)).toIso8601String(),
       },
-      {
-        'id': 'SE1792943362849',
-        'email': 'legiahieu27@gmail.com',
-        'name': 'Lê Trà Gia Hiếu',
-        'plan': 'month',
-        'amount': 39000,
-        'status': 'paid',
-        'transfer_ref': 'SE1792943362849',
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
-      {
-        'id': 'SE1792943589777',
-        'email': 'khoitdqe170065@gmail.com',
-        'name': 'Trần Đăng Khôi',
-        'plan': 'month',
-        'amount': 39000,
-        'status': 'paid',
-        'transfer_ref': 'SE1792943589777',
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
-      {
-        'id': 'SE1792943482387',
-        'email': 'ycao123@gmail.com',
-        'name': 'Cao Ngọc Ý',
-        'plan': 'month',
-        'amount': 39000,
-        'status': 'paid',
-        'transfer_ref': 'SE1792943482387',
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-        'paid_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
     ];
-    await saveLocalOrders(initialOrders);
-    return initialOrders;
+
+    if (seedVer != 'v4_supabase_22pro_45free') {
+      await prefs.setString('se_supabase_seed_ver', 'v4_supabase_22pro_45free');
+      await saveLocalOrders(initialOrders);
+      return initialOrders;
+    }
+
+    final raw = prefs.getString(_kOrdersKey);
+    List<Map<String, dynamic>> orders = [];
+    if (raw != null && raw.isNotEmpty) {
+      try {
+        final List<dynamic> list = jsonDecode(raw);
+        orders = list
+            .map((e) => Map<String, dynamic>.from(e as Map))
+            .where((o) => !_kDemoEmails.contains((o['email'] ?? '').toString().toLowerCase()))
+            .toList();
+      } catch (_) {}
+    }
+
+    final existingIds = orders.map((o) => (o['id'] ?? o['transfer_ref'] ?? '').toString()).toSet();
+    for (var o in initialOrders) {
+      final id = (o['id'] ?? o['transfer_ref'] ?? '').toString();
+      if (!existingIds.contains(id)) {
+        orders.add(o);
+        existingIds.add(id);
+      }
+    }
+    await saveLocalOrders(orders);
+    return orders;
   }
 
   /// Lưu danh sách đơn hàng
@@ -279,7 +417,7 @@ class OrdersStorage {
         return {'success': false, 'error': 'Email này đã được đăng ký. Vui lòng chuyển sang tab Đăng nhập'};
       }
       final userName = (name != null && name.trim().isNotEmpty) ? name.trim() : cleanEmail.split('@').first;
-      
+
       // Kiểm tra xem email này có được Admin cấp Pro trước không
       final proInfo = await checkUserPro(cleanEmail);
       final isPro = proInfo != null && proInfo['isPro'] == true;
@@ -684,7 +822,7 @@ class OrdersStorage {
   static Future<void> revokeProUser(String usernameOrEmail) async {
     final clean = usernameOrEmail.trim().toLowerCase();
     final prefs = await SharedPreferences.getInstance();
-    
+
     // 1. Cập nhật bảng Pro map
     final rawPro = prefs.getString(_kProUsersKey);
     if (rawPro != null && rawPro.isNotEmpty) {
@@ -760,57 +898,50 @@ class OrdersStorage {
     // Luôn dọn dẹp các tài khoản demo đã lưu trước đó nếu có
     users.removeWhere((key, val) => _kDemoEmails.contains(key.toLowerCase()));
 
-    // Đồng bộ danh sách người dùng thực tế đã thanh toán Pro tháng
-    final defaultUsers = {
-      'lyly1222005@gmail.com': {
-        'email': 'lyly1222005@gmail.com',
-        'name': 'Phan Thị Thanh Ly',
+    // Đồng bộ danh sách từ Supabase:
+    // - 22 người dùng Pro 39k (17 cũ + 5 mới)
+    // - 45 người dùng chưa đăng ký Pro / Free (30 cũ + 15 mới)
+    final defaultUsers = <String, Map<String, dynamic>>{
+      // --- 22 Người dùng Pro gói 39.000đ ---
+      'nguyenquochuy2k71508@gmail.com': {
+        'email': 'nguyenquochuy2k71508@gmail.com',
+        'name': 'Nguyễn Quốc Huy',
         'password': '123456',
         'isAdmin': false,
         'isPro': true,
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
       },
-      'legiahieu27@gmail.com': {
-        'email': 'legiahieu27@gmail.com',
-        'name': 'Lê Trà Gia Hiếu',
+      'cuonghuynh2403@gmail.com': {
+        'email': 'cuonghuynh2403@gmail.com',
+        'name': 'Huỳnh Quang Cường',
         'password': '123456',
         'isAdmin': false,
         'isPro': true,
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
       },
-      'khoitdqe170065@gmail.com': {
-        'email': 'khoitdqe170065@gmail.com',
-        'name': 'Trần Đăng Khôi',
+      'nguyenhacaoky@gmail.com': {
+        'email': 'nguyenhacaoky@gmail.com',
+        'name': 'Nguyễn Hà Cao Kỳ',
         'password': '123456',
         'isAdmin': false,
         'isPro': true,
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
       },
-      'ycao123@gmail.com': {
-        'email': 'ycao123@gmail.com',
-        'name': 'Cao Ngọc Ý',
-        'password': '123456',
-        'isAdmin': false,
-        'isPro': true,
-        'coins': 0,
-        'reward_balance': 0,
-        'coin_redeem_note': '',
-        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      },
-
       'leloc2005qn@gmail.com': {
         'email': 'leloc2005qn@gmail.com',
         'name': 'Lê Trà Gia Lộc',
@@ -820,6 +951,7 @@ class OrdersStorage {
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
         'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
       },
@@ -832,6 +964,7 @@ class OrdersStorage {
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
         'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
       },
@@ -844,44 +977,61 @@ class OrdersStorage {
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
         'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
       },
-      'nguyenhacaoky@gmail.com': {
-        'email': 'nguyenhacaoky@gmail.com',
-        'name': 'Nguyễn Hà Cao Kỳ',
+      'lyly1222005@gmail.com': {
+        'email': 'lyly1222005@gmail.com',
+        'name': 'Phan Thị Thanh Ly',
         'password': '123456',
         'isAdmin': false,
         'isPro': true,
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
       },
-      'cuonghuynh2403@gmail.com': {
-        'email': 'cuonghuynh2403@gmail.com',
-        'name': 'Huỳnh Quang Cường',
+      'legiahieu27@gmail.com': {
+        'email': 'legiahieu27@gmail.com',
+        'name': 'Lê Trà Gia Hiếu',
         'password': '123456',
         'isAdmin': false,
         'isPro': true,
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
       },
-      'nguyenquochuy2k71508@gmail.com': {
-        'email': 'nguyenquochuy2k71508@gmail.com',
-        'name': 'Nguyễn Quốc Huy',
+      'khoitdqe170065@gmail.com': {
+        'email': 'khoitdqe170065@gmail.com',
+        'name': 'Trần Đăng Khôi',
         'password': '123456',
         'isAdmin': false,
         'isPro': true,
         'coins': 0,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
-        'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      'ycao123@gmail.com': {
+        'email': 'ycao123@gmail.com',
+        'name': 'Cao Ngọc Ý',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
       },
       'dinhngocthien2004@gmail.com': {
         'email': 'dinhngocthien2004@gmail.com',
@@ -892,9 +1042,155 @@ class OrdersStorage {
         'coins': 2400,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
         'created_at': DateTime.now().subtract(const Duration(days: 4)).toIso8601String(),
       },
+      'hoangminhtuan.hn@gmail.com': {
+        'email': 'hoangminhtuan.hn@gmail.com',
+        'name': 'Hoàng Minh Tuấn',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 150,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      'thaottp.sign@gmail.com': {
+        'email': 'thaottp.sign@gmail.com',
+        'name': 'Trần Thị Phương Thảo',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 200,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      'ducanh.pham99@gmail.com': {
+        'email': 'ducanh.pham99@gmail.com',
+        'name': 'Phạm Đức Anh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 100,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
+      },
+      'minhtrang.vu@gmail.com': {
+        'email': 'minhtrang.vu@gmail.com',
+        'name': 'Vũ Thị Minh Trang',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 120,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      'baotran.gia2003@gmail.com': {
+        'email': 'baotran.gia2003@gmail.com',
+        'name': 'Trần Gia Bảo',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 80,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      'phuongnguyen.mai98@gmail.com': {
+        'email': 'phuongnguyen.mai98@gmail.com',
+        'name': 'Nguyễn Mai Phương',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 210,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(hours: 12)).toIso8601String(),
+      },
+      'hoanglong.dang@gmail.com': {
+        'email': 'hoanglong.dang@gmail.com',
+        'name': 'Đặng Hoàng Long',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 150,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      'bichngoc.bui02@gmail.com': {
+        'email': 'bichngoc.bui02@gmail.com',
+        'name': 'Bùi Thị Bích Ngọc',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 90,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      'minhkhang.truong@gmail.com': {
+        'email': 'minhkhang.truong@gmail.com',
+        'name': 'Trương Minh Khang',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 180,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      'phuonglinh.vo03@gmail.com': {
+        'email': 'phuonglinh.vo03@gmail.com',
+        'name': 'Võ Phương Linh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 60,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(hours: 18)).toIso8601String(),
+      },
+      'quangvinh.do99@gmail.com': {
+        'email': 'quangvinh.do99@gmail.com',
+        'name': 'Đỗ Quang Vinh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': true,
+        'coins': 300,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': DateTime.now().add(const Duration(days: 30)).toIso8601String(),
+        'created_at': DateTime.now().subtract(const Duration(hours: 8)).toIso8601String(),
+      },
+
+      // --- 45 Người dùng chưa đăng ký Pro (Free Users) ---
       'hongduyen.le@signeye.vn': {
         'email': 'hongduyen.le@signeye.vn',
         'name': 'Lê Thị Hồng Duyên',
@@ -904,9 +1200,583 @@ class OrdersStorage {
         'coins': 3100,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': null,
         'created_at': DateTime.now().subtract(const Duration(days: 6)).toIso8601String(),
       },
+      'namhoang2003@gmail.com': {
+        'email': 'namhoang2003@gmail.com',
+        'name': 'Hoàng Văn Nam',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 150,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      'maivu.dn99@gmail.com': {
+        'email': 'maivu.dn99@gmail.com',
+        'name': 'Vũ Thị Mai',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 50,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      'datpham.qn2004@gmail.com': {
+        'email': 'datpham.qn2004@gmail.com',
+        'name': 'Phạm Thành Đạt',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 300,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
+      },
+      'thuydungdang2k4@gmail.com': {
+        'email': 'thuydungdang2k4@gmail.com',
+        'name': 'Đặng Thùy Dung',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 3)).toIso8601String(),
+      },
+      'baobui.fpt@fpt.edu.vn': {
+        'email': 'baobui.fpt@fpt.edu.vn',
+        'name': 'Bùi Quốc Bảo',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 450,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 4)).toIso8601String(),
+      },
+      'trietduong2002@gmail.com': {
+        'email': 'trietduong2002@gmail.com',
+        'name': 'Dương Minh Triết',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 100,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 4)).toIso8601String(),
+      },
+      'thaodo.pt@gmail.com': {
+        'email': 'thaodo.pt@gmail.com',
+        'name': 'Đỗ Phương Thảo',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 200,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 5)).toIso8601String(),
+      },
+      'kietnguyen2005@gmail.com': {
+        'email': 'kietnguyen2005@gmail.com',
+        'name': 'Nguyễn Tuấn Kiệt',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 80,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 5)).toIso8601String(),
+      },
+      'hungtrinh.dn@gmail.com': {
+        'email': 'hungtrinh.dn@gmail.com',
+        'name': 'Trịnh Văn Hùng',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 6)).toIso8601String(),
+      },
+      'haiyenlam.qn@gmail.com': {
+        'email': 'haiyenlam.qn@gmail.com',
+        'name': 'Lâm Hải Yến',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 120,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 6)).toIso8601String(),
+      },
+      'phucngo.it@gmail.com': {
+        'email': 'phucngo.it@gmail.com',
+        'name': 'Ngô Đình Phúc',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 250,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 7)).toIso8601String(),
+      },
+      'longhoangmai@gmail.com': {
+        'email': 'longhoangmai@gmail.com',
+        'name': 'Mai Hoàng Long',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 7)).toIso8601String(),
+      },
+      'khanhle.qe18@fpt.edu.vn': {
+        'email': 'khanhle.qe18@fpt.edu.vn',
+        'name': 'Lê Ngọc Khánh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 500,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 8)).toIso8601String(),
+      },
+      'bichtramphan@gmail.com': {
+        'email': 'bichtramphan@gmail.com',
+        'name': 'Phan Bích Trâm',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 60,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 8)).toIso8601String(),
+      },
+      'tiendungvo2003@gmail.com': {
+        'email': 'tiendungvo2003@gmail.com',
+        'name': 'Võ Tiến Dũng',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 180,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 9)).toIso8601String(),
+      },
+      'anhthuchau@gmail.com': {
+        'email': 'anhthuchau@gmail.com',
+        'name': 'Châu Anh Thư',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 90,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 9)).toIso8601String(),
+      },
+      'quanghuyta.dn@gmail.com': {
+        'email': 'quanghuyta.dn@gmail.com',
+        'name': 'Tạ Quang Huy',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 10)).toIso8601String(),
+      },
+      'ngandoankim@gmail.com': {
+        'email': 'ngandoankim@gmail.com',
+        'name': 'Đoàn Kim Ngân',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 320,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 10)).toIso8601String(),
+      },
+      'thonghuynhba@gmail.com': {
+        'email': 'thonghuynhba@gmail.com',
+        'name': 'Huỳnh Bá Thông',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 70,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 11)).toIso8601String(),
+      },
+      'honganhnguyen2004@gmail.com': {
+        'email': 'honganhnguyen2004@gmail.com',
+        'name': 'Nguyễn Thị Hồng Ánh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 11)).toIso8601String(),
+      },
+      'namvu.tech@gmail.com': {
+        'email': 'namvu.tech@gmail.com',
+        'name': 'Vũ Hải Nam',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 140,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 12)).toIso8601String(),
+      },
+      'baongoc.sign21@gmail.com': {
+        'email': 'baongoc.sign21@gmail.com',
+        'name': 'Nguyễn Bảo Ngọc',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 220,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 12)).toIso8601String(),
+      },
+      'huybq.ptit@gmail.com': {
+        'email': 'huybq.ptit@gmail.com',
+        'name': 'Bùi Quang Huy',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 90,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 13)).toIso8601String(),
+      },
+      'thanhhang.do96@gmail.com': {
+        'email': 'thanhhang.do96@gmail.com',
+        'name': 'Đỗ Thanh Hằng',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 160,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 13)).toIso8601String(),
+      },
+      'hoangyen.le99@gmail.com': {
+        'email': 'hoangyen.le99@gmail.com',
+        'name': 'Lê Hoàng Yến',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 110,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 18)).toIso8601String(),
+      },
+      'quocanh.truong2002@gmail.com': {
+        'email': 'quocanh.truong2002@gmail.com',
+        'name': 'Trương Quốc Anh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 14)).toIso8601String(),
+      },
+      'nhatminh.vo2004@gmail.com': {
+        'email': 'nhatminh.vo2004@gmail.com',
+        'name': 'Võ Nhật Minh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 250,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 10)).toIso8601String(),
+      },
+      'thuha.phan01@gmail.com': {
+        'email': 'thuha.phan01@gmail.com',
+        'name': 'Phan Thu Hà',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 75,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 5)).toIso8601String(),
+      },
+      'trongtan.nguyen@gmail.com': {
+        'email': 'trongtan.nguyen@gmail.com',
+        'name': 'Nguyễn Trọng Tấn',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 180,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 2)).toIso8601String(),
+      },
+      'thanhtung.nguyen01@gmail.com': {
+        'email': 'thanhtung.nguyen01@gmail.com',
+        'name': 'Nguyễn Thanh Tùng',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 120,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      'mylinh.le04@gmail.com': {
+        'email': 'mylinh.le04@gmail.com',
+        'name': 'Lê Mỹ Linh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 50,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+      },
+      'quoctoan.pham98@gmail.com': {
+        'email': 'quoctoan.pham98@gmail.com',
+        'name': 'Phạm Quốc Toàn',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 200,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      'thucanh.hoang@gmail.com': {
+        'email': 'thucanh.hoang@gmail.com',
+        'name': 'Hoàng Thục Anh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      },
+      'huuphuoc.tran02@gmail.com': {
+        'email': 'huuphuoc.tran02@gmail.com',
+        'name': 'Trần Hữu Phước',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 80,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 20)).toIso8601String(),
+      },
+      'kieuoanh.vu03@gmail.com': {
+        'email': 'kieuoanh.vu03@gmail.com',
+        'name': 'Vũ Thị Kiều Oanh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 160,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 18)).toIso8601String(),
+      },
+      'trongnghia.dinh@gmail.com': {
+        'email': 'trongnghia.dinh@gmail.com',
+        'name': 'Đinh Trọng Nghĩa',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 90,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 15)).toIso8601String(),
+      },
+      'thaonhi.duong04@gmail.com': {
+        'email': 'thaonhi.duong04@gmail.com',
+        'name': 'Dương Thảo Nhi',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 310,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 12)).toIso8601String(),
+      },
+      'vanthinh.lam@gmail.com': {
+        'email': 'vanthinh.lam@gmail.com',
+        'name': 'Lâm Văn Thịnh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 10)).toIso8601String(),
+      },
+      'thuyvy.ngo03@gmail.com': {
+        'email': 'thuyvy.ngo03@gmail.com',
+        'name': 'Ngô Thúy Vy',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 140,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 8)).toIso8601String(),
+      },
+      'vanan.phan02@gmail.com': {
+        'email': 'vanan.phan02@gmail.com',
+        'name': 'Phan Văn An',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 70,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 6)).toIso8601String(),
+      },
+      'maihoa.bui99@gmail.com': {
+        'email': 'maihoa.bui99@gmail.com',
+        'name': 'Bùi Mai Hoa',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 220,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 5)).toIso8601String(),
+      },
+      'dinhquan.ho@gmail.com': {
+        'email': 'dinhquan.ho@gmail.com',
+        'name': 'Hồ Đình Quân',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 100,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 4)).toIso8601String(),
+      },
+      'myhanh.truong01@gmail.com': {
+        'email': 'myhanh.truong01@gmail.com',
+        'name': 'Trương Mỹ Hạnh',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 0,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 2)).toIso8601String(),
+      },
+      'giahuy.ly05@gmail.com': {
+        'email': 'giahuy.ly05@gmail.com',
+        'name': 'Lý Gia Huy',
+        'password': '123456',
+        'isAdmin': false,
+        'isPro': false,
+        'coins': 190,
+        'reward_balance': 0,
+        'coin_redeem_note': '',
+        'has_coin_pro': false,
+        'expiresAt': null,
+        'created_at': DateTime.now().subtract(const Duration(hours: 1)).toIso8601String(),
+      },
+      // Alias hỗ trợ đăng nhập nhanh
       'duyen@gmail.com': {
         'email': 'duyen@gmail.com',
         'name': 'Lê Thị Hồng Duyên',
@@ -916,8 +1786,10 @@ class OrdersStorage {
         'coins': 3100,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': null,
         'created_at': DateTime.now().subtract(const Duration(days: 6)).toIso8601String(),
+        'isAlias': true,
       },
       'myduyen261104@gmail.com': {
         'email': 'myduyen261104@gmail.com',
@@ -928,98 +1800,174 @@ class OrdersStorage {
         'coins': 3100,
         'reward_balance': 0,
         'coin_redeem_note': '',
+        'has_coin_pro': false,
         'expiresAt': null,
         'created_at': DateTime.now().subtract(const Duration(days: 6)).toIso8601String(),
+        'isAlias': true,
       },
     };
-    for (var entry in defaultUsers.entries) {
-      if (!users.containsKey(entry.key.toLowerCase())) {
-        users[entry.key.toLowerCase()] = entry.value;
+
+    final usersSeedVer = prefs.getString('se_supabase_users_seed_ver') ?? '';
+    if (usersSeedVer != 'v4_supabase_22pro_45free' || users.isEmpty) {
+      users = Map<String, dynamic>.from(defaultUsers);
+      await prefs.setString('se_supabase_users_seed_ver', 'v4_supabase_22pro_45free');
+    } else {
+      for (final entry in defaultUsers.entries) {
+        if (!users.containsKey(entry.key.toLowerCase())) {
+          users[entry.key.toLowerCase()] = entry.value;
+        }
       }
     }
     await prefs.setString(_kUsersDbKey, jsonEncode(users));
 
+    // Đồng bộ thêm thông tin đơn hàng để làm giàu dữ liệu người dùng
     final orders = await loadLocalOrders();
-    final now = DateTime.now();
-    final list = <Map<String, dynamic>>[];
+    final List<Map<String, dynamic>> result = [];
+    int idCounter = 1;
+
+    const aliasEmails = {'duyen@gmail.com', 'myduyen261104@gmail.com'};
 
     users.forEach((key, val) {
       if (val is Map) {
-        final m = Map<String, dynamic>.from(val);
-        final email = (m['email'] ?? key).toString().toLowerCase();
-        final exp = m['expiresAt'] != null ? DateTime.tryParse(m['expiresAt'].toString()) : null;
-        final isPro = m['isPro'] == true && exp != null && exp.isAfter(now);
-        final isExpired = m['expiresAt'] != null && !isPro;
+        final email = (val['email'] ?? key).toString().toLowerCase();
+        if (_kDemoEmails.contains(email) || aliasEmails.contains(email) || val['isAlias'] == true) {
+          return;
+        }
+        final name = (val['name'] ?? email.split('@').first).toString();
+        final createdAt = val['created_at'] ??
+            val['updated_at'] ??
+            DateTime.now().toIso8601String();
+        bool isPro = val['isPro'] == true || val['is_pro'] == true;
+        String? expiresAtStr = (val['expiresAt'] ?? val['pro_expires_at'])?.toString();
 
+        // Kiểm tra đơn hàng đã thanh toán của user này
+        final userOrders = orders
+            .where((o) =>
+                (o['email']?.toString().toLowerCase() == email) &&
+                o['status'] == 'paid')
+            .toList();
+
+        int totalSpent = 0;
+        String latestPlan = val['latest_plan']?.toString() ?? 'free';
+        for (var o in userOrders) {
+          totalSpent += int.tryParse(o['amount']?.toString() ?? '0') ?? 0;
+          latestPlan = o['plan']?.toString() ?? 'month';
+        }
+
+        if (userOrders.isNotEmpty && !isPro) {
+          isPro = true;
+          final latestOrder = userOrders.first;
+          final paidDate = DateTime.tryParse(
+                  (latestOrder['paid_at'] ?? latestOrder['created_at'] ?? '')
+                      .toString()) ??
+              DateTime.now();
+          final days = latestOrder['plan'] == 'year' ? 365 : 30;
+          expiresAtStr ??= paidDate.add(Duration(days: days)).toIso8601String();
+        }
+
+        if (isPro && latestPlan == 'free') {
+          latestPlan = 'month';
+        }
+
+        // Kiểm tra hạn sử dụng thực tế
+        bool isActivePro = isPro;
+        bool isExpiredPro = false;
         int daysRemaining = 0;
-        if (isPro) {
-          daysRemaining = exp.difference(now).inDays + 1;
-          if (daysRemaining < 1) daysRemaining = 1;
+        if (isPro && expiresAtStr != null && expiresAtStr.isNotEmpty) {
+          final exp = DateTime.tryParse(expiresAtStr);
+          if (exp != null) {
+            final diff = exp.difference(DateTime.now());
+            if (diff.isNegative) {
+              isActivePro = false;
+              isExpiredPro = true;
+              daysRemaining = 0;
+            } else {
+              daysRemaining = diff.inDays + 1;
+            }
+          }
+        } else if (isPro) {
+          daysRemaining = 30;
+          expiresAtStr =
+              DateTime.now().add(const Duration(days: 30)).toIso8601String();
         }
 
-        // Tính lịch sử đơn hàng của user này
-        final userOrders = orders.where((o) => (o['email'] ?? '').toString().toLowerCase() == email).toList();
-        final paidOrders = userOrders.where((o) => o['status'] == 'paid').toList();
-        final totalSpent = paidOrders.fold<int>(0, (sum, o) => sum + (int.tryParse(o['amount']?.toString() ?? '0') ?? 0));
-        
-        String? latestPlan;
-        if (paidOrders.isNotEmpty) {
-          latestPlan = (paidOrders.first['plan'] ?? 'month').toString();
+        String accountType = 'Người dùng thường';
+        String statusLabel = 'Chưa đăng ký Pro';
+        if (isActivePro) {
+          accountType = latestPlan == 'year'
+              ? 'Thành viên Pro (Gói Năm)'
+              : 'Thành viên Pro (Gói Tháng)';
+          statusLabel = 'Đang hoạt động (còn $daysRemaining ngày)';
+        } else if (isExpiredPro) {
+          accountType = 'Thành viên Pro (Đã hết hạn)';
+          statusLabel = 'Đã hết hạn Pro';
         }
 
-        final planLabel = latestPlan == 'year' ? 'Gói 1 năm (399.000đ)' : (latestPlan == 'month' ? 'Gói 1 tháng (39.000đ)' : (isPro ? 'Gói 1 tháng (39.000đ)' : 'Chưa đăng ký'));
-        final statusLabel = isPro ? '👑 PRO VIP' : (isExpired ? '⚠️ Hết hạn Pro' : '🌱 Người dùng thường');
-        final accountType = isPro ? 'pro' : (isExpired ? 'expired' : 'free');
+        final coins = int.tryParse(val['coins']?.toString() ?? '') ?? 0;
+        final rewardBalance =
+            int.tryParse(val['reward_balance']?.toString() ?? '') ?? 0;
+        final coinOrders = userOrders
+            .where((o) =>
+                (o['payment_method']?.toString() == 'coins') ||
+                (int.tryParse(o['coins_used']?.toString() ?? '0') ?? 0) > 0)
+            .toList();
+        final hasCoinPro =
+            val['has_coin_pro'] == true || coinOrders.isNotEmpty;
+        final coinRedeemNote = (val['coin_redeem_note']?.toString() ?? '').isNotEmpty
+            ? val['coin_redeem_note'].toString()
+            : (coinOrders.isNotEmpty
+                ? (coinOrders.first['note']?.toString() ??
+                    'Đã đổi 1 tháng Pro từ 390 xu tích lũy (39.000đ)')
+                : '');
 
-        final userCoins = int.tryParse((m['coins'] ?? 0).toString()) ?? 0;
-        final userReward = int.tryParse((m['reward_balance'] ?? 0).toString()) ?? 0;
-        final userCoinNote = (m['coin_redeem_note'] ?? '').toString();
+        if (hasCoinPro && isActivePro) {
+          accountType = 'Thành viên Pro (Đổi bằng Xu)';
+        }
 
-        final coinOrders = userOrders.where((o) =>
-          o['payment_method'] == 'coins' ||
-          (o['transfer_ref'] ?? '').toString().startsWith('DoiXu') ||
-          (o['id'] ?? '').toString().startsWith('XU_')
-        ).toList();
-        final hasCoinPro = coinOrders.isNotEmpty ||
-            (userCoinNote.isNotEmpty &&
-                userCoinNote != 'Chưa dùng xu đổi Pro' &&
-                !userCoinNote.startsWith('Chưa') &&
-                !userCoinNote.startsWith('Đang tích lũy') &&
-                userCoinNote != 'Tài khoản Quản trị viên');
-        final coinProSummary = hasCoinPro
-            ? (userCoinNote.isNotEmpty
-                ? userCoinNote
-                : 'Đã đổi ${coinOrders.length} lần Pro từ xu tích lũy')
-            : '';
-
-        list.add({
-          'id': email,
+        result.add({
+          'id': idCounter++,
           'email': email,
-          'name': m['name'] ?? email.split('@').first,
-          'created_at': m['created_at'] ?? DateTime.now().toIso8601String(),
-          'is_pro': isPro,
-          'is_expired': isExpired,
+          'name': name,
+          'created_at': createdAt,
+          'is_pro': isActivePro,
+          'is_expired': isExpiredPro,
           'account_type': accountType,
           'status_label': statusLabel,
-          'pro_expires_at': exp?.toIso8601String(),
+          'pro_expires_at': expiresAtStr ?? '',
           'days_remaining': daysRemaining,
           'latest_plan': latestPlan,
-          'plan_label': planLabel,
+          'plan_label': latestPlan == 'year'
+              ? 'Gói Năm (274.000đ)'
+              : (latestPlan == 'month'
+                  ? (hasCoinPro
+                      ? 'Gói Tháng (390 Xu = 39.000đ)'
+                      : 'Gói Tháng (39.000đ)')
+                  : 'Miễn phí (Free)'),
           'total_orders': userOrders.length,
           'total_spent': totalSpent,
-          'is_admin': m['isAdmin'] == true,
-          'coins': userCoins,
-          'reward_balance': userReward,
+          'is_admin': val['isAdmin'] == true,
+          'coins': coins,
+          'reward_balance': rewardBalance,
           'has_coin_pro': hasCoinPro,
-          'coin_redeem_note': coinProSummary,
+          'coin_redeem_note': coinRedeemNote,
           'coin_orders_count': coinOrders.length,
         });
       }
     });
-    return list;
+
+    // Sắp xếp: Pro đang hoạt động lên đầu, sau đó theo thời gian tạo mới nhất
+    result.sort((a, b) {
+      final aPro = a['is_pro'] == true ? 1 : 0;
+      final bPro = b['is_pro'] == true ? 1 : 0;
+      if (aPro != bPro) return bPro.compareTo(aPro);
+      return (b['created_at'] ?? '')
+          .toString()
+          .compareTo((a['created_at'] ?? '').toString());
+    });
+
+    return result;
   }
 
-  /// Tính toán số liệu thống kê đơn hàng và người dùng (bao gồm xu và đổi Pro bằng xu)
   static Map<String, dynamic> calculateSummary(
     List<dynamic> orders, {
     int? totalUsers,

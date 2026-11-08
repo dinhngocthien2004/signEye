@@ -592,7 +592,7 @@ class AccountScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Đang tích lũy: ${state.coins} xu (Tương đương ${NumberFormat("#,###", "vi").format(state.coins)}đ)\nQuy đổi: 1.000 xu = 1.000 VNĐ. Chơi ghép hình nhận 10 xu, đố vui nhận 5 xu để đổi ngay gói Pro.',
+                  'Đang tích lũy: ${state.coins} xu (Tương đương ${NumberFormat("#,###", "vi").format(state.coins * 100)}đ)\nQuy đổi: 50 xu = 5.000 VNĐ. Tích lũy đủ 39.000đ (390 xu) để đổi ngay gói Pro VIP 1 tháng!',
                   style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xFF92400E),
@@ -658,7 +658,7 @@ class AccountScreen extends StatelessWidget {
                     ),
                     icon: const Icon(Icons.swap_horiz_rounded, size: 18),
                     label: const Text(
-                      'Đổi Xu Lấy Gói Pro (39.000 xu / tháng)',
+                      'Đổi Xu Lấy Gói Pro (50 xu = 5.000đ, 39.000đ mở Pro)',
                       style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w800),
                     ),
                   ),

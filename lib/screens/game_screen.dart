@@ -127,12 +127,12 @@ class _TrafficSignGameScreenState extends State<TrafficSignGameScreen>
       }
     });
 
-    // If user hit 1000 coins milestone for the first time, show reward hint
-    if (state.coins >= 1000 && isCorrect && state.coins - 5 < 1000) {
+    // If user hit 50 coins milestone for the first time, show reward hint
+    if (state.coins >= 50 && isCorrect && state.coins - 5 < 50) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-              '🎉 Chúc mừng bạn đã tích lũy đủ 1.000 xu! Có thể đổi sang 1.000đ mua gói Pro ngay!'),
+              '🎉 Chúc mừng bạn đã tích lũy đủ 50 xu! Có thể đổi sang 5.000đ tích lũy mua gói Pro ngay!'),
           duration: Duration(seconds: 4),
           backgroundColor: Color(0xFFD97706),
         ),
@@ -621,23 +621,23 @@ class RedeemProSheet extends StatefulWidget {
 class _RedeemProSheetState extends State<RedeemProSheet> {
   final nf = NumberFormat('#,###', 'vi');
 
-  void _exchange1000Coins(AppState state) async {
-    if (state.coins < 1000) {
+  void _exchange50Coins(AppState state) async {
+    if (state.coins < 50) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Bạn cần tích lũy tối thiểu 1.000 xu để đổi tiền!'),
+          content: Text('Bạn cần tích lũy tối thiểu 50 xu để đổi 5.000đ!'),
           duration: Duration(seconds: 2),
         ),
       );
       return;
     }
 
-    final success = await state.exchangeCoinsToCash(coinsToExchange: 1000);
+    final success = await state.exchangeCoinsToCash(coinsToExchange: 50);
     if (!mounted) return;
     if (success) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('🎉 Đã đổi 1.000 xu thành công sang 1.000đ tiền thưởng!'),
+          content: Text('🎉 Đã đổi 50 xu thành công sang 5.000đ tiền thưởng!'),
           backgroundColor: Color(0xFF059669),
         ),
       );
@@ -645,25 +645,27 @@ class _RedeemProSheetState extends State<RedeemProSheet> {
   }
 
   void _exchangeAllCoins(AppState state) async {
-    final availableThousands = (state.coins ~/ 1000) * 1000;
-    if (availableThousands < 1000) {
+    final validBlocks = state.coins ~/ 50;
+    if (validBlocks < 1) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Bạn cần tối thiểu 1.000 xu để thực hiện đổi!'),
+          content: Text('Bạn cần tối thiểu 50 xu để thực hiện đổi!'),
           duration: Duration(seconds: 2),
         ),
       );
       return;
     }
 
+    final coinsToExchange = validBlocks * 50;
+    final cashEarned = validBlocks * 5000;
     final success =
-        await state.exchangeCoinsToCash(coinsToExchange: availableThousands);
+        await state.exchangeCoinsToCash(coinsToExchange: coinsToExchange);
     if (!mounted) return;
     if (success) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              '🎉 Đã đổi $availableThousands xu sang ${nf.format(availableThousands)}đ thành công!'),
+              '🎉 Đã đổi $coinsToExchange xu sang ${nf.format(cashEarned)}đ thành công!'),
           backgroundColor: const Color(0xFF059669),
         ),
       );
@@ -858,12 +860,12 @@ class _RedeemProSheetState extends State<RedeemProSheet> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Tỷ lệ quy đổi: 1.000 xu = 1.000 VNĐ',
+                    'Tỷ lệ quy đổi: 50 xu = 5.000 VNĐ',
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
                   ),
                   const SizedBox(height: 4),
                   const Text(
-                    'Cứ tích lũy đủ 1.000 xu từ các câu hỏi đúng, bạn có thể đổi thành tiền VNĐ hoặc dùng trực tiếp để mở gói Pro.',
+                    'Cứ tích lũy đủ 50 xu từ các câu hỏi đúng, bạn có thể đổi thành 5.000đ tiền thưởng. Tích lũy đủ 39.000đ (hoặc 390 xu) là có thể mua ngay gói Pro 1 tháng!',
                     style: TextStyle(fontSize: 11.5, color: AppColors.text2, height: 1.4),
                   ),
                   const SizedBox(height: 12),
@@ -871,16 +873,16 @@ class _RedeemProSheetState extends State<RedeemProSheet> {
                     children: [
                       Expanded(
                         child: OutlinedButton(
-                          onPressed: state.coins >= 1000
-                              ? () => _exchange1000Coins(state)
+                          onPressed: state.coins >= 50
+                              ? () => _exchange50Coins(state)
                               : null,
-                          child: const Text('Đổi 1.000 xu ➔ 1.000đ'),
+                          child: const Text('Đổi 50 xu ➔ 5.000đ'),
                         ),
                       ),
                       const SizedBox(width: 8),
                       Expanded(
                         child: ElevatedButton(
-                          onPressed: state.coins >= 1000
+                          onPressed: state.coins >= 50
                               ? () => _exchangeAllCoins(state)
                               : null,
                           child: const Text('Đổi tất cả xu'),
@@ -903,22 +905,22 @@ class _RedeemProSheetState extends State<RedeemProSheet> {
             _proPackageCard(
               title: 'Gói Pro 1 Ngày (Trải nghiệm)',
               subtitle: 'Mở khóa toàn bộ tính năng và quét AI không giới hạn trong 24h',
-              priceText: '1.000 xu hoặc 1.000đ',
+              priceText: '50 xu hoặc 5.000đ',
               badge: 'Tiết kiệm',
-              hasCoins: state.coins >= 1000,
-              hasCash: state.rewardBalance >= 1000,
+              hasCoins: state.coins >= 50,
+              hasCash: state.rewardBalance >= 5000,
               onRedeemCoins: () => _redeemProWithCoins(
                 context: context,
                 state: state,
                 days: 1,
-                costCoins: 1000,
+                costCoins: 50,
                 title: 'Gói Pro 1 Ngày',
               ),
               onRedeemCash: () => _redeemProWithCash(
                 context: context,
                 state: state,
                 days: 1,
-                costVnd: 1000,
+                costVnd: 5000,
                 title: 'Gói Pro 1 Ngày',
               ),
             ),
@@ -928,15 +930,15 @@ class _RedeemProSheetState extends State<RedeemProSheet> {
             _proPackageCard(
               title: 'Gói Pro 1 Tuần',
               subtitle: 'Sử dụng trọn vẹn 7 ngày, thoải mái học và ôn thi GPLX',
-              priceText: '10.000 xu hoặc 10.000đ',
+              priceText: '100 xu hoặc 10.000đ',
               badge: 'Phổ biến',
-              hasCoins: state.coins >= 10000,
+              hasCoins: state.coins >= 100,
               hasCash: state.rewardBalance >= 10000,
               onRedeemCoins: () => _redeemProWithCoins(
                 context: context,
                 state: state,
                 days: 7,
-                costCoins: 10000,
+                costCoins: 100,
                 title: 'Gói Pro 1 Tuần',
               ),
               onRedeemCash: () => _redeemProWithCash(
@@ -953,15 +955,15 @@ class _RedeemProSheetState extends State<RedeemProSheet> {
             _proPackageCard(
               title: 'Gói Pro 1 Tháng (Chuẩn VIP)',
               subtitle: 'Mở khóa toàn bộ 30 ngày: Quét AI không giới hạn, cẩm nang, không quảng cáo',
-              priceText: '39.000 xu hoặc 39.000đ',
+              priceText: '390 xu hoặc 39.000đ',
               badge: 'VIP 1 Tháng',
-              hasCoins: state.coins >= 39000,
+              hasCoins: state.coins >= 390,
               hasCash: state.rewardBalance >= 39000,
               onRedeemCoins: () => _redeemProWithCoins(
                 context: context,
                 state: state,
                 days: 30,
-                costCoins: 39000,
+                costCoins: 390,
                 title: 'Gói Pro 1 Tháng',
               ),
               onRedeemCash: () => _redeemProWithCash(
@@ -978,15 +980,15 @@ class _RedeemProSheetState extends State<RedeemProSheet> {
             _proPackageCard(
               title: 'Gói Pro 2 Tháng (Siêu Tiết Kiệm)',
               subtitle: 'Mở khóa toàn bộ 60 ngày liên tục, tiết kiệm hơn khi đổi xu hoặc tiền thưởng',
-              priceText: '75.000 xu hoặc 75.000đ',
+              priceText: '750 xu hoặc 75.000đ',
               badge: 'VIP 2 Tháng',
-              hasCoins: state.coins >= 75000,
+              hasCoins: state.coins >= 750,
               hasCash: state.rewardBalance >= 75000,
               onRedeemCoins: () => _redeemProWithCoins(
                 context: context,
                 state: state,
                 days: 60,
-                costCoins: 75000,
+                costCoins: 750,
                 title: 'Gói Pro 2 Tháng',
               ),
               onRedeemCash: () => _redeemProWithCash(
