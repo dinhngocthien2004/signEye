@@ -249,6 +249,14 @@ class SignEyeDatabase {
       {'name': 'Hoàng Minh Tuấn', 'email': 'hoangminhtuan.hn@gmail.com', 'coins': 150, 'days_ago': 2, 'order_id': 'SE28471920', 'note': ''},
       {'name': 'Trần Thị Phương Thảo', 'email': 'thaottp.sign@gmail.com', 'coins': 200, 'days_ago': 2, 'order_id': 'SE91823746', 'note': ''},
       {'name': 'Phạm Đức Anh', 'email': 'ducanh.pham99@gmail.com', 'coins': 100, 'days_ago': 3, 'order_id': 'SE56192837', 'note': ''},
+      {'name': 'Vũ Thị Minh Trang', 'email': 'minhtrang.vu@gmail.com', 'coins': 120, 'days_ago': 1, 'order_id': 'SE73829104', 'note': ''},
+      {'name': 'Trần Gia Bảo', 'email': 'baotran.gia2003@gmail.com', 'coins': 80, 'days_ago': 2, 'order_id': 'SE64910283', 'note': ''},
+      {'name': 'Nguyễn Mai Phương', 'email': 'phuongnguyen.mai98@gmail.com', 'coins': 210, 'days_ago': 1, 'order_id': 'SE82910475', 'note': ''},
+      {'name': 'Đặng Hoàng Long', 'email': 'hoanglong.dang@gmail.com', 'coins': 150, 'days_ago': 2, 'order_id': 'SE38192047', 'note': ''},
+      {'name': 'Bùi Thị Bích Ngọc', 'email': 'bichngoc.bui02@gmail.com', 'coins': 90, 'days_ago': 1, 'order_id': 'SE91028475', 'note': ''},
+      {'name': 'Trương Minh Khang', 'email': 'minhkhang.truong@gmail.com', 'coins': 180, 'days_ago': 1, 'order_id': 'SE47291038', 'note': ''},
+      {'name': 'Võ Phương Linh', 'email': 'phuonglinh.vo03@gmail.com', 'coins': 60, 'days_ago': 1, 'order_id': 'SE83920174', 'note': ''},
+      {'name': 'Đỗ Quang Vinh', 'email': 'quangvinh.do99@gmail.com', 'coins': 300, 'days_ago': 1, 'order_id': 'SE58291043', 'note': ''},
     ];
 
     for (final c in seedProCustomers) {
@@ -305,6 +313,26 @@ class SignEyeDatabase {
       {'name': 'Nguyễn Bảo Ngọc', 'email': 'baongoc.sign21@gmail.com', 'coins': 220},
       {'name': 'Bùi Quang Huy', 'email': 'huybq.ptit@gmail.com', 'coins': 90},
       {'name': 'Đỗ Thanh Hằng', 'email': 'thanhhang.do96@gmail.com', 'coins': 160},
+      {'name': 'Lê Hoàng Yến', 'email': 'hoangyen.le99@gmail.com', 'coins': 110},
+      {'name': 'Trương Quốc Anh', 'email': 'quocanh.truong2002@gmail.com', 'coins': 0},
+      {'name': 'Võ Nhật Minh', 'email': 'nhatminh.vo2004@gmail.com', 'coins': 250},
+      {'name': 'Phan Thu Hà', 'email': 'thuha.phan01@gmail.com', 'coins': 75},
+      {'name': 'Nguyễn Trọng Tấn', 'email': 'trongtan.nguyen@gmail.com', 'coins': 180},
+      {'name': 'Nguyễn Thanh Tùng', 'email': 'thanhtung.nguyen01@gmail.com', 'coins': 120},
+      {'name': 'Lê Mỹ Linh', 'email': 'mylinh.le04@gmail.com', 'coins': 50},
+      {'name': 'Phạm Quốc Toàn', 'email': 'quoctoan.pham98@gmail.com', 'coins': 200},
+      {'name': 'Hoàng Thục Anh', 'email': 'thucanh.hoang@gmail.com', 'coins': 0},
+      {'name': 'Trần Hữu Phước', 'email': 'huuphuoc.tran02@gmail.com', 'coins': 80},
+      {'name': 'Vũ Thị Kiều Oanh', 'email': 'kieuoanh.vu03@gmail.com', 'coins': 160},
+      {'name': 'Đinh Trọng Nghĩa', 'email': 'trongnghia.dinh@gmail.com', 'coins': 90},
+      {'name': 'Dương Thảo Nhi', 'email': 'thaonhi.duong04@gmail.com', 'coins': 310},
+      {'name': 'Lâm Văn Thịnh', 'email': 'vanthinh.lam@gmail.com', 'coins': 0},
+      {'name': 'Ngô Thúy Vy', 'email': 'thuyvy.ngo03@gmail.com', 'coins': 140},
+      {'name': 'Phan Văn An', 'email': 'vanan.phan02@gmail.com', 'coins': 70},
+      {'name': 'Bùi Mai Hoa', 'email': 'maihoa.bui99@gmail.com', 'coins': 220},
+      {'name': 'Hồ Đình Quân', 'email': 'dinhquan.ho@gmail.com', 'coins': 100},
+      {'name': 'Trương Mỹ Hạnh', 'email': 'myhanh.truong01@gmail.com', 'coins': 0},
+      {'name': 'Lý Gia Huy', 'email': 'giahuy.ly05@gmail.com', 'coins': 190},
     ];
 
     for (final c in seedFreeCustomers) {

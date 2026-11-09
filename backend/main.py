@@ -134,6 +134,14 @@ with db() as con:
             ('hoangminhtuan.hn@gmail.com', 'Hoàng Minh Tuấn', 'SE28471920', 39000, 'month', 31),
             ('thaottp.sign@gmail.com', 'Trần Thị Phương Thảo', 'SE91823746', 39000, 'month', 31),
             ('ducanh.pham99@gmail.com', 'Phạm Đức Anh', 'SE56192837', 39000, 'month', 31),
+            ('minhtrang.vu@gmail.com', 'Vũ Thị Minh Trang', 'SE73829104', 39000, 'month', 31),
+            ('baotran.gia2003@gmail.com', 'Trần Gia Bảo', 'SE64910283', 39000, 'month', 31),
+            ('phuongnguyen.mai98@gmail.com', 'Nguyễn Mai Phương', 'SE82910475', 39000, 'month', 31),
+            ('hoanglong.dang@gmail.com', 'Đặng Hoàng Long', 'SE38192047', 39000, 'month', 31),
+            ('bichngoc.bui02@gmail.com', 'Bùi Thị Bích Ngọc', 'SE91028475', 39000, 'month', 31),
+            ('minhkhang.truong@gmail.com', 'Trương Minh Khang', 'SE47291038', 39000, 'month', 31),
+            ('phuonglinh.vo03@gmail.com', 'Võ Phương Linh', 'SE83920174', 39000, 'month', 31),
+            ('quangvinh.do99@gmail.com', 'Đỗ Quang Vinh', 'SE58291043', 39000, 'month', 31),
         ]
         now_iso = datetime.now(timezone.utc).isoformat()
         admin_row = connection.execute("SELECT id FROM users WHERE LOWER(email) = 'admin@signeye.vn'").fetchone()
@@ -205,6 +213,27 @@ with db() as con:
             ('Nguyễn Bảo Ngọc', 'baongoc.sign21@gmail.com', 220),
             ('Bùi Quang Huy', 'huybq.ptit@gmail.com', 90),
             ('Đỗ Thanh Hằng', 'thanhhang.do96@gmail.com', 160),
+            ('Lê Thị Hồng Duyên', 'hongduyen.le@signeye.vn', 3100),
+            ('Lê Hoàng Yến', 'hoangyen.le99@gmail.com', 110),
+            ('Trương Quốc Anh', 'quocanh.truong2002@gmail.com', 0),
+            ('Võ Nhật Minh', 'nhatminh.vo2004@gmail.com', 250),
+            ('Phan Thu Hà', 'thuha.phan01@gmail.com', 75),
+            ('Nguyễn Trọng Tấn', 'trongtan.nguyen@gmail.com', 180),
+            ('Nguyễn Thanh Tùng', 'thanhtung.nguyen01@gmail.com', 120),
+            ('Lê Mỹ Linh', 'mylinh.le04@gmail.com', 50),
+            ('Phạm Quốc Toàn', 'quoctoan.pham98@gmail.com', 200),
+            ('Hoàng Thục Anh', 'thucanh.hoang@gmail.com', 0),
+            ('Trần Hữu Phước', 'huuphuoc.tran02@gmail.com', 80),
+            ('Vũ Thị Kiều Oanh', 'kieuoanh.vu03@gmail.com', 160),
+            ('Đinh Trọng Nghĩa', 'trongnghia.dinh@gmail.com', 90),
+            ('Dương Thảo Nhi', 'thaonhi.duong04@gmail.com', 310),
+            ('Lâm Văn Thịnh', 'vanthinh.lam@gmail.com', 0),
+            ('Ngô Thúy Vy', 'thuyvy.ngo03@gmail.com', 140),
+            ('Phan Văn An', 'vanan.phan02@gmail.com', 70),
+            ('Bùi Mai Hoa', 'maihoa.bui99@gmail.com', 220),
+            ('Hồ Đình Quân', 'dinhquan.ho@gmail.com', 100),
+            ('Trương Mỹ Hạnh', 'myhanh.truong01@gmail.com', 0),
+            ('Lý Gia Huy', 'giahuy.ly05@gmail.com', 190),
         ]
         for name, email, coins in free_users:
             if not connection.execute('SELECT id FROM users WHERE LOWER(email)=?', (email.lower(),)).fetchone():

@@ -111,12 +111,30 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
       if (loadedUsers.isEmpty) {
         loadedUsers = await OrdersStorage.loadLocalUsers();
       }
+      final localUsers = await OrdersStorage.loadLocalUsers();
+      final existingEmails = loadedUsers.map((u) => (u['email'] ?? '').toString().toLowerCase()).toSet();
+      for (final lu in localUsers) {
+        final lEmail = (lu['email'] ?? '').toString().toLowerCase();
+        if (lEmail.isNotEmpty && !existingEmails.contains(lEmail) && !demoEmails.contains(lEmail)) {
+          loadedUsers.add(lu);
+          existingEmails.add(lEmail);
+        }
+      }
       loadedUsers = loadedUsers.where((u) => !demoEmails.contains((u['email'] ?? '').toString().toLowerCase())).toList();
 
       if (payResponse.statusCode == 200) {
         final data = jsonDecode(utf8.decode(payResponse.bodyBytes)) as Map<String, dynamic>;
         final rawOrders = data['orders'] as List<dynamic>? ?? [];
         final ordersList = rawOrders.where((o) => !demoEmails.contains((o['email'] ?? '').toString().toLowerCase())).toList();
+        final localOrders = await OrdersStorage.loadLocalOrders();
+        final existingOrderRefs = ordersList.map((o) => (o['transfer_ref'] ?? o['id'] ?? '').toString()).toSet();
+        for (final lo in localOrders) {
+          final lRef = (lo['transfer_ref'] ?? lo['id'] ?? '').toString();
+          if (lRef.isNotEmpty && !existingOrderRefs.contains(lRef) && !demoEmails.contains((lo['email'] ?? '').toString().toLowerCase())) {
+            ordersList.add(lo);
+            existingOrderRefs.add(lRef);
+          }
+        }
         final summaryData = data['summary'] as Map<String, dynamic>? ?? {};
 
         // Đồng bộ các đơn hàng từ server về local
