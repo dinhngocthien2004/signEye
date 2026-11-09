@@ -4,7 +4,9 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../models/review.dart';
 import '../services/app_state.dart';
+import '../services/review_service.dart';
 import '../services/orders_storage.dart';
 import '../theme.dart';
 
@@ -21,7 +23,8 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
   Map<String, dynamic>? _summary;
   List<dynamic> _orders = [];
   List<dynamic> _users = [];
-  String _selectedTab = 'orders'; // 'orders' or 'users'
+  String _selectedTab = 'orders'; // 'orders', 'users', or 'reviews'
+  int _reviewFilter = 0; // 0: all, 5, 4, 3, 2, 1
   String _filter = 'all'; // 'all', 'pending', 'paid', 'rejected'
   String _userFilter = 'all'; // 'all', 'pro', 'free', 'expired'
   String _searchQuery = '';
@@ -31,7 +34,19 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
   @override
   void initState() {
     super.initState();
+    ReviewService.instance.loadReviews();
+    ReviewService.instance.addListener(_onReviewsChanged);
     _loadOrders();
+  }
+
+  void _onReviewsChanged() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void dispose() {
+    ReviewService.instance.removeListener(_onReviewsChanged);
+    super.dispose();
   }
 
   Future<void> _loadOrders() async {
@@ -1056,6 +1071,19 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
       return true;
     }).toList();
 
+    final allReviews = ReviewService.instance.reviews;
+    final filteredReviews = allReviews.where((r) {
+      if (_reviewFilter > 0 && r.rating != _reviewFilter) return false;
+      if (_searchQuery.isNotEmpty) {
+        final q = _searchQuery.toLowerCase();
+        final name = r.userName.toLowerCase();
+        final comment = r.comment.toLowerCase();
+        final role = r.role.toLowerCase();
+        return name.contains(q) || comment.contains(q) || role.contains(q);
+      }
+      return true;
+    }).toList();
+
     final filteredUsers = _users.where((u) {
       final emailClean = (u['email'] ?? '').toString().toLowerCase();
       if (emailClean == 'admin@signeye.vn' || emailClean == 'admin' || emailClean.startsWith('admin@')) return false;
@@ -1248,7 +1276,7 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
                 )
               else
                 for (final o in filteredOrders) _buildOrderCard(o),
-            ] else ...[
+            ] else if (_selectedTab == 'users') ...[
               if (filteredUsers.isEmpty)
                 Center(
                   child: Padding(
@@ -1267,6 +1295,26 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
                 )
               else
                 for (final u in filteredUsers) _buildUserCard(Map<String, dynamic>.from(u as Map)),
+            ] else if (_selectedTab == 'reviews') ...[
+              _buildReviewsOverviewBanner(),
+              if (filteredReviews.isEmpty)
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(40),
+                    child: Column(
+                      children: [
+                        Icon(Icons.rate_review_outlined, size: 54, color: Colors.grey.shade400),
+                        const SizedBox(height: 12),
+                        Text(
+                          'Không tìm thấy đánh giá nào',
+                          style: TextStyle(fontSize: 15, color: Colors.grey.shade600, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              else
+                for (final r in filteredReviews) _buildReviewCard(r),
             ],
           ],
         ),
@@ -1292,6 +1340,7 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
       _summaryBox('Tổng doanh thu', revenue, const Color(0xFF4F46E5), const Color(0xFFEEF2FF), Icons.payments_rounded),
       _summaryBox('🪙 Xu tích lũy toàn hệ thống', '${NumberFormat("#,###", "vi").format(totalCoins)} xu', const Color(0xFFD97706), const Color(0xFFFEF3C7), Icons.monetization_on_rounded),
       _summaryBox('🪙 Đã đổi Pro bằng xu', '$coinRedeemUsers tài khoản', const Color(0xFF0D8F5C), const Color(0xFFDEF7EC), Icons.redeem_rounded),
+      _summaryBox('⭐ Đánh giá khách hàng', '${ReviewService.instance.averageRating.toStringAsFixed(1)}★ (${ReviewService.instance.totalReviews} lượt)', const Color(0xFFD97706), const Color(0xFFFFFBEB), Icons.star_rate_rounded),
     ];
 
     return LayoutBuilder(
@@ -1395,8 +1444,34 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
                     '👥 Người dùng (${_users.length})',
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
-                      fontSize: 13.5,
+                      fontSize: 13,
                       color: _selectedTab == 'users' ? AppColors.primary : AppColors.text2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: InkWell(
+              onTap: () => setState(() => _selectedTab = 'reviews'),
+              borderRadius: BorderRadius.circular(10),
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                  color: _selectedTab == 'reviews' ? Colors.white : Colors.transparent,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: _selectedTab == 'reviews'
+                      ? [BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 4, offset: const Offset(0, 2))]
+                      : null,
+                ),
+                child: Center(
+                  child: Text(
+                    '⭐ Đánh giá (${ReviewService.instance.totalReviews})',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 13,
+                      color: _selectedTab == 'reviews' ? AppColors.primary : AppColors.text2,
                     ),
                   ),
                 ),
@@ -1426,7 +1501,11 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
       children: [
         TextField(
           decoration: InputDecoration(
-            hintText: _selectedTab == 'orders' ? 'Tìm theo Tên, Email, Mã chuyển khoản...' : 'Tìm theo Họ tên hoặc Email người dùng...',
+            hintText: _selectedTab == 'orders'
+                ? 'Tìm theo Tên, Email, Mã chuyển khoản...'
+                : (_selectedTab == 'users'
+                    ? 'Tìm theo Họ tên hoặc Email người dùng...'
+                    : 'Tìm theo Họ tên hoặc Nội dung nhận xét...'),
             prefixIcon: const Icon(Icons.search, size: 20),
             filled: true,
             fillColor: Colors.white,
@@ -1458,7 +1537,7 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
               ],
             ),
           )
-        else
+        else if (_selectedTab == 'users')
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -1474,6 +1553,25 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
                   const SizedBox(width: 8),
                   _userFilterChip('⚠️ Hết hạn Pro ($expiredCount)', 'expired'),
                 ],
+              ],
+            ),
+          )
+        else if (_selectedTab == 'reviews')
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                _reviewFilterChip('Tất cả (${ReviewService.instance.totalReviews})', 0),
+                const SizedBox(width: 8),
+                _reviewFilterChip('⭐⭐⭐⭐⭐ 5 sao (${ReviewService.instance.ratingDistribution[5] ?? 0})', 5),
+                const SizedBox(width: 8),
+                _reviewFilterChip('⭐⭐⭐⭐ 4 sao (${ReviewService.instance.ratingDistribution[4] ?? 0})', 4),
+                const SizedBox(width: 8),
+                _reviewFilterChip('⭐⭐⭐ 3 sao (${ReviewService.instance.ratingDistribution[3] ?? 0})', 3),
+                const SizedBox(width: 8),
+                _reviewFilterChip('⭐⭐ 2 sao (${ReviewService.instance.ratingDistribution[2] ?? 0})', 2),
+                const SizedBox(width: 8),
+                _reviewFilterChip('⭐ 1 sao (${ReviewService.instance.ratingDistribution[1] ?? 0})', 1),
               ],
             ),
           ),
@@ -2062,4 +2160,399 @@ class _AdminOrdersScreenState extends State<AdminOrdersScreen> {
       ),
     );
   }
+  Widget _reviewFilterChip(String label, int value) {
+    final active = _reviewFilter == value;
+    return ChoiceChip(
+      label: Text(label),
+      selected: active,
+      labelStyle: TextStyle(
+        color: active ? Colors.white : AppColors.text,
+        fontWeight: active ? FontWeight.w700 : FontWeight.w500,
+        fontSize: 12,
+      ),
+      selectedColor: const Color(0xFFD97706),
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: const BorderSide(color: Color(0xFFE2E8F0)),
+      ),
+      onSelected: (_) => setState(() => _reviewFilter = value),
+    );
+  }
+
+  Widget _buildReviewsOverviewBanner() {
+    final service = ReviewService.instance;
+    final avg = service.averageRating;
+    final total = service.totalReviews;
+    final dist = service.ratingDistribution;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFFFFFBEB), Color(0xFFFEF3C7)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFFDE68A)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.amber.withOpacity(0.08),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.amber.shade600,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(Icons.rate_review_rounded, color: Colors.white, size: 24),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Quản lý Đánh giá từ Khách hàng',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 16,
+                        color: Color(0xFF78350F),
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      'Tất cả nhận xét, số sao và phản hồi từ học viên GPLX & tài xế',
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        color: Colors.amber.shade900.withOpacity(0.8),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Text(
+                    avg.toStringAsFixed(1),
+                    style: const TextStyle(
+                      fontSize: 38,
+                      fontWeight: FontWeight.w900,
+                      color: Color(0xFF78350F),
+                      letterSpacing: -1,
+                    ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: List.generate(
+                      5,
+                      (i) => Icon(
+                        i < avg.round() ? Icons.star_rounded : Icons.star_outline_rounded,
+                        color: Colors.amber.shade700,
+                        size: 18,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '$total đánh giá',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.amber.shade900,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(width: 24),
+              Expanded(
+                child: Column(
+                  children: [5, 4, 3, 2, 1].map((stars) {
+                    final count = dist[stars] ?? 0;
+                    final pct = total > 0 ? (count / total) : 0.0;
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      child: Row(
+                        children: [
+                          Text(
+                            '$stars★',
+                            style: const TextStyle(
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF78350F),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(4),
+                              child: LinearProgressIndicator(
+                                value: pct,
+                                minHeight: 6,
+                                backgroundColor: Colors.amber.shade200.withOpacity(0.6),
+                                valueColor: AlwaysStoppedAnimation<Color>(Colors.amber.shade700),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          SizedBox(
+                            width: 24,
+                            child: Text(
+                              '$count',
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.amber.shade900,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReviewCard(AppReview review) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFE2E8F0)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.03),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: AppColors.primary.withOpacity(0.12),
+                child: Text(
+                  review.userName.isNotEmpty ? review.userName[0].toUpperCase() : 'U',
+                  style: const TextStyle(
+                    color: AppColors.primary,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            review.userName,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 15,
+                              color: AppColors.text,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFECFDF5),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: const Color(0xFFA7F3D0)),
+                          ),
+                          child: Text(
+                            review.role,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF065F46),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Row(
+                          children: List.generate(
+                            5,
+                            (index) => Icon(
+                              index < review.rating ? Icons.star_rounded : Icons.star_outline_rounded,
+                              size: 16,
+                              color: Colors.amber.shade600,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          DateFormat('dd/MM/yyyy · HH:mm').format(review.createdAt),
+                          style: TextStyle(
+                            fontSize: 11.5,
+                            color: Colors.grey.shade500,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.delete_outline_rounded, color: Color(0xFFDC2626), size: 20),
+                tooltip: 'Xóa đánh giá này',
+                onPressed: () => _confirmDeleteReview(review),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF8FAFC),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFFEDF2F7)),
+            ),
+            child: Text(
+              review.comment,
+              style: const TextStyle(
+                fontSize: 13.5,
+                height: 1.5,
+                color: Color(0xFF334155),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  const Icon(Icons.thumb_up_alt_rounded, size: 14, color: AppColors.primary),
+                  const SizedBox(width: 4),
+                  Text(
+                    '${review.likes} lượt thích',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.text2,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFEFF6FF),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.check_circle_rounded, size: 12, color: Color(0xFF2563EB)),
+                    SizedBox(width: 4),
+                    Text(
+                      'Đang hiển thị trên App',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Color(0xFF2563EB),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _confirmDeleteReview(AppReview review) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: const Row(
+          children: [
+            Icon(Icons.warning_amber_rounded, color: Color(0xFFDC2626)),
+            SizedBox(width: 8),
+            Text('Xác nhận xóa đánh giá'),
+          ],
+        ),
+        content: Text(
+          'Bạn có chắc chắn muốn xóa đánh giá của "${review.userName}" khỏi hệ thống không? Thao tác này không thể hoàn tác.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Hủy'),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFDC2626),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            ),
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Xóa đánh giá'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      await ReviewService.instance.deleteReview(review.id);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Đã xóa đánh giá của ${review.userName}!'),
+            backgroundColor: const Color(0xFF059669),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          ),
+        );
+      }
+    }
+  }
+
 }

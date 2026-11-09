@@ -72,6 +72,12 @@ class ReviewService extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> deleteReview(String id) async {
+    _reviews.removeWhere((r) => r.id == id);
+    await _save();
+    notifyListeners();
+  }
+
   Future<void> likeReview(String id) async {
     final idx = _reviews.indexWhere((r) => r.id == id);
     if (idx != -1) {
