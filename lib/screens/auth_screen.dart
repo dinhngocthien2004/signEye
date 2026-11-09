@@ -13,9 +13,12 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   bool isLoginTab = true;
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
   final _nameCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
+  final _confirmPassCtrl = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -23,11 +26,23 @@ class _AuthScreenState extends State<AuthScreen> {
     _nameCtrl.dispose();
     _emailCtrl.dispose();
     _passCtrl.dispose();
+    _confirmPassCtrl.dispose();
     super.dispose();
   }
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
+    if (!isLoginTab && _passCtrl.text != _confirmPassCtrl.text) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Mật khẩu nhập lại không khớp!'),
+          backgroundColor: const Color(0xFFDC2626),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+      );
+      return;
+    }
     final state = context.read<AppState>();
     String rawEmail = _emailCtrl.text.trim();
     if (!rawEmail.contains('@')) {
@@ -170,12 +185,56 @@ class _AuthScreenState extends State<AuthScreen> {
                       _fieldLabel('Mật khẩu'),
                       TextFormField(
                         controller: _passCtrl,
-                        obscureText: true,
-                        decoration: const InputDecoration(hintText: '••••••••'),
+                        obscureText: _obscurePassword,
+                        decoration: InputDecoration(
+                          hintText: '••••••••',
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                              color: AppColors.text2,
+                              size: 20,
+                            ),
+                            onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                            splashRadius: 20,
+                            tooltip: _obscurePassword ? 'Hiện mật khẩu' : 'Ẩn mật khẩu',
+                          ),
+                        ),
                         validator: (v) => (v == null || v.length < 4)
                             ? 'Mật khẩu tối thiểu 4 ký tự'
                             : null,
                       ),
+                      if (!isLoginTab) ...[
+                        const SizedBox(height: 14),
+                        _fieldLabel('Nhập lại mật khẩu'),
+                        TextFormField(
+                          controller: _confirmPassCtrl,
+                          obscureText: _obscureConfirmPassword,
+                          decoration: InputDecoration(
+                            hintText: '••••••••',
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscureConfirmPassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                color: AppColors.text2,
+                                size: 20,
+                              ),
+                              onPressed: () => setState(() => _obscureConfirmPassword = !_obscureConfirmPassword),
+                              splashRadius: 20,
+                              tooltip: _obscureConfirmPassword ? 'Hiện mật khẩu' : 'Ẩn mật khẩu',
+                            ),
+                          ),
+                          validator: (v) {
+                            if (!isLoginTab) {
+                              if (v == null || v.isEmpty) {
+                                return 'Vui lòng nhập lại mật khẩu';
+                              }
+                              if (v != _passCtrl.text) {
+                                return 'Mật khẩu nhập lại không khớp';
+                              }
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
                       const SizedBox(height: 22),
                       SizedBox(
                         width: double.infinity,
@@ -183,15 +242,6 @@ class _AuthScreenState extends State<AuthScreen> {
                           onPressed: _submit,
                           child:
                               Text(isLoginTab ? 'Đăng nhập' : 'Tạo tài khoản'),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      const SizedBox(height: 8),
-                      Center(
-                        child: Text(
-                          'Dữ liệu tài khoản được lưu trên thiết bị (bản demo)',
-                          style:
-                              TextStyle(color: AppColors.muted, fontSize: 12),
                         ),
                       ),
                     ],
@@ -217,7 +267,14 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget _tabButton(String label, bool loginTab) {
     final active = isLoginTab == loginTab;
     return GestureDetector(
-      onTap: () => setState(() => isLoginTab = loginTab),
+      onTap: () {
+        if (isLoginTab != loginTab) {
+          setState(() {
+            isLoginTab = loginTab;
+            _formKey.currentState?.reset();
+          });
+        }
+      },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.symmetric(vertical: 10),
