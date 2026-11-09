@@ -4190,7 +4190,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p124e cam oto re trai va quay dau",
-    "image": "assets/images/cam_oto_quay_dau.png",
+    "image": "/assets/trafficSigns/prohibition/P124e.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -4216,7 +4216,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p124f cam oto re phai va quay dau",
-    "image": "assets/images/cam_oto_quay_dau.png",
+    "image": "/assets/trafficSigns/prohibition/P124f.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -4242,7 +4242,7 @@
     "truDiemGPLX": "2 - 4 điểm (nếu quá tốc độ trên 20km/h)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p127a toc do ban dem gioi han toc do dem 22h den 5h",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127a.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -4267,7 +4267,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p129 tram kiem tra dung xe kiem tra kiem sat",
-    "image": "assets/images/dung_lai.png",
+    "image": "/assets/trafficSigns/prohibition/P129.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -4292,7 +4292,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p136 cam di thang",
-    "image": "assets/images/cam_di_thang.png",
+    "image": "/assets/trafficSigns/prohibition/P136.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -4318,7 +4318,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p138 cam di thang va re trai",
-    "image": "assets/images/cam_di_thang.png",
+    "image": "/assets/trafficSigns/prohibition/P138.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -4343,7 +4343,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p139 cam di thang va re phai",
-    "image": "assets/images/cam_di_thang.png",
+    "image": "/assets/trafficSigns/prohibition/P139.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -4368,7 +4368,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p140 cam xe cong nong xe tu che",
-    "image": "assets/images/cam_may_keo.png",
+    "image": "/assets/trafficSigns/prohibition/P140.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -4393,7 +4393,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w207c giao khong uu tien xien phai nhanh chech phai",
-    "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
+    "image": "/assets/trafficSigns/warning/W207c.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4418,7 +4418,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w207d giao khong uu tien xien trai nhanh chech trai",
-    "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
+    "image": "/assets/trafficSigns/warning/W207d.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4443,7 +4443,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w207e giao khong uu tien chu y phai",
-    "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
+    "image": "/assets/trafficSigns/warning/W207e.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4468,7 +4468,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w207f giao khong uu tien chu y trai",
-    "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
+    "image": "/assets/trafficSigns/warning/W207f.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4493,7 +4493,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w207g duong nhanh so le phai",
-    "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
+    "image": "/assets/trafficSigns/warning/W207g.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4518,7 +4518,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w207h duong nhanh so le trai",
-    "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
+    "image": "/assets/trafficSigns/warning/W207h.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4543,7 +4543,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w207i giao khong uu tien chu t phai",
-    "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
+    "image": "/assets/trafficSigns/warning/W207i.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4568,7 +4568,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w207k giao khong uu tien chu t trai",
-    "image": "assets/images/giao_nhau_duong_khong_uu_tien.png",
+    "image": "/assets/trafficSigns/warning/W207k.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4593,7 +4593,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w215c bo vuc ben phai ke bo song phai",
-    "image": "assets/images/ke_vuc_sau.png",
+    "image": "/assets/trafficSigns/warning/W215c.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4618,7 +4618,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w228b da lo ben trai sat lo nui trai",
-    "image": "assets/images/da_lo.png",
+    "image": "/assets/trafficSigns/warning/W228b.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4644,7 +4644,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w228c soi da ban len soi dam",
-    "image": "assets/images/da_lo.png",
+    "image": "/assets/trafficSigns/warning/W228c.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4669,7 +4669,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w243b giao duong sat 100m khoang cach duong sat",
-    "image": "assets/images/giao_nhau_duong_sat.png",
+    "image": "/assets/trafficSigns/warning/W243b.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4695,7 +4695,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w243c giao duong sat 150m",
-    "image": "assets/images/giao_nhau_duong_sat.png",
+    "image": "/assets/trafficSigns/warning/W243c.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4720,7 +4720,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w245b di cham ban dem slow night",
-    "image": "assets/images/di_cham.png",
+    "image": "/assets/trafficSigns/warning/W245b.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4745,7 +4745,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w246b chu y chuong ngai vat trai vong tranh trai",
-    "image": "assets/images/chu_y_chuong_ngai_vat.png",
+    "image": "/assets/trafficSigns/warning/W246b.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4771,7 +4771,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w246c chu y chuong ngai vat phai vong tranh phai",
-    "image": "assets/images/chu_y_chuong_ngai_vat.png",
+    "image": "/assets/trafficSigns/warning/W246c.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4797,7 +4797,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w247 chu y xe do xe hong tren duong",
-    "image": "assets/images/xe_do.png",
+    "image": "/assets/trafficSigns/warning/W247.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -4822,7 +4822,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r301g chi duoc re trai phia truoc",
-    "image": "assets/images/chi_duoc_re_trai.png",
+    "image": "/assets/trafficSigns/mandatory/R301g.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -4847,7 +4847,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r301h chi duoc re phai phia truoc",
-    "image": "assets/images/chi_duoc_re_phai.png",
+    "image": "/assets/trafficSigns/mandatory/R301h.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -4872,7 +4872,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r309 an coi bam coi",
-    "image": "assets/images/an_coi.png",
+    "image": "/assets/trafficSigns/mandatory/R309.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -4896,7 +4896,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "r310a hang nguy hiem di thang",
-    "image": "assets/images/chi_duoc_di_thang.png",
+    "image": "/assets/trafficSigns/mandatory/R310a.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -4922,7 +4922,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "r310b hang nguy hiem re trai",
-    "image": "assets/images/chi_duoc_re_trai.png",
+    "image": "/assets/trafficSigns/mandatory/R310b.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -4947,7 +4947,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "r310c hang nguy hiem re phai",
-    "image": "assets/images/chi_duoc_re_phai.png",
+    "image": "/assets/trafficSigns/mandatory/R310c.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -4972,7 +4972,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "r403d duong danh cho oto tai",
-    "image": "assets/images/duong_danh_cho_oto.png",
+    "image": "/assets/trafficSigns/mandatory/R403d.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -4997,7 +4997,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r403e duong danh cho mo to lan xe may",
-    "image": "assets/images/duong_danh_cho_xe_may.png",
+    "image": "/assets/trafficSigns/mandatory/R403e.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5022,7 +5022,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r403f duong danh cho xe dap",
-    "image": "assets/images/duong_danh_cho_xe_dap.png",
+    "image": "/assets/trafficSigns/mandatory/R403f.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5047,7 +5047,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục D)",
     "keywords": "r404a het duong danh cho oto",
-    "image": "assets/images/duong_danh_cho_oto.png",
+    "image": "/assets/trafficSigns/mandatory/R404a.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5072,7 +5072,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục D)",
     "keywords": "r404b het duong oto va xe may",
-    "image": "assets/images/duong_danh_cho_oto_va_xe_may.png",
+    "image": "/assets/trafficSigns/mandatory/R404b.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5097,7 +5097,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r412b lan oto con lan xe con",
-    "image": "assets/images/lan_xe_con.png",
+    "image": "/assets/trafficSigns/mandatory/R412b.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5122,7 +5122,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "r412c lan xe tai lan oto tai",
-    "image": "assets/images/lan_xe_tai.png",
+    "image": "/assets/trafficSigns/mandatory/R412c.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5147,7 +5147,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "r412d lan danh cho mo to lan xe may",
-    "image": "assets/images/lan_xe_may.png",
+    "image": "/assets/trafficSigns/mandatory/R412d.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5172,7 +5172,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r412e lan xe buyt lan brt lan bus",
-    "image": "assets/images/lan_xe_khach.png",
+    "image": "/assets/trafficSigns/mandatory/R412e.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5197,7 +5197,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r415a gop lan duong bien gop lan theo phuong tien",
-    "image": "assets/images/bien_gop_lan.png",
+    "image": "/assets/trafficSigns/mandatory/R415a.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5223,7 +5223,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "r415b gop lan 4 lan xe",
-    "image": "assets/images/bien_gop_lan.png",
+    "image": "/assets/trafficSigns/mandatory/R415b.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -5248,7 +5248,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i405a duong cut ngo cut",
-    "image": "assets/images/duong_cut.png",
+    "image": "/assets/trafficSigns/guide/I405a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5273,7 +5273,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i405b duong cut re phai",
-    "image": "assets/images/duong_cut.png",
+    "image": "/assets/trafficSigns/guide/I405b.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5298,7 +5298,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i405c duong cut re trai",
-    "image": "assets/images/duong_cut.png",
+    "image": "/assets/trafficSigns/guide/I405c.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5323,7 +5323,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "i407b duong mot chieu phai re phai mot chieu",
-    "image": "assets/images/duong_mot_chieu.png",
+    "image": "/assets/trafficSigns/guide/I407b.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5349,7 +5349,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "i407c duong mot chieu trai re trai mot chieu",
-    "image": "assets/images/duong_mot_chieu.png",
+    "image": "/assets/trafficSigns/guide/I407c.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5375,7 +5375,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i418 loi di cho cam re so do vong tranh",
-    "image": "assets/images/loi_di_cho_cam_re.png",
+    "image": "/assets/trafficSigns/guide/I418.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5400,7 +5400,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i419a dia gioi hanh chinh dia phan tinh thanh pho",
-    "image": "assets/images/dia_phan.png",
+    "image": "/assets/trafficSigns/guide/I419a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5425,7 +5425,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i419b dia phan huyen thi xa",
-    "image": "assets/images/dia_phan.png",
+    "image": "/assets/trafficSigns/guide/I419b.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5449,7 +5449,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i422a di tich lich su khu di tich",
-    "image": "assets/images/danh_lam_thang_canh.png",
+    "image": "/assets/trafficSigns/guide/I422a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5474,7 +5474,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i422b danh lam thang canh khu du lich",
-    "image": "assets/images/danh_lam_thang_canh.png",
+    "image": "/assets/trafficSigns/guide/I422b.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5499,7 +5499,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i426 tram cap cuu so cuu y te",
-    "image": "assets/images/tram_cap_cuu.png",
+    "image": "/assets/trafficSigns/guide/I426.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5523,7 +5523,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i427a tram sua chua garage sua xe",
-    "image": "assets/images/tram_sua_chua.png",
+    "image": "/assets/trafficSigns/guide/I427a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5548,7 +5548,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i427c cay xang tram xang dau xang dau",
-    "image": "assets/images/cay_xang.png",
+    "image": "/assets/trafficSigns/guide/I427c.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5573,7 +5573,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i427d khach san nha nghi hotel",
-    "image": "assets/images/khach_san.png",
+    "image": "/assets/trafficSigns/guide/I427d.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5598,7 +5598,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i427e nha hang quan an an uong",
-    "image": "assets/images/nha_hang.png",
+    "image": "/assets/trafficSigns/guide/I427e.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5623,7 +5623,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i427k tram sac xe dien sac pin oto ev charging",
-    "image": "assets/images/cay_xang.png",
+    "image": "/assets/trafficSigns/guide/I427k.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5647,7 +5647,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i431 tram csgt canh sat giao thong",
-    "image": "assets/images/tram_csgt.png",
+    "image": "/assets/trafficSigns/guide/I431.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5672,7 +5672,7 @@
     "truDiemGPLX": "4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "i432 tram can tai trong kiem tra tai trong",
-    "image": "assets/images/tram_csgt.png",
+    "image": "/assets/trafficSigns/guide/I432.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5697,7 +5697,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i436 ben xe taxi diem don taxi",
-    "image": "assets/images/ben_xe_taxi.png",
+    "image": "/assets/trafficSigns/guide/I436.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5722,7 +5722,7 @@
     "truDiemGPLX": "3 điểm (đối với xe máy đi vào)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 7)",
     "keywords": "i437 duong cao toc bat dau cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5747,7 +5747,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i438 het duong cao toc ket thuc cao toc",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I438.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5771,7 +5771,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i444a chi dan dia danh bien ten dia phuong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5796,7 +5796,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i447b lan cuu nan 1km thoat hiem deo doc",
-    "image": "assets/images/lan_cuu_nan.png",
+    "image": "/assets/trafficSigns/guide/I447b.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5821,7 +5821,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i447c lan cuu nan 500m",
-    "image": "assets/images/lan_cuu_nan.png",
+    "image": "/assets/trafficSigns/guide/I447c.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -5846,7 +5846,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi quay đầu lùi xe)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3 - Đường cao tốc)",
     "keywords": "ie451 loi ra cao toc exit nut giao cao toc",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -5872,7 +5872,7 @@
     "truDiemGPLX": "6 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3 - Đường cao tốc)",
     "keywords": "ie452 re loi ra cao toc exit sign",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -5897,7 +5897,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3 - Đường cao tốc)",
     "keywords": "ie455 tram dung nghi cao toc rest area diem dung chan",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -5922,7 +5922,7 @@
     "truDiemGPLX": "1 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "ie457 tram thu phi etc thu phi khong dung toll booth",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -5947,7 +5947,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie460 nhap lan cao toc merge lane",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -5972,7 +5972,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie462 tach lan cao toc phan nhanh cao toc",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -5997,7 +5997,7 @@
     "truDiemGPLX": "Không trừ điểm (Gây TNGT: 3 điểm)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3); NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "ie468 cu ly an toan cao toc khoang cach 50m 100m",
-    "image": "assets/images/cu_ly_toi_thieu.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -6021,7 +6021,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "ie470 lan dung khan cap lan khan cap cao toc",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -6046,7 +6046,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s503d huong tac dung sau",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S503d.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -6071,7 +6071,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s503e huong tac dung truoc va sau",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S503e.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -6096,7 +6096,7 @@
     "truDiemGPLX": "1 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "s510 lan thu phi etc thu phi khong dung",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S510.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -6122,7 +6122,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.115-5t cam xe qua tai 5 tan tai trong xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P115.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6147,7 +6147,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.115-7t cam xe qua tai 7 tan tai trong xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P115.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6172,7 +6172,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.115-8t cam xe qua tai 8 tan tai trong xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P115.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6197,7 +6197,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.115-14t cam xe qua tai 14 tan tai trong xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P115.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6222,7 +6222,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.115-20t cam xe qua tai 20 tan tai trong xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P115.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6247,7 +6247,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.115-25t cam xe qua tai 25 tan tai trong xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P115.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6272,7 +6272,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.115-30t cam xe qua tai 30 tan tai trong xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P115.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6297,7 +6297,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.116-6t tai trong truc xe 6t truc xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P116.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6322,7 +6322,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.116-7t tai trong truc xe 7t truc xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P116.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6347,7 +6347,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.116-8t tai trong truc xe 8t truc xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P116.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6372,7 +6372,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.116-9t tai trong truc xe 9t truc xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P116.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6397,7 +6397,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.116-10t tai trong truc xe 10t truc xe",
-    "image": "assets/images/han_che_tai_trong.png",
+    "image": "/assets/trafficSigns/prohibition/P116.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6422,7 +6422,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.117-2.5m chieu cao 2.5m gioi han chieu cao",
-    "image": "assets/images/han_che_chieu_cao.png",
+    "image": "/assets/trafficSigns/prohibition/P117.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6447,7 +6447,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.117-3.0m chieu cao 3.0m gioi han chieu cao",
-    "image": "assets/images/han_che_chieu_cao.png",
+    "image": "/assets/trafficSigns/prohibition/P117.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6472,7 +6472,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.117-3.2m chieu cao 3.2m gioi han chieu cao",
-    "image": "assets/images/han_che_chieu_cao.png",
+    "image": "/assets/trafficSigns/prohibition/P117.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6497,7 +6497,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.117-3.8m chieu cao 3.8m gioi han chieu cao",
-    "image": "assets/images/han_che_chieu_cao.png",
+    "image": "/assets/trafficSigns/prohibition/P117.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6522,7 +6522,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.117-4.0m chieu cao 4.0m gioi han chieu cao",
-    "image": "assets/images/han_che_chieu_cao.png",
+    "image": "/assets/trafficSigns/prohibition/P117.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6547,7 +6547,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.117-4.2m chieu cao 4.2m gioi han chieu cao",
-    "image": "assets/images/han_che_chieu_cao.png",
+    "image": "/assets/trafficSigns/prohibition/P117.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6572,7 +6572,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6)",
     "keywords": "p.117-4.5m chieu cao 4.5m gioi han chieu cao",
-    "image": "assets/images/han_che_chieu_cao.png",
+    "image": "/assets/trafficSigns/prohibition/P117.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6597,7 +6597,7 @@
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p.127-30 toc do 30km/h gioi han toc do chay qua 30",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6623,7 +6623,7 @@
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p.127-40 toc do 40km/h gioi han toc do chay qua 40",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6649,7 +6649,7 @@
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p.127-70 toc do 70km/h gioi han toc do chay qua 70",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6675,7 +6675,7 @@
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p.127-80 toc do 80km/h gioi han toc do chay qua 80",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6701,7 +6701,7 @@
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p.127-90 toc do 90km/h gioi han toc do chay qua 90",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6727,7 +6727,7 @@
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p.127-100 toc do 100km/h gioi han toc do chay qua 100",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6753,7 +6753,7 @@
     "truDiemGPLX": "2 - 4 điểm (quá tốc độ từ 20km/h trở lên)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP (Điều 6, 7)",
     "keywords": "p.127-120 toc do 120km/h gioi han toc do chay qua 120",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -6779,7 +6779,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w.219-9% doc xuong 9% do doc",
-    "image": "assets/images/doc_xuong_nguy_hiem.png",
+    "image": "/assets/trafficSigns/warning/W219.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -6804,7 +6804,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w.220-9% doc len 9% leo doc",
-    "image": "assets/images/doc_len_nguy_hiem.png",
+    "image": "/assets/trafficSigns/warning/W220.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -6829,7 +6829,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w.219-10% doc xuong 10% do doc",
-    "image": "assets/images/doc_xuong_nguy_hiem.png",
+    "image": "/assets/trafficSigns/warning/W219.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -6854,7 +6854,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w.220-10% doc len 10% leo doc",
-    "image": "assets/images/doc_len_nguy_hiem.png",
+    "image": "/assets/trafficSigns/warning/W220.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -6879,7 +6879,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w.219-12% doc xuong 12% do doc",
-    "image": "assets/images/doc_xuong_nguy_hiem.png",
+    "image": "/assets/trafficSigns/warning/W219.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -6904,7 +6904,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w.220-12% doc len 12% leo doc",
-    "image": "assets/images/doc_len_nguy_hiem.png",
+    "image": "/assets/trafficSigns/warning/W220.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -6929,7 +6929,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w.219-14% doc xuong 14% do doc",
-    "image": "assets/images/doc_xuong_nguy_hiem.png",
+    "image": "/assets/trafficSigns/warning/W219.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -6954,7 +6954,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục C)",
     "keywords": "w.220-14% doc len 14% leo doc",
-    "image": "assets/images/doc_len_nguy_hiem.png",
+    "image": "/assets/trafficSigns/warning/W220.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -6979,7 +6979,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.447-2km lan cuu nan 2km",
-    "image": "assets/images/lan_cuu_nan.png",
+    "image": "/assets/trafficSigns/guide/I447b.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7004,7 +7004,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.447-3km lan cuu nan 3km",
-    "image": "assets/images/lan_cuu_nan.png",
+    "image": "/assets/trafficSigns/guide/I447b.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7029,7 +7029,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.447-5km lan cuu nan 5km",
-    "image": "assets/images/lan_cuu_nan.png",
+    "image": "/assets/trafficSigns/guide/I447b.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7054,7 +7054,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit1 exit 1 loi ra so 1",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7079,7 +7079,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit2 exit 2 loi ra so 2",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7104,7 +7104,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit3 exit 3 loi ra so 3",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7129,7 +7129,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit4 exit 4 loi ra so 4",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7154,7 +7154,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit5 exit 5 loi ra so 5",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7179,7 +7179,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit6 exit 6 loi ra so 6",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7204,7 +7204,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit7 exit 7 loi ra so 7",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7229,7 +7229,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit8 exit 8 loi ra so 8",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7254,7 +7254,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit9 exit 9 loi ra so 9",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7279,7 +7279,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit10 exit 10 loi ra so 10",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7304,7 +7304,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit11 exit 11 loi ra so 11",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7329,7 +7329,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit12 exit 12 loi ra so 12",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7354,7 +7354,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit13 exit 13 loi ra so 13",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7379,7 +7379,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit14 exit 14 loi ra so 14",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7404,7 +7404,7 @@
     "truDiemGPLX": "6 điểm (nếu đi quá rồi lùi lại)",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.451-exit15 exit 15 loi ra so 15",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -7428,7 +7428,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục D)",
     "keywords": "r308a cau vuot cat qua thang",
-    "image": "assets/images/cau_vuot_cat_qua.png",
+    "image": "/assets/trafficSigns/mandatory/R308a.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -7453,7 +7453,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục D)",
     "keywords": "r308b cau vuot cat qua re",
-    "image": "assets/images/cau_vuot_cat_qua.png",
+    "image": "/assets/trafficSigns/mandatory/R308b.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -7478,7 +7478,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i413a lan rieng xe buyt phia truoc lan bus",
-    "image": "assets/images/lan_xe_khach.png",
+    "image": "/assets/trafficSigns/guide/I413a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7503,7 +7503,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i417a huong di tung loai xe phan luong tai nut giao",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I417a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7528,7 +7528,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i424c ham chui di bo ham sang duong",
-    "image": "assets/images/ham_chui_di_bo.png",
+    "image": "/assets/trafficSigns/guide/I424c.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7553,7 +7553,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i424d ham chui di bo loi len",
-    "image": "assets/images/ham_chui_di_bo.png",
+    "image": "/assets/trafficSigns/guide/I424d.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7578,7 +7578,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i427f nuoc uong diem cap nuoc",
-    "image": "assets/images/tram_dien_thoai.png",
+    "image": "/assets/trafficSigns/guide/I427f.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7602,7 +7602,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i427i rua xe diem rua xe",
-    "image": "assets/images/tram_sua_chua.png",
+    "image": "/assets/trafficSigns/guide/I427i.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7626,7 +7626,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i430 ben xe khach ben xe lien tinh",
-    "image": "assets/images/ben_xe_taxi.png",
+    "image": "/assets/trafficSigns/guide/I430.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7651,7 +7651,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i434a ben tau khach cang thuy",
-    "image": "assets/images/ben_pha.png",
+    "image": "/assets/trafficSigns/guide/I434a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7675,7 +7675,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i440 doan duong thi cong duong sua chua",
-    "image": "assets/images/cong_truong.png",
+    "image": "/assets/trafficSigns/guide/I440.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7700,7 +7700,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "i450 khoang cach cao toc bien km cao toc",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I450.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7726,7 +7726,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-hn dia danh hà nội bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7751,7 +7751,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-hp dia danh hải phòng bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7776,7 +7776,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-dn dia danh đà nẵng bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7801,7 +7801,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-hcm dia danh tp. hồ chí minh bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7826,7 +7826,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-ct dia danh cần thơ bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7851,7 +7851,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-nt dia danh nha trang bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7876,7 +7876,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-hue dia danh thừa thiên huế bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7901,7 +7901,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-vt dia danh vũng tàu bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7926,7 +7926,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-bmt dia danh buôn ma thuột bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7951,7 +7951,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-cm dia danh cà mau bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -7976,7 +7976,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-hl dia danh hạ long bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8001,7 +8001,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-sp dia danh sa pa bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8026,7 +8026,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.444-dl dia danh đà lạt bien dia danh",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I444a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8051,7 +8051,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.445-ql1a lo trinh ql1a so hieu duong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8076,7 +8076,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.445-ql5 lo trinh ql5 so hieu duong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8101,7 +8101,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.445-ql14 lo trinh ql14 so hieu duong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8126,7 +8126,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.445-ql51 lo trinh ql51 so hieu duong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8151,7 +8151,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.445-ct01 lo trinh ct01 so hieu duong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8176,7 +8176,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.445-ct02 lo trinh ct02 so hieu duong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8201,7 +8201,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.445-ql2 lo trinh ql2 so hieu duong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8226,7 +8226,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.445-ql3 lo trinh ql3 so hieu duong",
-    "image": "assets/images/chi_huong_duong.png",
+    "image": "/assets/trafficSigns/guide/I445.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8251,7 +8251,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-biên ten cau cầu long biên cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8276,7 +8276,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-long ten cau cầu thăng long cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8301,7 +8301,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-tân ten cau cầu nhật tân cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8326,7 +8326,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-cháy ten cau cầu bãi cháy cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8351,7 +8351,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-nẵng ten cau cầu rồng đà nẵng cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8376,7 +8376,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-phước ten cau cầu thuận phước cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8401,7 +8401,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-thuận ten cau cầu mỹ thuận cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8426,7 +8426,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-thơ ten cau cầu cần thơ cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8451,7 +8451,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-gòn ten cau cầu sài gòn cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8476,7 +8476,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục E)",
     "keywords": "i.439-mỹ ten cau cầu phú mỹ cau vuot song",
-    "image": "assets/images/cau_hep.png",
+    "image": "/assets/trafficSigns/guide/I439.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -8501,7 +8501,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.505-otocon bien phu otocon loai xe ap dung",
-    "image": "assets/images/lan_xe_con.png",
+    "image": "/assets/trafficSigns/supplementary/S505a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8527,7 +8527,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.505-otokhach bien phu otokhach loai xe ap dung",
-    "image": "assets/images/lan_xe_khach.png",
+    "image": "/assets/trafficSigns/supplementary/S505a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8553,7 +8553,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.505-ototai bien phu ototai loai xe ap dung",
-    "image": "assets/images/lan_xe_tai.png",
+    "image": "/assets/trafficSigns/supplementary/S505a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8579,7 +8579,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.505-container bien phu container loai xe ap dung",
-    "image": "assets/images/cam_oto_ro_mooc.png",
+    "image": "/assets/trafficSigns/supplementary/S505a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8605,7 +8605,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.505-moto bien phu moto loai xe ap dung",
-    "image": "assets/images/lan_xe_may.png",
+    "image": "/assets/trafficSigns/supplementary/S505a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8631,7 +8631,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.505-ganmay bien phu ganmay loai xe ap dung",
-    "image": "assets/images/cam_xe_gan_may.png",
+    "image": "/assets/trafficSigns/supplementary/S505a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8657,7 +8657,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.505-xedap bien phu xedap loai xe ap dung",
-    "image": "assets/images/duong_danh_cho_xe_dap.png",
+    "image": "/assets/trafficSigns/supplementary/S505a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8683,7 +8683,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.505-xebuyt bien phu xebuyt loai xe ap dung",
-    "image": "assets/images/lan_xe_khach.png",
+    "image": "/assets/trafficSigns/supplementary/S505a.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8709,7 +8709,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.508-sang khung gio sang thoi gian hieu luc",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S508.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8734,7 +8734,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.508-chieu khung gio chieu thoi gian hieu luc",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S508.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8759,7 +8759,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.508-dem khung gio dem thoi gian hieu luc",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S508.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8784,7 +8784,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.508-t7cn khung gio t7cn thoi gian hieu luc",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S508.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8809,7 +8809,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.508-ngayle khung gio ngayle thoi gian hieu luc",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S508.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8834,7 +8834,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.506a-rephai huong duong uu tien huong re",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S506.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8860,7 +8860,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.506b-retrai huong duong uu tien huong re",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S506.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8886,7 +8886,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.507-rephai huong duong uu tien huong re",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S507.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8912,7 +8912,7 @@
     "truDiemGPLX": "Căn cứ biển chính",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phụ lục F)",
     "keywords": "s.507-retrai huong duong uu tien huong re",
-    "image": "assets/images/bien_phu.png",
+    "image": "/assets/trafficSigns/supplementary/S507.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "white",
@@ -8938,7 +8938,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.453 biển chỉ dẫn lối ra tiếp theo (next exit 5km) cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -8964,7 +8964,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.454 sơ đồ nút giao lập thể trên cao tốc cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -8990,7 +8990,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.456 trạm dịch vụ kỹ thuật khẩn cấp cao tốc cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9016,7 +9016,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.458 biển báo kết thúc đoạn thu phí cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9042,7 +9042,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.461 biển bắt đầu đường cao tốc 4 làn xe cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9068,7 +9068,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.463 biển kết thúc nhánh rẽ nhập cao tốc cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9094,7 +9094,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.464 biển chỉ dẫn hướng đi các làn tại trạm thu phí cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9120,7 +9120,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.465 biển cự ly an toàn 200m trên cao tốc cao toc expressway",
-    "image": "assets/images/cu_ly_toi_thieu.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9146,7 +9146,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.466 biển báo đoạn đường cao tốc hay có sương mù cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9172,7 +9172,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.467 biển báo độ dốc cao tốc lớn hơn 5% cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9198,7 +9198,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.469 biển thông báo điện thoại khẩn cấp sos cao tốc cao toc expressway",
-    "image": "assets/images/tram_dien_thoai.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9224,7 +9224,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.471 biển báo tốc độ lưu thông khuyến nghị trên cao tốc cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9250,7 +9250,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.472 biển báo điểm kết nối camera giám sát phạt nguội cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9276,7 +9276,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.473 biển báo khu vực cấm dừng đỗ trên toàn bộ tuyến cao tốc cao toc expressway",
-    "image": "assets/images/duong_cao_toc.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9302,7 +9302,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT (Phần 3)",
     "keywords": "ie.474 biển báo trạm cân kiểm tra tải trọng tự động tốc độ cao (wim) cao toc expressway",
-    "image": "assets/images/tram_csgt.png",
+    "image": "/assets/trafficSigns/guide/I437.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "green",
@@ -9327,7 +9327,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
     "keywords": "r412f lan xe tai nang lan oto tai",
-    "image": "assets/images/lan_xe_tai.png",
+    "image": "/assets/trafficSigns/mandatory/R412f.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -9352,7 +9352,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
     "keywords": "r412g lan mo to va xe dap",
-    "image": "assets/images/lan_xe_may.png",
+    "image": "/assets/trafficSigns/mandatory/R412g.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -9377,7 +9377,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
     "keywords": "r412h lan xe taxi uu tien taxi",
-    "image": "assets/images/ben_xe_taxi.png",
+    "image": "/assets/trafficSigns/mandatory/R412h.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -9402,7 +9402,7 @@
     "truDiemGPLX": "2 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
     "keywords": "p106d cam container xe dau keo container",
-    "image": "assets/images/cam_oto_ro_mooc.png",
+    "image": "/assets/trafficSigns/prohibition/P106d.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -9427,7 +9427,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT",
     "keywords": "w205f nga nam nga sau giao nhau phuc tap",
-    "image": "assets/images/giao_nhau_cung_muc.png",
+    "image": "/assets/trafficSigns/warning/W205f.jpg",
     "visualFeatures": {
       "shape": "triangle",
       "background": "yellow",
@@ -9452,7 +9452,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT",
     "keywords": "i441d het cong truong ket thuc thi cong",
-    "image": "assets/images/cong_truong.png",
+    "image": "/assets/trafficSigns/guide/I441d.jpg",
     "visualFeatures": {
       "shape": "rectangle",
       "background": "blue",
@@ -9477,7 +9477,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
     "keywords": "p127-60 toc do 60 60km/h",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -9502,7 +9502,7 @@
     "truDiemGPLX": "2 - 4 điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
     "keywords": "p127-50 toc do 50 50km/h khu dan cu",
-    "image": "assets/images/toc_do_toi_da.png",
+    "image": "/assets/trafficSigns/prohibition/P127.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "white",
@@ -9527,7 +9527,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
     "keywords": "r306-60 toc do toi thieu 60 min speed 60",
-    "image": "assets/images/toc_do_toi_thieu.png",
+    "image": "/assets/trafficSigns/mandatory/R306.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
@@ -9552,7 +9552,7 @@
     "truDiemGPLX": "Không trừ điểm",
     "canCuPhapLy": "QCVN 41:2019/BGTVT; NĐ 168/2024/NĐ-CP",
     "keywords": "r306-80 toc do toi thieu 80 min speed 80",
-    "image": "assets/images/toc_do_toi_thieu.png",
+    "image": "/assets/trafficSigns/mandatory/R306.jpg",
     "visualFeatures": {
       "shape": "circle",
       "background": "blue",
