@@ -17,6 +17,10 @@ import 'history_screen.dart';
 import 'game_screen.dart';
 import 'puzzle_game_screen.dart';
 import 'chatbot_screen.dart';
+import '../widgets/feature_banner_carousel.dart';
+import '../widgets/review_section.dart';
+import 'user_guide_screen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -89,6 +93,13 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const SizedBox(width: 4),
+          IconButton(
+            tooltip: 'Hướng dẫn sử dụng',
+            icon: const Icon(Icons.help_outline_rounded),
+            onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const UserGuideScreen())),
+          ),
+          const SizedBox(width: 2),
           IconButton(
             icon: const Icon(Icons.person_outline_rounded),
             onPressed: () => Navigator.of(context)
@@ -168,6 +179,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          const SizedBox(height: 14),
+          const FeatureBannerCarousel(),
           const SizedBox(height: 14),
 
           // Chatbot AI Promotional Banner Card
@@ -557,6 +570,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => const HandbookScreen()))),
               _moduleButton(
+                  '📖',
+                  'Hướng dẫn',
+                  'Cách dùng',
+                  () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const UserGuideScreen()))),
+              _moduleButton(
                   '💎',
                   'Đổi Pro',
                   '1 - 2 tháng',
@@ -580,6 +599,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       builder: (_) => const AccountScreen()))),
             ],
           ),
+          const SizedBox(height: 22),
+          const ReviewSection(),
         ],
       ),
     );
