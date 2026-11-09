@@ -345,7 +345,7 @@ class AppState extends ChangeNotifier {
             final errorData = jsonDecode(utf8.decode(response.bodyBytes));
             var msg = errorData is Map ? (errorData['detail'] ?? errorData['error'] ?? 'Sai email hoặc mật khẩu') : 'Sai email hoặc mật khẩu';
             if (msg.toString().toLowerCase().contains('invalid credentials')) {
-              msg = 'Sai tài khoản hoặc mật khẩu! (Mặc định Admin: admin@signeye.vn / Admin@123456)';
+              msg = 'Sai tài khoản hoặc mật khẩu! Vui lòng kiểm tra lại.';
             }
             throw StateError(msg.toString());
           } catch (e) {

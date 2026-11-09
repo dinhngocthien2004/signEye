@@ -391,7 +391,7 @@ class OrdersStorage {
     if (cleanEmail == 'admin@signeye.vn' || cleanEmail == 'admin') {
       const validAdminPasses = ['Admin@123456', 'admin', '123456', 'admin123', 'Admin123'];
       if (!validAdminPasses.contains(cleanPass)) {
-        return {'success': false, 'error': 'Sai mật khẩu quản trị viên! Mặc định là: Admin@123456 (hoặc admin)'};
+        return {'success': false, 'error': 'Sai tài khoản hoặc mật khẩu quản trị viên! Vui lòng kiểm tra lại.'};
       }
       return {
         'success': true,
@@ -404,6 +404,10 @@ class OrdersStorage {
     }
 
     final prefs = await SharedPreferences.getInstance();
+    final usersSeedVer = prefs.getString('se_supabase_users_seed_ver') ?? '';
+    if (usersSeedVer != 'v4_supabase_22pro_45free') {
+      await loadLocalUsers();
+    }
     final raw = prefs.getString(_kUsersDbKey);
     Map<String, dynamic> users = {};
     if (raw != null && raw.isNotEmpty) {
@@ -451,7 +455,7 @@ class OrdersStorage {
             users.containsKey('hongduyen.le@signeye.vn')) {
           targetEmail = 'hongduyen.le@signeye.vn';
         } else {
-          return {'success': false, 'error': 'Tài khoản chưa tồn tại. Vui lòng bấm Đăng ký trước!'};
+          return {'success': false, 'error': 'Tài khoản chưa được đăng ký! Vui lòng chọn tab "Đăng ký" ở trên.'};
         }
       }
       final user = Map<String, dynamic>.from(users[targetEmail] as Map);
@@ -462,7 +466,7 @@ class OrdersStorage {
           storedPass == cleanPass ||
           storedPass == '***';
       if (!isValidPass) {
-        return {'success': false, 'error': 'Sai mật khẩu, vui lòng kiểm tra lại! Mật khẩu mặc định: 123456'};
+        return {'success': false, 'error': 'Sai tài khoản hoặc mật khẩu! Vui lòng kiểm tra lại.'};
       }
 
       // Cập nhật trạng thái Pro mới nhất nếu Admin vừa duyệt
