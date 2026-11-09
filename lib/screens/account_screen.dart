@@ -19,6 +19,7 @@ import 'exam_home_screen.dart';
 import 'learning_screen.dart';
 import 'chatbot_screen.dart';
 import 'history_screen.dart';
+import 'user_guide_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -715,8 +716,16 @@ class AccountScreen extends StatelessWidget {
           ),
 
           _settingsTile(
+            icon: Icons.menu_book_rounded,
+            title: 'Hướng dẫn sử dụng SignEye',
+            subtitle: 'Cẩm nang chi tiết các bước làm chủ ứng dụng',
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const UserGuideScreen())),
+          ),
+
+          _settingsTile(
             icon: Icons.support_agent_rounded,
-            title: 'Hỗ trợ & Hướng dẫn sử dụng',
+            title: 'Hỗ trợ khách hàng',
             subtitle: 'Giải đáp thắc mắc, phản hồi chất lượng',
             onTap: () => _showSupportDialog(context),
           ),
